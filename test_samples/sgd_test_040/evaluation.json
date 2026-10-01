@@ -1,0 +1,57 @@
+{
+  "task_id": "sgd_test_040",
+  "canonical_answer": "Orinda",
+  "accepted_aliases": [
+    "Orinda"
+  ],
+  "answer_token_ids": [
+    2195,
+    17416
+  ],
+  "answer_token_count": 2,
+  "answer_token_pieces": [
+    "Or",
+    "inda"
+  ],
+  "answer_token_group": "multi_token",
+  "alias_token_ids": {
+    "Orinda": [
+      2195,
+      17416
+    ]
+  },
+  "leading_space_answer_token_ids": [
+    2521,
+    17416
+  ],
+  "tokenizer": {
+    "repo_id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "evidence_turns_zero_based": [
+    {
+      "index": 2,
+      "speaker": "USER",
+      "utterance": "Can you find restaurants in Orinda?"
+    },
+    {
+      "index": 3,
+      "speaker": "SYSTEM",
+      "utterance": "Siam Orchid is a nice restaurant in Orinda."
+    },
+    {
+      "index": 11,
+      "speaker": "SYSTEM",
+      "utterance": "Please confirm that you would like to book at table at Siam Orchid in Orinda the day after tomorrow at 6:45 pm for 2 people."
+    }
+  ],
+  "booking_turn_zero_based": 13,
+  "booking_parameters": {
+    "date": "2019-03-03",
+    "location": "Orinda",
+    "number_of_seats": "2",
+    "restaurant_name": "Siam Orchid",
+    "time": "18:45"
+  },
+  "use_restriction": "Evaluation only; never supply labels to search, selection, or stopping."
+}

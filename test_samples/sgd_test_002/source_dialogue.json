@@ -1,0 +1,639 @@
+{
+  "dialogue_id": "1_00012",
+  "services": [
+    "Restaurants_2"
+  ],
+  "turns": [
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "ReserveRestaurant"
+              ],
+              "slot": "intent",
+              "values": [
+                "ReserveRestaurant"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {}
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I need help with a reservation in a restaurant."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "time",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "What is the time of your reservation?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "18:45"
+              ],
+              "slot": "time",
+              "values": [
+                "6:45 in the evening"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 28,
+              "slot": "time",
+              "start": 9
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "time": [
+                "6:45 in the evening"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "It's for 6:45 in the evening."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "location",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Where do I have to look for your restaurant?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "San Jose"
+              ],
+              "slot": "location",
+              "values": [
+                "San Jose"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 20,
+              "slot": "location",
+              "start": 12
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "location": [
+                "San Jose"
+              ],
+              "time": [
+                "6:45 in the evening"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Look around San Jose."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "restaurant_name",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Do you have a favorite restaurant in mind?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "Lalla Grill"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Lalla"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 17,
+              "slot": "restaurant_name",
+              "start": 12
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "location": [
+                "San Jose"
+              ],
+              "restaurant_name": [
+                "Lalla"
+              ],
+              "time": [
+                "6:45 in the evening"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Yes, go for Lalla."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Lalla Grill"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Lalla Grill"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "San Jose"
+              ],
+              "slot": "location",
+              "values": [
+                "San Jose"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "18:45"
+              ],
+              "slot": "time",
+              "values": [
+                "6:45 pm"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "2"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2019-03-01"
+              ],
+              "slot": "date",
+              "values": [
+                "today"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 91,
+              "slot": "restaurant_name",
+              "start": 80
+            },
+            {
+              "exclusive_end": 103,
+              "slot": "location",
+              "start": 95
+            },
+            {
+              "exclusive_end": 124,
+              "slot": "time",
+              "start": 117
+            },
+            {
+              "exclusive_end": 113,
+              "slot": "date",
+              "start": 108
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Read the data and give me the green light. You are looking for a table for 2 at Lalla Grill in San Jose for today at 6:45 pm"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "AFFIRM",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "date": [
+                "today"
+              ],
+              "location": [
+                "San Jose"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "Lalla",
+                "Lalla Grill"
+              ],
+              "time": [
+                "6:45 in the evening",
+                "6:45 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Yes, you can proceed."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Lalla Grill"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Lalla Grill"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "2"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "2"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "2019-03-01"
+              ],
+              "slot": "date",
+              "values": [
+                "today"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "18:30"
+              ],
+              "slot": "time",
+              "values": [
+                "6:30 pm"
+              ]
+            },
+            {
+              "act": "NOTIFY_FAILURE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "ReserveRestaurant",
+            "parameters": {
+              "date": "2019-03-01",
+              "location": "San Jose",
+              "number_of_seats": "2",
+              "restaurant_name": "Lalla Grill",
+              "time": "18:45"
+            }
+          },
+          "service_results": [
+            {
+              "address": "55 River Oaks Place",
+              "category": "American",
+              "date": "2019-03-01",
+              "has_seating_outdoors": "True",
+              "has_vegetarian_options": "True",
+              "location": "San Jose",
+              "number_of_seats": "2",
+              "phone_number": "408-618-8072",
+              "price_range": "moderate",
+              "rating": "4.10",
+              "restaurant_name": "Lalla Grill",
+              "time": "18:30"
+            }
+          ],
+          "slots": [
+            {
+              "exclusive_end": 103,
+              "slot": "restaurant_name",
+              "start": 92
+            },
+            {
+              "exclusive_end": 109,
+              "slot": "date",
+              "start": 104
+            },
+            {
+              "exclusive_end": 120,
+              "slot": "time",
+              "start": 113
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Unfortunately, I can't do that. Do you want me to see if there's a table for 2 available at Lalla Grill today at 6:30 pm?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "AFFIRM",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "date": [
+                "today"
+              ],
+              "location": [
+                "San Jose"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "Lalla",
+                "Lalla Grill"
+              ],
+              "time": [
+                "6:30 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Yes, try that."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "NOTIFY_SUCCESS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "ReserveRestaurant",
+            "parameters": {
+              "date": "2019-03-01",
+              "location": "San Jose",
+              "number_of_seats": "2",
+              "restaurant_name": "Lalla Grill",
+              "time": "18:30"
+            }
+          },
+          "service_results": [
+            {
+              "address": "55 River Oaks Place",
+              "category": "American",
+              "date": "2019-03-01",
+              "has_seating_outdoors": "True",
+              "has_vegetarian_options": "True",
+              "location": "San Jose",
+              "number_of_seats": "2",
+              "phone_number": "408-618-8072",
+              "price_range": "moderate",
+              "rating": "4.10",
+              "restaurant_name": "Lalla Grill",
+              "time": "18:30"
+            }
+          ],
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "This time you got it!"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "date": [
+                "today"
+              ],
+              "location": [
+                "San Jose"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "Lalla",
+                "Lalla Grill"
+              ],
+              "time": [
+                "6:30 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "That's wonderful."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQ_MORE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Do you still need me?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "NEGATE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            },
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "NONE",
+            "requested_slots": [],
+            "slot_values": {
+              "date": [
+                "today"
+              ],
+              "location": [
+                "San Jose"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "Lalla",
+                "Lalla Grill"
+              ],
+              "time": [
+                "6:30 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "No I don't, thank you."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Enjoy your evening out. Bye."
+    }
+  ]
+}

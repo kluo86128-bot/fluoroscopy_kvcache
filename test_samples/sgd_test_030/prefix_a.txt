@@ -1,0 +1,28 @@
+You are Agent A.
+Private conversation:
+USER: I will be gathering with some friends, what restaurants do you recommend?
+SYSTEM: What type of cuisine do you want to eat? And where do you want to look for?
+USER: If possible in Oakland and that they serve Freshwater Fish.
+SYSTEM: There are 7 restaurants that match your criteria. There is a restaurant in Oakland called Alamar Kitchen & Bar.
+USER: Do you know of any other restaurant?
+SYSTEM: There is also a restaurant in Oakland called Judoku Sushi.
+USER: What is the price range of the restaurant?
+SYSTEM: It is a moderate price range restaurant.
+USER: Are there other restaurants?
+SYSTEM: There is also a restaurant in Oakland called Lake Chalet.
+USER: What is their phone number?
+SYSTEM: The phone number is 510-208-5253.
+USER: That sounds great.
+SYSTEM: Do you want to make a reservation?
+USER: Yes, please. If possible for next Wednesday for three people.
+SYSTEM: At what time do you want your reservation?
+USER: Looking to book a table for the 9th of March at afternoon 12.
+SYSTEM: please confirm: Booking a table for 3 people at 12 pm on March 9th at Lake Chalet in Oakland.
+USER: Yes, that is correct. Are there vegetarian options?
+SYSTEM: The table has been booked. And they do have vegetarian options.
+USER: What is the price range of the restaurant?
+SYSTEM: It is a moderate price range.
+USER: Thanks a lot.
+SYSTEM: Is there anything else I can help you with?
+USER: No, that would be all.
+SYSTEM: Have a great day.

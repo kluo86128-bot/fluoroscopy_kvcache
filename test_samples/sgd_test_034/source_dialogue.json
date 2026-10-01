@@ -1,0 +1,665 @@
+{
+  "dialogue_id": "1_00027",
+  "services": [
+    "Restaurants_2"
+  ],
+  "turns": [
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "3"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "3"
+              ]
+            },
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "ReserveRestaurant"
+              ],
+              "slot": "intent",
+              "values": [
+                "ReserveRestaurant"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "number_of_seats": [
+                "3"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I want to book a table in a restaurant for 3 people"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "location",
+              "values": []
+            },
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "restaurant_name",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Which is the restaurant you like and the location?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "San Francisco"
+              ],
+              "slot": "location",
+              "values": [
+                "San Francisco"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "Hakka Restaurant"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Hakka"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 32,
+              "slot": "location",
+              "start": 19
+            },
+            {
+              "exclusive_end": 77,
+              "slot": "restaurant_name",
+              "start": 72
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "location": [
+                "San Francisco"
+              ],
+              "number_of_seats": [
+                "3"
+              ],
+              "restaurant_name": [
+                "Hakka"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I am interested in San Francisco. Can you please try booking a table at Hakka."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "time",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "What is your timing?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "16:45"
+              ],
+              "slot": "time",
+              "values": [
+                "evening 4:45"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 27,
+              "slot": "time",
+              "start": 15
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "location": [
+                "San Francisco"
+              ],
+              "number_of_seats": [
+                "3"
+              ],
+              "restaurant_name": [
+                "Hakka"
+              ],
+              "time": [
+                "evening 4:45"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Please book at evening 4:45."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Hakka Restaurant"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Hakka restaurant"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "San Francisco"
+              ],
+              "slot": "location",
+              "values": [
+                "San Francisco"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "16:45"
+              ],
+              "slot": "time",
+              "values": [
+                "4:45 pm"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "3"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "3"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2019-03-01"
+              ],
+              "slot": "date",
+              "values": [
+                "today"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 82,
+              "slot": "restaurant_name",
+              "start": 66
+            },
+            {
+              "exclusive_end": 128,
+              "slot": "location",
+              "start": 115
+            },
+            {
+              "exclusive_end": 93,
+              "slot": "time",
+              "start": 86
+            },
+            {
+              "exclusive_end": 99,
+              "slot": "date",
+              "start": 94
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Please give confirmation details: Booking a table for 3 people at Hakka restaurant at 4:45 pm today in the city of San Francisco."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "has_vegetarian_options",
+              "values": []
+            },
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "address",
+              "values": []
+            },
+            {
+              "act": "AFFIRM",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [
+              "address",
+              "has_vegetarian_options"
+            ],
+            "slot_values": {
+              "date": [
+                "today"
+              ],
+              "location": [
+                "San Francisco"
+              ],
+              "number_of_seats": [
+                "3"
+              ],
+              "restaurant_name": [
+                "Hakka",
+                "Hakka restaurant"
+              ],
+              "time": [
+                "4:45 pm",
+                "evening 4:45"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "This is perfect. Does the restaurant have vegetarians options on the menu and can you provide me their address?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "False"
+              ],
+              "slot": "has_vegetarian_options",
+              "values": [
+                "False"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "4401 Cabrillo Street"
+              ],
+              "slot": "address",
+              "values": [
+                "4401 Cabrillo Street"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Hakka Restaurant"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Hakka restaurant"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "3"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "3"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "2019-03-01"
+              ],
+              "slot": "date",
+              "values": [
+                "today"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "17:00"
+              ],
+              "slot": "time",
+              "values": [
+                "5 pm"
+              ]
+            },
+            {
+              "act": "NOTIFY_FAILURE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "ReserveRestaurant",
+            "parameters": {
+              "date": "2019-03-01",
+              "location": "San Francisco",
+              "number_of_seats": "3",
+              "restaurant_name": "Hakka Restaurant",
+              "time": "16:45"
+            }
+          },
+          "service_results": [
+            {
+              "address": "4401 Cabrillo Street",
+              "category": "Chinese",
+              "date": "2019-03-01",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "San Francisco",
+              "number_of_seats": "3",
+              "phone_number": "415-876-6898",
+              "price_range": "moderate",
+              "rating": "4.10",
+              "restaurant_name": "Hakka Restaurant",
+              "time": "17:00"
+            }
+          ],
+          "slots": [
+            {
+              "exclusive_end": 123,
+              "slot": "address",
+              "start": 103
+            },
+            {
+              "exclusive_end": 185,
+              "slot": "restaurant_name",
+              "start": 169
+            },
+            {
+              "exclusive_end": 157,
+              "slot": "date",
+              "start": 152
+            },
+            {
+              "exclusive_end": 165,
+              "slot": "time",
+              "start": 161
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Sorry, your booking can not be done and the hotel does not provide vegetarian option. Their address is 4401 Cabrillo Street. Should i book for 3 people today at 5 pm as Hakka restaurant is nice."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "AFFIRM",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "date": [
+                "today"
+              ],
+              "location": [
+                "San Francisco"
+              ],
+              "number_of_seats": [
+                "3"
+              ],
+              "restaurant_name": [
+                "Hakka",
+                "Hakka restaurant"
+              ],
+              "time": [
+                "5 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "yes that is perfect."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "NOTIFY_SUCCESS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "ReserveRestaurant",
+            "parameters": {
+              "date": "2019-03-01",
+              "location": "San Francisco",
+              "number_of_seats": "3",
+              "restaurant_name": "Hakka Restaurant",
+              "time": "17:00"
+            }
+          },
+          "service_results": [
+            {
+              "address": "4401 Cabrillo Street",
+              "category": "Chinese",
+              "date": "2019-03-01",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "San Francisco",
+              "number_of_seats": "3",
+              "phone_number": "415-876-6898",
+              "price_range": "moderate",
+              "rating": "4.10",
+              "restaurant_name": "Hakka Restaurant",
+              "time": "17:00"
+            }
+          ],
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Your booking has been done."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "date": [
+                "today"
+              ],
+              "location": [
+                "San Francisco"
+              ],
+              "number_of_seats": [
+                "3"
+              ],
+              "restaurant_name": [
+                "Hakka",
+                "Hakka restaurant"
+              ],
+              "time": [
+                "5 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Thanks a lot"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQ_MORE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Do you need any help from me?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "NEGATE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            },
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "NONE",
+            "requested_slots": [],
+            "slot_values": {
+              "date": [
+                "today"
+              ],
+              "location": [
+                "San Francisco"
+              ],
+              "number_of_seats": [
+                "3"
+              ],
+              "restaurant_name": [
+                "Hakka",
+                "Hakka restaurant"
+              ],
+              "time": [
+                "5 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "No, thanks a lot."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Have a great day."
+    }
+  ]
+}

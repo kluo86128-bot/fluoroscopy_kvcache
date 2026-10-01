@@ -1,0 +1,63 @@
+{
+  "model_path": "/home/kevin/models/Qwen3-4B",
+  "device": "cuda:0",
+  "cuda_devices": "2",
+  "dtype": "bfloat16",
+  "datasets": [
+    "../test_samples/tasks.jsonl"
+  ],
+  "include_tasks": [
+    "sgd_test_021",
+    "sgd_test_033",
+    "sgd_test_040"
+  ],
+  "exclude_tasks": [],
+  "limit": 5,
+  "methods": [
+    "baseline",
+    "question_weighted_kv",
+    "question_attention_reconstruction",
+    "question_output_consistency",
+    "oracle_private_prefix_distillation"
+  ],
+  "method_options": {},
+  "output_dir": "../results",
+  "background": true,
+  "continue_on_error": true,
+  "auto_test": true,
+  "output_instruction": "只输出问题要求的答案，不要解释、开场白、推理过程、标签或额外文字。",
+  "question_format": "raw",
+  "enable_thinking": false,
+  "seed": 42,
+  "rounds": 20,
+  "steps_per_round": 200,
+  "base_loss": "mean",
+  "lr": 0.01,
+  "init_std": 0.02,
+  "grad_clip": 1.0,
+  "log_every": 25,
+  "eval_every": 25,
+  "plot_every": 200,
+  "checkpoint_every": 1,
+  "resume_every": 25,
+  "save_topk": 400,
+  "checkpoint_metric": "total",
+  "reference_refresh_steps": 200,
+  "lambda_weighted": 1.0,
+  "weight_floor": 0.1,
+  "lambda_output": 1.0,
+  "lambda_lse": 1.0,
+  "lambda_kl": 1.0,
+  "temperature": 1.0,
+  "rollout_tokens": 8,
+  "max_new_tokens": 16,
+  "score_window_steps": 400,
+  "score_tail_fraction": 0.25,
+  "ema_alpha": 0.5,
+  "ema_span_steps": 400,
+  "score_probability": "sequence",
+  "answer_boundary": "Answer: ",
+  "stop_strings": [
+    "\n"
+  ]
+}

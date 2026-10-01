@@ -1,0 +1,3 @@
+
+Question: What was the confirmed party size for the restaurant booking? Reply with only the number in digits.
+Answer:

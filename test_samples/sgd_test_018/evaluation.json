@@ -1,0 +1,53 @@
+{
+  "task_id": "sgd_test_018",
+  "canonical_answer": "3",
+  "accepted_aliases": [
+    "3",
+    "three"
+  ],
+  "answer_token_ids": [
+    18
+  ],
+  "answer_token_count": 1,
+  "answer_token_pieces": [
+    "3"
+  ],
+  "answer_token_group": "single_token",
+  "alias_token_ids": {
+    "3": [
+      18
+    ],
+    "three": [
+      27856
+    ]
+  },
+  "leading_space_answer_token_ids": [
+    220,
+    18
+  ],
+  "tokenizer": {
+    "repo_id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "evidence_turns_zero_based": [
+    {
+      "index": 9,
+      "speaker": "SYSTEM",
+      "utterance": "Okay, confirm me the following before I go on. I'll book a table at Napoli Pizza-taste of the himalayas in San Rafael for 3 people. The table is for today at 1 pm"
+    },
+    {
+      "index": 13,
+      "speaker": "SYSTEM",
+      "utterance": "Okay, read the specifics and tell me if they are correct. You want a table at Napoli Pizza-taste of The Himalayas in San Rafael for 3 people. You want to go today at 6 pm."
+    }
+  ],
+  "booking_turn_zero_based": 15,
+  "booking_parameters": {
+    "date": "2019-03-01",
+    "location": "San Rafael",
+    "number_of_seats": "3",
+    "restaurant_name": "Napoli Pizza-taste Of The Himalayas",
+    "time": "18:00"
+  },
+  "use_restriction": "Evaluation only; never supply labels to search, selection, or stopping."
+}

@@ -1,0 +1,917 @@
+{
+  "dialogue_id": "4_00069",
+  "services": [
+    "Restaurants_2"
+  ],
+  "turns": [
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "Italian"
+              ],
+              "slot": "category",
+              "values": [
+                "pizza and pasta"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "San Francisco"
+              ],
+              "slot": "location",
+              "values": [
+                "San Fran"
+              ]
+            },
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "FindRestaurants"
+              ],
+              "slot": "intent",
+              "values": [
+                "FindRestaurants"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 70,
+              "slot": "category",
+              "start": 55
+            },
+            {
+              "exclusive_end": 82,
+              "slot": "location",
+              "start": 74
+            }
+          ],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "pizza and pasta"
+              ],
+              "location": [
+                "San Fran"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I'm searching for a restaurant; get me one that serves pizza and pasta at San Fran."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "54 Mint Ristorante Italiano"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "54 Mint Ristorante Italiano"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "San Francisco"
+              ],
+              "slot": "location",
+              "values": [
+                "San Francisco"
+              ]
+            },
+            {
+              "act": "INFORM_COUNT",
+              "canonical_values": [
+                "10"
+              ],
+              "slot": "count",
+              "values": [
+                "10"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "FindRestaurants",
+            "parameters": {
+              "category": "Italian",
+              "location": "San Francisco"
+            }
+          },
+          "service_results": [
+            {
+              "address": "16 Mint Plaza",
+              "category": "Italian",
+              "has_seating_outdoors": "True",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "phone_number": "415-543-5100",
+              "price_range": "moderate",
+              "rating": "4.40",
+              "restaurant_name": "54 Mint Ristorante Italiano"
+            },
+            {
+              "address": "2355 Chestnut Street",
+              "category": "Italian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "phone_number": "415-771-2216",
+              "price_range": "moderate",
+              "rating": "4.30",
+              "restaurant_name": "A16"
+            },
+            {
+              "address": "1098 Jackson Street",
+              "category": "Italian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "San Francisco",
+              "phone_number": "415-292-3699",
+              "price_range": "pricey",
+              "rating": "3.90",
+              "restaurant_name": "Ala Romana"
+            },
+            {
+              "address": "1701 Jones Street",
+              "category": "Italian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "San Francisco",
+              "phone_number": "415-928-4002",
+              "price_range": "moderate",
+              "rating": "4.30",
+              "restaurant_name": "Allegro Romano"
+            },
+            {
+              "address": "1358 Mason Street",
+              "category": "Italian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "San Francisco",
+              "phone_number": "415-834-5766",
+              "price_range": "moderate",
+              "rating": "4.70",
+              "restaurant_name": "Altovino"
+            },
+            {
+              "address": "2162 Larkin Street",
+              "category": "Italian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "San Francisco",
+              "phone_number": "415-447-0441",
+              "price_range": "moderate",
+              "rating": "4.50",
+              "restaurant_name": "Amarena"
+            },
+            {
+              "address": "8 Mission St",
+              "category": "Italian",
+              "has_seating_outdoors": "True",
+              "has_vegetarian_options": "False",
+              "location": "San Francisco",
+              "phone_number": "415-278-3777",
+              "price_range": "moderate",
+              "rating": "4.00",
+              "restaurant_name": "Americano"
+            },
+            {
+              "address": "737 Diamond Street",
+              "category": "Italian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "phone_number": "415-282-4969",
+              "price_range": "moderate",
+              "rating": "4.30",
+              "restaurant_name": "Bacco"
+            },
+            {
+              "address": "220 California Street",
+              "category": "Italian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "San Francisco",
+              "phone_number": "415-955-1919",
+              "price_range": "moderate",
+              "rating": "4.30",
+              "restaurant_name": "Barbacco"
+            },
+            {
+              "address": "52 Belden Place",
+              "category": "Italian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "phone_number": "415-986-8887",
+              "price_range": "moderate",
+              "rating": "4.00",
+              "restaurant_name": "Belden Taverna"
+            }
+          ],
+          "slots": [
+            {
+              "exclusive_end": 100,
+              "slot": "restaurant_name",
+              "start": 73
+            },
+            {
+              "exclusive_end": 117,
+              "slot": "location",
+              "start": 104
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "I discovered 10 restaurant you may enjoy. There is a lovely diner called 54 Mint Ristorante Italiano at San Francisco."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "phone_number",
+              "values": []
+            },
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "rating",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [
+              "phone_number",
+              "rating"
+            ],
+            "slot_values": {
+              "category": [
+                "pizza and pasta"
+              ],
+              "location": [
+                "San Fran",
+                "San Francisco"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Can you tell me their contact number, and their user rating?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "415-543-5100"
+              ],
+              "slot": "phone_number",
+              "values": [
+                "415-543-5100"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "4.40"
+              ],
+              "slot": "rating",
+              "values": [
+                "4.4"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 36,
+              "slot": "phone_number",
+              "start": 24
+            },
+            {
+              "exclusive_end": 64,
+              "slot": "rating",
+              "start": 61
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Their contact number is 415-543-5100, and the rating is near 4.4"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST_ALTS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "pizza and pasta"
+              ],
+              "location": [
+                "San Fran",
+                "San Francisco"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Could you suggest alternative diners?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "A16"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "A16"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "San Francisco"
+              ],
+              "slot": "location",
+              "values": [
+                "San Francisco"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 34,
+              "slot": "restaurant_name",
+              "start": 31
+            },
+            {
+              "exclusive_end": 59,
+              "slot": "location",
+              "start": 46
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "There is a lovely diner called A16 located in San Francisco."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "3"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "3"
+              ]
+            },
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "ReserveRestaurant"
+              ],
+              "slot": "intent",
+              "values": [
+                "ReserveRestaurant"
+              ]
+            },
+            {
+              "act": "SELECT",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "pizza and pasta"
+              ],
+              "location": [
+                "San Fran",
+                "San Francisco"
+              ],
+              "number_of_seats": [
+                "3"
+              ],
+              "restaurant_name": [
+                "A16"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "That's perfect. I want to reserve a spot at the restaurant for 3 people."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "time",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "When do you wish for me to make the booking for?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "18:00"
+              ],
+              "slot": "time",
+              "values": [
+                "six in the evening"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 39,
+              "slot": "time",
+              "start": 21
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "pizza and pasta"
+              ],
+              "location": [
+                "San Fran",
+                "San Francisco"
+              ],
+              "number_of_seats": [
+                "3"
+              ],
+              "restaurant_name": [
+                "A16"
+              ],
+              "time": [
+                "six in the evening"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Make the booking for six in the evening."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "A16"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "A16"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "San Francisco"
+              ],
+              "slot": "location",
+              "values": [
+                "San Francisco"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "18:00"
+              ],
+              "slot": "time",
+              "values": [
+                "6 pm"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2019-03-01"
+              ],
+              "slot": "date",
+              "values": [
+                "today"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "3"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "3"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 75,
+              "slot": "restaurant_name",
+              "start": 72
+            },
+            {
+              "exclusive_end": 92,
+              "slot": "location",
+              "start": 79
+            },
+            {
+              "exclusive_end": 110,
+              "slot": "time",
+              "start": 106
+            },
+            {
+              "exclusive_end": 102,
+              "slot": "date",
+              "start": 97
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Please verify the following information: Rserve a table for 3 people at A16 in San Francisco for today at 6 pm."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "2019-03-05"
+              ],
+              "slot": "date",
+              "values": [
+                "5th of this month"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "1"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "1"
+              ]
+            },
+            {
+              "act": "NEGATE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 60,
+              "slot": "date",
+              "start": 43
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "pizza and pasta"
+              ],
+              "date": [
+                "5th of this month"
+              ],
+              "location": [
+                "San Fran",
+                "San Francisco"
+              ],
+              "number_of_seats": [
+                "1"
+              ],
+              "restaurant_name": [
+                "A16"
+              ],
+              "time": [
+                "6 pm",
+                "six in the evening"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Nope. I want a table for one person on the 5th of this month."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2019-03-05"
+              ],
+              "slot": "date",
+              "values": [
+                "next Tuesday"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "1"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "1"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 79,
+              "slot": "date",
+              "start": 67
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Please verify the following information: a booking for 1 person on next Tuesday."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "address",
+              "values": []
+            },
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "has_seating_outdoors",
+              "values": []
+            },
+            {
+              "act": "AFFIRM",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [
+              "address",
+              "has_seating_outdoors"
+            ],
+            "slot_values": {
+              "category": [
+                "pizza and pasta"
+              ],
+              "date": [
+                "5th of this month",
+                "next Tuesday"
+              ],
+              "location": [
+                "San Fran",
+                "San Francisco"
+              ],
+              "number_of_seats": [
+                "1"
+              ],
+              "restaurant_name": [
+                "A16"
+              ],
+              "time": [
+                "6 pm",
+                "six in the evening"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "That's fine by me. What's their address,a nd do they offer outdoor eating?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "False"
+              ],
+              "slot": "has_seating_outdoors",
+              "values": [
+                "False"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "2355 Chestnut Street"
+              ],
+              "slot": "address",
+              "values": [
+                "2355 Chestnut Street"
+              ]
+            },
+            {
+              "act": "NOTIFY_SUCCESS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "ReserveRestaurant",
+            "parameters": {
+              "date": "2019-03-05",
+              "location": "San Francisco",
+              "number_of_seats": "1",
+              "restaurant_name": "A16",
+              "time": "18:00"
+            }
+          },
+          "service_results": [
+            {
+              "address": "2355 Chestnut Street",
+              "category": "Italian",
+              "date": "2019-03-05",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "number_of_seats": "1",
+              "phone_number": "415-771-2216",
+              "price_range": "moderate",
+              "rating": "4.30",
+              "restaurant_name": "A16",
+              "time": "18:00"
+            }
+          ],
+          "slots": [
+            {
+              "exclusive_end": 65,
+              "slot": "address",
+              "start": 45
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "The booking has been made. The address is at 2355 Chestnut Street, and they do not offer outdoor seating."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            },
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "pizza and pasta"
+              ],
+              "date": [
+                "5th of this month",
+                "next Tuesday"
+              ],
+              "location": [
+                "San Fran",
+                "San Francisco"
+              ],
+              "number_of_seats": [
+                "1"
+              ],
+              "restaurant_name": [
+                "A16"
+              ],
+              "time": [
+                "6 pm",
+                "six in the evening"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Thank you for your assistance; that's all."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Have a pleasant afternoon."
+    }
+  ]
+}

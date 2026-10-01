@@ -1,0 +1,72 @@
+{
+  "task_id": "sgd_test_024",
+  "canonical_answer": "March 6th",
+  "accepted_aliases": [
+    "March 6th",
+    "March 6",
+    "6 March",
+    "6th March"
+  ],
+  "answer_token_ids": [
+    27523,
+    220,
+    21,
+    339
+  ],
+  "answer_token_count": 4,
+  "answer_token_pieces": [
+    "March",
+    " ",
+    "6",
+    "th"
+  ],
+  "answer_token_group": "multi_token",
+  "alias_token_ids": {
+    "March 6th": [
+      27523,
+      220,
+      21,
+      339
+    ],
+    "March 6": [
+      27523,
+      220,
+      21
+    ],
+    "6 March": [
+      21,
+      5470
+    ],
+    "6th March": [
+      21,
+      339,
+      5470
+    ]
+  },
+  "leading_space_answer_token_ids": [
+    5470,
+    220,
+    21,
+    339
+  ],
+  "tokenizer": {
+    "repo_id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "evidence_turns_zero_based": [
+    {
+      "index": 16,
+      "speaker": "USER",
+      "utterance": "No, make that March 6th at one in the afternoon."
+    }
+  ],
+  "booking_turn_zero_based": 19,
+  "booking_parameters": {
+    "date": "2019-03-06",
+    "location": "San Jose",
+    "number_of_seats": "1",
+    "restaurant_name": "Chevys Fresh Mex",
+    "time": "13:00"
+  },
+  "use_restriction": "Evaluation only; never supply labels to search, selection, or stopping."
+}

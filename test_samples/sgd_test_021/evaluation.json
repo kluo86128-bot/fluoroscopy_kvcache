@@ -1,0 +1,72 @@
+{
+  "task_id": "sgd_test_021",
+  "canonical_answer": "March 5th",
+  "accepted_aliases": [
+    "March 5th",
+    "March 5",
+    "5 March",
+    "5th March"
+  ],
+  "answer_token_ids": [
+    27523,
+    220,
+    20,
+    339
+  ],
+  "answer_token_count": 4,
+  "answer_token_pieces": [
+    "March",
+    " ",
+    "5",
+    "th"
+  ],
+  "answer_token_group": "multi_token",
+  "alias_token_ids": {
+    "March 5th": [
+      27523,
+      220,
+      20,
+      339
+    ],
+    "March 5": [
+      27523,
+      220,
+      20
+    ],
+    "5 March": [
+      20,
+      5470
+    ],
+    "5th March": [
+      20,
+      339,
+      5470
+    ]
+  },
+  "leading_space_answer_token_ids": [
+    5470,
+    220,
+    20,
+    339
+  ],
+  "tokenizer": {
+    "repo_id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "evidence_turns_zero_based": [
+    {
+      "index": 0,
+      "speaker": "USER",
+      "utterance": "I want to make a dinner reservation on March 5th."
+    }
+  ],
+  "booking_turn_zero_based": 7,
+  "booking_parameters": {
+    "date": "2019-03-05",
+    "location": "San Jose",
+    "number_of_seats": "2",
+    "restaurant_name": "Ludwig's German Table",
+    "time": "18:30"
+  },
+  "use_restriction": "Evaluation only; never supply labels to search, selection, or stopping."
+}

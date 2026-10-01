@@ -1,0 +1,24 @@
+You are Agent A.
+Private conversation:
+USER: Fine me a place to eat.
+SYSTEM: Where do you want and what kind of food to you like?
+USER: Find me Sushi places in San Jose.
+SYSTEM: Search revealed 10 results. Do you like Bluefin in San Jose?
+USER: What else do you have?
+SYSTEM: Dan Izakaya Restaurant is in San Jose.
+USER: Does their menu have vegetarian food?
+SYSTEM: They do not have vegetarian food.
+USER: What is their contact number and their rating?
+SYSTEM: Their contact number is 408-249-6020 and it is rating 4.4.
+USER: That works for me. Make a reservation.
+SYSTEM: What time do you want?
+USER: I want a reservation for evening 6:30.
+SYSTEM: You want a reservation for 2 people at Dan Izakaya Restaurant in San Jose today for 6:30 pm. Is that right?
+USER: No, I want it on the 10th for 1 person.
+SYSTEM: You want a reservation for March 10th for 1 person. Is that right?
+USER: That is right. What is their address and do they offer outdoor seating?
+SYSTEM: Your booking is confirmed. Their location is 1306 Saratoga Avenue and they don't offer outdoor seating.
+USER: Thanks a lot.
+SYSTEM: Do you need anything more?
+USER: No, that is all. Thanks.
+SYSTEM: Have a great day.

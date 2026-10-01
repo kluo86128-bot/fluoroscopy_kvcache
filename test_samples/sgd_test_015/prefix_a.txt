@@ -1,0 +1,24 @@
+You are Agent A.
+Private conversation:
+USER: Where is a good dining place?
+SYSTEM: What town would you like to search?
+USER: I want somewhere Al Fresco in Livermore.
+SYSTEM: What style food do you like?
+USER: How about Mediterranean?
+SYSTEM: 1 option for you is Demitri's Taverna. It's a nice place in Livermore.
+USER: Whats the rating there?
+SYSTEM: The user rating is 4.4.
+USER: Got it. That's great.
+SYSTEM: Do you want a table there?
+USER: Yes, I need a table on the 10th. I want to eat at 19:15
+SYSTEM: Ok, to be clear: Table for 2 at Demitri's Taverna in Livermore at 7:15 pm. on March 10th.
+USER: No, I'm sorry you misheard. I want the table on the 3rd of this month. I want to go at 6:30 in the evening.
+SYSTEM: Ok, I think I have it. 6:30 pm. day after tomorrow?
+USER: You nailed it, thanks.
+SYSTEM: You're table is reserved now.
+USER: How can I reach them? Where are they?
+SYSTEM: Location is 2235 First Street. Phone them at 925-373-0306.
+USER: Perfect, thanks.
+SYSTEM: What else would you like?
+USER: Nothing, I'm good.
+SYSTEM: Enjoy your meal.

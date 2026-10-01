@@ -1,0 +1,627 @@
+{
+  "dialogue_id": "1_00025",
+  "services": [
+    "Restaurants_2"
+  ],
+  "turns": [
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "18:00"
+              ],
+              "slot": "time",
+              "values": [
+                "6 in the evening"
+              ]
+            },
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "ReserveRestaurant"
+              ],
+              "slot": "intent",
+              "values": [
+                "ReserveRestaurant"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 114,
+              "slot": "time",
+              "start": 98
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "time": [
+                "6 in the evening"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Man, I'm starving. I'd love to have a hearty meal out tonight. Can you reserve me a restaurant at 6 in the evening?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "restaurant_name",
+              "values": []
+            },
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "location",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Do you have a specific restaurant in mind? Where should I search?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "Walnut Creek"
+              ],
+              "slot": "location",
+              "values": [
+                "Walnut Creek"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "Vanessa's Bistro 2 Vietnamese Restaurant"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Vanessa's Bistro 2"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 62,
+              "slot": "location",
+              "start": 50
+            },
+            {
+              "exclusive_end": 139,
+              "slot": "restaurant_name",
+              "start": 121
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "location": [
+                "Walnut Creek"
+              ],
+              "restaurant_name": [
+                "Vanessa's Bistro 2"
+              ],
+              "time": [
+                "6 in the evening"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I'd like for you to check out what's available in Walnut Creek. I'd particularly like it if you could book me a table at Vanessa's Bistro 2."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Vanessa's Bistro 2 Vietnamese Restaurant"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Vanessa's Bistro 2 Vietnamese Restaurant"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Walnut Creek"
+              ],
+              "slot": "location",
+              "values": [
+                "Walnut Creek"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "18:00"
+              ],
+              "slot": "time",
+              "values": [
+                "6 pm"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "2"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2019-03-01"
+              ],
+              "slot": "date",
+              "values": [
+                "today"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 88,
+              "slot": "restaurant_name",
+              "start": 48
+            },
+            {
+              "exclusive_end": 104,
+              "slot": "location",
+              "start": 92
+            },
+            {
+              "exclusive_end": 113,
+              "slot": "time",
+              "start": 109
+            },
+            {
+              "exclusive_end": 119,
+              "slot": "date",
+              "start": 114
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Okay then. You want to reserve a table for 2 at Vanessa's Bistro 2 Vietnamese Restaurant in Walnut Creek, at 6 pm today?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "18:15"
+              ],
+              "slot": "time",
+              "values": [
+                "18:15"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "2019-03-12"
+              ],
+              "slot": "date",
+              "values": [
+                "the 12th"
+              ]
+            },
+            {
+              "act": "NEGATE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 26,
+              "slot": "time",
+              "start": 21
+            },
+            {
+              "exclusive_end": 38,
+              "slot": "date",
+              "start": 30
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "date": [
+                "the 12th"
+              ],
+              "location": [
+                "Walnut Creek"
+              ],
+              "restaurant_name": [
+                "Vanessa's Bistro 2",
+                "Vanessa's Bistro 2 Vietnamese Restaurant"
+              ],
+              "time": [
+                "18:15"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Actually, make it at 18:15 on the 12th."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "18:15"
+              ],
+              "slot": "time",
+              "values": [
+                "6:15 pm"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2019-03-12"
+              ],
+              "slot": "date",
+              "values": [
+                "March 12th"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 50,
+              "slot": "time",
+              "start": 43
+            },
+            {
+              "exclusive_end": 64,
+              "slot": "date",
+              "start": 54
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Okay. The reservation should instead be at 6:15 pm on March 12th?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "has_vegetarian_options",
+              "values": []
+            },
+            {
+              "act": "AFFIRM",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [
+              "has_vegetarian_options"
+            ],
+            "slot_values": {
+              "date": [
+                "March 12th",
+                "the 12th"
+              ],
+              "location": [
+                "Walnut Creek"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "Vanessa's Bistro 2",
+                "Vanessa's Bistro 2 Vietnamese Restaurant"
+              ],
+              "time": [
+                "18:15",
+                "6:15 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "That sounds right. Also, I'm a vegetarian. Does their menu have options that will be okay for me?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "True"
+              ],
+              "slot": "has_vegetarian_options",
+              "values": [
+                "True"
+              ]
+            },
+            {
+              "act": "NOTIFY_SUCCESS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "ReserveRestaurant",
+            "parameters": {
+              "date": "2019-03-12",
+              "location": "Walnut Creek",
+              "number_of_seats": "2",
+              "restaurant_name": "Vanessa's Bistro 2 Vietnamese Restaurant",
+              "time": "18:15"
+            }
+          },
+          "service_results": [
+            {
+              "address": "1512 Locust Street",
+              "category": "Vietnamese",
+              "date": "2019-03-12",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "Walnut Creek",
+              "number_of_seats": "2",
+              "phone_number": "925-891-4790",
+              "price_range": "moderate",
+              "rating": "4.40",
+              "restaurant_name": "Vanessa's Bistro 2 Vietnamese Restaurant",
+              "time": "18:30"
+            }
+          ],
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "You have successfully booked a table. Vanessa's Bistro 2 does have vegetarian meals."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "has_seating_outdoors",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [
+              "has_seating_outdoors"
+            ],
+            "slot_values": {
+              "date": [
+                "March 12th",
+                "the 12th"
+              ],
+              "location": [
+                "Walnut Creek"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "Vanessa's Bistro 2",
+                "Vanessa's Bistro 2 Vietnamese Restaurant"
+              ],
+              "time": [
+                "18:15",
+                "6:15 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Can I have my meal outdoors at Vanessa's?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "False"
+              ],
+              "slot": "has_seating_outdoors",
+              "values": [
+                "False"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Unfortunately, you cannot."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "date": [
+                "March 12th",
+                "the 12th"
+              ],
+              "location": [
+                "Walnut Creek"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "Vanessa's Bistro 2",
+                "Vanessa's Bistro 2 Vietnamese Restaurant"
+              ],
+              "time": [
+                "18:15",
+                "6:15 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Thanks for the answer."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQ_MORE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "How else can I assist you?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "NEGATE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            },
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "NONE",
+            "requested_slots": [],
+            "slot_values": {
+              "date": [
+                "March 12th",
+                "the 12th"
+              ],
+              "location": [
+                "Walnut Creek"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "Vanessa's Bistro 2",
+                "Vanessa's Bistro 2 Vietnamese Restaurant"
+              ],
+              "time": [
+                "18:15",
+                "6:15 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Not for anything else right now. Many thanks."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Hope you enjoy your meal at Vanessa's."
+    }
+  ]
+}

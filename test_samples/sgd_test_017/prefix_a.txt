@@ -1,0 +1,24 @@
+You are Agent A.
+Private conversation:
+USER: I'm starving! I need to get myself some food.
+SYSTEM: Any type of food in mind? Where should I look?
+USER: I'm in the mood for lobster right now. Is there anywhere that serves that in Walnut Creek?
+SYSTEM: Andy's Sushi sells lobster, and is at Walnut Creek.
+USER: I'd like to be aware of some other restaurants. Can you find me some reasonably priced restaurants in San Jose?
+SYSTEM: How about Ariake? It has some inexpensive food, and is located at San Jose.
+USER: That sounds good.
+SYSTEM: Would you like to reserve a table at Ariake?
+USER: Yes I do.
+SYSTEM: What time would you like?
+USER: I'd like to reserve a table for 1 at morning 11:30.
+SYSTEM: Okay. So, I should book you a table for 1 at Ariake in San Jose, at 11:30 am today?
+USER: Actually, I need some extra time to prepare, and a few of my friends want to come along. Can you instead make the reservation at 1:15 pm for 3 people?
+SYSTEM: Okay. You would rather book at table for 3 at 1:15 pm?
+USER: Yes. What's the user rating of the restaurant? Can I have their meals outdoors if I so desire?
+SYSTEM: I'm so sorry! I couldn't reserve your table. As for your questions, the users rank it highly, with an average of 4.0. Outdoor seating is unavailable. Now then, would you be okay with me instead booking your table for 3 at Ariake on today at 1:30 pm?
+USER: Yes, that would be fine.
+SYSTEM: I have successfully reserved your table.
+USER: Great! Many thanks.
+SYSTEM: Can I do anything else for you?
+USER: Nope! That'll be all. Thanks.
+SYSTEM: I hope you have a wonderful time at Ariake.

@@ -1,0 +1,24 @@
+You are Agent A.
+Private conversation:
+USER: My best friend is in town and I'd like to take him out for a meal. Please recommend some restaurants for me.
+SYSTEM: Which city should I search in?
+USER: Please search for restaurants in Moraga.
+SYSTEM: Do you have a particular cuisine in mind?
+USER: A restaurant serving Pizza and Pasta works for me.
+SYSTEM: I found 2 nice restaurants that you may be interested in. How about La Finestra Ristorante, in Moraga?
+USER: I've dined at La Finestra Ristorante several times and would like a change. You mentioned 2 restaurants. What is the other recommendation?
+SYSTEM: Ristorante Amoroma is also another nice Restaurant in Moraga
+USER: Please give me their address and phone number.
+SYSTEM: They are at 360 Park Street, and you can call them on 925-377-7662.
+USER: Sounds good to me.
+SYSTEM: Will there be anything else?
+USER: Please help me book a table for two at the restaurant.
+SYSTEM: What time would you like to reserve it for?
+USER: The reservation should be for afternoon 1.
+SYSTEM: Let me see if I got everything correctly: Reserving a table for 2 for today at 1 pm, at Ristorante Amoroma in Moraga.
+USER: That is correct.
+SYSTEM: I have successfully made your reservation.
+USER: Thank you very much. You've been very helpful.
+SYSTEM: Do you need help with anything else?
+USER: No. Thank you very much.
+SYSTEM: Have a great day.

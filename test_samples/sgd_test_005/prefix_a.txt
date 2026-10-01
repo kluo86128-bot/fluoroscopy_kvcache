@@ -1,0 +1,14 @@
+You are Agent A.
+Private conversation:
+USER: I would like to eat something in a restaurant on the 8th of this month.
+SYSTEM: Have you thought about the time you want to be there?
+USER: Yes, 1 in the afternoon is fine.
+SYSTEM: Do you have a favorite restaurant?
+USER: Yes, see if there's room at Koryo.
+SYSTEM: Where is it located?
+USER: It's in Oakland.
+SYSTEM: Confirm your request. You need to make a reservation for 2 at Koryo Sushi in Oakland at 1 pm next friday.
+USER: Yes, can you send me the address? Can you also provide me the ratings?
+SYSTEM: The reservation has been made. The restaurant is in 4390 Telegraph avenue D and the rating is around 4.0
+USER: Thanks a lot, I'm done.
+SYSTEM: Bye sir.

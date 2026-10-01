@@ -1,0 +1,24 @@
+You are Agent A.
+Private conversation:
+USER: I want to eat somewhere.
+SYSTEM: What kind of food do you want?
+USER: Find some place that serves tacos.
+SYSTEM: What location do I look in?
+USER: Find restaurants in San Jose.
+SYSTEM: I have 10 restaurants there that you should like. Chacho's is a nice on in San Jose.
+USER: Do you have something else you could recommend?
+SYSTEM: Chevys Fresh Mex is a good one in San Jose.
+USER: Okay, that is fine.
+SYSTEM: Do you want to make a reservation?
+USER: Yes, please.
+SYSTEM: For what time should the reservation be made?
+USER: I want my reservation to be made at quarter past 7 in the evening.
+SYSTEM: Please confirm that you want to book for 2 people at Chevys Fresh Mex in San Jose at 7:15 pm today.
+USER: No, it needs to be for 1.
+SYSTEM: So you want to make a reservation at 7:15 pm for 1?
+USER: No, make that March 6th at one in the afternoon.
+SYSTEM: So you would like your reservation to be at 1 pm next Wednesday?
+USER: Okay. Is outdoor seating available?
+SYSTEM: Your reservation has been made. There is no outdoor seating.
+USER: Thank you, that's it.
+SYSTEM: Have a great day.

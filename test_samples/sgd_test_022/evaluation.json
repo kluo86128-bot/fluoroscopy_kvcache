@@ -1,0 +1,79 @@
+{
+  "task_id": "sgd_test_022",
+  "canonical_answer": "March 14th",
+  "accepted_aliases": [
+    "March 14th",
+    "March 14",
+    "14 March",
+    "14th March"
+  ],
+  "answer_token_ids": [
+    27523,
+    220,
+    16,
+    19,
+    339
+  ],
+  "answer_token_count": 5,
+  "answer_token_pieces": [
+    "March",
+    " ",
+    "1",
+    "4",
+    "th"
+  ],
+  "answer_token_group": "multi_token",
+  "alias_token_ids": {
+    "March 14th": [
+      27523,
+      220,
+      16,
+      19,
+      339
+    ],
+    "March 14": [
+      27523,
+      220,
+      16,
+      19
+    ],
+    "14 March": [
+      16,
+      19,
+      5470
+    ],
+    "14th March": [
+      16,
+      19,
+      339,
+      5470
+    ]
+  },
+  "leading_space_answer_token_ids": [
+    5470,
+    220,
+    16,
+    19,
+    339
+  ],
+  "tokenizer": {
+    "repo_id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "evidence_turns_zero_based": [
+    {
+      "index": 7,
+      "speaker": "SYSTEM",
+      "utterance": "There's a Mcdonald's in Livermore than I can reserve at 12:30 pm for 2 people on March 14th."
+    }
+  ],
+  "booking_turn_zero_based": 9,
+  "booking_parameters": {
+    "date": "2019-03-14",
+    "location": "Livermore",
+    "number_of_seats": "2",
+    "restaurant_name": "Mcdonald's",
+    "time": "12:30"
+  },
+  "use_restriction": "Evaluation only; never supply labels to search, selection, or stopping."
+}

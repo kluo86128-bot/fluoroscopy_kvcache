@@ -1,0 +1,52 @@
+{
+  "task_id": "sgd_test_033",
+  "canonical_answer": "Danville",
+  "accepted_aliases": [
+    "Danville"
+  ],
+  "answer_token_ids": [
+    38025,
+    7919
+  ],
+  "answer_token_count": 2,
+  "answer_token_pieces": [
+    "Dan",
+    "ville"
+  ],
+  "answer_token_group": "multi_token",
+  "alias_token_ids": {
+    "Danville": [
+      38025,
+      7919
+    ]
+  },
+  "leading_space_answer_token_ids": [
+    11563,
+    7919
+  ],
+  "tokenizer": {
+    "repo_id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "evidence_turns_zero_based": [
+    {
+      "index": 2,
+      "speaker": "USER",
+      "utterance": "The restaurant is Blue Gingko Blackhawk. Look for it in Danville. The reservation is for next Monday at 5:30 in the evening for one person."
+    },
+    {
+      "index": 3,
+      "speaker": "SYSTEM",
+      "utterance": "Okay, please confirm this for me, I'll make a reservation for 1 person at Blue Gingko Blackhawk in Danville next Monday at 5:30 pm?"
+    }
+  ],
+  "booking_turn_zero_based": 9,
+  "booking_parameters": {
+    "date": "2019-03-07",
+    "location": "Danville",
+    "number_of_seats": "3",
+    "restaurant_name": "Blue Gingko Blackhawk",
+    "time": "17:00"
+  },
+  "use_restriction": "Evaluation only; never supply labels to search, selection, or stopping."
+}

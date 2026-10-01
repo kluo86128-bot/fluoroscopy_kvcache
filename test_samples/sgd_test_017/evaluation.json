@@ -1,0 +1,58 @@
+{
+  "task_id": "sgd_test_017",
+  "canonical_answer": "3",
+  "accepted_aliases": [
+    "3",
+    "three"
+  ],
+  "answer_token_ids": [
+    18
+  ],
+  "answer_token_count": 1,
+  "answer_token_pieces": [
+    "3"
+  ],
+  "answer_token_group": "single_token",
+  "alias_token_ids": {
+    "3": [
+      18
+    ],
+    "three": [
+      27856
+    ]
+  },
+  "leading_space_answer_token_ids": [
+    220,
+    18
+  ],
+  "tokenizer": {
+    "repo_id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "evidence_turns_zero_based": [
+    {
+      "index": 12,
+      "speaker": "USER",
+      "utterance": "Actually, I need some extra time to prepare, and a few of my friends want to come along. Can you instead make the reservation at 1:15 pm for 3 people?"
+    },
+    {
+      "index": 13,
+      "speaker": "SYSTEM",
+      "utterance": "Okay. You would rather book at table for 3 at 1:15 pm?"
+    },
+    {
+      "index": 15,
+      "speaker": "SYSTEM",
+      "utterance": "I'm so sorry! I couldn't reserve your table. As for your questions, the users rank it highly, with an average of 4.0. Outdoor seating is unavailable. Now then, would you be okay with me instead booking your table for 3 at Ariake on today at 1:30 pm?"
+    }
+  ],
+  "booking_turn_zero_based": 17,
+  "booking_parameters": {
+    "date": "2019-03-01",
+    "location": "San Jose",
+    "number_of_seats": "3",
+    "restaurant_name": "Ariake",
+    "time": "13:30"
+  },
+  "use_restriction": "Evaluation only; never supply labels to search, selection, or stopping."
+}

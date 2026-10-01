@@ -1,0 +1,21 @@
+{
+  "datasets": [
+    "../test_samples/tasks.jsonl"
+  ],
+  "methods": [
+    "baseline",
+    "question_weighted_kv",
+    "question_attention_reconstruction",
+    "question_output_consistency",
+    "oracle_private_prefix_distillation"
+  ],
+  "base_loss": "token",
+  "save_topk": 50,
+  "checkpoint_metric": "base",
+  "answer_boundary": "Answer: ",
+  "stop_strings": [
+    "\n"
+  ],
+  "max_new_tokens": 16,
+  "score_probability": "sequence"
+}

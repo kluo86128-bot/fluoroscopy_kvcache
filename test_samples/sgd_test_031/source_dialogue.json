@@ -1,0 +1,497 @@
+{
+  "dialogue_id": "1_00019",
+  "services": [
+    "Restaurants_2"
+  ],
+  "turns": [
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "12:30"
+              ],
+              "slot": "time",
+              "values": [
+                "12:30 pm"
+              ]
+            },
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "ReserveRestaurant"
+              ],
+              "slot": "intent",
+              "values": [
+                "ReserveRestaurant"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 100,
+              "slot": "time",
+              "start": 92
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "time": [
+                "12:30 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I haven't eaten there for a while. Can you make a reservation for me at that restaurant for 12:30 pm."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "restaurant_name",
+              "values": []
+            },
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "location",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Sure, but what restaurant are you talking about? And what city is it in?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "Rohnert Park"
+              ],
+              "slot": "location",
+              "values": [
+                "Rohnert Park"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "3"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "3"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "Tonayan"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Tonayan"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "dontcare"
+              ],
+              "slot": "date",
+              "values": [
+                "dontcare"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 50,
+              "slot": "location",
+              "start": 38
+            },
+            {
+              "exclusive_end": 34,
+              "slot": "restaurant_name",
+              "start": 27
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "date": [
+                "dontcare"
+              ],
+              "location": [
+                "Rohnert Park"
+              ],
+              "number_of_seats": [
+                "3"
+              ],
+              "restaurant_name": [
+                "Tonayan"
+              ],
+              "time": [
+                "12:30 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Ah, sorry. I want to go to Tonayan in Rohnert Park. I need a reservation for three people."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Tonayan"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Tonayan"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Rohnert Park"
+              ],
+              "slot": "location",
+              "values": [
+                "Rohnert Park"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "12:30"
+              ],
+              "slot": "time",
+              "values": [
+                "12:30 pm"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "3"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "3"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2019-03-01"
+              ],
+              "slot": "date",
+              "values": [
+                "today"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 33,
+              "slot": "restaurant_name",
+              "start": 26
+            },
+            {
+              "exclusive_end": 49,
+              "slot": "location",
+              "start": 37
+            },
+            {
+              "exclusive_end": 67,
+              "slot": "time",
+              "start": 59
+            },
+            {
+              "exclusive_end": 73,
+              "slot": "date",
+              "start": 68
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "You want a reservation at Tonayan in Rohnert Park for 3 at 12:30 pm today. Is that correct?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "1"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "1"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "2019-03-02"
+              ],
+              "slot": "date",
+              "values": [
+                "2nd of March"
+              ]
+            },
+            {
+              "act": "NEGATE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 213,
+              "slot": "date",
+              "start": 201
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "date": [
+                "2nd of March"
+              ],
+              "location": [
+                "Rohnert Park"
+              ],
+              "number_of_seats": [
+                "1"
+              ],
+              "restaurant_name": [
+                "Tonayan"
+              ],
+              "time": [
+                "12:30 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Actually, I just remembered my friends aren't big fans of Mexican food, so I'll only need a reservation for one. I'll go somewhere else with them today, so can you book me a table for tomorrow, on the 2nd of March?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "1"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "1"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2019-03-02"
+              ],
+              "slot": "date",
+              "values": [
+                "tomorrow"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 48,
+              "slot": "date",
+              "start": 40
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Sure. You want a table for 1 at Tonayan tomorrow?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "AFFIRM",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "date": [
+                "2nd of March",
+                "tomorrow"
+              ],
+              "location": [
+                "Rohnert Park"
+              ],
+              "number_of_seats": [
+                "1"
+              ],
+              "restaurant_name": [
+                "Tonayan"
+              ],
+              "time": [
+                "12:30 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Yeah, that's right."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "NOTIFY_SUCCESS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "ReserveRestaurant",
+            "parameters": {
+              "date": "2019-03-02",
+              "location": "Rohnert Park",
+              "number_of_seats": "1",
+              "restaurant_name": "Tonayan",
+              "time": "12:30"
+            }
+          },
+          "service_results": [
+            {
+              "address": "500 Raley's Town Centre",
+              "category": "Mexican",
+              "date": "2019-03-02",
+              "has_seating_outdoors": "True",
+              "has_vegetarian_options": "False",
+              "location": "Rohnert Park",
+              "number_of_seats": "1",
+              "phone_number": "707-588-0893",
+              "price_range": "moderate",
+              "rating": "4.10",
+              "restaurant_name": "Tonayan",
+              "time": "12:30"
+            }
+          ],
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Your table has been booked."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            },
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "date": [
+                "2nd of March",
+                "tomorrow"
+              ],
+              "location": [
+                "Rohnert Park"
+              ],
+              "number_of_seats": [
+                "1"
+              ],
+              "restaurant_name": [
+                "Tonayan"
+              ],
+              "time": [
+                "12:30 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Thanks a lot. I don't need anything else."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Enjoy your day."
+    }
+  ]
+}

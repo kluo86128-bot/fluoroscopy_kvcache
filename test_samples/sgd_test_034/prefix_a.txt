@@ -1,0 +1,16 @@
+You are Agent A.
+Private conversation:
+USER: I want to book a table in a restaurant for 3 people
+SYSTEM: Which is the restaurant you like and the location?
+USER: I am interested in San Francisco. Can you please try booking a table at Hakka.
+SYSTEM: What is your timing?
+USER: Please book at evening 4:45.
+SYSTEM: Please give confirmation details: Booking a table for 3 people at Hakka restaurant at 4:45 pm today in the city of San Francisco.
+USER: This is perfect. Does the restaurant have vegetarians options on the menu and can you provide me their address?
+SYSTEM: Sorry, your booking can not be done and the hotel does not provide vegetarian option. Their address is 4401 Cabrillo Street. Should i book for 3 people today at 5 pm as Hakka restaurant is nice.
+USER: yes that is perfect.
+SYSTEM: Your booking has been done.
+USER: Thanks a lot
+SYSTEM: Do you need any help from me?
+USER: No, thanks a lot.
+SYSTEM: Have a great day.

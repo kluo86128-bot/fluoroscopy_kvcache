@@ -1,0 +1,61 @@
+{
+  "task_id": "sgd_test_038",
+  "canonical_answer": "San Mateo",
+  "accepted_aliases": [
+    "San Mateo"
+  ],
+  "answer_token_ids": [
+    23729,
+    43570,
+    78
+  ],
+  "answer_token_count": 3,
+  "answer_token_pieces": [
+    "San",
+    " Mate",
+    "o"
+  ],
+  "answer_token_group": "multi_token",
+  "alias_token_ids": {
+    "San Mateo": [
+      23729,
+      43570,
+      78
+    ]
+  },
+  "leading_space_answer_token_ids": [
+    5836,
+    43570,
+    78
+  ],
+  "tokenizer": {
+    "repo_id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "evidence_turns_zero_based": [
+    {
+      "index": 2,
+      "speaker": "USER",
+      "utterance": "I'd like to eat somewhere in San Mateo. Sushi sounds good."
+    },
+    {
+      "index": 3,
+      "speaker": "SYSTEM",
+      "utterance": "There are 7 results that meet your criteria. There is a restaurant in San Mateo called Daiki Sushi. How does that sound?"
+    },
+    {
+      "index": 9,
+      "speaker": "SYSTEM",
+      "utterance": "Please verify the following details. You would like to reserve a table for 2 today at 5:30 pm. The restaurant is Daiki Sushi in San Mateo. Is this correct?"
+    }
+  ],
+  "booking_turn_zero_based": 11,
+  "booking_parameters": {
+    "date": "2019-03-01",
+    "location": "San Mateo",
+    "number_of_seats": "2",
+    "restaurant_name": "Daiki Sushi",
+    "time": "17:30"
+  },
+  "use_restriction": "Evaluation only; never supply labels to search, selection, or stopping."
+}

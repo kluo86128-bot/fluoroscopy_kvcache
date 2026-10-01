@@ -1,0 +1,60 @@
+{
+  "task_id": "sgd_test_031",
+  "canonical_answer": "Rohnert Park",
+  "accepted_aliases": [
+    "Rohnert Park"
+  ],
+  "answer_token_ids": [
+    49,
+    3103,
+    529,
+    5540
+  ],
+  "answer_token_count": 4,
+  "answer_token_pieces": [
+    "R",
+    "ohn",
+    "ert",
+    " Park"
+  ],
+  "answer_token_group": "multi_token",
+  "alias_token_ids": {
+    "Rohnert Park": [
+      49,
+      3103,
+      529,
+      5540
+    ]
+  },
+  "leading_space_answer_token_ids": [
+    431,
+    3103,
+    529,
+    5540
+  ],
+  "tokenizer": {
+    "repo_id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "evidence_turns_zero_based": [
+    {
+      "index": 2,
+      "speaker": "USER",
+      "utterance": "Ah, sorry. I want to go to Tonayan in Rohnert Park. I need a reservation for three people."
+    },
+    {
+      "index": 3,
+      "speaker": "SYSTEM",
+      "utterance": "You want a reservation at Tonayan in Rohnert Park for 3 at 12:30 pm today. Is that correct?"
+    }
+  ],
+  "booking_turn_zero_based": 7,
+  "booking_parameters": {
+    "date": "2019-03-02",
+    "location": "Rohnert Park",
+    "number_of_seats": "1",
+    "restaurant_name": "Tonayan",
+    "time": "12:30"
+  },
+  "use_restriction": "Evaluation only; never supply labels to search, selection, or stopping."
+}

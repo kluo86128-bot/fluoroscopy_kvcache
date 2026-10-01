@@ -1,0 +1,14 @@
+You are Agent A.
+Private conversation:
+USER: I'd like to make a restaurant reservation, can you help me?
+SYSTEM: What restaurant do you need the reservation for? Also, what time is the reservation and where is the restaurant located?
+USER: The restaurant is Blue Gingko Blackhawk. Look for it in Danville. The reservation is for next Monday at 5:30 in the evening for one person.
+SYSTEM: Okay, please confirm this for me, I'll make a reservation for 1 person at Blue Gingko Blackhawk in Danville next Monday at 5:30 pm?
+USER: No, sorry. It's for 3 people for next Thursday.
+SYSTEM: Okay, so it's for 3 people next Thursday, is that right?
+USER: Yes, that's right. Do you know if they have outdoor seating, and what's a phone number I can reach them at?
+SYSTEM: They have outdoor seating available and you can reach them at 925-648-7838 by phone. I'm sorry I couldn't make the reservation. Do you want me to try to make a reservation at 5 pm next Thursday for 3 people at Blue Gingko Blackhawk?
+USER: Yeah, try that.
+SYSTEM: I've made the reservation for you.
+USER: Thanks a lot, I don't need any more help.
+SYSTEM: Have a good rest of your day then.

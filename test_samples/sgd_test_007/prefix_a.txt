@@ -1,0 +1,14 @@
+You are Agent A.
+Private conversation:
+USER: Do you know of any good places to eat?
+SYSTEM: Sure. What type of food are you interested in and where should it be?
+USER: I've got a hankering for some Burmese food. It should be in San Fran.
+SYSTEM: I've found 5 restaurants in San Francisco you may want to check out. The first is B Star, which is a very nice restaurant.
+USER: Yeah, that sounds good. Can I get a reservation for a table there?
+SYSTEM: Sure. What time do you want to go?
+USER: Please book the table for this afternoon 12:30.
+SYSTEM: Okay, to confirm: You want a table at B Star in San Francisco today at 12:30 pm. It will be a reservation for 2 people.
+USER: Yes, that sounds perfect.
+SYSTEM: Alright. Your table is booked.
+USER: Thanks a lot! That's all I need.
+SYSTEM: Have a great day!

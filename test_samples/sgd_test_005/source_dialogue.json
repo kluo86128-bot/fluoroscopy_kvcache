@@ -1,0 +1,519 @@
+{
+  "dialogue_id": "1_00021",
+  "services": [
+    "Restaurants_2"
+  ],
+  "turns": [
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "2019-03-08"
+              ],
+              "slot": "date",
+              "values": [
+                "8th of this month"
+              ]
+            },
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "ReserveRestaurant"
+              ],
+              "slot": "intent",
+              "values": [
+                "ReserveRestaurant"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 70,
+              "slot": "date",
+              "start": 53
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "date": [
+                "8th of this month"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I would like to eat something in a restaurant on the 8th of this month."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "time",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Have you thought about the time you want to be there?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "13:00"
+              ],
+              "slot": "time",
+              "values": [
+                "1 in the afternoon"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 23,
+              "slot": "time",
+              "start": 5
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "date": [
+                "8th of this month"
+              ],
+              "time": [
+                "1 in the afternoon"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Yes, 1 in the afternoon is fine."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "restaurant_name",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Do you have a favorite restaurant?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "Koryo Sushi"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Koryo"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 33,
+              "slot": "restaurant_name",
+              "start": 28
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "date": [
+                "8th of this month"
+              ],
+              "restaurant_name": [
+                "Koryo"
+              ],
+              "time": [
+                "1 in the afternoon"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Yes, see if there's room at Koryo."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "location",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Where is it located?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "Oakland"
+              ],
+              "slot": "location",
+              "values": [
+                "Oakland"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 15,
+              "slot": "location",
+              "start": 8
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "date": [
+                "8th of this month"
+              ],
+              "location": [
+                "Oakland"
+              ],
+              "restaurant_name": [
+                "Koryo"
+              ],
+              "time": [
+                "1 in the afternoon"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "It's in Oakland."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Koryo Sushi"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Koryo Sushi"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Oakland"
+              ],
+              "slot": "location",
+              "values": [
+                "Oakland"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "13:00"
+              ],
+              "slot": "time",
+              "values": [
+                "1 pm"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "2"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2019-03-08"
+              ],
+              "slot": "date",
+              "values": [
+                "next friday"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 73,
+              "slot": "restaurant_name",
+              "start": 62
+            },
+            {
+              "exclusive_end": 84,
+              "slot": "location",
+              "start": 77
+            },
+            {
+              "exclusive_end": 92,
+              "slot": "time",
+              "start": 88
+            },
+            {
+              "exclusive_end": 104,
+              "slot": "date",
+              "start": 93
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Confirm your request. You need to make a reservation for 2 at Koryo Sushi in Oakland at 1 pm next friday."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "address",
+              "values": []
+            },
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "rating",
+              "values": []
+            },
+            {
+              "act": "AFFIRM",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [
+              "address",
+              "rating"
+            ],
+            "slot_values": {
+              "date": [
+                "8th of this month",
+                "next friday"
+              ],
+              "location": [
+                "Oakland"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "Koryo",
+                "Koryo Sushi"
+              ],
+              "time": [
+                "1 in the afternoon",
+                "1 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Yes, can you send me the address? Can you also provide me the ratings?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "4390 Telegraph Avenue D"
+              ],
+              "slot": "address",
+              "values": [
+                "4390 Telegraph avenue D"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "4.00"
+              ],
+              "slot": "rating",
+              "values": [
+                "4.0"
+              ]
+            },
+            {
+              "act": "NOTIFY_SUCCESS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "ReserveRestaurant",
+            "parameters": {
+              "date": "2019-03-08",
+              "location": "Oakland",
+              "number_of_seats": "2",
+              "restaurant_name": "Koryo Sushi",
+              "time": "13:00"
+            }
+          },
+          "service_results": [
+            {
+              "address": "4390 Telegraph Avenue D",
+              "category": "Sushi",
+              "date": "2019-03-08",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "Oakland",
+              "number_of_seats": "2",
+              "phone_number": "510-594-0661",
+              "price_range": "moderate",
+              "rating": "4.00",
+              "restaurant_name": "Koryo Sushi",
+              "time": "13:00"
+            }
+          ],
+          "slots": [
+            {
+              "exclusive_end": 75,
+              "slot": "address",
+              "start": 52
+            },
+            {
+              "exclusive_end": 104,
+              "slot": "rating",
+              "start": 101
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "The reservation has been made. The restaurant is in 4390 Telegraph avenue D and the rating is around 4.0"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            },
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "date": [
+                "8th of this month",
+                "next friday"
+              ],
+              "location": [
+                "Oakland"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "Koryo",
+                "Koryo Sushi"
+              ],
+              "time": [
+                "1 in the afternoon",
+                "1 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Thanks a lot, I'm done."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Bye sir."
+    }
+  ]
+}

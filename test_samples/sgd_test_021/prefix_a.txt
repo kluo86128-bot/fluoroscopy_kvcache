@@ -1,0 +1,14 @@
+You are Agent A.
+Private conversation:
+USER: I want to make a dinner reservation on March 5th.
+SYSTEM: What area are you looking in? What time do you want the reservation for?
+USER: I want a restaurant in San Jose, for 18:30, please.
+SYSTEM: Which restaurant do you want to book a table at?
+USER: Can you get me a table at Ludwig's German Table?
+SYSTEM: So you want a table for 2 people next Tuesday at 6:30 pm at Ludwig's German Table in San Jose?
+USER: Yes, that's right.
+SYSTEM: Your table has been reserved.
+USER: What type of food do they serve, and what's the address?
+SYSTEM: They serve German food. They are located at 261 North 2nd Street.
+USER: Thanks. That's all.
+SYSTEM: Have a nice day.

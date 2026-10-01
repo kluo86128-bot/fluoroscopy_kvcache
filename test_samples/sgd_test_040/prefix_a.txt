@@ -1,0 +1,18 @@
+You are Agent A.
+Private conversation:
+USER: I am looking for a place to eat that serves Oriental.
+SYSTEM: Should I search any particular location?
+USER: Can you find restaurants in Orinda?
+SYSTEM: Siam Orchid is a nice restaurant in Orinda.
+USER: Is it an ultra high-end restaurant?
+SYSTEM: It is a moderate one.
+USER: Ok, that will be good.
+SYSTEM: Would you like a table reserved?
+USER: Yes, I would like to reserve a table for the 3rd of March.
+SYSTEM: Do you know what time you would like it reserved for?
+USER: Yes, please make it for in the evening 6:45.
+SYSTEM: Please confirm that you would like to book at table at Siam Orchid in Orinda the day after tomorrow at 6:45 pm for 2 people.
+USER: Yes, perfect, can you give me their user rating?
+SYSTEM: Their user rating is about 4.4 and I have made your reservation.
+USER: Thank you, that is all I need for now.
+SYSTEM: Ok, have a wonderful day!

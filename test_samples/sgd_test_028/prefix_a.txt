@@ -1,0 +1,26 @@
+You are Agent A.
+Private conversation:
+USER: I'd like to find a place to eat.
+SYSTEM: Where would you like me to search?
+USER: I'd like to eat in San Jose.
+SYSTEM: What kind of food would you like?
+USER: I'd like to eat Barbecue.
+SYSTEM: There are 10 restaurants that meet your criteria. There is a nice restaurant in San Jose called 71 Saint Peter.
+USER: Does the restaurant have outdoor seating.
+SYSTEM: Yes outdoor seating is available.
+USER: Do you have any other recommendations?
+SYSTEM: Another option in San Jose is Bazille.
+USER: How about other restaurants?
+SYSTEM: Billy Berk's in San Jose is a nice place.
+USER: Do they have outdoor seating?
+SYSTEM: Unfortunately they don't.
+USER: Okay Fine. I'd like to book a table for March 13th.
+SYSTEM: What time would you like to book a table for?
+USER: Please make the reservation for 12:15.
+SYSTEM: Sure so just to confirm: You would like to book a table for 2 on March 13th at 12:15 pm at Billy Berk's in San Jose.
+USER: Perfect. What is the customer rating of the restaurant and where are they located?
+SYSTEM: Your booking has been confirmed. The restaurant has a customer rating of 3.7 and the address is 99 South 1st Street.
+USER: Thanks a lot.
+SYSTEM: Do you need help with anything else?
+USER: No thanks.
+SYSTEM: Enjoy your day.

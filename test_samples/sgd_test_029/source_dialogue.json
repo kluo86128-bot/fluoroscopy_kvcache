@@ -1,0 +1,801 @@
+{
+  "dialogue_id": "4_00103",
+  "services": [
+    "Restaurants_2"
+  ],
+  "turns": [
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "American"
+              ],
+              "slot": "category",
+              "values": [
+                "Barbecue"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "Santa Rosa"
+              ],
+              "slot": "location",
+              "values": [
+                "Santa Rosa"
+              ]
+            },
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "FindRestaurants"
+              ],
+              "slot": "intent",
+              "values": [
+                "FindRestaurants"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 93,
+              "slot": "category",
+              "start": 85
+            },
+            {
+              "exclusive_end": 45,
+              "slot": "location",
+              "start": 35
+            }
+          ],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Barbecue"
+              ],
+              "location": [
+                "Santa Rosa"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I'd like to find a place to eat in Santa Rosa. Can you find a restaurant that serves Barbecue?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Belly Left Coast Kitchen & Taproom"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Belly Left Coast Kitchen & Taproom"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Santa Rosa"
+              ],
+              "slot": "location",
+              "values": [
+                "Santa Rosa"
+              ]
+            },
+            {
+              "act": "INFORM_COUNT",
+              "canonical_values": [
+                "9"
+              ],
+              "slot": "count",
+              "values": [
+                "9"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "FindRestaurants",
+            "parameters": {
+              "category": "American",
+              "location": "Santa Rosa"
+            }
+          },
+          "service_results": [
+            {
+              "address": "523 4th Street",
+              "category": "American",
+              "has_seating_outdoors": "True",
+              "has_vegetarian_options": "False",
+              "location": "Santa Rosa",
+              "phone_number": "707-526-5787",
+              "price_range": "moderate",
+              "rating": "4.40",
+              "restaurant_name": "Belly Left Coast Kitchen & Taproom"
+            },
+            {
+              "address": "170 Railroad Street",
+              "category": "American",
+              "has_seating_outdoors": "True",
+              "has_vegetarian_options": "False",
+              "location": "Santa Rosa",
+              "phone_number": "707-636-7388",
+              "price_range": "moderate",
+              "rating": "3.50",
+              "restaurant_name": "Brasserie Restaurant & Lounge"
+            },
+            {
+              "address": "1226 4th Street",
+              "category": "American",
+              "has_seating_outdoors": "True",
+              "has_vegetarian_options": "False",
+              "location": "Santa Rosa",
+              "phone_number": "707-569-8222",
+              "price_range": "moderate",
+              "rating": "4.60",
+              "restaurant_name": "Bruno's On Fourth"
+            },
+            {
+              "address": "5755 Mountain Hawk Drive",
+              "category": "American",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "Santa Rosa",
+              "phone_number": "707-230-2610",
+              "price_range": "moderate",
+              "rating": "4.60",
+              "restaurant_name": "Earth's Bounty Kitchen & Wine Bar"
+            },
+            {
+              "address": "1229 North Dutton Avenue",
+              "category": "American",
+              "has_seating_outdoors": "True",
+              "has_vegetarian_options": "True",
+              "location": "Santa Rosa",
+              "phone_number": "707-526-1229",
+              "price_range": "moderate",
+              "rating": "4.40",
+              "restaurant_name": "Franchettis'"
+            },
+            {
+              "address": "115 4th Street",
+              "category": "American",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "Santa Rosa",
+              "phone_number": "707-526-4347",
+              "price_range": "moderate",
+              "rating": "4.20",
+              "restaurant_name": "Jack & Tony's"
+            },
+            {
+              "address": "2642 Santa Rosa Avenue",
+              "category": "American",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "Santa Rosa",
+              "phone_number": "707-569-9222",
+              "price_range": "cheap",
+              "rating": "3.40",
+              "restaurant_name": "Mcdonald's"
+            },
+            {
+              "address": "90 Old Courthouse Square",
+              "category": "American",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "Santa Rosa",
+              "phone_number": "707-541-6896",
+              "price_range": "moderate",
+              "rating": "4.40",
+              "restaurant_name": "Perch + Plow"
+            },
+            {
+              "address": "401 South A Street",
+              "category": "American",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "Santa Rosa",
+              "phone_number": "707-528-7100",
+              "price_range": "pricey",
+              "rating": "4.50",
+              "restaurant_name": "The Spinster Sisters"
+            }
+          ],
+          "slots": [
+            {
+              "exclusive_end": 66,
+              "slot": "restaurant_name",
+              "start": 32
+            },
+            {
+              "exclusive_end": 80,
+              "slot": "location",
+              "start": 70
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "I've found 9 results. How about Belly Left Coast Kitchen & Taproom in Santa Rosa?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "Newark"
+              ],
+              "slot": "location",
+              "values": [
+                "Newark"
+              ]
+            },
+            {
+              "act": "REQUEST_ALTS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 46,
+              "slot": "location",
+              "start": 40
+            }
+          ],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Barbecue"
+              ],
+              "location": [
+                "Newark"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Do you have other options? How about in Newark?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Chuck E. Cheese's"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Chuck E. Cheese's"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Newark"
+              ],
+              "slot": "location",
+              "values": [
+                "Newark"
+              ]
+            },
+            {
+              "act": "INFORM_COUNT",
+              "canonical_values": [
+                "1"
+              ],
+              "slot": "count",
+              "values": [
+                "1"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "FindRestaurants",
+            "parameters": {
+              "category": "American",
+              "location": "Newark"
+            }
+          },
+          "service_results": [
+            {
+              "address": "39839 Mowry School Road",
+              "category": "American",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "Newark",
+              "phone_number": "510-445-0660",
+              "price_range": "moderate",
+              "rating": "3.80",
+              "restaurant_name": "Chuck E. Cheese's"
+            }
+          ],
+          "slots": [
+            {
+              "exclusive_end": 48,
+              "slot": "restaurant_name",
+              "start": 31
+            },
+            {
+              "exclusive_end": 58,
+              "slot": "location",
+              "start": 52
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "I've found 1 result. How about Chuck E. Cheese's in Newark?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "SELECT",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Barbecue"
+              ],
+              "location": [
+                "Newark"
+              ],
+              "restaurant_name": [
+                "Chuck E. Cheese's"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Yes, sounds good."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "OFFER_INTENT",
+              "canonical_values": [
+                "ReserveRestaurant"
+              ],
+              "slot": "intent",
+              "values": [
+                "ReserveRestaurant"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Would you like to reserve a table?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "AFFIRM_INTENT",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "2019-03-12"
+              ],
+              "slot": "date",
+              "values": [
+                "March 12th"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 43,
+              "slot": "date",
+              "start": 33
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Barbecue"
+              ],
+              "date": [
+                "March 12th"
+              ],
+              "location": [
+                "Newark"
+              ],
+              "restaurant_name": [
+                "Chuck E. Cheese's"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Yes, please. I'd like a table on March 12th."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "time",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "What time would you like the reservation?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "11:15"
+              ],
+              "slot": "time",
+              "values": [
+                "quarter past 11 in the morning"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "1"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "1"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 66,
+              "slot": "time",
+              "start": 36
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Barbecue"
+              ],
+              "date": [
+                "March 12th"
+              ],
+              "location": [
+                "Newark"
+              ],
+              "number_of_seats": [
+                "1"
+              ],
+              "restaurant_name": [
+                "Chuck E. Cheese's"
+              ],
+              "time": [
+                "quarter past 11 in the morning"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I'd like to book a table for one at quarter past 11 in the morning."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Chuck E. Cheese's"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Chuck E. Cheese's"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Newark"
+              ],
+              "slot": "location",
+              "values": [
+                "Newark"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "11:15"
+              ],
+              "slot": "time",
+              "values": [
+                "11:15 am"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2019-03-12"
+              ],
+              "slot": "date",
+              "values": [
+                "March 12th"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "1"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "1"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 56,
+              "slot": "restaurant_name",
+              "start": 39
+            },
+            {
+              "exclusive_end": 66,
+              "slot": "location",
+              "start": 60
+            },
+            {
+              "exclusive_end": 98,
+              "slot": "time",
+              "start": 90
+            },
+            {
+              "exclusive_end": 112,
+              "slot": "date",
+              "start": 102
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "So you'd like to book a table for 1 at Chuck E. Cheese's in Newark? The reservation is at 11:15 am on March 12th."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "address",
+              "values": []
+            },
+            {
+              "act": "AFFIRM",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [
+              "address"
+            ],
+            "slot_values": {
+              "category": [
+                "Barbecue"
+              ],
+              "date": [
+                "March 12th"
+              ],
+              "location": [
+                "Newark"
+              ],
+              "number_of_seats": [
+                "1"
+              ],
+              "restaurant_name": [
+                "Chuck E. Cheese's"
+              ],
+              "time": [
+                "11:15 am",
+                "quarter past 11 in the morning"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Yes, sounds good. What's the address?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "39839 Mowry School Road"
+              ],
+              "slot": "address",
+              "values": [
+                "39839 Mowry School Road"
+              ]
+            },
+            {
+              "act": "NOTIFY_SUCCESS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "ReserveRestaurant",
+            "parameters": {
+              "date": "2019-03-12",
+              "location": "Newark",
+              "number_of_seats": "1",
+              "restaurant_name": "Chuck E. Cheese's",
+              "time": "11:15"
+            }
+          },
+          "service_results": [
+            {
+              "address": "39839 Mowry School Road",
+              "category": "American",
+              "date": "2019-03-12",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "Newark",
+              "number_of_seats": "1",
+              "phone_number": "510-445-0660",
+              "price_range": "moderate",
+              "rating": "3.80",
+              "restaurant_name": "Chuck E. Cheese's",
+              "time": "11:30"
+            }
+          ],
+          "slots": [
+            {
+              "exclusive_end": 75,
+              "slot": "address",
+              "start": 52
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Your reservation has been confirmed. The address is 39839 Mowry School Road."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            },
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Barbecue"
+              ],
+              "date": [
+                "March 12th"
+              ],
+              "location": [
+                "Newark"
+              ],
+              "number_of_seats": [
+                "1"
+              ],
+              "restaurant_name": [
+                "Chuck E. Cheese's"
+              ],
+              "time": [
+                "11:15 am",
+                "quarter past 11 in the morning"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Thank you, that's all I needed."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Have a nice day."
+    }
+  ]
+}

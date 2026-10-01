@@ -1,0 +1,16 @@
+You are Agent A.
+Private conversation:
+USER: Can you help me reserve a table at a restaurant? I'd like to book at Royal Rangoon.
+SYSTEM: What time would you like your reservation to be? Which city is the restaurant in?
+USER: I'd like the reservation at quarter to 12 in the morning. The restaurant is in Berkeley.
+SYSTEM: So you would like a reservations for 2 at the Royal Rangoon Restaurant in Berkeley? The reservation is today is at 11:45 am.
+USER: No, I'd like to reserve it on the 3rd of this month.
+SYSTEM: So you'd like to make a reservation at Royal Rangoon Restaurant the day after tomorrow?
+USER: Yes, that sounds correct. What's the restaurant's rating, and what kind of food do they serve?
+SYSTEM: Sorry, I wasn't able to make a reservation. Royal Rangoon Restaurant serves Chinese food and their rating is around 4.5. Should I try to make a reservation for 2 at 12 pm on the day after tomorrow?
+USER: Yes, sounds good.
+SYSTEM: Your reservation is confirmed.
+USER: Thank you.
+SYSTEM: Is there anything else I can help with?
+USER: No, thank you.
+SYSTEM: Have a nice day.

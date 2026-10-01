@@ -1,0 +1,16 @@
+You are Agent A.
+Private conversation:
+USER: I wanna book a restaurant reservation on the 14th of March
+SYSTEM: What restaurant do you want?
+USER: Can you find me a table at Mcdonald's
+SYSTEM: What time do you want me to reserve?
+USER: Try for 12:30
+SYSTEM: Which branch do you want?
+USER: Find me one in Livermore
+SYSTEM: There's a Mcdonald's in Livermore than I can reserve at 12:30 pm for 2 people on March 14th.
+USER: Yes that works, but do they have vegetarian options?
+SYSTEM: Your reservation is made, and no they don't have any vegetarian options unfortunately.
+USER: What is their phone number and address?
+SYSTEM: It's 925-961-9090 and it's at 805 North Vasco Road
+USER: Thank you so much, that's it for now.
+SYSTEM: Sure thing, have a good one

@@ -1,0 +1,861 @@
+{
+  "dialogue_id": "4_00098",
+  "services": [
+    "Restaurants_2"
+  ],
+  "turns": [
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "FindRestaurants"
+              ],
+              "slot": "intent",
+              "values": [
+                "FindRestaurants"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {}
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I would like to eat in a restaurant."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "category",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Do you also have a specific food request?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "Nepalese"
+              ],
+              "slot": "category",
+              "values": [
+                "Himalayan"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 34,
+              "slot": "category",
+              "start": 25
+            }
+          ],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Himalayan"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Yes, I would love to try Himalayan"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "location",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Where do I have to look?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "San Rafael"
+              ],
+              "slot": "location",
+              "values": [
+                "San Rafael"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 22,
+              "slot": "location",
+              "start": 12
+            }
+          ],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Himalayan"
+              ],
+              "location": [
+                "San Rafael"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Look in the San Rafael area."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Napoli Pizza-taste Of The Himalayas"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Napoli Pizza-taste of the Himalayas"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "San Rafael"
+              ],
+              "slot": "location",
+              "values": [
+                "San Rafael"
+              ]
+            },
+            {
+              "act": "INFORM_COUNT",
+              "canonical_values": [
+                "1"
+              ],
+              "slot": "count",
+              "values": [
+                "1"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "FindRestaurants",
+            "parameters": {
+              "category": "Nepalese",
+              "location": "San Rafael"
+            }
+          },
+          "service_results": [
+            {
+              "address": "869 4th Street",
+              "category": "Nepalese",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "San Rafael",
+              "phone_number": "415-459-3315",
+              "price_range": "moderate",
+              "rating": "4.50",
+              "restaurant_name": "Napoli Pizza-taste Of The Himalayas"
+            }
+          ],
+          "slots": [
+            {
+              "exclusive_end": 61,
+              "slot": "restaurant_name",
+              "start": 26
+            },
+            {
+              "exclusive_end": 84,
+              "slot": "location",
+              "start": 74
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "There 1 restaurant called Napoli Pizza-taste of the Himalayas and it's in San Rafael."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "has_vegetarian_options",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [
+              "has_vegetarian_options"
+            ],
+            "slot_values": {
+              "category": [
+                "Himalayan"
+              ],
+              "location": [
+                "San Rafael"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Do they serve vegetarians food?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "False"
+              ],
+              "slot": "has_vegetarian_options",
+              "values": [
+                "False"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "No, I'm afraid they don't."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "13:00"
+              ],
+              "slot": "time",
+              "values": [
+                "13:00"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "3"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "3"
+              ]
+            },
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "ReserveRestaurant"
+              ],
+              "slot": "intent",
+              "values": [
+                "ReserveRestaurant"
+              ]
+            },
+            {
+              "act": "SELECT",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 56,
+              "slot": "time",
+              "start": 51
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Himalayan"
+              ],
+              "location": [
+                "San Rafael"
+              ],
+              "number_of_seats": [
+                "3"
+              ],
+              "restaurant_name": [
+                "Napoli Pizza-taste of the Himalayas"
+              ],
+              "time": [
+                "13:00"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "It's fine with me. Get a table for three people at 13:00"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Napoli Pizza-taste Of The Himalayas"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Napoli Pizza-taste of the himalayas"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "San Rafael"
+              ],
+              "slot": "location",
+              "values": [
+                "San Rafael"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "13:00"
+              ],
+              "slot": "time",
+              "values": [
+                "1 pm"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2019-03-01"
+              ],
+              "slot": "date",
+              "values": [
+                "today"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "3"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "3"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 103,
+              "slot": "restaurant_name",
+              "start": 68
+            },
+            {
+              "exclusive_end": 117,
+              "slot": "location",
+              "start": 107
+            },
+            {
+              "exclusive_end": 162,
+              "slot": "time",
+              "start": 158
+            },
+            {
+              "exclusive_end": 154,
+              "slot": "date",
+              "start": 149
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Okay, confirm me the following before I go on. I'll book a table at Napoli Pizza-taste of the himalayas in San Rafael for 3 people. The table is for today at 1 pm"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "AFFIRM",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Himalayan"
+              ],
+              "date": [
+                "today"
+              ],
+              "location": [
+                "San Rafael"
+              ],
+              "number_of_seats": [
+                "3"
+              ],
+              "restaurant_name": [
+                "Napoli Pizza-taste of the Himalayas",
+                "Napoli Pizza-taste of the himalayas"
+              ],
+              "time": [
+                "1 pm",
+                "13:00"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Yes, you can go on now."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "NOTIFY_FAILURE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            },
+            {
+              "act": "REQ_MORE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "ReserveRestaurant",
+            "parameters": {
+              "date": "2019-03-01",
+              "location": "San Rafael",
+              "number_of_seats": "3",
+              "restaurant_name": "Napoli Pizza-taste Of The Himalayas",
+              "time": "13:00"
+            }
+          },
+          "service_results": [],
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "I apologize, the reservation is not possible. Can I assist you in some other procedure?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "18:00"
+              ],
+              "slot": "time",
+              "values": [
+                "evening 6"
+              ]
+            },
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "ReserveRestaurant"
+              ],
+              "slot": "intent",
+              "values": [
+                "ReserveRestaurant"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 40,
+              "slot": "time",
+              "start": 31
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Himalayan"
+              ],
+              "date": [
+                "today"
+              ],
+              "location": [
+                "San Rafael"
+              ],
+              "number_of_seats": [
+                "3"
+              ],
+              "restaurant_name": [
+                "Napoli Pizza-taste of the Himalayas",
+                "Napoli Pizza-taste of the himalayas"
+              ],
+              "time": [
+                "evening 6"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Try to make the reservation at evening 6."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Napoli Pizza-taste Of The Himalayas"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Napoli Pizza-taste of The Himalayas"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "San Rafael"
+              ],
+              "slot": "location",
+              "values": [
+                "San Rafael"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "18:00"
+              ],
+              "slot": "time",
+              "values": [
+                "6 pm"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2019-03-01"
+              ],
+              "slot": "date",
+              "values": [
+                "today"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "3"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "3"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 113,
+              "slot": "restaurant_name",
+              "start": 78
+            },
+            {
+              "exclusive_end": 127,
+              "slot": "location",
+              "start": 117
+            },
+            {
+              "exclusive_end": 170,
+              "slot": "time",
+              "start": 166
+            },
+            {
+              "exclusive_end": 162,
+              "slot": "date",
+              "start": 157
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Okay, read the specifics and tell me if they are correct. You want a table at Napoli Pizza-taste of The Himalayas in San Rafael for 3 people. You want to go today at 6 pm."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [
+                "pricey"
+              ],
+              "slot": "price_range",
+              "values": [
+                "pricey"
+              ]
+            },
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "address",
+              "values": []
+            },
+            {
+              "act": "AFFIRM",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [
+              "address",
+              "price_range"
+            ],
+            "slot_values": {
+              "category": [
+                "Himalayan"
+              ],
+              "date": [
+                "today"
+              ],
+              "location": [
+                "San Rafael"
+              ],
+              "number_of_seats": [
+                "3"
+              ],
+              "restaurant_name": [
+                "Napoli Pizza-taste of The Himalayas",
+                "Napoli Pizza-taste of the Himalayas",
+                "Napoli Pizza-taste of the himalayas"
+              ],
+              "time": [
+                "6 pm",
+                "evening 6"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Yes, it's correct. Do you know if the restaurant is pricey? Can you tell me the address?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "869 4th Street"
+              ],
+              "slot": "address",
+              "values": [
+                "869 4th street"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "moderate"
+              ],
+              "slot": "price_range",
+              "values": [
+                "moderate"
+              ]
+            },
+            {
+              "act": "NOTIFY_SUCCESS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "ReserveRestaurant",
+            "parameters": {
+              "date": "2019-03-01",
+              "location": "San Rafael",
+              "number_of_seats": "3",
+              "restaurant_name": "Napoli Pizza-taste Of The Himalayas",
+              "time": "18:00"
+            }
+          },
+          "service_results": [
+            {
+              "address": "869 4th Street",
+              "category": "Nepalese",
+              "date": "2019-03-01",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "San Rafael",
+              "number_of_seats": "3",
+              "phone_number": "415-459-3315",
+              "price_range": "moderate",
+              "rating": "4.50",
+              "restaurant_name": "Napoli Pizza-taste Of The Himalayas",
+              "time": "18:00"
+            }
+          ],
+          "slots": [
+            {
+              "exclusive_end": 60,
+              "slot": "address",
+              "start": 46
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "The reservation is confirmed. The location is 869 4th street and it is classified as a moderate restaurant."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            },
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Himalayan"
+              ],
+              "date": [
+                "today"
+              ],
+              "location": [
+                "San Rafael"
+              ],
+              "number_of_seats": [
+                "3"
+              ],
+              "restaurant_name": [
+                "Napoli Pizza-taste of The Himalayas",
+                "Napoli Pizza-taste of the Himalayas",
+                "Napoli Pizza-taste of the himalayas"
+              ],
+              "time": [
+                "6 pm",
+                "evening 6"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "That's great, bye for now."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Enjoy your evening."
+    }
+  ]
+}

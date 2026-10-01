@@ -1,0 +1,84 @@
+{
+  "task_id": "sgd_test_029",
+  "canonical_answer": "March 12th",
+  "accepted_aliases": [
+    "March 12th",
+    "March 12",
+    "12 March",
+    "12th March"
+  ],
+  "answer_token_ids": [
+    27523,
+    220,
+    16,
+    17,
+    339
+  ],
+  "answer_token_count": 5,
+  "answer_token_pieces": [
+    "March",
+    " ",
+    "1",
+    "2",
+    "th"
+  ],
+  "answer_token_group": "multi_token",
+  "alias_token_ids": {
+    "March 12th": [
+      27523,
+      220,
+      16,
+      17,
+      339
+    ],
+    "March 12": [
+      27523,
+      220,
+      16,
+      17
+    ],
+    "12 March": [
+      16,
+      17,
+      5470
+    ],
+    "12th March": [
+      16,
+      17,
+      339,
+      5470
+    ]
+  },
+  "leading_space_answer_token_ids": [
+    5470,
+    220,
+    16,
+    17,
+    339
+  ],
+  "tokenizer": {
+    "repo_id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "evidence_turns_zero_based": [
+    {
+      "index": 6,
+      "speaker": "USER",
+      "utterance": "Yes, please. I'd like a table on March 12th."
+    },
+    {
+      "index": 9,
+      "speaker": "SYSTEM",
+      "utterance": "So you'd like to book a table for 1 at Chuck E. Cheese's in Newark? The reservation is at 11:15 am on March 12th."
+    }
+  ],
+  "booking_turn_zero_based": 11,
+  "booking_parameters": {
+    "date": "2019-03-12",
+    "location": "Newark",
+    "number_of_seats": "1",
+    "restaurant_name": "Chuck E. Cheese's",
+    "time": "11:15"
+  },
+  "use_restriction": "Evaluation only; never supply labels to search, selection, or stopping."
+}

@@ -1,0 +1,12 @@
+You are Agent A.
+Private conversation:
+USER: I'd like to find a table for a restaurant in SFO.
+SYSTEM: Okay, which restaurant would you like to look at, and when would you like to go?
+USER: I'd like to go to El Tesoro at 11:45 am.
+SYSTEM: Please confirm: You'd like a table at El Tesoro Taqueria & grill in San Francisco for 2 people at 11:45 am today.
+USER: Works for me, do they have vegetarian options?
+SYSTEM: Reservation made, and yes, they do.
+USER: Thank you very much.
+SYSTEM: Do you need anything else?
+USER: Nope, thank you so much.
+SYSTEM: Have a great day.

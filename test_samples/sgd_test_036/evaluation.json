@@ -1,0 +1,71 @@
+{
+  "task_id": "sgd_test_036",
+  "canonical_answer": "Cupertino",
+  "accepted_aliases": [
+    "Cupertino"
+  ],
+  "answer_token_ids": [
+    34,
+    78454
+  ],
+  "answer_token_count": 2,
+  "answer_token_pieces": [
+    "C",
+    "upertino"
+  ],
+  "answer_token_group": "multi_token",
+  "alias_token_ids": {
+    "Cupertino": [
+      34,
+      78454
+    ]
+  },
+  "leading_space_answer_token_ids": [
+    96735
+  ],
+  "tokenizer": {
+    "repo_id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "evidence_turns_zero_based": [
+    {
+      "index": 2,
+      "speaker": "USER",
+      "utterance": "Find restaurants in Cupertino."
+    },
+    {
+      "index": 3,
+      "speaker": "SYSTEM",
+      "utterance": "I have 4 restaurants for you. What about Amami Shima Sushi in Cupertino?"
+    },
+    {
+      "index": 5,
+      "speaker": "SYSTEM",
+      "utterance": "Azuma Japanese Cuisine is a nice one in Cupertino."
+    },
+    {
+      "index": 9,
+      "speaker": "SYSTEM",
+      "utterance": "Pokeworks is a nice on in Cupertino."
+    },
+    {
+      "index": 15,
+      "speaker": "SYSTEM",
+      "utterance": "So you want to book at Pokeworks in Cupertino? You would like a reservation or 12:15 pm today for 2. Is that right?"
+    },
+    {
+      "index": 19,
+      "speaker": "SYSTEM",
+      "utterance": "SO you want to book at Pokeworks in Cupertino, at 6:45 pm today, and it is for 3 people, right?"
+    }
+  ],
+  "booking_turn_zero_based": 21,
+  "booking_parameters": {
+    "date": "2019-03-01",
+    "location": "Cupertino",
+    "number_of_seats": "3",
+    "restaurant_name": "Pokeworks",
+    "time": "18:45"
+  },
+  "use_restriction": "Evaluation only; never supply labels to search, selection, or stopping."
+}

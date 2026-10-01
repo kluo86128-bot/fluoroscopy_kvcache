@@ -1,0 +1,53 @@
+{
+  "task_id": "sgd_test_008",
+  "canonical_answer": "4",
+  "accepted_aliases": [
+    "4",
+    "four"
+  ],
+  "answer_token_ids": [
+    19
+  ],
+  "answer_token_count": 1,
+  "answer_token_pieces": [
+    "4"
+  ],
+  "answer_token_group": "single_token",
+  "alias_token_ids": {
+    "4": [
+      19
+    ],
+    "four": [
+      34024
+    ]
+  },
+  "leading_space_answer_token_ids": [
+    220,
+    19
+  ],
+  "tokenizer": {
+    "repo_id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "evidence_turns_zero_based": [
+    {
+      "index": 11,
+      "speaker": "SYSTEM",
+      "utterance": "Please confirm the following details: The reservation is at 12:30 pm and for 4 people."
+    },
+    {
+      "index": 15,
+      "speaker": "SYSTEM",
+      "utterance": "Your reservation is successful. The restaurant has an average rating around 4.3."
+    }
+  ],
+  "booking_turn_zero_based": 15,
+  "booking_parameters": {
+    "date": "2019-03-05",
+    "location": "Berkeley",
+    "number_of_seats": "4",
+    "restaurant_name": "Donato & Co.",
+    "time": "12:30"
+  },
+  "use_restriction": "Evaluation only; never supply labels to search, selection, or stopping."
+}

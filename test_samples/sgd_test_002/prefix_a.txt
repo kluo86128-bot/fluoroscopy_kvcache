@@ -1,0 +1,18 @@
+You are Agent A.
+Private conversation:
+USER: I need help with a reservation in a restaurant.
+SYSTEM: What is the time of your reservation?
+USER: It's for 6:45 in the evening.
+SYSTEM: Where do I have to look for your restaurant?
+USER: Look around San Jose.
+SYSTEM: Do you have a favorite restaurant in mind?
+USER: Yes, go for Lalla.
+SYSTEM: Read the data and give me the green light. You are looking for a table for 2 at Lalla Grill in San Jose for today at 6:45 pm
+USER: Yes, you can proceed.
+SYSTEM: Unfortunately, I can't do that. Do you want me to see if there's a table for 2 available at Lalla Grill today at 6:30 pm?
+USER: Yes, try that.
+SYSTEM: This time you got it!
+USER: That's wonderful.
+SYSTEM: Do you still need me?
+USER: No I don't, thank you.
+SYSTEM: Enjoy your evening out. Bye.

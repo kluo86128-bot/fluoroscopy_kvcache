@@ -1,0 +1,12 @@
+You are Agent A.
+Private conversation:
+USER: I need to taste good food , i am very much eager to taste different food varieties from my normal routine food. Will you book a table at a restaurant?
+SYSTEM: At which location i should search for and at what time i need to book a table ? whether any special restaurant you like to book a table?
+USER: Find restaurants in SFO and at time 13:00 ? Can you try booking a table at Tuba?
+SYSTEM: ok please check and review the details for confirmation. Table need to be booked at Tuba Authentic Turkish Restaurant in the city San francisco at time 1 pm and number of people is 2 for the date is today.
+USER: No Find restaurants in Livermore and Book a table at simply fondue?
+SYSTEM: Ok please once again check and review the following details. Table need to be booked at Simply Fondue at the city Livermore.
+USER: Ok That's correct.
+SYSTEM: Reservation is successful.
+USER: Thanks a lot for your help. thats all i need
+SYSTEM: Take care have a great day

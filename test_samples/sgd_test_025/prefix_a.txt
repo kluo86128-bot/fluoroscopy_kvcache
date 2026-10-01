@@ -1,0 +1,26 @@
+You are Agent A.
+Private conversation:
+USER: I'm looking for somewhere to eat vegetarian food.
+SYSTEM: What kind of food would you like and where would you like me to search?
+USER: I like Pizza and Pasta and am looking for moderate priced restaurants in Sunnyvale.
+SYSTEM: Gumba's in Sunnyvale is a nice restaurant.
+USER: Do you have any other recommendations?
+SYSTEM: Il Postale is also a nice restaurant in Sunnyvale.
+USER: How about other restaurants?
+SYSTEM: Pezzella's Villa Napoli in Sunnyvale is a nice place to eat.
+USER: Great. I'd like to reserve a table.
+SYSTEM: What time would you like me to make the reservation?
+USER: I'd like to go at 8 in the night.
+SYSTEM: Sure no problem. So just to confirm: You would like to book a table for 2 people at Pezzella's Villa Napoli in Sunnyvale today at 8 pm.
+USER: Actually no, I'd like to change the date to the 13th of this month and I only need a reservation for 1.
+SYSTEM: So that's March 13th for 1 person.
+USER: I've changed my mind again. Please make the reservation for morning 11:45 for three people.
+SYSTEM: So that's a reservation at 11:45 am for 3 people.
+USER: Perfect. What is the customer rating for the restaurant and do they have outdoor seating?
+SYSTEM: Unfortunately I have been unable to make a reservation. The restaurant does have outdoor seating and customers have given Pezzella's Villa Napoli restaurant a rating of 4.3. Would you like me to book a table for March 13th at 12 pm instead?
+USER: Sure that's fine.
+SYSTEM: Your reservation has been successful.
+USER: Thanks
+SYSTEM: Do you need help with anything else?
+USER: No thanks
+SYSTEM: Enjoy your day.

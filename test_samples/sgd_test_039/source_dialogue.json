@@ -1,0 +1,836 @@
+{
+  "dialogue_id": "4_00104",
+  "services": [
+    "Restaurants_2"
+  ],
+  "turns": [
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "FindRestaurants"
+              ],
+              "slot": "intent",
+              "values": [
+                "FindRestaurants"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {}
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I'm kinda hungry. Can you help me find a place where I can eat?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "category",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "What kind of food do you feel like eating?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "Mexican"
+              ],
+              "slot": "category",
+              "values": [
+                "Latin American"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 24,
+              "slot": "category",
+              "start": 10
+            }
+          ],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Latin American"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Something Latin American."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "location",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "In what location?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "Milpitas"
+              ],
+              "slot": "location",
+              "values": [
+                "Milpitas"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 8,
+              "slot": "location",
+              "start": 0
+            }
+          ],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Latin American"
+              ],
+              "location": [
+                "Milpitas"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Milpitas, please."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Baja Cactus"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Baja Cactus"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Milpitas"
+              ],
+              "slot": "location",
+              "values": [
+                "Milpitas"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "FindRestaurants",
+            "parameters": {
+              "category": "Mexican",
+              "location": "Milpitas"
+            }
+          },
+          "service_results": [
+            {
+              "address": "338 South Main Street",
+              "category": "Mexican",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "Milpitas",
+              "phone_number": "408-263-9455",
+              "price_range": "moderate",
+              "rating": "4.30",
+              "restaurant_name": "Baja Cactus"
+            },
+            {
+              "address": "20 North Abel Street",
+              "category": "Mexican",
+              "has_seating_outdoors": "True",
+              "has_vegetarian_options": "False",
+              "location": "Milpitas",
+              "phone_number": "408-946-0466",
+              "price_range": "moderate",
+              "rating": "4.30",
+              "restaurant_name": "Casa Azteca Restaurant"
+            },
+            {
+              "address": "477 East Calaveras Boulevard",
+              "category": "Mexican",
+              "has_seating_outdoors": "True",
+              "has_vegetarian_options": "False",
+              "location": "Milpitas",
+              "phone_number": "408-946-8012",
+              "price_range": "moderate",
+              "rating": "4.00",
+              "restaurant_name": "El Torito"
+            },
+            {
+              "address": "107 North Milpitas Boulevard",
+              "category": "Mexican",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "Milpitas",
+              "phone_number": "408-945-6540",
+              "price_range": "moderate",
+              "rating": "4.40",
+              "restaurant_name": "La Milpa"
+            },
+            {
+              "address": "260 Ranch Drive",
+              "category": "Mexican",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "Milpitas",
+              "phone_number": "408-935-6070",
+              "price_range": "moderate",
+              "rating": "3.90",
+              "restaurant_name": "On The Border"
+            }
+          ],
+          "slots": [
+            {
+              "exclusive_end": 11,
+              "slot": "restaurant_name",
+              "start": 0
+            },
+            {
+              "exclusive_end": 47,
+              "slot": "location",
+              "start": 39
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Baja Cactus is one of the good ones in Milpitas."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "has_vegetarian_options",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [
+              "has_vegetarian_options"
+            ],
+            "slot_values": {
+              "category": [
+                "Latin American"
+              ],
+              "location": [
+                "Milpitas"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Do they have vegetarian options?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "True"
+              ],
+              "slot": "has_vegetarian_options",
+              "values": [
+                "True"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "They have a few good ones, yes."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "has_seating_outdoors",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [
+              "has_seating_outdoors"
+            ],
+            "slot_values": {
+              "category": [
+                "Latin American"
+              ],
+              "location": [
+                "Milpitas"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Do they have outdoor seating?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "False"
+              ],
+              "slot": "has_seating_outdoors",
+              "values": [
+                "False"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Unfortunately, they don't."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "2019-03-12"
+              ],
+              "slot": "date",
+              "values": [
+                "the 12th"
+              ]
+            },
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "ReserveRestaurant"
+              ],
+              "slot": "intent",
+              "values": [
+                "ReserveRestaurant"
+              ]
+            },
+            {
+              "act": "SELECT",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 64,
+              "slot": "date",
+              "start": 56
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Latin American"
+              ],
+              "date": [
+                "the 12th"
+              ],
+              "location": [
+                "Milpitas"
+              ],
+              "restaurant_name": [
+                "Baja Cactus"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I think that's good for me. Can you book me a table for the 12th?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "time",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Around what time?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "11:30"
+              ],
+              "slot": "time",
+              "values": [
+                "11:30 am"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 11,
+              "slot": "time",
+              "start": 3
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Latin American"
+              ],
+              "date": [
+                "the 12th"
+              ],
+              "location": [
+                "Milpitas"
+              ],
+              "restaurant_name": [
+                "Baja Cactus"
+              ],
+              "time": [
+                "11:30 am"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "At 11:30 am, if possible."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Baja Cactus"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Baja Cactus"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Milpitas"
+              ],
+              "slot": "location",
+              "values": [
+                "Milpitas"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "11:30"
+              ],
+              "slot": "time",
+              "values": [
+                "11:30 am"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2019-03-12"
+              ],
+              "slot": "date",
+              "values": [
+                "March 12th"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "2"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 55,
+              "slot": "restaurant_name",
+              "start": 44
+            },
+            {
+              "exclusive_end": 67,
+              "slot": "location",
+              "start": 59
+            },
+            {
+              "exclusive_end": 112,
+              "slot": "time",
+              "start": 104
+            },
+            {
+              "exclusive_end": 85,
+              "slot": "date",
+              "start": 75
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Please confirm: you want to book a table at Baja Cactus in Milpitas on the March 12th. A table for 2 at 11:30 am."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "rating",
+              "values": []
+            },
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "address",
+              "values": []
+            },
+            {
+              "act": "AFFIRM",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [
+              "address",
+              "rating"
+            ],
+            "slot_values": {
+              "category": [
+                "Latin American"
+              ],
+              "date": [
+                "March 12th",
+                "the 12th"
+              ],
+              "location": [
+                "Milpitas"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "Baja Cactus"
+              ],
+              "time": [
+                "11:30 am"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "That works. What's their user rating and address?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "338 South Main Street"
+              ],
+              "slot": "address",
+              "values": [
+                "338 South Main Street"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "4.30"
+              ],
+              "slot": "rating",
+              "values": [
+                "4.3"
+              ]
+            },
+            {
+              "act": "NOTIFY_SUCCESS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "ReserveRestaurant",
+            "parameters": {
+              "date": "2019-03-12",
+              "location": "Milpitas",
+              "number_of_seats": "2",
+              "restaurant_name": "Baja Cactus",
+              "time": "11:30"
+            }
+          },
+          "service_results": [
+            {
+              "address": "338 South Main Street",
+              "category": "Mexican",
+              "date": "2019-03-12",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "Milpitas",
+              "number_of_seats": "2",
+              "phone_number": "408-263-9455",
+              "price_range": "moderate",
+              "rating": "4.30",
+              "restaurant_name": "Baja Cactus",
+              "time": "11:30"
+            }
+          ],
+          "slots": [
+            {
+              "exclusive_end": 96,
+              "slot": "address",
+              "start": 75
+            },
+            {
+              "exclusive_end": 48,
+              "slot": "rating",
+              "start": 45
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Your reservation was successful. They have a 4.3 rating and are located on 338 South Main Street."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Latin American"
+              ],
+              "date": [
+                "March 12th",
+                "the 12th"
+              ],
+              "location": [
+                "Milpitas"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "Baja Cactus"
+              ],
+              "time": [
+                "11:30 am"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Thanks a lot."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQ_MORE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Can I assist you in anything else?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "NEGATE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            },
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "NONE",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Latin American"
+              ],
+              "date": [
+                "March 12th",
+                "the 12th"
+              ],
+              "location": [
+                "Milpitas"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "Baja Cactus"
+              ],
+              "time": [
+                "11:30 am"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "No, that's all. Thank you."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Have a great day."
+    }
+  ]
+}

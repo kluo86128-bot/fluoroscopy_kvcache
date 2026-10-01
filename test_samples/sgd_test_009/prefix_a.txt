@@ -1,0 +1,18 @@
+You are Agent A.
+Private conversation:
+USER: I'm in the mood to eat something find me anything that have available serving Pick-up.
+SYSTEM: In what city you want to be?
+USER: In Santa Clara would be perfect.
+SYSTEM: A nice restaurant in Santa Clara is Chili's Grill & Bar .
+USER: Yes sounds good.
+SYSTEM: You want to reserve a table there?
+USER: Yes make it for 3 people,please.
+SYSTEM: At what time you want to be?
+USER: On 7 in the evening.
+SYSTEM: Book a table at Chili's Grill & Bar in Santa Clara at 7 pm today for 3 people.I'm right?
+USER: Yes perfect.Is the restaurant very expensive?
+SYSTEM: Reservation is successful .Is a moderate restaurant.
+USER: Thank you for help
+SYSTEM: Can I help you with something else?
+USER: No.Thank you very much.
+SYSTEM: Have a great day!

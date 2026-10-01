@@ -1,0 +1,447 @@
+{
+  "dialogue_id": "1_00018",
+  "services": [
+    "Restaurants_2"
+  ],
+  "turns": [
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "San Francisco"
+              ],
+              "slot": "location",
+              "values": [
+                "SFO"
+              ]
+            },
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "ReserveRestaurant"
+              ],
+              "slot": "intent",
+              "values": [
+                "ReserveRestaurant"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 48,
+              "slot": "location",
+              "start": 45
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "location": [
+                "SFO"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I'd like to find a table for a restaurant in SFO."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "restaurant_name",
+              "values": []
+            },
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "time",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Okay, which restaurant would you like to look at, and when would you like to go?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "11:45"
+              ],
+              "slot": "time",
+              "values": [
+                "11:45 am"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "El Tesoro Taqueria & Grill"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "El Tesoro"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 39,
+              "slot": "time",
+              "start": 31
+            },
+            {
+              "exclusive_end": 27,
+              "slot": "restaurant_name",
+              "start": 18
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "location": [
+                "SFO"
+              ],
+              "restaurant_name": [
+                "El Tesoro"
+              ],
+              "time": [
+                "11:45 am"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I'd like to go to El Tesoro at 11:45 am."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "El Tesoro Taqueria & Grill"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "El Tesoro Taqueria & grill"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "San Francisco"
+              ],
+              "slot": "location",
+              "values": [
+                "San Francisco"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "11:45"
+              ],
+              "slot": "time",
+              "values": [
+                "11:45 am"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "2"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2019-03-01"
+              ],
+              "slot": "date",
+              "values": [
+                "today"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 64,
+              "slot": "restaurant_name",
+              "start": 38
+            },
+            {
+              "exclusive_end": 81,
+              "slot": "location",
+              "start": 68
+            },
+            {
+              "exclusive_end": 106,
+              "slot": "time",
+              "start": 98
+            },
+            {
+              "exclusive_end": 112,
+              "slot": "date",
+              "start": 107
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Please confirm: You'd like a table at El Tesoro Taqueria & grill in San Francisco for 2 people at 11:45 am today."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "has_vegetarian_options",
+              "values": []
+            },
+            {
+              "act": "AFFIRM",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [
+              "has_vegetarian_options"
+            ],
+            "slot_values": {
+              "date": [
+                "today"
+              ],
+              "location": [
+                "SFO",
+                "San Francisco"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "El Tesoro",
+                "El Tesoro Taqueria & grill"
+              ],
+              "time": [
+                "11:45 am"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Works for me, do they have vegetarian options?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "True"
+              ],
+              "slot": "has_vegetarian_options",
+              "values": [
+                "True"
+              ]
+            },
+            {
+              "act": "NOTIFY_SUCCESS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "ReserveRestaurant",
+            "parameters": {
+              "date": "2019-03-01",
+              "location": "San Francisco",
+              "number_of_seats": "2",
+              "restaurant_name": "El Tesoro Taqueria & Grill",
+              "time": "11:45"
+            }
+          },
+          "service_results": [
+            {
+              "address": "599 O'Farrell Street",
+              "category": "Mexican",
+              "date": "2019-03-01",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "number_of_seats": "2",
+              "phone_number": "415-202-0530",
+              "price_range": "cheap",
+              "rating": "3.80",
+              "restaurant_name": "El Tesoro Taqueria & Grill",
+              "time": "12:00"
+            }
+          ],
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Reservation made, and yes, they do."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "date": [
+                "today"
+              ],
+              "location": [
+                "SFO",
+                "San Francisco"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "El Tesoro",
+                "El Tesoro Taqueria & grill"
+              ],
+              "time": [
+                "11:45 am"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Thank you very much."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQ_MORE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Do you need anything else?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "NEGATE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            },
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "NONE",
+            "requested_slots": [],
+            "slot_values": {
+              "date": [
+                "today"
+              ],
+              "location": [
+                "SFO",
+                "San Francisco"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "El Tesoro",
+                "El Tesoro Taqueria & grill"
+              ],
+              "time": [
+                "11:45 am"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Nope, thank you so much."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Have a great day."
+    }
+  ]
+}

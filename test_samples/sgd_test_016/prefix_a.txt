@@ -1,0 +1,20 @@
+You are Agent A.
+Private conversation:
+USER: I need somewhere to eat tonight. Can you help me find a place?
+SYSTEM: Sure, where should I search? What kind of cuisine would you like?
+USER: Please find me some Malaysian restaurants in San Jose.
+SYSTEM: There is a lovely restaurant called Erawan Thai Cuisine in San Jose.
+USER: Is there anything else you can recomment? I'd like something that's not very costly.
+SYSTEM: I think you'll like Krungthai in San Jose.
+USER: What is their contact number? And what about their restaurant user rating?
+SYSTEM: The restaurant is rated 4.2 stars and you can contact them at 408-260-8224.
+USER: That sounds good.
+SYSTEM: Should I book a table there?
+USER: Yes, please book a table for Sunday this week.
+SYSTEM: What time should the reservation be for?
+USER: Make it for one in the afternoon for 4 people.
+SYSTEM: So you'd like a table for 4 people at Krungthai in San Jose for 1 pm the day after tomorrow. Is this correct?
+USER: Yes that's perfect.
+SYSTEM: The reservation has been made.
+USER: Thank you, that'll be all.
+SYSTEM: Have a great day.

@@ -1,0 +1,18 @@
+You are Agent A.
+Private conversation:
+USER: Hey! We have a business lunch outing this month and I would prefer to reserve table for the business lunch outing. Can you find some good hygienic dining?
+SYSTEM: Sure! which is your preferred location?
+USER: We would like to have in Danville. Please find some good restaurants there.
+SYSTEM: Do you have any food preference like Thai, American, Chinese etc or looking for an ordinary lunch?
+USER: We would love to have some Italian specials.
+SYSTEM: Okay! There is a good rating restaurant, Incontro Ristorante located in Danville. Do you wish to have your lunch here?
+USER: Yup! Sounds good.
+SYSTEM: Can I help you in reserving a table at this restaurant?
+USER: Sure. Please reserve a table for the 10th of this month.
+SYSTEM: At what time you people will be available?
+USER: We will be available for the reservation at around 6:45 pm.
+SYSTEM: Let me give you the booking details. Please confirm me. So you would like to book a table at the restaurant Incontro Ristorante in the city Danville at 6:45 pm on March 10th. The reservation for time being would be for 2 people, right?
+USER: Yup. You're correct.
+SYSTEM: Okay! I made the reservation for you. It's successful.
+USER: Thanks a lot. I am done with.
+SYSTEM: Have a wonderful day.

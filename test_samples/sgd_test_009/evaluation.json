@@ -1,0 +1,53 @@
+{
+  "task_id": "sgd_test_009",
+  "canonical_answer": "3",
+  "accepted_aliases": [
+    "3",
+    "three"
+  ],
+  "answer_token_ids": [
+    18
+  ],
+  "answer_token_count": 1,
+  "answer_token_pieces": [
+    "3"
+  ],
+  "answer_token_group": "single_token",
+  "alias_token_ids": {
+    "3": [
+      18
+    ],
+    "three": [
+      27856
+    ]
+  },
+  "leading_space_answer_token_ids": [
+    220,
+    18
+  ],
+  "tokenizer": {
+    "repo_id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "evidence_turns_zero_based": [
+    {
+      "index": 6,
+      "speaker": "USER",
+      "utterance": "Yes make it for 3 people,please."
+    },
+    {
+      "index": 9,
+      "speaker": "SYSTEM",
+      "utterance": "Book a table at Chili's Grill & Bar in Santa Clara at 7 pm today for 3 people.I'm right?"
+    }
+  ],
+  "booking_turn_zero_based": 11,
+  "booking_parameters": {
+    "date": "2019-03-01",
+    "location": "Santa Clara",
+    "number_of_seats": "3",
+    "restaurant_name": "Chili's Grill & Bar",
+    "time": "19:00"
+  },
+  "use_restriction": "Evaluation only; never supply labels to search, selection, or stopping."
+}

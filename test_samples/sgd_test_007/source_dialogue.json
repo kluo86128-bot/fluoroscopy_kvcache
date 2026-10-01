@@ -1,0 +1,579 @@
+{
+  "dialogue_id": "4_00064",
+  "services": [
+    "Restaurants_2"
+  ],
+  "turns": [
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "FindRestaurants"
+              ],
+              "slot": "intent",
+              "values": [
+                "FindRestaurants"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {}
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Do you know of any good places to eat?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "category",
+              "values": []
+            },
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "location",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Sure. What type of food are you interested in and where should it be?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "Burmese"
+              ],
+              "slot": "category",
+              "values": [
+                "Burmese"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "San Francisco"
+              ],
+              "slot": "location",
+              "values": [
+                "San Fran"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 37,
+              "slot": "category",
+              "start": 30
+            },
+            {
+              "exclusive_end": 68,
+              "slot": "location",
+              "start": 60
+            }
+          ],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Burmese"
+              ],
+              "location": [
+                "San Fran"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I've got a hankering for some Burmese food. It should be in San Fran."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "B Star"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "B Star"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "San Francisco"
+              ],
+              "slot": "location",
+              "values": [
+                "San Francisco"
+              ]
+            },
+            {
+              "act": "INFORM_COUNT",
+              "canonical_values": [
+                "5"
+              ],
+              "slot": "count",
+              "values": [
+                "5"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "FindRestaurants",
+            "parameters": {
+              "category": "Burmese",
+              "location": "San Francisco"
+            }
+          },
+          "service_results": [
+            {
+              "address": "127 Clement Street",
+              "category": "Burmese",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "phone_number": "415-933-9900",
+              "price_range": "moderate",
+              "rating": "4.40",
+              "restaurant_name": "B Star"
+            },
+            {
+              "address": "211 Valencia Street",
+              "category": "Burmese",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "phone_number": "415-861-2100",
+              "price_range": "moderate",
+              "rating": "4.60",
+              "restaurant_name": "Burma Love"
+            },
+            {
+              "address": "4348 California Street",
+              "category": "Burmese",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "phone_number": "415-386-3896",
+              "price_range": "moderate",
+              "rating": "4.50",
+              "restaurant_name": "Mandalay Restaurant"
+            },
+            {
+              "address": "3199 Clement Street",
+              "category": "Burmese",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "phone_number": "415-751-2598",
+              "price_range": "moderate",
+              "rating": "4.50",
+              "restaurant_name": "Pagan Restaurant"
+            },
+            {
+              "address": "590 Van Ness Avenue",
+              "category": "Burmese",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "phone_number": "415-610-4333",
+              "price_range": "moderate",
+              "rating": "4.00",
+              "restaurant_name": "Rangoon Ruby Burmese Cuisine"
+            }
+          ],
+          "slots": [
+            {
+              "exclusive_end": 88,
+              "slot": "restaurant_name",
+              "start": 82
+            },
+            {
+              "exclusive_end": 41,
+              "slot": "location",
+              "start": 28
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "I've found 5 restaurants in San Francisco you may want to check out. The first is B Star, which is a very nice restaurant."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "ReserveRestaurant"
+              ],
+              "slot": "intent",
+              "values": [
+                "ReserveRestaurant"
+              ]
+            },
+            {
+              "act": "SELECT",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Burmese"
+              ],
+              "location": [
+                "San Fran",
+                "San Francisco"
+              ],
+              "restaurant_name": [
+                "B Star"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Yeah, that sounds good. Can I get a reservation for a table there?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "time",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Sure. What time do you want to go?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "12:30"
+              ],
+              "slot": "time",
+              "values": [
+                "afternoon 12:30"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 46,
+              "slot": "time",
+              "start": 31
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Burmese"
+              ],
+              "location": [
+                "San Fran",
+                "San Francisco"
+              ],
+              "restaurant_name": [
+                "B Star"
+              ],
+              "time": [
+                "afternoon 12:30"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Please book the table for this afternoon 12:30."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "B Star"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "B Star"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "San Francisco"
+              ],
+              "slot": "location",
+              "values": [
+                "San Francisco"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "12:30"
+              ],
+              "slot": "time",
+              "values": [
+                "12:30 pm"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2019-03-01"
+              ],
+              "slot": "date",
+              "values": [
+                "today"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "2"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 44,
+              "slot": "restaurant_name",
+              "start": 38
+            },
+            {
+              "exclusive_end": 61,
+              "slot": "location",
+              "start": 48
+            },
+            {
+              "exclusive_end": 79,
+              "slot": "time",
+              "start": 71
+            },
+            {
+              "exclusive_end": 67,
+              "slot": "date",
+              "start": 62
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Okay, to confirm: You want a table at B Star in San Francisco today at 12:30 pm. It will be a reservation for 2 people."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "AFFIRM",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Burmese"
+              ],
+              "date": [
+                "today"
+              ],
+              "location": [
+                "San Fran",
+                "San Francisco"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "B Star"
+              ],
+              "time": [
+                "12:30 pm",
+                "afternoon 12:30"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Yes, that sounds perfect."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "NOTIFY_SUCCESS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "ReserveRestaurant",
+            "parameters": {
+              "date": "2019-03-01",
+              "location": "San Francisco",
+              "number_of_seats": "2",
+              "restaurant_name": "B Star",
+              "time": "12:30"
+            }
+          },
+          "service_results": [
+            {
+              "address": "127 Clement Street",
+              "category": "Burmese",
+              "date": "2019-03-01",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "number_of_seats": "2",
+              "phone_number": "415-933-9900",
+              "price_range": "moderate",
+              "rating": "4.40",
+              "restaurant_name": "B Star",
+              "time": "12:30"
+            }
+          ],
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Alright. Your table is booked."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            },
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Burmese"
+              ],
+              "date": [
+                "today"
+              ],
+              "location": [
+                "San Fran",
+                "San Francisco"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "B Star"
+              ],
+              "time": [
+                "12:30 pm",
+                "afternoon 12:30"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Thanks a lot! That's all I need."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Have a great day!"
+    }
+  ]
+}

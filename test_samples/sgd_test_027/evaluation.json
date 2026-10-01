@@ -1,0 +1,79 @@
+{
+  "task_id": "sgd_test_027",
+  "canonical_answer": "March 10th",
+  "accepted_aliases": [
+    "March 10th",
+    "March 10",
+    "10 March",
+    "10th March"
+  ],
+  "answer_token_ids": [
+    27523,
+    220,
+    16,
+    15,
+    339
+  ],
+  "answer_token_count": 5,
+  "answer_token_pieces": [
+    "March",
+    " ",
+    "1",
+    "0",
+    "th"
+  ],
+  "answer_token_group": "multi_token",
+  "alias_token_ids": {
+    "March 10th": [
+      27523,
+      220,
+      16,
+      15,
+      339
+    ],
+    "March 10": [
+      27523,
+      220,
+      16,
+      15
+    ],
+    "10 March": [
+      16,
+      15,
+      5470
+    ],
+    "10th March": [
+      16,
+      15,
+      339,
+      5470
+    ]
+  },
+  "leading_space_answer_token_ids": [
+    5470,
+    220,
+    16,
+    15,
+    339
+  ],
+  "tokenizer": {
+    "repo_id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "evidence_turns_zero_based": [
+    {
+      "index": 11,
+      "speaker": "SYSTEM",
+      "utterance": "Let me give you the booking details. Please confirm me. So you would like to book a table at the restaurant Incontro Ristorante in the city Danville at 6:45 pm on March 10th. The reservation for time being would be for 2 people, right?"
+    }
+  ],
+  "booking_turn_zero_based": 13,
+  "booking_parameters": {
+    "date": "2019-03-10",
+    "location": "Danville",
+    "number_of_seats": "2",
+    "restaurant_name": "Incontro Ristorante",
+    "time": "18:45"
+  },
+  "use_restriction": "Evaluation only; never supply labels to search, selection, or stopping."
+}

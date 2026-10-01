@@ -1,0 +1,24 @@
+You are Agent A.
+Private conversation:
+USER: I'm searching for a place to eat
+SYSTEM: What kind of food do you want to eat?
+USER: I would prefer restaurant tagged ultra high-end for price serving diner
+SYSTEM: How about the location?
+USER: In San Fran
+SYSTEM: Acquerello is a good restaurant in San Francisco
+USER: Yes that's perfect
+SYSTEM: Would you like to book a table there?
+USER: Yes I want to reserve it
+SYSTEM: At what time should I reserve it?
+USER: Make it at 11:30
+SYSTEM: Please confirm this: Booking a table at Acquerello in San Francisco at 11:30 am today for 2 people
+USER: No make the table for one people
+SYSTEM: Please confirm this : The date is today for 1 people
+USER: No. Look for a table on 12th of this month
+SYSTEM: Please confirm this : The city is San Francisco on March 12th
+USER: Yes that's perfect for me
+SYSTEM: Your reservation has been made successfully
+USER: Thank you so much
+SYSTEM: Can I assist you something else?
+USER: No. Thanks a lot
+SYSTEM: Have a wonderful day

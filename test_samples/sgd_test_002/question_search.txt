@@ -1,0 +1,3 @@
+
+Question: How many people was the final restaurant reservation for? Reply with only the number in digits.
+Answer:

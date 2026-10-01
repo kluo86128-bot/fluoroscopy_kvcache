@@ -1,0 +1,61 @@
+{
+  "task_id": "sgd_test_037",
+  "canonical_answer": "Vacaville",
+  "accepted_aliases": [
+    "Vacaville"
+  ],
+  "answer_token_ids": [
+    81789,
+    402,
+    4517
+  ],
+  "answer_token_count": 3,
+  "answer_token_pieces": [
+    "Vac",
+    "av",
+    "ille"
+  ],
+  "answer_token_group": "multi_token",
+  "alias_token_ids": {
+    "Vacaville": [
+      81789,
+      402,
+      4517
+    ]
+  },
+  "leading_space_answer_token_ids": [
+    30526,
+    402,
+    4517
+  ],
+  "tokenizer": {
+    "repo_id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "evidence_turns_zero_based": [
+    {
+      "index": 2,
+      "speaker": "USER",
+      "utterance": "I would prefer one that is located in Vacaville."
+    },
+    {
+      "index": 3,
+      "speaker": "SYSTEM",
+      "utterance": "I have found 2 restaurants, one of which is Los Reyes Restaurante Y Cantina located in Vacaville."
+    },
+    {
+      "index": 9,
+      "speaker": "SYSTEM",
+      "utterance": "Please confirm your reservation for 2 at Los Reyes Restaurante Y Cantina at Vacaville today at 5:15 pm."
+    }
+  ],
+  "booking_turn_zero_based": 15,
+  "booking_parameters": {
+    "date": "2019-03-08",
+    "location": "Vacaville",
+    "number_of_seats": "2",
+    "restaurant_name": "Los Reyes Restaurante Y Cantina",
+    "time": "17:30"
+  },
+  "use_restriction": "Evaluation only; never supply labels to search, selection, or stopping."
+}

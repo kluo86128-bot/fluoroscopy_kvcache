@@ -1,0 +1,58 @@
+{
+  "task_id": "sgd_test_016",
+  "canonical_answer": "4",
+  "accepted_aliases": [
+    "4",
+    "four"
+  ],
+  "answer_token_ids": [
+    19
+  ],
+  "answer_token_count": 1,
+  "answer_token_pieces": [
+    "4"
+  ],
+  "answer_token_group": "single_token",
+  "alias_token_ids": {
+    "4": [
+      19
+    ],
+    "four": [
+      34024
+    ]
+  },
+  "leading_space_answer_token_ids": [
+    220,
+    19
+  ],
+  "tokenizer": {
+    "repo_id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "evidence_turns_zero_based": [
+    {
+      "index": 7,
+      "speaker": "SYSTEM",
+      "utterance": "The restaurant is rated 4.2 stars and you can contact them at 408-260-8224."
+    },
+    {
+      "index": 12,
+      "speaker": "USER",
+      "utterance": "Make it for one in the afternoon for 4 people."
+    },
+    {
+      "index": 13,
+      "speaker": "SYSTEM",
+      "utterance": "So you'd like a table for 4 people at Krungthai in San Jose for 1 pm the day after tomorrow. Is this correct?"
+    }
+  ],
+  "booking_turn_zero_based": 15,
+  "booking_parameters": {
+    "date": "2019-03-03",
+    "location": "San Jose",
+    "number_of_seats": "4",
+    "restaurant_name": "Krungthai",
+    "time": "13:00"
+  },
+  "use_restriction": "Evaluation only; never supply labels to search, selection, or stopping."
+}

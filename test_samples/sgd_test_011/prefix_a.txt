@@ -1,0 +1,28 @@
+You are Agent A.
+Private conversation:
+USER: I feel like treating myself today. I plan to take myself out to a restaurant.
+SYSTEM: What type of cuisine are you interested in?
+USER: Asian sounds pretty good.
+SYSTEM: Where would you like to go out to eat?
+USER: I want to eat in Palo Alto.
+SYSTEM: There are 3 suitable restaurants. How about Burma Ruby Burmese Cuisine located in Palo Alto? It is a lovely restaurant.
+USER: Is there anything else, perhaps in Santa Clara?
+SYSTEM: There are 7 suitable restaurants there. I wish to recommend Beijing Restaurant, which is located in Santa Clara.
+USER: Do they serve vegetarian food.
+SYSTEM: No, they do not.
+USER: Is there anything else? I am a vegetarian, so that is very important to me. I do not mind the price.
+SYSTEM: There are 2 suitable options for vegetarian food. I wish to recommend Mayuri Indian Cuisine located in Santa Clara.
+USER: Does the restaurant have good reviews? Do they provide outdoor seating?
+SYSTEM: There is no outdoor seating. The restaurant has a 3.5 user rating.
+USER: That sounds great.
+SYSTEM: Would you like me to make a reservation for you?
+USER: Yes, I want a table for 7 in the evening.
+SYSTEM: You would like a table for 2 at the Mayuri Indian Cuisine in Santa Clara for today at 7 pm?
+USER: That sounds perfect.
+SYSTEM: I apologize, but the reservation was unsuccessful. Anything else I can assist you with?
+USER: See if you can book it for half past 6 in the evening instead.
+SYSTEM: You would like a table for 2 at the Mayuri Indian Cuisine in Santa Clara for today at 6:30 pm?
+USER: That would be fine. May I have a contact number and the address for the restaurant?
+SYSTEM: I have made the reservation. There number is 408-248-9747 and the location is 2232 El Camino Real
+USER: Thanks a lot. That is everything I need.
+SYSTEM: Enjoy the rest of your day.

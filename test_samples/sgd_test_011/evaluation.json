@@ -1,0 +1,58 @@
+{
+  "task_id": "sgd_test_011",
+  "canonical_answer": "2",
+  "accepted_aliases": [
+    "2",
+    "two"
+  ],
+  "answer_token_ids": [
+    17
+  ],
+  "answer_token_count": 1,
+  "answer_token_pieces": [
+    "2"
+  ],
+  "answer_token_group": "single_token",
+  "alias_token_ids": {
+    "2": [
+      17
+    ],
+    "two": [
+      19789
+    ]
+  },
+  "leading_space_answer_token_ids": [
+    220,
+    17
+  ],
+  "tokenizer": {
+    "repo_id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "evidence_turns_zero_based": [
+    {
+      "index": 11,
+      "speaker": "SYSTEM",
+      "utterance": "There are 2 suitable options for vegetarian food. I wish to recommend Mayuri Indian Cuisine located in Santa Clara."
+    },
+    {
+      "index": 17,
+      "speaker": "SYSTEM",
+      "utterance": "You would like a table for 2 at the Mayuri Indian Cuisine in Santa Clara for today at 7 pm?"
+    },
+    {
+      "index": 21,
+      "speaker": "SYSTEM",
+      "utterance": "You would like a table for 2 at the Mayuri Indian Cuisine in Santa Clara for today at 6:30 pm?"
+    }
+  ],
+  "booking_turn_zero_based": 23,
+  "booking_parameters": {
+    "date": "2019-03-01",
+    "location": "Santa Clara",
+    "number_of_seats": "2",
+    "restaurant_name": "Mayuri Indian Cuisine",
+    "time": "18:30"
+  },
+  "use_restriction": "Evaluation only; never supply labels to search, selection, or stopping."
+}

@@ -1,0 +1,1044 @@
+{
+  "dialogue_id": "4_00071",
+  "services": [
+    "Restaurants_2"
+  ],
+  "turns": [
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "FindRestaurants"
+              ],
+              "slot": "intent",
+              "values": [
+                "FindRestaurants"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {}
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I am feeling hungry, so I need to find a place to eat."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "category",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Is there a specific kind of cuisine that you are looking for?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "Thai"
+              ],
+              "slot": "category",
+              "values": [
+                "Thai"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 35,
+              "slot": "category",
+              "start": 31
+            }
+          ],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Thai"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I would like to be eating some Thai cuisine."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "location",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Can you tell me the location where you would like for the restaurant to be in?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "San Francisco"
+              ],
+              "slot": "location",
+              "values": [
+                "SF"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 52,
+              "slot": "location",
+              "start": 50
+            }
+          ],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Thai"
+              ],
+              "location": [
+                "SF"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I would like for the restaurant to be situated in SF."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Baan Thai House & Wine Bar"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Baan Thai House & Wine Bar"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "San Francisco"
+              ],
+              "slot": "location",
+              "values": [
+                "San Francisco"
+              ]
+            },
+            {
+              "act": "INFORM_COUNT",
+              "canonical_values": [
+                "10"
+              ],
+              "slot": "count",
+              "values": [
+                "10"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "FindRestaurants",
+            "parameters": {
+              "category": "Thai",
+              "location": "San Francisco"
+            }
+          },
+          "service_results": [
+            {
+              "address": "534 Irving Street",
+              "category": "Thai",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "phone_number": "415-379-4505",
+              "price_range": "moderate",
+              "rating": "4.30",
+              "restaurant_name": "Baan Thai House & Wine Bar"
+            },
+            {
+              "address": "1175 Folsom Street",
+              "category": "Thai",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "phone_number": "415-552-8999",
+              "price_range": "moderate",
+              "rating": "4.20",
+              "restaurant_name": "Basil"
+            },
+            {
+              "address": "272 Claremont Boulevard",
+              "category": "Thai",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "San Francisco",
+              "phone_number": "415-999-0345",
+              "price_range": "moderate",
+              "rating": "4.30",
+              "restaurant_name": "Chaiya Thai Restaurant"
+            },
+            {
+              "address": "3226 Geary Boulevard",
+              "category": "Thai",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "phone_number": "415-379-4549",
+              "price_range": "moderate",
+              "rating": "4.60",
+              "restaurant_name": "Derm Restaurant"
+            },
+            {
+              "address": "710 Florida Street",
+              "category": "Thai",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "phone_number": "415-814-2920",
+              "price_range": "moderate",
+              "rating": "4.50",
+              "restaurant_name": "Farmhouse Kitchen Thai Cuisine"
+            },
+            {
+              "address": "901 Larkin Street",
+              "category": "Thai",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "phone_number": "415-441-8038",
+              "price_range": "moderate",
+              "rating": "4.30",
+              "restaurant_name": "House Of Thai"
+            },
+            {
+              "address": "1826 Buchanan Street",
+              "category": "Thai",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "phone_number": "415-292-9027",
+              "price_range": "moderate",
+              "rating": "4.40",
+              "restaurant_name": "Jitlada Thai Cuisine"
+            },
+            {
+              "address": "55 Cyril Magnin Street",
+              "category": "Thai",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "phone_number": "415-362-7456",
+              "price_range": "pricey",
+              "rating": "4.30",
+              "restaurant_name": "Kin Khao"
+            },
+            {
+              "address": "415 Brannan Street",
+              "category": "Thai",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "phone_number": "415-369-0008",
+              "price_range": "moderate",
+              "rating": "3.90",
+              "restaurant_name": "Koh Samui & The Monkey"
+            },
+            {
+              "address": "3214 16th Street",
+              "category": "Thai",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "phone_number": "415-913-7886",
+              "price_range": "moderate",
+              "rating": "4.10",
+              "restaurant_name": "Krua Thai"
+            }
+          ],
+          "slots": [
+            {
+              "exclusive_end": 94,
+              "slot": "restaurant_name",
+              "start": 68
+            },
+            {
+              "exclusive_end": 152,
+              "slot": "location",
+              "start": 139
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "I see that 10 restaurants match to what you might like. For example Baan Thai House & Wine Bar is a good restaurant and it can be found in San Francisco."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "moderate"
+              ],
+              "slot": "price_range",
+              "values": [
+                "moderate"
+              ]
+            },
+            {
+              "act": "REQUEST_ALTS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Thai"
+              ],
+              "location": [
+                "SF",
+                "San Francisco"
+              ],
+              "price_range": [
+                "moderate"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Can you see if some other restaurant is available? The restaurant I am looking for should be reasonably priced."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Basil"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Basil"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "San Francisco"
+              ],
+              "slot": "location",
+              "values": [
+                "San Francisco"
+              ]
+            },
+            {
+              "act": "INFORM_COUNT",
+              "canonical_values": [
+                "9"
+              ],
+              "slot": "count",
+              "values": [
+                "9"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "FindRestaurants",
+            "parameters": {
+              "category": "Thai",
+              "location": "San Francisco",
+              "price_range": "moderate"
+            }
+          },
+          "service_results": [
+            {
+              "address": "534 Irving Street",
+              "category": "Thai",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "phone_number": "415-379-4505",
+              "price_range": "moderate",
+              "rating": "4.30",
+              "restaurant_name": "Baan Thai House & Wine Bar"
+            },
+            {
+              "address": "1175 Folsom Street",
+              "category": "Thai",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "phone_number": "415-552-8999",
+              "price_range": "moderate",
+              "rating": "4.20",
+              "restaurant_name": "Basil"
+            },
+            {
+              "address": "272 Claremont Boulevard",
+              "category": "Thai",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "San Francisco",
+              "phone_number": "415-999-0345",
+              "price_range": "moderate",
+              "rating": "4.30",
+              "restaurant_name": "Chaiya Thai Restaurant"
+            },
+            {
+              "address": "3226 Geary Boulevard",
+              "category": "Thai",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "phone_number": "415-379-4549",
+              "price_range": "moderate",
+              "rating": "4.60",
+              "restaurant_name": "Derm Restaurant"
+            },
+            {
+              "address": "710 Florida Street",
+              "category": "Thai",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "phone_number": "415-814-2920",
+              "price_range": "moderate",
+              "rating": "4.50",
+              "restaurant_name": "Farmhouse Kitchen Thai Cuisine"
+            },
+            {
+              "address": "901 Larkin Street",
+              "category": "Thai",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "phone_number": "415-441-8038",
+              "price_range": "moderate",
+              "rating": "4.30",
+              "restaurant_name": "House Of Thai"
+            },
+            {
+              "address": "1826 Buchanan Street",
+              "category": "Thai",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "phone_number": "415-292-9027",
+              "price_range": "moderate",
+              "rating": "4.40",
+              "restaurant_name": "Jitlada Thai Cuisine"
+            },
+            {
+              "address": "415 Brannan Street",
+              "category": "Thai",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "phone_number": "415-369-0008",
+              "price_range": "moderate",
+              "rating": "3.90",
+              "restaurant_name": "Koh Samui & The Monkey"
+            },
+            {
+              "address": "3214 16th Street",
+              "category": "Thai",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "phone_number": "415-913-7886",
+              "price_range": "moderate",
+              "rating": "4.10",
+              "restaurant_name": "Krua Thai"
+            }
+          ],
+          "slots": [
+            {
+              "exclusive_end": 91,
+              "slot": "restaurant_name",
+              "start": 86
+            },
+            {
+              "exclusive_end": 158,
+              "slot": "location",
+              "start": 145
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "I see that 9 restaurants match to what you are looking for. One of the restaurants is Basil which is a good restaurant, the location of which is San Francisco."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "address",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [
+              "address"
+            ],
+            "slot_values": {
+              "category": [
+                "Thai"
+              ],
+              "location": [
+                "SF",
+                "San Francisco"
+              ],
+              "price_range": [
+                "moderate"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Can you tell me the address of this restaurant?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "1175 Folsom Street"
+              ],
+              "slot": "address",
+              "values": [
+                "1175 Folsom Street"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 49,
+              "slot": "address",
+              "start": 31
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "The restaurant can be found at 1175 Folsom Street."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "ReserveRestaurant"
+              ],
+              "slot": "intent",
+              "values": [
+                "ReserveRestaurant"
+              ]
+            },
+            {
+              "act": "SELECT",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Thai"
+              ],
+              "location": [
+                "SF",
+                "San Francisco"
+              ],
+              "price_range": [
+                "moderate"
+              ],
+              "restaurant_name": [
+                "Basil"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Alright, that seems nice. I would like to book a table at a restaurant."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "time",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Do you have a specific time for when you want the table booked?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "13:00"
+              ],
+              "slot": "time",
+              "values": [
+                "afternoon 1"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 75,
+              "slot": "time",
+              "start": 64
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Thai"
+              ],
+              "location": [
+                "SF",
+                "San Francisco"
+              ],
+              "price_range": [
+                "moderate"
+              ],
+              "restaurant_name": [
+                "Basil"
+              ],
+              "time": [
+                "afternoon 1"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I will be eating in the afternoon so make the booking to be for afternoon 1."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Basil"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Basil"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "San Francisco"
+              ],
+              "slot": "location",
+              "values": [
+                "San Francisco"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "13:00"
+              ],
+              "slot": "time",
+              "values": [
+                "1 pm"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2019-03-01"
+              ],
+              "slot": "date",
+              "values": [
+                "today"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "2"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 88,
+              "slot": "restaurant_name",
+              "start": 83
+            },
+            {
+              "exclusive_end": 125,
+              "slot": "location",
+              "start": 112
+            },
+            {
+              "exclusive_end": 175,
+              "slot": "time",
+              "start": 171
+            },
+            {
+              "exclusive_end": 167,
+              "slot": "date",
+              "start": 162
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Can you please confirm that you want to make a booking for 2 people for a table at Basil restaurant which is in San Francisco, and you want the booking to be for today at 1 pm."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "AFFIRM",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Thai"
+              ],
+              "date": [
+                "today"
+              ],
+              "location": [
+                "SF",
+                "San Francisco"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "price_range": [
+                "moderate"
+              ],
+              "restaurant_name": [
+                "Basil"
+              ],
+              "time": [
+                "1 pm",
+                "afternoon 1"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "That suits me well."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "NOTIFY_SUCCESS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "ReserveRestaurant",
+            "parameters": {
+              "date": "2019-03-01",
+              "location": "San Francisco",
+              "number_of_seats": "2",
+              "restaurant_name": "Basil",
+              "time": "13:00"
+            }
+          },
+          "service_results": [
+            {
+              "address": "1175 Folsom Street",
+              "category": "Thai",
+              "date": "2019-03-01",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Francisco",
+              "number_of_seats": "2",
+              "phone_number": "415-552-8999",
+              "price_range": "moderate",
+              "rating": "4.20",
+              "restaurant_name": "Basil",
+              "time": "13:00"
+            }
+          ],
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Your booking has been made without errors."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "rating",
+              "values": []
+            },
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "has_seating_outdoors",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [
+              "has_seating_outdoors",
+              "rating"
+            ],
+            "slot_values": {
+              "category": [
+                "Thai"
+              ],
+              "date": [
+                "today"
+              ],
+              "location": [
+                "SF",
+                "San Francisco"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "price_range": [
+                "moderate"
+              ],
+              "restaurant_name": [
+                "Basil"
+              ],
+              "time": [
+                "1 pm",
+                "afternoon 1"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Can you inform me, regarding the rating that users have given the restaurant, and also can you tell me if it has outdoor seating?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "False"
+              ],
+              "slot": "has_seating_outdoors",
+              "values": [
+                "False"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "4.20"
+              ],
+              "slot": "rating",
+              "values": [
+                "4.2"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 95,
+              "slot": "rating",
+              "start": 92
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Unfortunately the restaurant doesn't have outdoor seating and the rating from it's users is 4.2."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            },
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Thai"
+              ],
+              "date": [
+                "today"
+              ],
+              "location": [
+                "SF",
+                "San Francisco"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "price_range": [
+                "moderate"
+              ],
+              "restaurant_name": [
+                "Basil"
+              ],
+              "time": [
+                "1 pm",
+                "afternoon 1"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I appreciate it very much! That would be all."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Have a good time!"
+    }
+  ]
+}

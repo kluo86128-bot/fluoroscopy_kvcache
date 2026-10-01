@@ -1,0 +1,12 @@
+You are Agent A.
+Private conversation:
+USER: I haven't eaten there for a while. Can you make a reservation for me at that restaurant for 12:30 pm.
+SYSTEM: Sure, but what restaurant are you talking about? And what city is it in?
+USER: Ah, sorry. I want to go to Tonayan in Rohnert Park. I need a reservation for three people.
+SYSTEM: You want a reservation at Tonayan in Rohnert Park for 3 at 12:30 pm today. Is that correct?
+USER: Actually, I just remembered my friends aren't big fans of Mexican food, so I'll only need a reservation for one. I'll go somewhere else with them today, so can you book me a table for tomorrow, on the 2nd of March?
+SYSTEM: Sure. You want a table for 1 at Tonayan tomorrow?
+USER: Yeah, that's right.
+SYSTEM: Your table has been booked.
+USER: Thanks a lot. I don't need anything else.
+SYSTEM: Enjoy your day.

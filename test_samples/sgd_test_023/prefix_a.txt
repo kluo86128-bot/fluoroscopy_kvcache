@@ -1,0 +1,16 @@
+You are Agent A.
+Private conversation:
+USER: Man, I'm starving. I'd love to have a hearty meal out tonight. Can you reserve me a restaurant at 6 in the evening?
+SYSTEM: Do you have a specific restaurant in mind? Where should I search?
+USER: I'd like for you to check out what's available in Walnut Creek. I'd particularly like it if you could book me a table at Vanessa's Bistro 2.
+SYSTEM: Okay then. You want to reserve a table for 2 at Vanessa's Bistro 2 Vietnamese Restaurant in Walnut Creek, at 6 pm today?
+USER: Actually, make it at 18:15 on the 12th.
+SYSTEM: Okay. The reservation should instead be at 6:15 pm on March 12th?
+USER: That sounds right. Also, I'm a vegetarian. Does their menu have options that will be okay for me?
+SYSTEM: You have successfully booked a table. Vanessa's Bistro 2 does have vegetarian meals.
+USER: Can I have my meal outdoors at Vanessa's?
+SYSTEM: Unfortunately, you cannot.
+USER: Thanks for the answer.
+SYSTEM: How else can I assist you?
+USER: Not for anything else right now. Many thanks.
+SYSTEM: Hope you enjoy your meal at Vanessa's.

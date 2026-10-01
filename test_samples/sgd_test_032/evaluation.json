@@ -1,0 +1,51 @@
+{
+  "task_id": "sgd_test_032",
+  "canonical_answer": "Oakland",
+  "accepted_aliases": [
+    "Oakland"
+  ],
+  "answer_token_ids": [
+    85839,
+    1933
+  ],
+  "answer_token_count": 2,
+  "answer_token_pieces": [
+    "Oak",
+    "land"
+  ],
+  "answer_token_group": "multi_token",
+  "alias_token_ids": {
+    "Oakland": [
+      85839,
+      1933
+    ]
+  },
+  "leading_space_answer_token_ids": [
+    29681
+  ],
+  "tokenizer": {
+    "repo_id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "evidence_turns_zero_based": [
+    {
+      "index": 2,
+      "speaker": "USER",
+      "utterance": "I would like it to be close to my wife's office in Oakland."
+    },
+    {
+      "index": 5,
+      "speaker": "SYSTEM",
+      "utterance": "Okay, before I make those arrangements for you please confirm that the details I have are correct. You want a table for 2 at Sidebar, located in Oakland, today at 7 pm. Is that correct?"
+    }
+  ],
+  "booking_turn_zero_based": 7,
+  "booking_parameters": {
+    "date": "2019-03-01",
+    "location": "Oakland",
+    "number_of_seats": "2",
+    "restaurant_name": "Sidebar",
+    "time": "19:00"
+  },
+  "use_restriction": "Evaluation only; never supply labels to search, selection, or stopping."
+}

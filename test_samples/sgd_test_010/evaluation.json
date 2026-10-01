@@ -1,0 +1,48 @@
+{
+  "task_id": "sgd_test_010",
+  "canonical_answer": "1",
+  "accepted_aliases": [
+    "1",
+    "one"
+  ],
+  "answer_token_ids": [
+    16
+  ],
+  "answer_token_count": 1,
+  "answer_token_pieces": [
+    "1"
+  ],
+  "answer_token_group": "single_token",
+  "alias_token_ids": {
+    "1": [
+      16
+    ],
+    "one": [
+      603
+    ]
+  },
+  "leading_space_answer_token_ids": [
+    220,
+    16
+  ],
+  "tokenizer": {
+    "repo_id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "evidence_turns_zero_based": [
+    {
+      "index": 13,
+      "speaker": "SYSTEM",
+      "utterance": "Please confirm this : The date is today for 1 people"
+    }
+  ],
+  "booking_turn_zero_based": 17,
+  "booking_parameters": {
+    "date": "2019-03-12",
+    "location": "San Francisco",
+    "number_of_seats": "1",
+    "restaurant_name": "Acquerello",
+    "time": "11:30"
+  },
+  "use_restriction": "Evaluation only; never supply labels to search, selection, or stopping."
+}

@@ -1,0 +1,527 @@
+{
+  "dialogue_id": "1_00004",
+  "services": [
+    "Restaurants_2"
+  ],
+  "turns": [
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "2019-03-05"
+              ],
+              "slot": "date",
+              "values": [
+                "March 5th"
+              ]
+            },
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "ReserveRestaurant"
+              ],
+              "slot": "intent",
+              "values": [
+                "ReserveRestaurant"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 48,
+              "slot": "date",
+              "start": 39
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "date": [
+                "March 5th"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I want to make a dinner reservation on March 5th."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "location",
+              "values": []
+            },
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "time",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "What area are you looking in? What time do you want the reservation for?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "18:30"
+              ],
+              "slot": "time",
+              "values": [
+                "18:30"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "San Jose"
+              ],
+              "slot": "location",
+              "values": [
+                "San Jose"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 42,
+              "slot": "time",
+              "start": 37
+            },
+            {
+              "exclusive_end": 31,
+              "slot": "location",
+              "start": 23
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "date": [
+                "March 5th"
+              ],
+              "location": [
+                "San Jose"
+              ],
+              "time": [
+                "18:30"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I want a restaurant in San Jose, for 18:30, please."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "restaurant_name",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Which restaurant do you want to book a table at?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "Ludwig's German Table"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Ludwig's German Table"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 47,
+              "slot": "restaurant_name",
+              "start": 26
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "date": [
+                "March 5th"
+              ],
+              "location": [
+                "San Jose"
+              ],
+              "restaurant_name": [
+                "Ludwig's German Table"
+              ],
+              "time": [
+                "18:30"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Can you get me a table at Ludwig's German Table?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Ludwig's German Table"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Ludwig's German Table"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "San Jose"
+              ],
+              "slot": "location",
+              "values": [
+                "San Jose"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "18:30"
+              ],
+              "slot": "time",
+              "values": [
+                "6:30 pm"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "2"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2019-03-05"
+              ],
+              "slot": "date",
+              "values": [
+                "next Tuesday"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 81,
+              "slot": "restaurant_name",
+              "start": 60
+            },
+            {
+              "exclusive_end": 93,
+              "slot": "location",
+              "start": 85
+            },
+            {
+              "exclusive_end": 56,
+              "slot": "time",
+              "start": 49
+            },
+            {
+              "exclusive_end": 45,
+              "slot": "date",
+              "start": 33
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "So you want a table for 2 people next Tuesday at 6:30 pm at Ludwig's German Table in San Jose?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "AFFIRM",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "date": [
+                "March 5th",
+                "next Tuesday"
+              ],
+              "location": [
+                "San Jose"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "Ludwig's German Table"
+              ],
+              "time": [
+                "18:30",
+                "6:30 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Yes, that's right."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "NOTIFY_SUCCESS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "ReserveRestaurant",
+            "parameters": {
+              "date": "2019-03-05",
+              "location": "San Jose",
+              "number_of_seats": "2",
+              "restaurant_name": "Ludwig's German Table",
+              "time": "18:30"
+            }
+          },
+          "service_results": [
+            {
+              "address": "261 North 2nd Street",
+              "category": "German",
+              "date": "2019-03-05",
+              "has_seating_outdoors": "True",
+              "has_vegetarian_options": "False",
+              "location": "San Jose",
+              "number_of_seats": "2",
+              "phone_number": "408-771-9871",
+              "price_range": "moderate",
+              "rating": "4.50",
+              "restaurant_name": "Ludwig's German Table",
+              "time": "18:30"
+            }
+          ],
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Your table has been reserved."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "category",
+              "values": []
+            },
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "address",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [
+              "address",
+              "category"
+            ],
+            "slot_values": {
+              "date": [
+                "March 5th",
+                "next Tuesday"
+              ],
+              "location": [
+                "San Jose"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "Ludwig's German Table"
+              ],
+              "time": [
+                "18:30",
+                "6:30 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "What type of food do they serve, and what's the address?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "German"
+              ],
+              "slot": "category",
+              "values": [
+                "German"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "261 North 2nd Street"
+              ],
+              "slot": "address",
+              "values": [
+                "261 North 2nd Street"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 17,
+              "slot": "category",
+              "start": 11
+            },
+            {
+              "exclusive_end": 64,
+              "slot": "address",
+              "start": 44
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "They serve German food. They are located at 261 North 2nd Street."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            },
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "date": [
+                "March 5th",
+                "next Tuesday"
+              ],
+              "location": [
+                "San Jose"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "Ludwig's German Table"
+              ],
+              "time": [
+                "18:30",
+                "6:30 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Thanks. That's all."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Have a nice day."
+    }
+  ]
+}

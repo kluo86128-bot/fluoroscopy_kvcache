@@ -1,0 +1,14 @@
+You are Agent A.
+Private conversation:
+USER: I'm feeling peckish, can you find me somewhere to eat?
+SYSTEM: I sure can. Where would you like to eat? And what kind of food do you fancy?
+USER: Can you see if there's anything in Mountain View that serves Turkish food?
+SYSTEM: I've found 1 in Mountain View called Cafe Baklava, it looks nice
+USER: Yeah that sounds great. Can you book me a table?
+SYSTEM: Sure, what time?
+USER: Half past 5 in the evening please
+SYSTEM: Okay, just to confirm, do you want me to book a table for 2 today at Cafe Baklava in Mountain View? I'll book it for 5:30 pm.
+USER: Yes please. Do you know if they have vegetarian options, and do they have outdoor seating?
+SYSTEM: Table booked! Yes they have outdoor seating and it looks like they have some good vegetarian options
+USER: Great, thank you. I don't need anything else.
+SYSTEM: No problem, have a lovely meal!

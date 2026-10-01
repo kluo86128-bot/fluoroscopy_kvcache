@@ -1,0 +1,22 @@
+You are Agent A.
+Private conversation:
+USER: Can you help me find a place to eat?
+SYSTEM: What type of food are you looking for and where would you like me to look?
+USER: Please find some average priced italian restaurants in Berkeley.
+SYSTEM: I have located Cugini Restaurant in Berkeley.
+USER: Can you recommend other ones?
+SYSTEM: Donato & Co. is a nice restaurant located in Berkeley.
+USER: Yes, that sounds good. Can you please book a table for one?
+SYSTEM: What time would you like?
+USER: Please make the reservation for 12:15 in the afternoon.
+SYSTEM: Please confirm the following: Booking a table today at 12:15 pm for 1 at Donato & co. in Berkeley.
+USER: No, the table needs to be for a party of four, and please make the reservation for 12:30 in the afternoon.
+SYSTEM: Please confirm the following details: The reservation is at 12:30 pm and for 4 people.
+USER: No, please look for a table on the 5th of March.
+SYSTEM: Please confirm the following details: The reservation is next Tuesday at 12:30 pm.
+USER: Yes, that is correct. What is the restaurant's rating?
+SYSTEM: Your reservation is successful. The restaurant has an average rating around 4.3.
+USER: Thank you very much.
+SYSTEM: Is there anything else that I can help you with?
+USER: No thank you.
+SYSTEM: Have a nice day.

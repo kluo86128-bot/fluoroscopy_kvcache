@@ -1,0 +1,48 @@
+{
+  "task_id": "sgd_test_019",
+  "canonical_answer": "2",
+  "accepted_aliases": [
+    "2",
+    "two"
+  ],
+  "answer_token_ids": [
+    17
+  ],
+  "answer_token_count": 1,
+  "answer_token_pieces": [
+    "2"
+  ],
+  "answer_token_group": "single_token",
+  "alias_token_ids": {
+    "2": [
+      17
+    ],
+    "two": [
+      19789
+    ]
+  },
+  "leading_space_answer_token_ids": [
+    220,
+    17
+  ],
+  "tokenizer": {
+    "repo_id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "evidence_turns_zero_based": [
+    {
+      "index": 7,
+      "speaker": "SYSTEM",
+      "utterance": "Okay, just to confirm, do you want me to book a table for 2 today at Cafe Baklava in Mountain View? I'll book it for 5:30 pm."
+    }
+  ],
+  "booking_turn_zero_based": 9,
+  "booking_parameters": {
+    "date": "2019-03-01",
+    "location": "Mountain View",
+    "number_of_seats": "2",
+    "restaurant_name": "Cafe Baklava",
+    "time": "17:30"
+  },
+  "use_restriction": "Evaluation only; never supply labels to search, selection, or stopping."
+}

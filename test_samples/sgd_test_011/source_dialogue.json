@@ -1,0 +1,1370 @@
+{
+  "dialogue_id": "4_00068",
+  "services": [
+    "Restaurants_2"
+  ],
+  "turns": [
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "FindRestaurants"
+              ],
+              "slot": "intent",
+              "values": [
+                "FindRestaurants"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {}
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I feel like treating myself today. I plan to take myself out to a restaurant."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "category",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "What type of cuisine are you interested in?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "Asian"
+              ],
+              "slot": "category",
+              "values": [
+                "Asian"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 5,
+              "slot": "category",
+              "start": 0
+            }
+          ],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Asian"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Asian sounds pretty good."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "location",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Where would you like to go out to eat?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "Palo Alto"
+              ],
+              "slot": "location",
+              "values": [
+                "Palo Alto"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 26,
+              "slot": "location",
+              "start": 17
+            }
+          ],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Asian"
+              ],
+              "location": [
+                "Palo Alto"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I want to eat in Palo Alto."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Burma Ruby Burmese Cuisine"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Burma Ruby Burmese Cuisine"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Palo Alto"
+              ],
+              "slot": "location",
+              "values": [
+                "Palo Alto"
+              ]
+            },
+            {
+              "act": "INFORM_COUNT",
+              "canonical_values": [
+                "3"
+              ],
+              "slot": "count",
+              "values": [
+                "3"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "FindRestaurants",
+            "parameters": {
+              "category": "Asian",
+              "location": "Palo Alto"
+            }
+          },
+          "service_results": [
+            {
+              "address": "326 University Avenue",
+              "category": "Asian",
+              "has_seating_outdoors": "True",
+              "has_vegetarian_options": "True",
+              "location": "Palo Alto",
+              "phone_number": "650-285-2770",
+              "price_range": "moderate",
+              "rating": "4.30",
+              "restaurant_name": "Burma Ruby Burmese Cuisine"
+            },
+            {
+              "address": "3691 El Camino Real",
+              "category": "Asian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "Palo Alto",
+              "phone_number": "650-251-9062",
+              "price_range": "moderate",
+              "rating": "4.00",
+              "restaurant_name": "Hong Kong Restaurant"
+            },
+            {
+              "address": "338 University Avenue",
+              "category": "Asian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "Palo Alto",
+              "phone_number": "650-329-8129",
+              "price_range": "cheap",
+              "rating": "4.00",
+              "restaurant_name": "Siam Royal Authentic Thai"
+            }
+          ],
+          "slots": [
+            {
+              "exclusive_end": 70,
+              "slot": "restaurant_name",
+              "start": 44
+            },
+            {
+              "exclusive_end": 91,
+              "slot": "location",
+              "start": 82
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "There are 3 suitable restaurants. How about Burma Ruby Burmese Cuisine located in Palo Alto? It is a lovely restaurant."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "Santa Clara"
+              ],
+              "slot": "location",
+              "values": [
+                "Santa Clara"
+              ]
+            },
+            {
+              "act": "REQUEST_ALTS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 46,
+              "slot": "location",
+              "start": 35
+            }
+          ],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Asian"
+              ],
+              "location": [
+                "Santa Clara"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Is there anything else, perhaps in Santa Clara?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Beijing Restaurant"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Beijing Restaurant"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Santa Clara"
+              ],
+              "slot": "location",
+              "values": [
+                "Santa Clara"
+              ]
+            },
+            {
+              "act": "INFORM_COUNT",
+              "canonical_values": [
+                "7"
+              ],
+              "slot": "count",
+              "values": [
+                "7"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "FindRestaurants",
+            "parameters": {
+              "category": "Asian",
+              "location": "Santa Clara"
+            }
+          },
+          "service_results": [
+            {
+              "address": "1460 Halford Avenue",
+              "category": "Asian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "Santa Clara",
+              "phone_number": "408-423-0001",
+              "price_range": "moderate",
+              "rating": "4.20",
+              "restaurant_name": "Beijing Restaurant"
+            },
+            {
+              "address": "1062 Kiely Boulevard",
+              "category": "Asian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "Santa Clara",
+              "phone_number": "408-985-8808",
+              "price_range": "moderate",
+              "rating": "4.20",
+              "restaurant_name": "Korean Spring"
+            },
+            {
+              "address": "2232 El Camino Real",
+              "category": "Asian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "Santa Clara",
+              "phone_number": "408-248-9747",
+              "price_range": "moderate",
+              "rating": "3.50",
+              "restaurant_name": "Mayuri Indian Cuisine"
+            },
+            {
+              "address": "3258 El Camino Real",
+              "category": "Asian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "Santa Clara",
+              "phone_number": "408-244-8531",
+              "price_range": "moderate",
+              "rating": "4.20",
+              "restaurant_name": "Shu's"
+            },
+            {
+              "address": "2634 Homestead Road",
+              "category": "Asian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "Santa Clara",
+              "phone_number": "408-973-0604",
+              "price_range": "moderate",
+              "rating": "4.40",
+              "restaurant_name": "Sumiya"
+            },
+            {
+              "address": "3240 El Camino Real",
+              "category": "Asian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "Santa Clara",
+              "phone_number": "408-615-8086",
+              "price_range": "moderate",
+              "rating": "4.20",
+              "restaurant_name": "Tong Soon Garden"
+            },
+            {
+              "address": "3431 El Camino Real",
+              "category": "Asian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "Santa Clara",
+              "phone_number": "408-244-4534",
+              "price_range": "moderate",
+              "rating": "4.30",
+              "restaurant_name": "Truya Sushi"
+            }
+          ],
+          "slots": [
+            {
+              "exclusive_end": 78,
+              "slot": "restaurant_name",
+              "start": 60
+            },
+            {
+              "exclusive_end": 111,
+              "slot": "location",
+              "start": 100
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "There are 7 suitable restaurants there. I wish to recommend Beijing Restaurant, which is located in Santa Clara."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "has_vegetarian_options",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [
+              "has_vegetarian_options"
+            ],
+            "slot_values": {
+              "category": [
+                "Asian"
+              ],
+              "location": [
+                "Santa Clara"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Do they serve vegetarian food."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "False"
+              ],
+              "slot": "has_vegetarian_options",
+              "values": [
+                "False"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "No, they do not."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "True"
+              ],
+              "slot": "has_vegetarian_options",
+              "values": [
+                "True"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "dontcare"
+              ],
+              "slot": "price_range",
+              "values": [
+                "dontcare"
+              ]
+            },
+            {
+              "act": "REQUEST_ALTS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Asian"
+              ],
+              "has_vegetarian_options": [
+                "True"
+              ],
+              "location": [
+                "Santa Clara"
+              ],
+              "price_range": [
+                "dontcare"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Is there anything else? I am a vegetarian, so that is very important to me. I do not mind the price."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Mayuri Indian Cuisine"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Mayuri Indian Cuisine"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Santa Clara"
+              ],
+              "slot": "location",
+              "values": [
+                "Santa Clara"
+              ]
+            },
+            {
+              "act": "INFORM_COUNT",
+              "canonical_values": [
+                "2"
+              ],
+              "slot": "count",
+              "values": [
+                "2"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "FindRestaurants",
+            "parameters": {
+              "category": "Asian",
+              "has_vegetarian_options": "True",
+              "location": "Santa Clara"
+            }
+          },
+          "service_results": [
+            {
+              "address": "2232 El Camino Real",
+              "category": "Asian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "Santa Clara",
+              "phone_number": "408-248-9747",
+              "price_range": "moderate",
+              "rating": "3.50",
+              "restaurant_name": "Mayuri Indian Cuisine"
+            },
+            {
+              "address": "3431 El Camino Real",
+              "category": "Asian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "Santa Clara",
+              "phone_number": "408-244-4534",
+              "price_range": "moderate",
+              "rating": "4.30",
+              "restaurant_name": "Truya Sushi"
+            }
+          ],
+          "slots": [
+            {
+              "exclusive_end": 91,
+              "slot": "restaurant_name",
+              "start": 70
+            },
+            {
+              "exclusive_end": 114,
+              "slot": "location",
+              "start": 103
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "There are 2 suitable options for vegetarian food. I wish to recommend Mayuri Indian Cuisine located in Santa Clara."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "rating",
+              "values": []
+            },
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "has_seating_outdoors",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [
+              "has_seating_outdoors",
+              "rating"
+            ],
+            "slot_values": {
+              "category": [
+                "Asian"
+              ],
+              "has_vegetarian_options": [
+                "True"
+              ],
+              "location": [
+                "Santa Clara"
+              ],
+              "price_range": [
+                "dontcare"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Does the restaurant have good reviews? Do they provide outdoor seating?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "False"
+              ],
+              "slot": "has_seating_outdoors",
+              "values": [
+                "False"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "3.50"
+              ],
+              "slot": "rating",
+              "values": [
+                "3.5"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 53,
+              "slot": "rating",
+              "start": 50
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "There is no outdoor seating. The restaurant has a 3.5 user rating."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "SELECT",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Asian"
+              ],
+              "has_vegetarian_options": [
+                "True"
+              ],
+              "location": [
+                "Santa Clara"
+              ],
+              "price_range": [
+                "dontcare"
+              ],
+              "restaurant_name": [
+                "Mayuri Indian Cuisine"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "That sounds great."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "OFFER_INTENT",
+              "canonical_values": [
+                "ReserveRestaurant"
+              ],
+              "slot": "intent",
+              "values": [
+                "ReserveRestaurant"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Would you like me to make a reservation for you?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "AFFIRM_INTENT",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "19:00"
+              ],
+              "slot": "time",
+              "values": [
+                "7 in the evening"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 40,
+              "slot": "time",
+              "start": 24
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Asian"
+              ],
+              "has_vegetarian_options": [
+                "True"
+              ],
+              "location": [
+                "Santa Clara"
+              ],
+              "price_range": [
+                "dontcare"
+              ],
+              "restaurant_name": [
+                "Mayuri Indian Cuisine"
+              ],
+              "time": [
+                "7 in the evening"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Yes, I want a table for 7 in the evening."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Mayuri Indian Cuisine"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Mayuri Indian Cuisine"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Santa Clara"
+              ],
+              "slot": "location",
+              "values": [
+                "Santa Clara"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "19:00"
+              ],
+              "slot": "time",
+              "values": [
+                "7 pm"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2019-03-01"
+              ],
+              "slot": "date",
+              "values": [
+                "today"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "2"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 57,
+              "slot": "restaurant_name",
+              "start": 36
+            },
+            {
+              "exclusive_end": 72,
+              "slot": "location",
+              "start": 61
+            },
+            {
+              "exclusive_end": 90,
+              "slot": "time",
+              "start": 86
+            },
+            {
+              "exclusive_end": 82,
+              "slot": "date",
+              "start": 77
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "You would like a table for 2 at the Mayuri Indian Cuisine in Santa Clara for today at 7 pm?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "AFFIRM",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Asian"
+              ],
+              "date": [
+                "today"
+              ],
+              "has_vegetarian_options": [
+                "True"
+              ],
+              "location": [
+                "Santa Clara"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "price_range": [
+                "dontcare"
+              ],
+              "restaurant_name": [
+                "Mayuri Indian Cuisine"
+              ],
+              "time": [
+                "7 in the evening",
+                "7 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "That sounds perfect."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "NOTIFY_FAILURE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            },
+            {
+              "act": "REQ_MORE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "ReserveRestaurant",
+            "parameters": {
+              "date": "2019-03-01",
+              "location": "Santa Clara",
+              "number_of_seats": "2",
+              "restaurant_name": "Mayuri Indian Cuisine",
+              "time": "19:00"
+            }
+          },
+          "service_results": [
+            {
+              "address": "2232 El Camino Real",
+              "category": "Asian",
+              "date": "2019-03-01",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "Santa Clara",
+              "number_of_seats": "2",
+              "phone_number": "408-248-9747",
+              "price_range": "moderate",
+              "rating": "3.50",
+              "restaurant_name": "Mayuri Indian Cuisine",
+              "time": "18:30"
+            }
+          ],
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "I apologize, but the reservation was unsuccessful. Anything else I can assist you with?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "18:30"
+              ],
+              "slot": "time",
+              "values": [
+                "half past 6 in the evening"
+              ]
+            },
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "ReserveRestaurant"
+              ],
+              "slot": "intent",
+              "values": [
+                "ReserveRestaurant"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 53,
+              "slot": "time",
+              "start": 27
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Asian"
+              ],
+              "date": [
+                "today"
+              ],
+              "has_vegetarian_options": [
+                "True"
+              ],
+              "location": [
+                "Santa Clara"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "price_range": [
+                "dontcare"
+              ],
+              "restaurant_name": [
+                "Mayuri Indian Cuisine"
+              ],
+              "time": [
+                "half past 6 in the evening"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "See if you can book it for half past 6 in the evening instead."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Mayuri Indian Cuisine"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Mayuri Indian Cuisine"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Santa Clara"
+              ],
+              "slot": "location",
+              "values": [
+                "Santa Clara"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "18:30"
+              ],
+              "slot": "time",
+              "values": [
+                "6:30 pm"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2019-03-01"
+              ],
+              "slot": "date",
+              "values": [
+                "today"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "2"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 57,
+              "slot": "restaurant_name",
+              "start": 36
+            },
+            {
+              "exclusive_end": 72,
+              "slot": "location",
+              "start": 61
+            },
+            {
+              "exclusive_end": 93,
+              "slot": "time",
+              "start": 86
+            },
+            {
+              "exclusive_end": 82,
+              "slot": "date",
+              "start": 77
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "You would like a table for 2 at the Mayuri Indian Cuisine in Santa Clara for today at 6:30 pm?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "phone_number",
+              "values": []
+            },
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "address",
+              "values": []
+            },
+            {
+              "act": "AFFIRM",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [
+              "address",
+              "phone_number"
+            ],
+            "slot_values": {
+              "category": [
+                "Asian"
+              ],
+              "date": [
+                "today"
+              ],
+              "has_vegetarian_options": [
+                "True"
+              ],
+              "location": [
+                "Santa Clara"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "price_range": [
+                "dontcare"
+              ],
+              "restaurant_name": [
+                "Mayuri Indian Cuisine"
+              ],
+              "time": [
+                "6:30 pm",
+                "half past 6 in the evening"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "That would be fine. May I have a contact number and the address for the restaurant?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "2232 El Camino Real"
+              ],
+              "slot": "address",
+              "values": [
+                "2232 El Camino Real"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "408-248-9747"
+              ],
+              "slot": "phone_number",
+              "values": [
+                "408-248-9747"
+              ]
+            },
+            {
+              "act": "NOTIFY_SUCCESS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "ReserveRestaurant",
+            "parameters": {
+              "date": "2019-03-01",
+              "location": "Santa Clara",
+              "number_of_seats": "2",
+              "restaurant_name": "Mayuri Indian Cuisine",
+              "time": "18:30"
+            }
+          },
+          "service_results": [
+            {
+              "address": "2232 El Camino Real",
+              "category": "Asian",
+              "date": "2019-03-01",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "Santa Clara",
+              "number_of_seats": "2",
+              "phone_number": "408-248-9747",
+              "price_range": "moderate",
+              "rating": "3.50",
+              "restaurant_name": "Mayuri Indian Cuisine",
+              "time": "18:30"
+            }
+          ],
+          "slots": [
+            {
+              "exclusive_end": 97,
+              "slot": "address",
+              "start": 78
+            },
+            {
+              "exclusive_end": 57,
+              "slot": "phone_number",
+              "start": 45
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "I have made the reservation. There number is 408-248-9747 and the location is 2232 El Camino Real"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            },
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Asian"
+              ],
+              "date": [
+                "today"
+              ],
+              "has_vegetarian_options": [
+                "True"
+              ],
+              "location": [
+                "Santa Clara"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "price_range": [
+                "dontcare"
+              ],
+              "restaurant_name": [
+                "Mayuri Indian Cuisine"
+              ],
+              "time": [
+                "6:30 pm",
+                "half past 6 in the evening"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Thanks a lot. That is everything I need."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Enjoy the rest of your day."
+    }
+  ]
+}

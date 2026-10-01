@@ -1,0 +1,18 @@
+You are Agent A.
+Private conversation:
+USER: I'm searching for a restaurant; get me one that serves pizza and pasta at San Fran.
+SYSTEM: I discovered 10 restaurant you may enjoy. There is a lovely diner called 54 Mint Ristorante Italiano at San Francisco.
+USER: Can you tell me their contact number, and their user rating?
+SYSTEM: Their contact number is 415-543-5100, and the rating is near 4.4
+USER: Could you suggest alternative diners?
+SYSTEM: There is a lovely diner called A16 located in San Francisco.
+USER: That's perfect. I want to reserve a spot at the restaurant for 3 people.
+SYSTEM: When do you wish for me to make the booking for?
+USER: Make the booking for six in the evening.
+SYSTEM: Please verify the following information: Rserve a table for 3 people at A16 in San Francisco for today at 6 pm.
+USER: Nope. I want a table for one person on the 5th of this month.
+SYSTEM: Please verify the following information: a booking for 1 person on next Tuesday.
+USER: That's fine by me. What's their address,a nd do they offer outdoor eating?
+SYSTEM: The booking has been made. The address is at 2355 Chestnut Street, and they do not offer outdoor seating.
+USER: Thank you for your assistance; that's all.
+SYSTEM: Have a pleasant afternoon.

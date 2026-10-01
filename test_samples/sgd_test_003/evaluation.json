@@ -1,0 +1,53 @@
+{
+  "task_id": "sgd_test_003",
+  "canonical_answer": "2",
+  "accepted_aliases": [
+    "2",
+    "two"
+  ],
+  "answer_token_ids": [
+    17
+  ],
+  "answer_token_count": 1,
+  "answer_token_pieces": [
+    "2"
+  ],
+  "answer_token_group": "single_token",
+  "alias_token_ids": {
+    "2": [
+      17
+    ],
+    "two": [
+      19789
+    ]
+  },
+  "leading_space_answer_token_ids": [
+    220,
+    17
+  ],
+  "tokenizer": {
+    "repo_id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "evidence_turns_zero_based": [
+    {
+      "index": 3,
+      "speaker": "SYSTEM",
+      "utterance": "So you would like a reservations for 2 at the Royal Rangoon Restaurant in Berkeley? The reservation is today is at 11:45 am."
+    },
+    {
+      "index": 7,
+      "speaker": "SYSTEM",
+      "utterance": "Sorry, I wasn't able to make a reservation. Royal Rangoon Restaurant serves Chinese food and their rating is around 4.5. Should I try to make a reservation for 2 at 12 pm on the day after tomorrow?"
+    }
+  ],
+  "booking_turn_zero_based": 9,
+  "booking_parameters": {
+    "date": "2019-03-03",
+    "location": "Berkeley",
+    "number_of_seats": "2",
+    "restaurant_name": "Royal Rangoon Restaurant",
+    "time": "12:00"
+  },
+  "use_restriction": "Evaluation only; never supply labels to search, selection, or stopping."
+}

@@ -1,0 +1,12 @@
+You are Agent A.
+Private conversation:
+USER: Today is my wedding anniversary and I want to book a table at a restaurant as a surprise to my wife.
+SYSTEM: I am happy to help. What area would you like me to search for restaurants in?
+USER: I would like it to be close to my wife's office in Oakland.
+SYSTEM: Do you have a specific restaurant in mind and what time would you like me to set the reservations for?
+USER: Yes, Sidebar is her favorite restaurant so let's book the table there at seven in the evening.
+SYSTEM: Okay, before I make those arrangements for you please confirm that the details I have are correct. You want a table for 2 at Sidebar, located in Oakland, today at 7 pm. Is that correct?
+USER: Yes, that's perfect. She will be so surprised.
+SYSTEM: I have confirmed those reservations for you and you should be all set for this evening.
+USER: Thank you for your help, I couldn't have done it with out you.
+SYSTEM: Have a great day and enjoy your meal.

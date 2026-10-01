@@ -1,0 +1,67 @@
+{
+  "task_id": "sgd_test_035",
+  "canonical_answer": "San Carlos",
+  "accepted_aliases": [
+    "San Carlos"
+  ],
+  "answer_token_ids": [
+    23729,
+    29297
+  ],
+  "answer_token_count": 2,
+  "answer_token_pieces": [
+    "San",
+    " Carlos"
+  ],
+  "answer_token_group": "multi_token",
+  "alias_token_ids": {
+    "San Carlos": [
+      23729,
+      29297
+    ]
+  },
+  "leading_space_answer_token_ids": [
+    5836,
+    29297
+  ],
+  "tokenizer": {
+    "repo_id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "evidence_turns_zero_based": [
+    {
+      "index": 2,
+      "speaker": "USER",
+      "utterance": "Please look for restaurant in San Carlos."
+    },
+    {
+      "index": 3,
+      "speaker": "SYSTEM",
+      "utterance": "Among the 4 suitable restaurants I found is a nice one in San Carlos called Izzy's San Carlos."
+    },
+    {
+      "index": 5,
+      "speaker": "SYSTEM",
+      "utterance": "Another nice restaurant in San Carlos is Piacere Restaurant."
+    },
+    {
+      "index": 7,
+      "speaker": "SYSTEM",
+      "utterance": "Okay, the other nice restaurant I would recommend is The Cask Wine Bar in San Carlos."
+    },
+    {
+      "index": 13,
+      "speaker": "SYSTEM",
+      "utterance": "Please confirm that you're making a reservation for 5 pm today, for a party of 2, at The Cask Wine Bar in San Carlos."
+    }
+  ],
+  "booking_turn_zero_based": 15,
+  "booking_parameters": {
+    "date": "2019-03-01",
+    "location": "San Carlos",
+    "number_of_seats": "2",
+    "restaurant_name": "The Cask Wine Bar",
+    "time": "17:00"
+  },
+  "use_restriction": "Evaluation only; never supply labels to search, selection, or stopping."
+}

@@ -1,0 +1,22 @@
+You are Agent A.
+Private conversation:
+USER: I am hungry!
+SYSTEM: Where should I search? What kind of food would you like?
+USER: How about Diner style food. Please search in Lafayette.
+SYSTEM: American Kitchen is great and located in Lafayette.
+USER: Yes, that is great.
+SYSTEM: Do want to reserve a table?
+USER: Yes, please do.
+SYSTEM: What time should I book the table for?
+USER: Make it for 8 in the night.
+SYSTEM: Please confirm the following details: Booking a table for today at American Kitchen in Lafayette. The reservation is for 2 people at 8 pm.
+USER: Yes, that is fine. Is it ultra high-end?
+SYSTEM: Sorry, I was unable to book a table. Can I assist you with something else.
+USER: Try again please. But this time, book it for the evening 5:45.
+SYSTEM: Please confirm the following details: Booking a table for today at American Kitchen in Lafayette. The reservation is at 5:45 pm and for 2 people.
+USER: Yes, that works well.
+SYSTEM: Your reservation went through.
+USER: Thanks.
+SYSTEM: May I help you with something else?
+USER: No thanks.
+SYSTEM: Have a great day.

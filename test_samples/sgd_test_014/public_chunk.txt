@@ -1,0 +1,2 @@
+Public restaurant booking guide:
+Availability must be checked before a booking is completed. Customers may revise their preferences before confirmation. General service information does not specify any customer's booking details.

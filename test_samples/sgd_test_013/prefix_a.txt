@@ -1,0 +1,22 @@
+You are Agent A.
+Private conversation:
+USER: I am feeling hungry, so I need to find a place to eat.
+SYSTEM: Is there a specific kind of cuisine that you are looking for?
+USER: I would like to be eating some Thai cuisine.
+SYSTEM: Can you tell me the location where you would like for the restaurant to be in?
+USER: I would like for the restaurant to be situated in SF.
+SYSTEM: I see that 10 restaurants match to what you might like. For example Baan Thai House & Wine Bar is a good restaurant and it can be found in San Francisco.
+USER: Can you see if some other restaurant is available? The restaurant I am looking for should be reasonably priced.
+SYSTEM: I see that 9 restaurants match to what you are looking for. One of the restaurants is Basil which is a good restaurant, the location of which is San Francisco.
+USER: Can you tell me the address of this restaurant?
+SYSTEM: The restaurant can be found at 1175 Folsom Street.
+USER: Alright, that seems nice. I would like to book a table at a restaurant.
+SYSTEM: Do you have a specific time for when you want the table booked?
+USER: I will be eating in the afternoon so make the booking to be for afternoon 1.
+SYSTEM: Can you please confirm that you want to make a booking for 2 people for a table at Basil restaurant which is in San Francisco, and you want the booking to be for today at 1 pm.
+USER: That suits me well.
+SYSTEM: Your booking has been made without errors.
+USER: Can you inform me, regarding the rating that users have given the restaurant, and also can you tell me if it has outdoor seating?
+SYSTEM: Unfortunately the restaurant doesn't have outdoor seating and the rating from it's users is 4.2.
+USER: I appreciate it very much! That would be all.
+SYSTEM: Have a good time!

@@ -1,0 +1,72 @@
+{
+  "task_id": "sgd_test_030",
+  "canonical_answer": "March 9th",
+  "accepted_aliases": [
+    "March 9th",
+    "March 9",
+    "9 March",
+    "9th March"
+  ],
+  "answer_token_ids": [
+    27523,
+    220,
+    24,
+    339
+  ],
+  "answer_token_count": 4,
+  "answer_token_pieces": [
+    "March",
+    " ",
+    "9",
+    "th"
+  ],
+  "answer_token_group": "multi_token",
+  "alias_token_ids": {
+    "March 9th": [
+      27523,
+      220,
+      24,
+      339
+    ],
+    "March 9": [
+      27523,
+      220,
+      24
+    ],
+    "9 March": [
+      24,
+      5470
+    ],
+    "9th March": [
+      24,
+      339,
+      5470
+    ]
+  },
+  "leading_space_answer_token_ids": [
+    5470,
+    220,
+    24,
+    339
+  ],
+  "tokenizer": {
+    "repo_id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "evidence_turns_zero_based": [
+    {
+      "index": 17,
+      "speaker": "SYSTEM",
+      "utterance": "please confirm: Booking a table for 3 people at 12 pm on March 9th at Lake Chalet in Oakland."
+    }
+  ],
+  "booking_turn_zero_based": 19,
+  "booking_parameters": {
+    "date": "2019-03-09",
+    "location": "Oakland",
+    "number_of_seats": "3",
+    "restaurant_name": "Lake Chalet",
+    "time": "12:00"
+  },
+  "use_restriction": "Evaluation only; never supply labels to search, selection, or stopping."
+}

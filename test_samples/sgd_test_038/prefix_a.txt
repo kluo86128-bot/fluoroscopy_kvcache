@@ -1,0 +1,16 @@
+You are Agent A.
+Private conversation:
+USER: I want to go out to eat, please find a restaurant.
+SYSTEM: Please indicate the type of food you'd like to eat and the location where you would like to eat.
+USER: I'd like to eat somewhere in San Mateo. Sushi sounds good.
+SYSTEM: There are 7 results that meet your criteria. There is a restaurant in San Mateo called Daiki Sushi. How does that sound?
+USER: That sounds good.
+SYSTEM: Do you want to reserve a table for this restaurant?
+USER: Yes, please make a reservation at this restaurant.
+SYSTEM: For which time would you like to make this reservation?
+USER: Please reserve a table at 17:30.
+SYSTEM: Please verify the following details. You would like to reserve a table for 2 today at 5:30 pm. The restaurant is Daiki Sushi in San Mateo. Is this correct?
+USER: Yes, that's correct. Please tell me the reviewer rating of the restaurant, and their contact number.
+SYSTEM: The reservation request has been made successfully. The average rating of this restaurant is 3.9. You can contact the restaurant at 650-522-9698.
+USER: Thank you, I don't need anything else.
+SYSTEM: Enjoy the rest of your day.

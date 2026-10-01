@@ -1,0 +1,3 @@
+
+Question: Which city contains the restaurant in the confirmed booking? Reply with only the city name.
+Answer:

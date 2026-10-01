@@ -1,0 +1,688 @@
+{
+  "dialogue_id": "4_00099",
+  "services": [
+    "Restaurants_2"
+  ],
+  "turns": [
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "FindRestaurants"
+              ],
+              "slot": "intent",
+              "values": [
+                "FindRestaurants"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {}
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I want to go out to eat, please find a restaurant."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "location",
+              "values": []
+            },
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "category",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Please indicate the type of food you'd like to eat and the location where you would like to eat."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "Japanese"
+              ],
+              "slot": "category",
+              "values": [
+                "Sushi"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "San Mateo"
+              ],
+              "slot": "location",
+              "values": [
+                "San Mateo"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 45,
+              "slot": "category",
+              "start": 40
+            },
+            {
+              "exclusive_end": 38,
+              "slot": "location",
+              "start": 29
+            }
+          ],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Sushi"
+              ],
+              "location": [
+                "San Mateo"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I'd like to eat somewhere in San Mateo. Sushi sounds good."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Daiki Sushi"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Daiki Sushi"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "San Mateo"
+              ],
+              "slot": "location",
+              "values": [
+                "San Mateo"
+              ]
+            },
+            {
+              "act": "INFORM_COUNT",
+              "canonical_values": [
+                "7"
+              ],
+              "slot": "count",
+              "values": [
+                "7"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "FindRestaurants",
+            "parameters": {
+              "category": "Japanese",
+              "location": "San Mateo"
+            }
+          },
+          "service_results": [
+            {
+              "address": "2075 South El Camino Real",
+              "category": "Japanese",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Mateo",
+              "phone_number": "650-522-9698",
+              "price_range": "moderate",
+              "rating": "3.90",
+              "restaurant_name": "Daiki Sushi"
+            },
+            {
+              "address": "204 2nd Avenue A",
+              "category": "Japanese",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "San Mateo",
+              "phone_number": "650-340-1508",
+              "price_range": "moderate",
+              "rating": "4.40",
+              "restaurant_name": "Dash Japanese Tapas And Sushi"
+            },
+            {
+              "address": "2942 South Norfolk Street",
+              "category": "Japanese",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "San Mateo",
+              "phone_number": "650-212-1272",
+              "price_range": "moderate",
+              "rating": "4.30",
+              "restaurant_name": "Inshou Japanese Cuisine"
+            },
+            {
+              "address": "123 West 25th Avenue",
+              "category": "Japanese",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Mateo",
+              "phone_number": "650-212-1828",
+              "price_range": "moderate",
+              "rating": "4.30",
+              "restaurant_name": "Kaori Sushi And Sake Bar"
+            },
+            {
+              "address": "243 South B Street",
+              "category": "Japanese",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Mateo",
+              "phone_number": "650-389-2482",
+              "price_range": "moderate",
+              "rating": "4.20",
+              "restaurant_name": "Pacific Catch"
+            },
+            {
+              "address": "34 East 4th Avenue",
+              "category": "Japanese",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "San Mateo",
+              "phone_number": "650-570-6609",
+              "price_range": "moderate",
+              "rating": "4.30",
+              "restaurant_name": "Tokie's"
+            },
+            {
+              "address": "104 South El Camino Real",
+              "category": "Japanese",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "San Mateo",
+              "phone_number": "650-558-8239",
+              "price_range": "moderate",
+              "rating": "4.40",
+              "restaurant_name": "Yu Raku"
+            }
+          ],
+          "slots": [
+            {
+              "exclusive_end": 98,
+              "slot": "restaurant_name",
+              "start": 87
+            },
+            {
+              "exclusive_end": 79,
+              "slot": "location",
+              "start": 70
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "There are 7 results that meet your criteria. There is a restaurant in San Mateo called Daiki Sushi. How does that sound?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "SELECT",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Sushi"
+              ],
+              "location": [
+                "San Mateo"
+              ],
+              "restaurant_name": [
+                "Daiki Sushi"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "That sounds good."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "OFFER_INTENT",
+              "canonical_values": [
+                "ReserveRestaurant"
+              ],
+              "slot": "intent",
+              "values": [
+                "ReserveRestaurant"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Do you want to reserve a table for this restaurant?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "AFFIRM_INTENT",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Sushi"
+              ],
+              "location": [
+                "San Mateo"
+              ],
+              "restaurant_name": [
+                "Daiki Sushi"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Yes, please make a reservation at this restaurant."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "time",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "For which time would you like to make this reservation?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "17:30"
+              ],
+              "slot": "time",
+              "values": [
+                "17:30"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 31,
+              "slot": "time",
+              "start": 26
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Sushi"
+              ],
+              "location": [
+                "San Mateo"
+              ],
+              "restaurant_name": [
+                "Daiki Sushi"
+              ],
+              "time": [
+                "17:30"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Please reserve a table at 17:30."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Daiki Sushi"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Daiki Sushi"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "San Mateo"
+              ],
+              "slot": "location",
+              "values": [
+                "San Mateo"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "17:30"
+              ],
+              "slot": "time",
+              "values": [
+                "5:30 pm"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2019-03-01"
+              ],
+              "slot": "date",
+              "values": [
+                "today"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "2"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 124,
+              "slot": "restaurant_name",
+              "start": 113
+            },
+            {
+              "exclusive_end": 137,
+              "slot": "location",
+              "start": 128
+            },
+            {
+              "exclusive_end": 93,
+              "slot": "time",
+              "start": 86
+            },
+            {
+              "exclusive_end": 82,
+              "slot": "date",
+              "start": 77
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Please verify the following details. You would like to reserve a table for 2 today at 5:30 pm. The restaurant is Daiki Sushi in San Mateo. Is this correct?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "phone_number",
+              "values": []
+            },
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "rating",
+              "values": []
+            },
+            {
+              "act": "AFFIRM",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [
+              "phone_number",
+              "rating"
+            ],
+            "slot_values": {
+              "category": [
+                "Sushi"
+              ],
+              "date": [
+                "today"
+              ],
+              "location": [
+                "San Mateo"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "Daiki Sushi"
+              ],
+              "time": [
+                "17:30",
+                "5:30 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Yes, that's correct. Please tell me the reviewer rating of the restaurant, and their contact number."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "650-522-9698"
+              ],
+              "slot": "phone_number",
+              "values": [
+                "650-522-9698"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "3.90"
+              ],
+              "slot": "rating",
+              "values": [
+                "3.9"
+              ]
+            },
+            {
+              "act": "NOTIFY_SUCCESS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "ReserveRestaurant",
+            "parameters": {
+              "date": "2019-03-01",
+              "location": "San Mateo",
+              "number_of_seats": "2",
+              "restaurant_name": "Daiki Sushi",
+              "time": "17:30"
+            }
+          },
+          "service_results": [
+            {
+              "address": "2075 South El Camino Real",
+              "category": "Japanese",
+              "date": "2019-03-01",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "San Mateo",
+              "number_of_seats": "2",
+              "phone_number": "650-522-9698",
+              "price_range": "moderate",
+              "rating": "3.90",
+              "restaurant_name": "Daiki Sushi",
+              "time": "17:30"
+            }
+          ],
+          "slots": [
+            {
+              "exclusive_end": 144,
+              "slot": "phone_number",
+              "start": 132
+            },
+            {
+              "exclusive_end": 96,
+              "slot": "rating",
+              "start": 93
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "The reservation request has been made successfully. The average rating of this restaurant is 3.9. You can contact the restaurant at 650-522-9698."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            },
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Sushi"
+              ],
+              "date": [
+                "today"
+              ],
+              "location": [
+                "San Mateo"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "Daiki Sushi"
+              ],
+              "time": [
+                "17:30",
+                "5:30 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Thank you, I don't need anything else."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Enjoy the rest of your day."
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "task_id": "sgd_test_023",
+  "canonical_answer": "March 12th",
+  "accepted_aliases": [
+    "March 12th",
+    "March 12",
+    "12 March",
+    "12th March"
+  ],
+  "answer_token_ids": [
+    27523,
+    220,
+    16,
+    17,
+    339
+  ],
+  "answer_token_count": 5,
+  "answer_token_pieces": [
+    "March",
+    " ",
+    "1",
+    "2",
+    "th"
+  ],
+  "answer_token_group": "multi_token",
+  "alias_token_ids": {
+    "March 12th": [
+      27523,
+      220,
+      16,
+      17,
+      339
+    ],
+    "March 12": [
+      27523,
+      220,
+      16,
+      17
+    ],
+    "12 March": [
+      16,
+      17,
+      5470
+    ],
+    "12th March": [
+      16,
+      17,
+      339,
+      5470
+    ]
+  },
+  "leading_space_answer_token_ids": [
+    5470,
+    220,
+    16,
+    17,
+    339
+  ],
+  "tokenizer": {
+    "repo_id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "evidence_turns_zero_based": [
+    {
+      "index": 5,
+      "speaker": "SYSTEM",
+      "utterance": "Okay. The reservation should instead be at 6:15 pm on March 12th?"
+    }
+  ],
+  "booking_turn_zero_based": 7,
+  "booking_parameters": {
+    "date": "2019-03-12",
+    "location": "Walnut Creek",
+    "number_of_seats": "2",
+    "restaurant_name": "Vanessa's Bistro 2 Vietnamese Restaurant",
+    "time": "18:15"
+  },
+  "use_restriction": "Evaluation only; never supply labels to search, selection, or stopping."
+}

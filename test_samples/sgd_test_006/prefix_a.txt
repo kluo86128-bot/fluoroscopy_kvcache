@@ -1,0 +1,18 @@
+You are Agent A.
+Private conversation:
+USER: Hi i need a help, One of my friends coming to this city for meet me, I am looking to book a table at a restaurant for him?
+SYSTEM: Sure, I will help you, at what time should i try to book for?
+USER: book at 6:45 pm
+SYSTEM: Which city should i search in? Which restaurant do you want to book a table at?
+USER: Try to book a table at Sakana Sushi in SF
+SYSTEM: please confirm the following details: Booking a table at Sakana Sushi bar & Grill at San francisco on today 6:45 pm, The reservation for 2 people
+USER: no, book for only one people
+SYSTEM: please confirm the following details: The reservation is at 6:45 pm and the reservation for 1 people
+USER: Yes, that's right, what is the address of the restaurant?
+SYSTEM: Congrats, your reservation is successful, Restaurant address is 605 Post Street
+USER: Ok, Could you give their phone number?
+SYSTEM: Sure, Their phone number is 415-775-7644
+USER: thank you very much for your help, That's all i need.
+SYSTEM: you are welcome, Shall i help you with anything more?
+USER: No, thanks, bye
+SYSTEM: Have a wonderful day, bye

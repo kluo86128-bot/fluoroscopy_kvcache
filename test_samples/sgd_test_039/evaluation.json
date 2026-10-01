@@ -1,0 +1,61 @@
+{
+  "task_id": "sgd_test_039",
+  "canonical_answer": "Milpitas",
+  "accepted_aliases": [
+    "Milpitas"
+  ],
+  "answer_token_ids": [
+    59232,
+    79,
+    21226
+  ],
+  "answer_token_count": 3,
+  "answer_token_pieces": [
+    "Mil",
+    "p",
+    "itas"
+  ],
+  "answer_token_group": "multi_token",
+  "alias_token_ids": {
+    "Milpitas": [
+      59232,
+      79,
+      21226
+    ]
+  },
+  "leading_space_answer_token_ids": [
+    10147,
+    79,
+    21226
+  ],
+  "tokenizer": {
+    "repo_id": "Qwen/Qwen3-4B",
+    "revision": "1cfa9a7208912126459214e8b04321603b3df60c"
+  },
+  "evidence_turns_zero_based": [
+    {
+      "index": 4,
+      "speaker": "USER",
+      "utterance": "Milpitas, please."
+    },
+    {
+      "index": 5,
+      "speaker": "SYSTEM",
+      "utterance": "Baja Cactus is one of the good ones in Milpitas."
+    },
+    {
+      "index": 13,
+      "speaker": "SYSTEM",
+      "utterance": "Please confirm: you want to book a table at Baja Cactus in Milpitas on the March 12th. A table for 2 at 11:30 am."
+    }
+  ],
+  "booking_turn_zero_based": 15,
+  "booking_parameters": {
+    "date": "2019-03-12",
+    "location": "Milpitas",
+    "number_of_seats": "2",
+    "restaurant_name": "Baja Cactus",
+    "time": "11:30"
+  },
+  "use_restriction": "Evaluation only; never supply labels to search, selection, or stopping."
+}

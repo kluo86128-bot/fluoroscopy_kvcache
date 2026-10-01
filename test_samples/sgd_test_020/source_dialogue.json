@@ -1,0 +1,853 @@
+{
+  "dialogue_id": "4_00102",
+  "services": [
+    "Restaurants_2"
+  ],
+  "turns": [
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "FindRestaurants"
+              ],
+              "slot": "intent",
+              "values": [
+                "FindRestaurants"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {}
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "My best friend is in town and I'd like to take him out for a meal. Please recommend some restaurants for me."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "location",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Which city should I search in?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "Moraga"
+              ],
+              "slot": "location",
+              "values": [
+                "Moraga"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 39,
+              "slot": "location",
+              "start": 33
+            }
+          ],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "location": [
+                "Moraga"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Please search for restaurants in Moraga."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "category",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Do you have a particular cuisine in mind?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "Italian"
+              ],
+              "slot": "category",
+              "values": [
+                "Pizza and Pasta"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 36,
+              "slot": "category",
+              "start": 21
+            }
+          ],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Pizza and Pasta"
+              ],
+              "location": [
+                "Moraga"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "A restaurant serving Pizza and Pasta works for me."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "La Finestra Ristorante"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "La Finestra Ristorante"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Moraga"
+              ],
+              "slot": "location",
+              "values": [
+                "Moraga"
+              ]
+            },
+            {
+              "act": "INFORM_COUNT",
+              "canonical_values": [
+                "2"
+              ],
+              "slot": "count",
+              "values": [
+                "2"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "FindRestaurants",
+            "parameters": {
+              "category": "Italian",
+              "location": "Moraga"
+            }
+          },
+          "service_results": [
+            {
+              "address": "1419 Moraga Way",
+              "category": "Italian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "Moraga",
+              "phone_number": "925-376-4444",
+              "price_range": "moderate",
+              "rating": "4.40",
+              "restaurant_name": "La Finestra Ristorante"
+            },
+            {
+              "address": "360 Park Street",
+              "category": "Italian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "Moraga",
+              "phone_number": "925-377-7662",
+              "price_range": "moderate",
+              "rating": "4.20",
+              "restaurant_name": "Ristorante Amoroma"
+            }
+          ],
+          "slots": [
+            {
+              "exclusive_end": 90,
+              "slot": "restaurant_name",
+              "start": 68
+            },
+            {
+              "exclusive_end": 101,
+              "slot": "location",
+              "start": 95
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "I found 2 nice restaurants that you may be interested in. How about La Finestra Ristorante, in Moraga?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST_ALTS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Pizza and Pasta"
+              ],
+              "location": [
+                "Moraga"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I've dined at La Finestra Ristorante several times and would like a change. You mentioned 2 restaurants. What is the other recommendation?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Ristorante Amoroma"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Ristorante Amoroma"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Moraga"
+              ],
+              "slot": "location",
+              "values": [
+                "Moraga"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 18,
+              "slot": "restaurant_name",
+              "start": 0
+            },
+            {
+              "exclusive_end": 60,
+              "slot": "location",
+              "start": 54
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Ristorante Amoroma is also another nice Restaurant in Moraga"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "address",
+              "values": []
+            },
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "phone_number",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [
+              "address",
+              "phone_number"
+            ],
+            "slot_values": {
+              "category": [
+                "Pizza and Pasta"
+              ],
+              "location": [
+                "Moraga"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Please give me their address and phone number."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "360 Park Street"
+              ],
+              "slot": "address",
+              "values": [
+                "360 Park Street"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "925-377-7662"
+              ],
+              "slot": "phone_number",
+              "values": [
+                "925-377-7662"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 27,
+              "slot": "address",
+              "start": 12
+            },
+            {
+              "exclusive_end": 66,
+              "slot": "phone_number",
+              "start": 54
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "They are at 360 Park Street, and you can call them on 925-377-7662."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "SELECT",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Pizza and Pasta"
+              ],
+              "location": [
+                "Moraga"
+              ],
+              "restaurant_name": [
+                "Ristorante Amoroma"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Sounds good to me."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQ_MORE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Will there be anything else?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "2"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "2"
+              ]
+            },
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "ReserveRestaurant"
+              ],
+              "slot": "intent",
+              "values": [
+                "ReserveRestaurant"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Pizza and Pasta"
+              ],
+              "location": [
+                "Moraga"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "Ristorante Amoroma"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Please help me book a table for two at the restaurant."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "time",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "What time would you like to reserve it for?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "13:00"
+              ],
+              "slot": "time",
+              "values": [
+                "afternoon 1"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 41,
+              "slot": "time",
+              "start": 30
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Pizza and Pasta"
+              ],
+              "location": [
+                "Moraga"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "Ristorante Amoroma"
+              ],
+              "time": [
+                "afternoon 1"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "The reservation should be for afternoon 1."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Ristorante Amoroma"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Ristorante Amoroma"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Moraga"
+              ],
+              "slot": "location",
+              "values": [
+                "Moraga"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "13:00"
+              ],
+              "slot": "time",
+              "values": [
+                "1 pm"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2019-03-01"
+              ],
+              "slot": "date",
+              "values": [
+                "today"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "2"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 106,
+              "slot": "restaurant_name",
+              "start": 88
+            },
+            {
+              "exclusive_end": 116,
+              "slot": "location",
+              "start": 110
+            },
+            {
+              "exclusive_end": 83,
+              "slot": "time",
+              "start": 79
+            },
+            {
+              "exclusive_end": 75,
+              "slot": "date",
+              "start": 70
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Let me see if I got everything correctly: Reserving a table for 2 for today at 1 pm, at Ristorante Amoroma in Moraga."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "AFFIRM",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Pizza and Pasta"
+              ],
+              "date": [
+                "today"
+              ],
+              "location": [
+                "Moraga"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "Ristorante Amoroma"
+              ],
+              "time": [
+                "1 pm",
+                "afternoon 1"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "That is correct."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "NOTIFY_SUCCESS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "ReserveRestaurant",
+            "parameters": {
+              "date": "2019-03-01",
+              "location": "Moraga",
+              "number_of_seats": "2",
+              "restaurant_name": "Ristorante Amoroma",
+              "time": "13:00"
+            }
+          },
+          "service_results": [
+            {
+              "address": "360 Park Street",
+              "category": "Italian",
+              "date": "2019-03-01",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "Moraga",
+              "number_of_seats": "2",
+              "phone_number": "925-377-7662",
+              "price_range": "moderate",
+              "rating": "4.20",
+              "restaurant_name": "Ristorante Amoroma",
+              "time": "13:00"
+            }
+          ],
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "I have successfully made your reservation."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Pizza and Pasta"
+              ],
+              "date": [
+                "today"
+              ],
+              "location": [
+                "Moraga"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "Ristorante Amoroma"
+              ],
+              "time": [
+                "1 pm",
+                "afternoon 1"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Thank you very much. You've been very helpful."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQ_MORE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Do you need help with anything else?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "NEGATE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            },
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "NONE",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Pizza and Pasta"
+              ],
+              "date": [
+                "today"
+              ],
+              "location": [
+                "Moraga"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "Ristorante Amoroma"
+              ],
+              "time": [
+                "1 pm",
+                "afternoon 1"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "No. Thank you very much."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Have a great day."
+    }
+  ]
+}

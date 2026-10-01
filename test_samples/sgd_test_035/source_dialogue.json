@@ -1,0 +1,842 @@
+{
+  "dialogue_id": "4_00075",
+  "services": [
+    "Restaurants_2"
+  ],
+  "turns": [
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "American"
+              ],
+              "slot": "category",
+              "values": [
+                "Diner"
+              ]
+            },
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "FindRestaurants"
+              ],
+              "slot": "intent",
+              "values": [
+                "FindRestaurants"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 91,
+              "slot": "category",
+              "start": 86
+            }
+          ],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Diner"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "We're famished and would like to find some place to eat, preferably something serving Diner."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "location",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Which city should I search in?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "San Carlos"
+              ],
+              "slot": "location",
+              "values": [
+                "San Carlos"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 40,
+              "slot": "location",
+              "start": 30
+            }
+          ],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Diner"
+              ],
+              "location": [
+                "San Carlos"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Please look for restaurant in San Carlos."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Izzy's San Carlos"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Izzy's San Carlos"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "San Carlos"
+              ],
+              "slot": "location",
+              "values": [
+                "San Carlos"
+              ]
+            },
+            {
+              "act": "INFORM_COUNT",
+              "canonical_values": [
+                "4"
+              ],
+              "slot": "count",
+              "values": [
+                "4"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "FindRestaurants",
+            "parameters": {
+              "category": "American",
+              "location": "San Carlos"
+            }
+          },
+          "service_results": [
+            {
+              "address": "525 Skyway Road",
+              "category": "American",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "San Carlos",
+              "phone_number": "650-654-2822",
+              "price_range": "moderate",
+              "rating": "4.20",
+              "restaurant_name": "Izzy's San Carlos"
+            },
+            {
+              "address": "727 Laurel Street",
+              "category": "American",
+              "has_seating_outdoors": "True",
+              "has_vegetarian_options": "True",
+              "location": "San Carlos",
+              "phone_number": "650-597-3108",
+              "price_range": "moderate",
+              "rating": "3.90",
+              "restaurant_name": "Piacere Restaurant"
+            },
+            {
+              "address": "782 Laurel Street",
+              "category": "American",
+              "has_seating_outdoors": "True",
+              "has_vegetarian_options": "False",
+              "location": "San Carlos",
+              "phone_number": "650-610-0438",
+              "price_range": "moderate",
+              "rating": "4.50",
+              "restaurant_name": "The Cask Wine Bar"
+            },
+            {
+              "address": "1748 El Camino Real",
+              "category": "American",
+              "has_seating_outdoors": "True",
+              "has_vegetarian_options": "False",
+              "location": "San Carlos",
+              "phone_number": "650-598-9740",
+              "price_range": "moderate",
+              "rating": "4.20",
+              "restaurant_name": "The Office"
+            }
+          ],
+          "slots": [
+            {
+              "exclusive_end": 93,
+              "slot": "restaurant_name",
+              "start": 76
+            },
+            {
+              "exclusive_end": 68,
+              "slot": "location",
+              "start": 58
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Among the 4 suitable restaurants I found is a nice one in San Carlos called Izzy's San Carlos."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST_ALTS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Diner"
+              ],
+              "location": [
+                "San Carlos"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Sounds interesting, but let me hear your other restaurant recommendations."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Piacere Restaurant"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Piacere Restaurant"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "San Carlos"
+              ],
+              "slot": "location",
+              "values": [
+                "San Carlos"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 59,
+              "slot": "restaurant_name",
+              "start": 41
+            },
+            {
+              "exclusive_end": 37,
+              "slot": "location",
+              "start": 27
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Another nice restaurant in San Carlos is Piacere Restaurant."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST_ALTS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Diner"
+              ],
+              "location": [
+                "San Carlos"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Thanks. Please give me more restaurant recommendations."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "The Cask Wine Bar"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "The Cask Wine Bar"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "San Carlos"
+              ],
+              "slot": "location",
+              "values": [
+                "San Carlos"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 70,
+              "slot": "restaurant_name",
+              "start": 53
+            },
+            {
+              "exclusive_end": 84,
+              "slot": "location",
+              "start": 74
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Okay, the other nice restaurant I would recommend is The Cask Wine Bar in San Carlos."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "has_seating_outdoors",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [
+              "has_seating_outdoors"
+            ],
+            "slot_values": {
+              "category": [
+                "Diner"
+              ],
+              "location": [
+                "San Carlos"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Please find out whether they have outdoor seating."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "True"
+              ],
+              "slot": "has_seating_outdoors",
+              "values": [
+                "True"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Yes, they offer outdoor seating."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "ReserveRestaurant"
+              ],
+              "slot": "intent",
+              "values": [
+                "ReserveRestaurant"
+              ]
+            },
+            {
+              "act": "SELECT",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Diner"
+              ],
+              "location": [
+                "San Carlos"
+              ],
+              "restaurant_name": [
+                "The Cask Wine Bar"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Sounds perfect. Please book me a table."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "time",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "For what time should the reservation be?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "17:00"
+              ],
+              "slot": "time",
+              "values": [
+                "17:00"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 32,
+              "slot": "time",
+              "start": 27
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Diner"
+              ],
+              "location": [
+                "San Carlos"
+              ],
+              "restaurant_name": [
+                "The Cask Wine Bar"
+              ],
+              "time": [
+                "17:00"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Please reserve a table for 17:00."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "The Cask Wine Bar"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "The Cask Wine Bar"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "San Carlos"
+              ],
+              "slot": "location",
+              "values": [
+                "San Carlos"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "17:00"
+              ],
+              "slot": "time",
+              "values": [
+                "5 pm"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2019-03-01"
+              ],
+              "slot": "date",
+              "values": [
+                "today"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "2"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 102,
+              "slot": "restaurant_name",
+              "start": 85
+            },
+            {
+              "exclusive_end": 116,
+              "slot": "location",
+              "start": 106
+            },
+            {
+              "exclusive_end": 56,
+              "slot": "time",
+              "start": 52
+            },
+            {
+              "exclusive_end": 62,
+              "slot": "date",
+              "start": 57
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Please confirm that you're making a reservation for 5 pm today, for a party of 2, at The Cask Wine Bar in San Carlos."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "has_vegetarian_options",
+              "values": []
+            },
+            {
+              "act": "AFFIRM",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [
+              "has_vegetarian_options"
+            ],
+            "slot_values": {
+              "category": [
+                "Diner"
+              ],
+              "date": [
+                "today"
+              ],
+              "location": [
+                "San Carlos"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "The Cask Wine Bar"
+              ],
+              "time": [
+                "17:00",
+                "5 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Yes, that's correct. Please find out whether they have vegetarian options on the menu."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "False"
+              ],
+              "slot": "has_vegetarian_options",
+              "values": [
+                "False"
+              ]
+            },
+            {
+              "act": "NOTIFY_SUCCESS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "ReserveRestaurant",
+            "parameters": {
+              "date": "2019-03-01",
+              "location": "San Carlos",
+              "number_of_seats": "2",
+              "restaurant_name": "The Cask Wine Bar",
+              "time": "17:00"
+            }
+          },
+          "service_results": [
+            {
+              "address": "782 Laurel Street",
+              "category": "American",
+              "date": "2019-03-01",
+              "has_seating_outdoors": "True",
+              "has_vegetarian_options": "False",
+              "location": "San Carlos",
+              "number_of_seats": "2",
+              "phone_number": "650-610-0438",
+              "price_range": "moderate",
+              "rating": "4.50",
+              "restaurant_name": "The Cask Wine Bar",
+              "time": "17:00"
+            }
+          ],
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "I have successfully made your reservation. No, there are no vegetarian options."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Diner"
+              ],
+              "date": [
+                "today"
+              ],
+              "location": [
+                "San Carlos"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "The Cask Wine Bar"
+              ],
+              "time": [
+                "17:00",
+                "5 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Thank you very much."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQ_MORE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Is there anything else I can help you with?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "NEGATE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            },
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "NONE",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Diner"
+              ],
+              "date": [
+                "today"
+              ],
+              "location": [
+                "San Carlos"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "The Cask Wine Bar"
+              ],
+              "time": [
+                "17:00",
+                "5 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "No. Thank you very much. You've been very helpful."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Have a great day."
+    }
+  ]
+}

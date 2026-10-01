@@ -1,0 +1,20 @@
+You are Agent A.
+Private conversation:
+USER: I would like to eat in a restaurant.
+SYSTEM: Do you also have a specific food request?
+USER: Yes, I would love to try Himalayan
+SYSTEM: Where do I have to look?
+USER: Look in the San Rafael area.
+SYSTEM: There 1 restaurant called Napoli Pizza-taste of the Himalayas and it's in San Rafael.
+USER: Do they serve vegetarians food?
+SYSTEM: No, I'm afraid they don't.
+USER: It's fine with me. Get a table for three people at 13:00
+SYSTEM: Okay, confirm me the following before I go on. I'll book a table at Napoli Pizza-taste of the himalayas in San Rafael for 3 people. The table is for today at 1 pm
+USER: Yes, you can go on now.
+SYSTEM: I apologize, the reservation is not possible. Can I assist you in some other procedure?
+USER: Try to make the reservation at evening 6.
+SYSTEM: Okay, read the specifics and tell me if they are correct. You want a table at Napoli Pizza-taste of The Himalayas in San Rafael for 3 people. You want to go today at 6 pm.
+USER: Yes, it's correct. Do you know if the restaurant is pricey? Can you tell me the address?
+SYSTEM: The reservation is confirmed. The location is 869 4th street and it is classified as a moderate restaurant.
+USER: That's great, bye for now.
+SYSTEM: Enjoy your evening.

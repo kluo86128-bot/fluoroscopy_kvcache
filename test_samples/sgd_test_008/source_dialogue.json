@@ -1,0 +1,1023 @@
+{
+  "dialogue_id": "4_00065",
+  "services": [
+    "Restaurants_2"
+  ],
+  "turns": [
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "FindRestaurants"
+              ],
+              "slot": "intent",
+              "values": [
+                "FindRestaurants"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {}
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Can you help me find a place to eat?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "category",
+              "values": []
+            },
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "location",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "What type of food are you looking for and where would you like me to look?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "Italian"
+              ],
+              "slot": "category",
+              "values": [
+                "italian"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "Berkeley"
+              ],
+              "slot": "location",
+              "values": [
+                "Berkeley"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "moderate"
+              ],
+              "slot": "price_range",
+              "values": [
+                "moderate"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 39,
+              "slot": "category",
+              "start": 32
+            },
+            {
+              "exclusive_end": 63,
+              "slot": "location",
+              "start": 55
+            }
+          ],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "italian"
+              ],
+              "location": [
+                "Berkeley"
+              ],
+              "price_range": [
+                "moderate"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Please find some average priced italian restaurants in Berkeley."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Cugini Restaurant"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Cugini Restaurant"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Berkeley"
+              ],
+              "slot": "location",
+              "values": [
+                "Berkeley"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "FindRestaurants",
+            "parameters": {
+              "category": "Italian",
+              "location": "Berkeley",
+              "price_range": "moderate"
+            }
+          },
+          "service_results": [
+            {
+              "address": "1556 Solano Avenue",
+              "category": "Italian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "Berkeley",
+              "phone_number": "510-558-9000",
+              "price_range": "moderate",
+              "rating": "4.20",
+              "restaurant_name": "Cugini Restaurant"
+            },
+            {
+              "address": "2635 Ashby Avenue",
+              "category": "Italian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "Berkeley",
+              "phone_number": "510-838-1131",
+              "price_range": "moderate",
+              "rating": "4.30",
+              "restaurant_name": "Donato & Co."
+            },
+            {
+              "address": "2930 College Avenue",
+              "category": "Italian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "Berkeley",
+              "phone_number": "510-644-3848",
+              "price_range": "moderate",
+              "rating": "3.40",
+              "restaurant_name": "Filippo's Berkeley Elmwood"
+            },
+            {
+              "address": "2420 Shattuck Avenue",
+              "category": "Italian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "Berkeley",
+              "phone_number": "510-647-9963",
+              "price_range": "moderate",
+              "rating": "4.30",
+              "restaurant_name": "Gio's Pizza And Bocce"
+            },
+            {
+              "address": "1400 Shattuck Avenue",
+              "category": "Italian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "Berkeley",
+              "phone_number": "510-843-3745",
+              "price_range": "moderate",
+              "rating": "4.50",
+              "restaurant_name": "Lo Coco's Restaurant"
+            },
+            {
+              "address": "2016 Shattuck Avenue",
+              "category": "Italian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "Berkeley",
+              "phone_number": "510-225-9467",
+              "price_range": "moderate",
+              "rating": "4.50",
+              "restaurant_name": "Lucia's Berkeley"
+            },
+            {
+              "address": "800 Heinz Avenue",
+              "category": "Italian",
+              "has_seating_outdoors": "True",
+              "has_vegetarian_options": "False",
+              "location": "Berkeley",
+              "phone_number": "510-649-5075",
+              "price_range": "moderate",
+              "rating": "4.50",
+              "restaurant_name": "Riva Cucina"
+            },
+            {
+              "address": "2993 College Avenue",
+              "category": "Italian",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "False",
+              "location": "Berkeley",
+              "phone_number": "510-704-1474",
+              "price_range": "moderate",
+              "rating": "4.20",
+              "restaurant_name": "Trattoria La Siciliana"
+            }
+          ],
+          "slots": [
+            {
+              "exclusive_end": 32,
+              "slot": "restaurant_name",
+              "start": 15
+            },
+            {
+              "exclusive_end": 44,
+              "slot": "location",
+              "start": 36
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "I have located Cugini Restaurant in Berkeley."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST_ALTS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "italian"
+              ],
+              "location": [
+                "Berkeley"
+              ],
+              "price_range": [
+                "moderate"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Can you recommend other ones?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Donato & Co."
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Donato & Co."
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Berkeley"
+              ],
+              "slot": "location",
+              "values": [
+                "Berkeley"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 12,
+              "slot": "restaurant_name",
+              "start": 0
+            },
+            {
+              "exclusive_end": 53,
+              "slot": "location",
+              "start": 45
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Donato & Co. is a nice restaurant located in Berkeley."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "1"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "1"
+              ]
+            },
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "ReserveRestaurant"
+              ],
+              "slot": "intent",
+              "values": [
+                "ReserveRestaurant"
+              ]
+            },
+            {
+              "act": "SELECT",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "italian"
+              ],
+              "location": [
+                "Berkeley"
+              ],
+              "number_of_seats": [
+                "1"
+              ],
+              "price_range": [
+                "moderate"
+              ],
+              "restaurant_name": [
+                "Donato & Co."
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Yes, that sounds good. Can you please book a table for one?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "time",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "What time would you like?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "12:15"
+              ],
+              "slot": "time",
+              "values": [
+                "12:15 in the afternoon"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 54,
+              "slot": "time",
+              "start": 32
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "italian"
+              ],
+              "location": [
+                "Berkeley"
+              ],
+              "number_of_seats": [
+                "1"
+              ],
+              "price_range": [
+                "moderate"
+              ],
+              "restaurant_name": [
+                "Donato & Co."
+              ],
+              "time": [
+                "12:15 in the afternoon"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Please make the reservation for 12:15 in the afternoon."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Donato & Co."
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "Donato & co."
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Berkeley"
+              ],
+              "slot": "location",
+              "values": [
+                "Berkeley"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "12:15"
+              ],
+              "slot": "time",
+              "values": [
+                "12:15 pm"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2019-03-01"
+              ],
+              "slot": "date",
+              "values": [
+                "today"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "1"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "1"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 85,
+              "slot": "restaurant_name",
+              "start": 73
+            },
+            {
+              "exclusive_end": 97,
+              "slot": "location",
+              "start": 89
+            },
+            {
+              "exclusive_end": 63,
+              "slot": "time",
+              "start": 55
+            },
+            {
+              "exclusive_end": 51,
+              "slot": "date",
+              "start": 46
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Please confirm the following: Booking a table today at 12:15 pm for 1 at Donato & co. in Berkeley."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "4"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "4"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "12:30"
+              ],
+              "slot": "time",
+              "values": [
+                "12:30 in the afternoon"
+              ]
+            },
+            {
+              "act": "NEGATE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 105,
+              "slot": "time",
+              "start": 83
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "italian"
+              ],
+              "location": [
+                "Berkeley"
+              ],
+              "number_of_seats": [
+                "4"
+              ],
+              "price_range": [
+                "moderate"
+              ],
+              "restaurant_name": [
+                "Donato & Co.",
+                "Donato & co."
+              ],
+              "time": [
+                "12:30 in the afternoon"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "No, the table needs to be for a party of four, and please make the reservation for 12:30 in the afternoon."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "12:30"
+              ],
+              "slot": "time",
+              "values": [
+                "12:30 pm"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "4"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "4"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 68,
+              "slot": "time",
+              "start": 60
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Please confirm the following details: The reservation is at 12:30 pm and for 4 people."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "2019-03-05"
+              ],
+              "slot": "date",
+              "values": [
+                "5th of March"
+              ]
+            },
+            {
+              "act": "NEGATE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 47,
+              "slot": "date",
+              "start": 35
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "italian"
+              ],
+              "date": [
+                "5th of March"
+              ],
+              "location": [
+                "Berkeley"
+              ],
+              "number_of_seats": [
+                "4"
+              ],
+              "price_range": [
+                "moderate"
+              ],
+              "restaurant_name": [
+                "Donato & Co.",
+                "Donato & co."
+              ],
+              "time": [
+                "12:30 in the afternoon",
+                "12:30 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "No, please look for a table on the 5th of March."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "12:30"
+              ],
+              "slot": "time",
+              "values": [
+                "12:30 pm"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2019-03-05"
+              ],
+              "slot": "date",
+              "values": [
+                "next Tuesday"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 81,
+              "slot": "time",
+              "start": 73
+            },
+            {
+              "exclusive_end": 69,
+              "slot": "date",
+              "start": 57
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Please confirm the following details: The reservation is next Tuesday at 12:30 pm."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "rating",
+              "values": []
+            },
+            {
+              "act": "AFFIRM",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [
+              "rating"
+            ],
+            "slot_values": {
+              "category": [
+                "italian"
+              ],
+              "date": [
+                "5th of March",
+                "next Tuesday"
+              ],
+              "location": [
+                "Berkeley"
+              ],
+              "number_of_seats": [
+                "4"
+              ],
+              "price_range": [
+                "moderate"
+              ],
+              "restaurant_name": [
+                "Donato & Co.",
+                "Donato & co."
+              ],
+              "time": [
+                "12:30 in the afternoon",
+                "12:30 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Yes, that is correct. What is the restaurant's rating?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "4.30"
+              ],
+              "slot": "rating",
+              "values": [
+                "4.3"
+              ]
+            },
+            {
+              "act": "NOTIFY_SUCCESS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "ReserveRestaurant",
+            "parameters": {
+              "date": "2019-03-05",
+              "location": "Berkeley",
+              "number_of_seats": "4",
+              "restaurant_name": "Donato & Co.",
+              "time": "12:30"
+            }
+          },
+          "service_results": [
+            {
+              "address": "2635 Ashby Avenue",
+              "category": "Italian",
+              "date": "2019-03-05",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "Berkeley",
+              "number_of_seats": "4",
+              "phone_number": "510-838-1131",
+              "price_range": "moderate",
+              "rating": "4.30",
+              "restaurant_name": "Donato & Co.",
+              "time": "12:30"
+            }
+          ],
+          "slots": [
+            {
+              "exclusive_end": 79,
+              "slot": "rating",
+              "start": 76
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Your reservation is successful. The restaurant has an average rating around 4.3."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "italian"
+              ],
+              "date": [
+                "5th of March",
+                "next Tuesday"
+              ],
+              "location": [
+                "Berkeley"
+              ],
+              "number_of_seats": [
+                "4"
+              ],
+              "price_range": [
+                "moderate"
+              ],
+              "restaurant_name": [
+                "Donato & Co.",
+                "Donato & co."
+              ],
+              "time": [
+                "12:30 in the afternoon",
+                "12:30 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Thank you very much."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQ_MORE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Is there anything else that I can help you with?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "NEGATE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            },
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "NONE",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "italian"
+              ],
+              "date": [
+                "5th of March",
+                "next Tuesday"
+              ],
+              "location": [
+                "Berkeley"
+              ],
+              "number_of_seats": [
+                "4"
+              ],
+              "price_range": [
+                "moderate"
+              ],
+              "restaurant_name": [
+                "Donato & Co.",
+                "Donato & co."
+              ],
+              "time": [
+                "12:30 in the afternoon",
+                "12:30 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "No thank you."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Have a nice day."
+    }
+  ]
+}

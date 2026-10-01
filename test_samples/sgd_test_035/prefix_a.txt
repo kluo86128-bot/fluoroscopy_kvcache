@@ -1,0 +1,22 @@
+You are Agent A.
+Private conversation:
+USER: We're famished and would like to find some place to eat, preferably something serving Diner.
+SYSTEM: Which city should I search in?
+USER: Please look for restaurant in San Carlos.
+SYSTEM: Among the 4 suitable restaurants I found is a nice one in San Carlos called Izzy's San Carlos.
+USER: Sounds interesting, but let me hear your other restaurant recommendations.
+SYSTEM: Another nice restaurant in San Carlos is Piacere Restaurant.
+USER: Thanks. Please give me more restaurant recommendations.
+SYSTEM: Okay, the other nice restaurant I would recommend is The Cask Wine Bar in San Carlos.
+USER: Please find out whether they have outdoor seating.
+SYSTEM: Yes, they offer outdoor seating.
+USER: Sounds perfect. Please book me a table.
+SYSTEM: For what time should the reservation be?
+USER: Please reserve a table for 17:00.
+SYSTEM: Please confirm that you're making a reservation for 5 pm today, for a party of 2, at The Cask Wine Bar in San Carlos.
+USER: Yes, that's correct. Please find out whether they have vegetarian options on the menu.
+SYSTEM: I have successfully made your reservation. No, there are no vegetarian options.
+USER: Thank you very much.
+SYSTEM: Is there anything else I can help you with?
+USER: No. Thank you very much. You've been very helpful.
+SYSTEM: Have a great day.

@@ -1,0 +1,22 @@
+You are Agent A.
+Private conversation:
+USER: I'm kinda hungry. Can you help me find a place where I can eat?
+SYSTEM: What kind of food do you feel like eating?
+USER: Something Latin American.
+SYSTEM: In what location?
+USER: Milpitas, please.
+SYSTEM: Baja Cactus is one of the good ones in Milpitas.
+USER: Do they have vegetarian options?
+SYSTEM: They have a few good ones, yes.
+USER: Do they have outdoor seating?
+SYSTEM: Unfortunately, they don't.
+USER: I think that's good for me. Can you book me a table for the 12th?
+SYSTEM: Around what time?
+USER: At 11:30 am, if possible.
+SYSTEM: Please confirm: you want to book a table at Baja Cactus in Milpitas on the March 12th. A table for 2 at 11:30 am.
+USER: That works. What's their user rating and address?
+SYSTEM: Your reservation was successful. They have a 4.3 rating and are located on 338 South Main Street.
+USER: Thanks a lot.
+SYSTEM: Can I assist you in anything else?
+USER: No, that's all. Thank you.
+SYSTEM: Have a great day.

@@ -1,0 +1,20 @@
+You are Agent A.
+Private conversation:
+USER: Could you help me find places to eat that serves breakfast?
+SYSTEM: Any preferred location you would like to visit?
+USER: I would prefer one that is located in Vacaville.
+SYSTEM: I have found 2 restaurants, one of which is Los Reyes Restaurante Y Cantina located in Vacaville.
+USER: That sounds great.
+SYSTEM: Do you need me to reserve a table for you?
+USER: Yes, please do so.
+SYSTEM: At what time would you like to reserve the table for?
+USER: Please make the reservation at 17:15, thanks.
+SYSTEM: Please confirm your reservation for 2 at Los Reyes Restaurante Y Cantina at Vacaville today at 5:15 pm.
+USER: Could you change the date to next Friday instead?
+SYSTEM: Please confirm your reservation next Friday at 5:15 pm.
+USER: That's fine. May I have their address please?
+SYSTEM: They are located at 21 Town Square Place # A. Unfortunately I was not able to make the reservation. Would you like to reserve a table of 2 next Friday at 5:30 pm at Los Reyes Restaurante Y Cantina instead?
+USER: Sure, that is fine with me.
+SYSTEM: Your reservation has been made.
+USER: Thanks a bunch, that's all I need.
+SYSTEM: Sure, have a great day ahead!

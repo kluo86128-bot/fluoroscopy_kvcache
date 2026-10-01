@@ -1,0 +1,16 @@
+You are Agent A.
+Private conversation:
+USER: I'd like to find a place to eat in Santa Rosa. Can you find a restaurant that serves Barbecue?
+SYSTEM: I've found 9 results. How about Belly Left Coast Kitchen & Taproom in Santa Rosa?
+USER: Do you have other options? How about in Newark?
+SYSTEM: I've found 1 result. How about Chuck E. Cheese's in Newark?
+USER: Yes, sounds good.
+SYSTEM: Would you like to reserve a table?
+USER: Yes, please. I'd like a table on March 12th.
+SYSTEM: What time would you like the reservation?
+USER: I'd like to book a table for one at quarter past 11 in the morning.
+SYSTEM: So you'd like to book a table for 1 at Chuck E. Cheese's in Newark? The reservation is at 11:15 am on March 12th.
+USER: Yes, sounds good. What's the address?
+SYSTEM: Your reservation has been confirmed. The address is 39839 Mowry School Road.
+USER: Thank you, that's all I needed.
+SYSTEM: Have a nice day.

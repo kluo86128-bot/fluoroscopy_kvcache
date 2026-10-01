@@ -1,0 +1,906 @@
+{
+  "dialogue_id": "4_00073",
+  "services": [
+    "Restaurants_2"
+  ],
+  "turns": [
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "FindRestaurants"
+              ],
+              "slot": "intent",
+              "values": [
+                "FindRestaurants"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {}
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "I am hungry!"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "location",
+              "values": []
+            },
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "category",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Where should I search? What kind of food would you like?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "American"
+              ],
+              "slot": "category",
+              "values": [
+                "Diner"
+              ]
+            },
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "Lafayette"
+              ],
+              "slot": "location",
+              "values": [
+                "Lafayette"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 15,
+              "slot": "category",
+              "start": 10
+            },
+            {
+              "exclusive_end": 54,
+              "slot": "location",
+              "start": 45
+            }
+          ],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Diner"
+              ],
+              "location": [
+                "Lafayette"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "How about Diner style food. Please search in Lafayette."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "American Kitchen"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "American Kitchen"
+              ]
+            },
+            {
+              "act": "OFFER",
+              "canonical_values": [
+                "Lafayette"
+              ],
+              "slot": "location",
+              "values": [
+                "Lafayette"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "FindRestaurants",
+            "parameters": {
+              "category": "American",
+              "location": "Lafayette"
+            }
+          },
+          "service_results": [
+            {
+              "address": "71 Lafayette Circle",
+              "category": "American",
+              "has_seating_outdoors": "True",
+              "has_vegetarian_options": "False",
+              "location": "Lafayette",
+              "phone_number": "925-385-0352",
+              "price_range": "moderate",
+              "rating": "3.90",
+              "restaurant_name": "American Kitchen"
+            },
+            {
+              "address": "3287 Mount Diablo Boulevard",
+              "category": "American",
+              "has_seating_outdoors": "False",
+              "has_vegetarian_options": "True",
+              "location": "Lafayette",
+              "phone_number": "925-284-1621",
+              "price_range": "pricey",
+              "rating": "4.00",
+              "restaurant_name": "Duck Club Restaurant"
+            },
+            {
+              "address": "3524 Mount Diablo Boulevard",
+              "category": "American",
+              "has_seating_outdoors": "True",
+              "has_vegetarian_options": "False",
+              "location": "Lafayette",
+              "phone_number": "925-284-4422",
+              "price_range": "moderate",
+              "rating": "4.10",
+              "restaurant_name": "Metro Lafayette"
+            },
+            {
+              "address": "32 Lafayette Circle",
+              "category": "American",
+              "has_seating_outdoors": "True",
+              "has_vegetarian_options": "False",
+              "location": "Lafayette",
+              "phone_number": "925-298-5915",
+              "price_range": "moderate",
+              "rating": "4.00",
+              "restaurant_name": "The Cooperage American Grille"
+            },
+            {
+              "address": "3406 Mount Diablo Boulevard",
+              "category": "American",
+              "has_seating_outdoors": "True",
+              "has_vegetarian_options": "False",
+              "location": "Lafayette",
+              "phone_number": "925-900-8861",
+              "price_range": "moderate",
+              "rating": "4.50",
+              "restaurant_name": "The Hideout Kitchen & Cafe"
+            }
+          ],
+          "slots": [
+            {
+              "exclusive_end": 16,
+              "slot": "restaurant_name",
+              "start": 0
+            },
+            {
+              "exclusive_end": 50,
+              "slot": "location",
+              "start": 41
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "American Kitchen is great and located in Lafayette."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "SELECT",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "FindRestaurants",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Diner"
+              ],
+              "location": [
+                "Lafayette"
+              ],
+              "restaurant_name": [
+                "American Kitchen"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Yes, that is great."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "OFFER_INTENT",
+              "canonical_values": [
+                "ReserveRestaurant"
+              ],
+              "slot": "intent",
+              "values": [
+                "ReserveRestaurant"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Do want to reserve a table?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "AFFIRM_INTENT",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Diner"
+              ],
+              "location": [
+                "Lafayette"
+              ],
+              "restaurant_name": [
+                "American Kitchen"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Yes, please do."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [],
+              "slot": "time",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "What time should I book the table for?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "20:00"
+              ],
+              "slot": "time",
+              "values": [
+                "8 in the night"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 26,
+              "slot": "time",
+              "start": 12
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Diner"
+              ],
+              "location": [
+                "Lafayette"
+              ],
+              "restaurant_name": [
+                "American Kitchen"
+              ],
+              "time": [
+                "8 in the night"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Make it for 8 in the night."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "American Kitchen"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "American Kitchen"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Lafayette"
+              ],
+              "slot": "location",
+              "values": [
+                "Lafayette"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "20:00"
+              ],
+              "slot": "time",
+              "values": [
+                "8 pm"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2019-03-01"
+              ],
+              "slot": "date",
+              "values": [
+                "today"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "2"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 83,
+              "slot": "restaurant_name",
+              "start": 67
+            },
+            {
+              "exclusive_end": 96,
+              "slot": "location",
+              "start": 87
+            },
+            {
+              "exclusive_end": 137,
+              "slot": "time",
+              "start": 133
+            },
+            {
+              "exclusive_end": 63,
+              "slot": "date",
+              "start": 58
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Please confirm the following details: Booking a table for today at American Kitchen in Lafayette. The reservation is for 2 people at 8 pm."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQUEST",
+              "canonical_values": [
+                "ultra high-end"
+              ],
+              "slot": "price_range",
+              "values": [
+                "ultra high-end"
+              ]
+            },
+            {
+              "act": "AFFIRM",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [
+              "price_range"
+            ],
+            "slot_values": {
+              "category": [
+                "Diner"
+              ],
+              "date": [
+                "today"
+              ],
+              "location": [
+                "Lafayette"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "American Kitchen"
+              ],
+              "time": [
+                "8 in the night",
+                "8 pm"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Yes, that is fine. Is it ultra high-end?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "NOTIFY_FAILURE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            },
+            {
+              "act": "REQ_MORE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "ReserveRestaurant",
+            "parameters": {
+              "date": "2019-03-01",
+              "location": "Lafayette",
+              "number_of_seats": "2",
+              "restaurant_name": "American Kitchen",
+              "time": "20:00"
+            }
+          },
+          "service_results": [],
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Sorry, I was unable to book a table. Can I assist you with something else."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "INFORM",
+              "canonical_values": [
+                "17:45"
+              ],
+              "slot": "time",
+              "values": [
+                "evening 5:45"
+              ]
+            },
+            {
+              "act": "INFORM_INTENT",
+              "canonical_values": [
+                "ReserveRestaurant"
+              ],
+              "slot": "intent",
+              "values": [
+                "ReserveRestaurant"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 61,
+              "slot": "time",
+              "start": 49
+            }
+          ],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Diner"
+              ],
+              "date": [
+                "today"
+              ],
+              "location": [
+                "Lafayette"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "American Kitchen"
+              ],
+              "time": [
+                "evening 5:45"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Try again please. But this time, book it for the evening 5:45."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "American Kitchen"
+              ],
+              "slot": "restaurant_name",
+              "values": [
+                "American Kitchen"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "Lafayette"
+              ],
+              "slot": "location",
+              "values": [
+                "Lafayette"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "17:45"
+              ],
+              "slot": "time",
+              "values": [
+                "5:45 pm"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2019-03-01"
+              ],
+              "slot": "date",
+              "values": [
+                "today"
+              ]
+            },
+            {
+              "act": "CONFIRM",
+              "canonical_values": [
+                "2"
+              ],
+              "slot": "number_of_seats",
+              "values": [
+                "2"
+              ]
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [
+            {
+              "exclusive_end": 83,
+              "slot": "restaurant_name",
+              "start": 67
+            },
+            {
+              "exclusive_end": 96,
+              "slot": "location",
+              "start": 87
+            },
+            {
+              "exclusive_end": 127,
+              "slot": "time",
+              "start": 120
+            },
+            {
+              "exclusive_end": 63,
+              "slot": "date",
+              "start": 58
+            }
+          ]
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Please confirm the following details: Booking a table for today at American Kitchen in Lafayette. The reservation is at 5:45 pm and for 2 people."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "AFFIRM",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Diner"
+              ],
+              "date": [
+                "today"
+              ],
+              "location": [
+                "Lafayette"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "American Kitchen"
+              ],
+              "time": [
+                "5:45 pm",
+                "evening 5:45"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Yes, that works well."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "NOTIFY_SUCCESS",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "service_call": {
+            "method": "ReserveRestaurant",
+            "parameters": {
+              "date": "2019-03-01",
+              "location": "Lafayette",
+              "number_of_seats": "2",
+              "restaurant_name": "American Kitchen",
+              "time": "17:45"
+            }
+          },
+          "service_results": [
+            {
+              "address": "71 Lafayette Circle",
+              "category": "American",
+              "date": "2019-03-01",
+              "has_seating_outdoors": "True",
+              "has_vegetarian_options": "False",
+              "location": "Lafayette",
+              "number_of_seats": "2",
+              "phone_number": "925-385-0352",
+              "price_range": "moderate",
+              "rating": "3.90",
+              "restaurant_name": "American Kitchen",
+              "time": "18:00"
+            }
+          ],
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Your reservation went through."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "ReserveRestaurant",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Diner"
+              ],
+              "date": [
+                "today"
+              ],
+              "location": [
+                "Lafayette"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "American Kitchen"
+              ],
+              "time": [
+                "5:45 pm",
+                "evening 5:45"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "Thanks."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "REQ_MORE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "May I help you with something else?"
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "NEGATE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            },
+            {
+              "act": "THANK_YOU",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": [],
+          "state": {
+            "active_intent": "NONE",
+            "requested_slots": [],
+            "slot_values": {
+              "category": [
+                "Diner"
+              ],
+              "date": [
+                "today"
+              ],
+              "location": [
+                "Lafayette"
+              ],
+              "number_of_seats": [
+                "2"
+              ],
+              "restaurant_name": [
+                "American Kitchen"
+              ],
+              "time": [
+                "5:45 pm",
+                "evening 5:45"
+              ]
+            }
+          }
+        }
+      ],
+      "speaker": "USER",
+      "utterance": "No thanks."
+    },
+    {
+      "frames": [
+        {
+          "actions": [
+            {
+              "act": "GOODBYE",
+              "canonical_values": [],
+              "slot": "",
+              "values": []
+            }
+          ],
+          "service": "Restaurants_2",
+          "slots": []
+        }
+      ],
+      "speaker": "SYSTEM",
+      "utterance": "Have a great day."
+    }
+  ]
+}

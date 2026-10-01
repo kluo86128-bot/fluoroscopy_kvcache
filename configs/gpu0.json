@@ -7,7 +7,6 @@
     "../test_samples/tasks.jsonl"
   ],
   "include_tasks": [
-    "sgd_test_001",
     "sgd_test_002",
     "sgd_test_003"
   ],
@@ -21,7 +20,7 @@
     "oracle_private_prefix_distillation"
   ],
   "method_options": {},
-  "output_dir": "../results",
+  "output_dir": "/data/kevin/fluoroscopy/results",
   "background": true,
   "continue_on_error": true,
   "auto_test": true,
@@ -31,7 +30,7 @@
   "seed": 42,
   "rounds": 20,
   "steps_per_round": 200,
-  "base_loss": "mean",
+  "base_loss": "token",
   "lr": 0.01,
   "init_std": 0.02,
   "grad_clip": 1.0,

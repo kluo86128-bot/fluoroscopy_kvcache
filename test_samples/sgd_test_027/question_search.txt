@@ -1,3 +1,3 @@
 
-Question: What date was the final restaurant reservation for? Reply with only the month and day.
+Question: What date was the final restaurant reservation for? Reply with only the full English month name and the day with its ordinal suffix (st, nd, rd, or th), separated by one space. Format example: July 14th. This example illustrates formatting only; use the actual reservation date from the conversation. Do not include a year, numeric date format, punctuation, or any extra text.
 Answer:

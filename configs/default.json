@@ -17,7 +17,7 @@
     "oracle_private_prefix_distillation"
   ],
   "method_options": {},
-  "output_dir": "../results",
+  "output_dir": "/data/kevin/fluoroscopy/results",
   "background": true,
   "continue_on_error": true,
   "auto_test": true,

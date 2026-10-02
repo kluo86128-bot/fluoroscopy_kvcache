@@ -40,7 +40,8 @@ def run_diagnostics(config, root, source, *, backend=None):
             initial = torch.load(source_sample / "initial.pt", map_location="cpu", weights_only=True)["soft_prefix"]
             if initial.shape != (1, length, backend.embedding.weight.shape[1]):
                 raise ValueError("初始前缀形状与当前模型或样本不一致")
-            monitor = AnswerMonitor(backend, observed, question_ids, sample.answer)
+            monitor = AnswerMonitor(backend, observed, question_ids, sample.answer, sample.aliases,
+                                    probability_mode=config["score_probability"], leading_spaces=config["answer_leading_spaces"])
             with torch.no_grad():
                 initial_private, _public = backend.student(initial.to(backend.device), public_ids)
                 initial_metrics = monitor(initial_private)
@@ -78,7 +79,9 @@ def run_diagnostics(config, root, source, *, backend=None):
                 (destination / "history.jsonl").write_text("".join(json.dumps(row, ensure_ascii=False, allow_nan=False) + "\n" for row in rows), encoding="utf-8")
                 write_json(destination / "diagnostics.json", {"source": str(directory), "scope": "saved_snapshots_only",
                            "score_scope": "available_observations_only", "snapshot_count": len(available),
-                           "answer_boundary": config["answer_boundary"], "score_probability": "sequence"})
+                           "answer_boundary": config["answer_boundary"], "score_probability": config["score_probability"],
+                           "probability_definition": initial_metrics["probability_definition"],
+                           "answer_leading_spaces": config["answer_leading_spaces"]})
                 render_comparison(destination / "figures", {method: rows}, snapshot_only=True)
                 series[method] = rows
                 render_comparison(root / "samples" / sample.task_id / "comparison", series, snapshot_only=True)

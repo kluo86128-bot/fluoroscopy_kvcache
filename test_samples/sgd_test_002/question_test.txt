@@ -1,3 +1,1 @@
-
-Question: What was the confirmed party size for the restaurant booking? Reply with only the number in digits.
-Answer:
+What was the party size of the final confirmed restaurant booking? Return only the number in digits.

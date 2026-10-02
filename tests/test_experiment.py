@@ -52,7 +52,7 @@ def config(**overrides):
     value.update(device="cpu", dtype="float32", rounds=2, steps_per_round=2, save_topk=2,
                  eval_every=1, log_every=1, plot_every=4, resume_every=1, reference_refresh_steps=2,
                  rollout_tokens=2, max_new_tokens=2, score_window_steps=2, ema_span_steps=2,
-                 background=False, continue_on_error=False)
+                 background=False, continue_on_error=False, score_probability="sequence")
     value.update(overrides)
     return validate(value)
 
@@ -84,9 +84,9 @@ class ConfigurationTests(unittest.TestCase):
                 config(**invalid)
 
     def test_method_overrides_validated(self):
-        config(method_options={"question_output_consistency": {"lambda_kl": 0.2}})
+        config(method_options={"oracle_private_prefix_distillation": {"lambda_kl": 0.2}})
         with self.assertRaises(ValueError):
-            config(method_options={"question_output_consistency": {"lambda_kl": -1}})
+            config(method_options={"oracle_private_prefix_distillation": {"lambda_kl": -1}})
 
     def test_config_relative_paths_and_selection(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -163,7 +163,7 @@ class CacheAndObjectiveTests(Base):
         with self.assertRaises(ValueError):
             Objective(self.backend, self.observed, self.public_ids, self.question_ids, "baseline", config(), self.oracle)
 
-    def test_sdpa_backend_preserves_all_five_gradient_paths(self):
+    def test_sdpa_backend_preserves_all_active_gradient_paths(self):
         self.backend.model.config._attn_implementation = "sdpa"
         for method in METHODS:
             with self.subTest(method=method):
@@ -279,10 +279,10 @@ class TrainingTests(Base):
 
     def test_answer_labels_do_not_change_optimization_or_topk(self):
         with tempfile.TemporaryDirectory() as left, tempfile.TemporaryDirectory() as right, contextlib.redirect_stdout(io.StringIO()):
-            cfg = config(methods=["question_output_consistency"], rounds=1, steps_per_round=2)
+            cfg = config(methods=["question_attention_reconstruction"], rounds=1, steps_per_round=2)
             for path, answer in ((left, "12"), (right, "99")):
                 train(self.backend, self.observed, self.public_ids, self.question_ids, self.initial,
-                      "question_output_consistency", cfg, path,
+                      "question_attention_reconstruction", cfg, path,
                       AnswerMonitor(self.backend, self.observed, self.question_ids, answer))
             a = torch.load(Path(left) / "latest.pt", weights_only=True)
             b = torch.load(Path(right) / "latest.pt", weights_only=True)
@@ -309,11 +309,11 @@ class TrainingTests(Base):
                              {"loss_probability.png", "support_score.png", "support_ema.png"})
 
     def test_resume_matches_uninterrupted_optimizer_and_reference(self):
-        cfg = config(methods=["question_output_consistency"])
+        cfg = config(methods=["question_attention_reconstruction"])
         monitor = AnswerMonitor(self.backend, self.observed, self.question_ids, "12")
         with tempfile.TemporaryDirectory() as full, tempfile.TemporaryDirectory() as resumed, contextlib.redirect_stdout(io.StringIO()):
             train(self.backend, self.observed, self.public_ids, self.question_ids, self.initial,
-                  "question_output_consistency", cfg, full, monitor)
+                  "question_attention_reconstruction", cfg, full, monitor)
             original = Objective.compute
             calls = [0]
 
@@ -325,15 +325,15 @@ class TrainingTests(Base):
 
             with patch.object(Objective, "compute", interrupted), self.assertRaises(KeyboardInterrupt):
                 train(self.backend, self.observed, self.public_ids, self.question_ids, self.initial,
-                      "question_output_consistency", cfg, resumed, monitor)
+                      "question_attention_reconstruction", cfg, resumed, monitor)
             train(self.backend, self.observed, self.public_ids, self.question_ids, self.initial,
-                  "question_output_consistency", cfg, resumed, monitor, resume=True)
+                  "question_attention_reconstruction", cfg, resumed, monitor, resume=True)
             left = torch.load(Path(full) / "latest.pt", weights_only=True)
             right = torch.load(Path(resumed) / "latest.pt", weights_only=True)
             torch.testing.assert_close(left["prefix"], right["prefix"], rtol=0, atol=0)
             self.assertEqual(left["history"], right["history"])
 
-    def test_all_five_methods_end_to_end_same_initial_and_heldout(self):
+    def test_all_active_methods_end_to_end_same_initial_and_heldout(self):
         with tempfile.TemporaryDirectory() as directory, contextlib.redirect_stdout(io.StringIO()):
             root = Path(directory)
             dataset = root / "tasks.json"

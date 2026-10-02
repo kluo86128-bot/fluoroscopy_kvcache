@@ -18,10 +18,10 @@ def percentage(value, _position=None):
     return f"{format(Decimal(format(value, '.6g')), 'f')}%"
 
 
-def probability_axis(axis, values):
+def probability_axis(axis, values, label="Accepted-answer form probability (%)"):
     axis.set_yscale("linear")
     axis.yaxis.set_major_formatter(FuncFormatter(percentage))
-    axis.set_ylabel("Standard-answer sequence probability (%)")
+    axis.set_ylabel(label)
     if values:
         low, high = min(values), max(values)
         margin = max((high - low) * 0.1, high * 0.01, 1e-12)
@@ -41,7 +41,12 @@ def render(root, series):
         label = LABELS.get(name, name)
         diagnostics = [r for r in rows if r.get("answer_probability") is not None]
         probability_values.extend(100 * r["answer_probability"] for r in diagnostics)
-        axes[0].plot([r["step"] for r in diagnostics], [100 * r["answer_probability"] for r in diagnostics], color=color, marker=".", label=f"{label}: standard-answer sequence")
+        accepted = any(r.get("probability_definition", "").startswith("accepted_answer") for r in diagnostics)
+        axes[0].plot([r["step"] for r in diagnostics], [100 * r["answer_probability"] for r in diagnostics], color=color, marker=".", label=f"{label}: {'accepted forms' if accepted else 'canonical sequence'}")
+        if accepted:
+            canonical = [r for r in diagnostics if "canonical_answer_probability" in r]
+            axes[0].plot([r["step"] for r in canonical], [100 * r["canonical_answer_probability"] for r in canonical],
+                         color=color, linestyle=":", label=f"{label}: canonical sequence")
         if any(r.get("answer_tokens", 1) > 1 for r in diagnostics):
             probability_values.extend(100 * r["first_token_probability"] for r in diagnostics)
             axes[0].plot([r["step"] for r in diagnostics], [100 * r["first_token_probability"] for r in diagnostics], color=color, linestyle="--", marker=".", label=f"{label}: first token")
@@ -57,7 +62,8 @@ def render(root, series):
             style = "--" if field == "base_loss" else "-" if field == "total_loss" else ":"
             axes[1].plot([r["step"] for r in rows], [r[field] for r in rows], label=f"{label}: {field}",
                          color=color if len(series) > 1 else None, linestyle=style, linewidth=1)
-    probability_axis(axes[0], probability_values)
+    accepted = any(r.get("probability_definition", "").startswith("accepted_answer") for rows in series.values() for r in rows)
+    probability_axis(axes[0], probability_values, "Accepted-answer form probability (%)" if accepted else "Standard-answer sequence probability (%)")
     axes[0].set_title("Training question | inferred prefix KV + observed public KV\n"
                       "Fixed answer boundary is input; sequence excludes stop tokens")
     axes[1].set_ylabel("Post-update loss")
@@ -92,7 +98,8 @@ def render_comparison(root, series, *, snapshot_only=False):
     if not series:
         return
     scope = "Saved snapshots only" if snapshot_only else "Training trajectory"
-    fields = (("answer_probability", "answer_probability_comparison.png", "Standard-answer sequence probability (%)"),
+    accepted = any(r.get("probability_definition", "").startswith("accepted_answer") for rows in series.values() for r in rows)
+    fields = (("answer_probability", "answer_probability_comparison.png", "Accepted-answer form probability (%)" if accepted else "Standard-answer sequence probability (%)"),
               ("support_score", "support_score_comparison.png", "Trajectory support score"),
               ("ema_score", "support_ema_comparison.png", "Support score EMA"))
     for field, filename, ylabel in fields:
@@ -108,7 +115,7 @@ def render_comparison(root, series, *, snapshot_only=False):
         axis.set(xlabel="Gradient updates", ylabel=ylabel,
                  title=f"{scope} | training question | all participating strategies")
         if field == "answer_probability":
-            probability_axis(axis, values)
+            probability_axis(axis, values, ylabel)
         if not values:
             axis.text(0.5, 0.5, "Insufficient window; no fabricated score", transform=axis.transAxes, ha="center")
         axis.grid(alpha=0.25)

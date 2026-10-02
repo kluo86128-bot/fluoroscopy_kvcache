@@ -145,7 +145,7 @@ class PlotTests(unittest.TestCase):
         self.assertEqual(len(captured), 3)
         axis, name = captured[0]
         self.assertEqual(name, 'answer_probability_comparison.png')
-        self.assertEqual(len(axis.lines), 5)
+        self.assertEqual(len(axis.lines), len(METHODS))
         self.assertEqual(axis.get_yscale(), 'linear')
         for actual, expected in zip(axis.lines[0].get_ydata(), [0.0001, 0.0002]):
             self.assertAlmostEqual(actual, expected, places=10)

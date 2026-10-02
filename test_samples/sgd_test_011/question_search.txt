@@ -1,3 +1,1 @@
-
-Question: How many people was the final restaurant reservation for? Reply with only the number in digits.
-Answer:
+How many people were included in the final confirmed restaurant reservation? Return only the number in digits.

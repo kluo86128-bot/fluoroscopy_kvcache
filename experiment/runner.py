@@ -40,7 +40,7 @@ def test_method(backend, sample, config, directory, observed, public_ids, questi
         payload = torch.load(path, map_location="cpu", weights_only=True)
         for kind, ids, answer, aliases in questions:
             metrics = test_prefix(backend, observed, public_ids, ids, payload["soft_prefix"],
-                                  answer, aliases, config["max_new_tokens"], config["stop_strings"])
+                                  answer, aliases, config["max_new_tokens"], config["stop_strings"], sample.answer_format)
             row = {"task_id": sample.task_id, "method": directory.name, "question_kind": kind,
                    "rank": item["rank"], "step": item["step"], "checkpoint_loss": item["loss"],
                    "prefix_path": str(path), "correct_answer": answer, **metrics}
@@ -151,7 +151,8 @@ def run(config, root, *, resume=False, test_only=False, backend=None):
                 label = f"[样本 {sample_index}/{len(samples)} {sample.task_id} | 方法 {method_index}/{len(config['methods'])} {method}]"
                 try:
                     if not test_only:
-                        monitor = AnswerMonitor(backend, observed, question_ids, sample.answer)
+                        monitor = AnswerMonitor(backend, observed, question_ids, sample.answer, sample.aliases,
+                                                probability_mode=config["score_probability"], leading_spaces=config["answer_leading_spaces"])
                         def update_comparison(rows, name=method):
                             series[name] = rows
                             render_comparison(sample_root / "comparison", series)

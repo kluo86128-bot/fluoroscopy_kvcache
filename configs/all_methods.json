@@ -6,7 +6,6 @@
     "baseline",
     "question_weighted_kv",
     "question_attention_reconstruction",
-    "question_output_consistency",
     "oracle_private_prefix_distillation"
   ],
   "base_loss": "token",
@@ -17,6 +16,12 @@
     "\n"
   ],
   "max_new_tokens": 16,
-  "score_probability": "sequence",
-  "output_dir": "/data/kevin/fluoroscopy/results"
+  "score_probability": "accepted_forms",
+  "output_dir": "/data/kevin/fluoroscopy/results",
+  "experiment_version": 2,
+  "answer_leading_spaces": [
+    0,
+    1
+  ],
+  "output_instruction": "Output only the requested answer in English. No labels, numbering, explanation, or extra text."
 }

@@ -1,4 +1,6 @@
 /results/
+/outputs/
 /四种问题监督方案.md
 /四种问题监督实验方案.md
 /实验日志
+/.test-venv/

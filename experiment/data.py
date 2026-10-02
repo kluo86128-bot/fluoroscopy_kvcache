@@ -5,6 +5,7 @@ import json
 import re
 
 from .io import read_json
+from .answer_forms import FORMATS
 
 
 @dataclass
@@ -20,6 +21,7 @@ class Sample:
     held_out_aliases: list
     output_instruction: str
     manifest: str
+    answer_format: str = "free_text"
 
 
 def catalog(config):
@@ -91,9 +93,12 @@ def materialize(row, instruction):
     sample_instruction = receiver.get("output_instruction", row.get("output_instruction", instruction))
     if not isinstance(sample_instruction, str) or not sample_instruction.strip():
         raise ValueError("output_instruction 不能为空")
+    answer_format = row.get("answer_format", "free_text")
+    if answer_format not in FORMATS:
+        raise ValueError(f"未知答案格式: {answer_format}")
     return Sample(row["task_id"], field(teacher, "prefix_a", "private_prefix"),
                   field(receiver, "public_chunk", "public_text"), field(receiver, "question"),
-                  answer, aliases, held, held_answer, held_aliases, sample_instruction, row["_manifest"])
+                  answer, aliases, held, held_answer, held_aliases, sample_instruction, row["_manifest"], answer_format)
 
 
 def question_text(question, instruction, answer_boundary="Answer: "):

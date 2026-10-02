@@ -1,3 +1,1 @@
-
-Question: In which city was the final restaurant reservation made? Reply with only the city name.
-Answer:
+In which city is the restaurant in the final confirmed reservation located? Return only the English city name, spelled exactly as in the conversation.

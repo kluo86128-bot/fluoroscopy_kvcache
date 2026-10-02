@@ -8,6 +8,7 @@ import time
 import torch
 
 from .checkpoints import TopK
+from .config import METHODS
 from .io import save_torch, write_csv, write_json, write_error_status
 from .metrics import SupportScore
 from .objectives import Objective
@@ -25,6 +26,8 @@ def fingerprint(config, method, context_signature):
 
 def train(backend, observed, public_ids, question_ids, initial, method, config, root, monitor,
           *, oracle_cache=None, resume=False, label="", context_signature="", on_progress=None):
+    if method not in METHODS:
+        raise ValueError(f"方法 {method} 不属于当前实验组，禁止新训练或续训")
     root = Path(root)
     root.mkdir(parents=True, exist_ok=True)
     latest = root / "latest.pt"
@@ -124,10 +127,12 @@ def train(backend, observed, public_ids, question_ids, initial, method, config, 
                     detail = " ".join(f"{k}={v:.6g}" for k, v in row.items() if k.endswith("loss"))
                     score_text = "暂不足" if diagnostic["support_score"] is None else f"{diagnostic['support_score']:.6g}"
                     ema_text = "暂不足" if diagnostic["ema_score"] is None else f"{diagnostic['ema_score']:.6g}"
+                    canonical = diagnostic.get("canonical_answer_probability", diagnostic["answer_probability"])
                     best = pool.entries[0]["loss"] if pool.entries else None
                     print(f"{label} round={row['round']}/{config['rounds']} step={row['round_step']}/{config['steps_per_round']} "
                           f"updates={step}/{total_steps} progress={100 * step / total_steps:.2f}% lr={config['lr']}\n"
                           f"  {detail}\n  answer_probability={diagnostic['answer_probability']:.6%} "
+                          f"canonical_answer_probability={canonical:.6%} "
                           f"first_token_probability={diagnostic['first_token_probability']:.6%} support_score={score_text} EMA={ema_text} "
                           f"evaluated_step={diagnostic['step']}\n  saved={len(pool.entries)}/{config['save_topk']} best_loss={best} "
                           f"elapsed={duration(elapsed_before + elapsed)} speed={speed:.3f}steps/s ETA={duration(eta)}", flush=True)
@@ -147,6 +152,7 @@ def train(backend, observed, public_ids, question_ids, initial, method, config, 
     write_csv(root / "history.csv", rows)
     render(root / "figures", {method: rows})
     result = {"status": "completed", "steps": total_steps, "method": method,
+              "score_probability": config["score_probability"], "probability_definition": rows[0]["probability_definition"],
               "checkpoint_metric": config["checkpoint_metric"], "prefix_count": len(pool.entries),
               "prefix_manifest": str(root / "prefixes" / "manifest.json"),
               "elapsed_seconds": elapsed_before + time.monotonic() - started}

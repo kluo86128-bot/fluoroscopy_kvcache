@@ -91,7 +91,8 @@ def write_csv(path, rows):
     with path.open("w", newline="", encoding="utf-8-sig") as output:
         writer = csv.DictWriter(output, fieldnames=fields)
         writer.writeheader()
-        writer.writerows(rows)
+        writer.writerows({key: json.dumps(value, ensure_ascii=False) if isinstance(value, (list, dict)) else value
+                         for key, value in row.items()} for row in rows)
 
 
 def save_torch(path, value):

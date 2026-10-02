@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def parser():
-    result = argparse.ArgumentParser(description="单软前缀连续训练：五种方法、三类图、损失 TopK 导出")
+    result = argparse.ArgumentParser(description="单软前缀连续训练：四种方法、三类图、损失 TopK 导出")
     result.add_argument("command", nargs="?", choices=("train", "test", "inspect", "diagnose"), default="train")
     result.add_argument("--config", type=Path, default=None)
     result.add_argument("--run-dir", type=Path, help="指定新运行目录；test 使用已有运行目录")
@@ -101,7 +101,11 @@ def main(argv=None):
     if args.worker:
         root = args.worker.resolve()
         job = read_json(root / "worker.json")
-        config = validate(read_json(root / "resolved_config.json"))
+        raw = read_json(root / "resolved_config.json")
+        config = validate({**DEFAULTS, **raw, "experiment_version": raw.get("experiment_version", 1)},
+                          allow_retired=bool(job["test_only"] or job.get("source")))
+        if not job["test_only"] and not job.get("source") and config["experiment_version"] != DEFAULTS["experiment_version"]:
+            raise ValueError("旧运行不能使用新版问题/概率口径续训；请新建实验或用 diagnose 重评")
         return execute(config, root, job["resume"], job["test_only"], worker=True, source=job.get("source"))
     test_only = args.command == "test"
     source = None
@@ -115,18 +119,23 @@ def main(argv=None):
             raise ValueError("重评只允许覆盖模型路径、GPU、输出长度与前后台模式")
         config = {**DEFAULTS, **read_json(source / "resolved_config.json")}
         config.update(answer_boundary=DEFAULTS["answer_boundary"], stop_strings=DEFAULTS["stop_strings"],
-                      score_probability="sequence", max_new_tokens=DEFAULTS["max_new_tokens"])
+                      score_probability=DEFAULTS["score_probability"],
+                      answer_leading_spaces=DEFAULTS["answer_leading_spaces"], experiment_version=DEFAULTS["experiment_version"],
+                      max_new_tokens=DEFAULTS["max_new_tokens"])
         config.update(supplied)
-        config = validate(config)
+        config = validate(config, allow_retired=True)
         root = source / ("diagnostics_" + datetime.now().strftime("%Y%m%d_%H%M%S") + "_" + uuid.uuid4().hex[:6])
     elif args.resume or test_only:
         if not (args.resume or args.run_dir):
             raise ValueError("test 需要 --run-dir")
         root = (args.resume or args.run_dir).resolve()
         config = read_json(root / "resolved_config.json")
+        if args.resume and config.get("experiment_version", 1) != DEFAULTS["experiment_version"]:
+            raise ValueError("旧运行不能使用新版问题/概率口径续训；请新建实验或用 diagnose 重评")
         if "answer_boundary" not in config:
             raise ValueError("旧运行使用不同回答边界，不能直接混用新训练/测试；请用 diagnose --run-dir 重评，或新建实验")
-        config = validate({**DEFAULTS, **config})
+        config = validate({**DEFAULTS, **config, "experiment_version": config.get("experiment_version", 1)},
+                          allow_retired=test_only and not args.resume)
         supplied = [key for key in DEFAULTS if hasattr(args, key) and getattr(args, key) is not None and key != "background"]
         if supplied or args.config:
             raise ValueError("恢复/重测使用保存的配置，不接受训练参数覆盖")

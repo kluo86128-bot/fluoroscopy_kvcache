@@ -5,9 +5,11 @@ from pathlib import Path
 from .io import read_json
 
 METHODS = ("baseline", "question_weighted_kv", "question_attention_reconstruction",
-           "question_output_consistency", "oracle_private_prefix_distillation")
-DIRECT_OUTPUT = "只输出问题要求的答案，不要解释、开场白、推理过程、标签或额外文字。"
+           "oracle_private_prefix_distillation")
+RETIRED_METHODS = ("question_output_consistency",)
+DIRECT_OUTPUT = "Output only the requested answer in English. No labels, numbering, explanation, or extra text."
 DEFAULTS = {
+    "experiment_version": 2,
     "model_path": "/home/kevin/models/Qwen3-4B", "device": "cuda:0", "cuda_devices": None,
     "dtype": "bfloat16", "attention_backend": "sdpa", "local_files_only": True,
     "datasets": ["../test_samples/tasks.jsonl"], "include_tasks": [], "exclude_tasks": [], "limit": None,
@@ -23,16 +25,21 @@ DEFAULTS = {
     "lambda_output": 1.0, "lambda_lse": 1.0, "lambda_kl": 1.0,
     "temperature": 1.0, "rollout_tokens": 8, "max_new_tokens": 16,
     "score_window_steps": 400, "score_tail_fraction": 0.25, "ema_alpha": 0.5,
-    "ema_span_steps": 400, "score_probability": "sequence",
+    "ema_span_steps": 400, "score_probability": "accepted_forms", "answer_leading_spaces": [0, 1],
 }
 METHOD_KEYS = {"lambda_weighted", "weight_floor", "lambda_output", "lambda_lse", "lambda_kl",
                "temperature", "rollout_tokens", "reference_refresh_steps"}
 
 
-def validate(config):
+def validate(config, *, allow_retired=False):
     unknown = set(config) - set(DEFAULTS) - {"config_path"}
     if unknown:
         raise ValueError(f"未知配置项: {sorted(unknown)}")
+    if type(config["experiment_version"]) is not int or config["experiment_version"] not in (1, 2):
+        raise ValueError("experiment_version 必须为 1 或 2")
+    spaces = config["answer_leading_spaces"]
+    if not isinstance(spaces, list) or not spaces or any(type(n) is not int or n not in (0, 1) for n in spaces) or len(set(spaces)) != len(spaces):
+        raise ValueError("answer_leading_spaces 必须为 0/1 的非空、不重复列表")
     for key in ("rounds", "steps_per_round", "log_every", "eval_every", "plot_every", "checkpoint_every",
                 "resume_every", "save_topk", "reference_refresh_steps", "rollout_tokens", "max_new_tokens",
                 "score_window_steps", "ema_span_steps"):
@@ -51,12 +58,15 @@ def validate(config):
             raise ValueError(f"{key} 必须在 (0,1] 内")
     for key, allowed in {"base_loss": ("mean", "token"), "checkpoint_metric": ("base", "total"),
                          "dtype": ("float32", "float16", "bfloat16"), "attention_backend": ("eager", "sdpa"),
-                         "question_format": ("raw", "chat"), "score_probability": ("sequence",)}.items():
+                         "question_format": ("raw", "chat"), "score_probability": ("sequence", "accepted_forms")}.items():
         if config[key] not in allowed:
             raise ValueError(f"{key} 只能选择 {allowed}")
     methods = config["methods"]
-    if not isinstance(methods, list) or not methods or any(m not in METHODS for m in methods) or len(set(methods)) != len(methods):
-        raise ValueError(f"methods 必须为非空、不重复的方法列表: {METHODS}")
+    allowed_methods = METHODS + RETIRED_METHODS if allow_retired else METHODS
+    if isinstance(methods, list) and not allow_retired and any(m in RETIRED_METHODS for m in methods):
+        raise ValueError("question_output_consistency 已退出实验组；仅允许历史结果测试与诊断，不允许新训练或续训")
+    if not isinstance(methods, list) or not methods or any(m not in allowed_methods for m in methods) or len(set(methods)) != len(methods):
+        raise ValueError(f"methods 必须为非空、不重复的方法列表: {allowed_methods}")
     for key in ("datasets", "include_tasks", "exclude_tasks"):
         if not isinstance(config[key], list) or any(not isinstance(x, str) for x in config[key]):
             raise ValueError(f"{key} 必须是字符串列表")
@@ -78,13 +88,13 @@ def validate(config):
     if not isinstance(config["stop_strings"], list) or any(not isinstance(s, str) or not s for s in config["stop_strings"]):
         raise ValueError("stop_strings 必须为非空字符串组成的列表，可用 [] 禁用")
     options = config["method_options"]
-    if not isinstance(options, dict) or any(m not in METHODS for m in options):
+    if not isinstance(options, dict) or any(m not in allowed_methods for m in options):
         raise ValueError("method_options 的键必须为方法名")
     for method, override in options.items():
         if not isinstance(override, dict) or set(override) - METHOD_KEYS:
             raise ValueError(f"{method}: method_options 只允许辅助损失和参考参数")
         trial = {**config, **override, "method_options": {}}
-        validate(trial)
+        validate(trial, allow_retired=allow_retired)
     return config
 
 

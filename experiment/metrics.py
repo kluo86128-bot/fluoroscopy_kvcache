@@ -6,23 +6,59 @@ import numpy as np
 import torch
 
 from .backend import join_cache
+from .answer_forms import (ACCEPTED_DEFINITION, CANONICAL_DEFINITION, answer_forms,
+                           prefix_free_paths, format_compliant, target_mention)
 
 
 class AnswerMonitor:
-    def __init__(self, backend, observed, question_ids, answer):
+    def __init__(self, backend, observed, question_ids, answer, aliases=(), *,
+                 probability_mode="sequence", leading_spaces=(0, 1)):
         self.backend, self.observed, self.question_ids = backend, observed, question_ids
         self.answer_ids = backend.encode(answer)
+        if probability_mode not in ("sequence", "accepted_forms"):
+            raise ValueError("未知概率监测模式")
+        self.probability_mode = probability_mode
+        texts = answer_forms(answer, aliases, leading_spaces) if probability_mode == "accepted_forms" else [answer]
+        self.forms = [(text, backend.encode(text)) for text in texts]
+        self.paths = prefix_free_paths(ids[0].tolist() for _, ids in self.forms)
 
     @torch.no_grad()
     def __call__(self, prefix_cache):
-        logits = self.backend.continuation_logits(join_cache(prefix_cache, self.observed), self.question_ids, self.answer_ids)
-        log_probs = logits.log_softmax(-1)
-        values = log_probs.gather(-1, self.answer_ids.unsqueeze(-1))[0, :, 0].double()
-        log_probability = float(values.sum())
-        return {"first_token_probability": math.exp(float(values[0])),
+        cache = join_cache(prefix_cache, self.observed)
+        canonical_path = tuple(self.answer_ids[0].tolist())
+        encoded = {tuple(ids[0].tolist()): ids for _, ids in self.forms}
+        encoded[canonical_path] = self.answer_ids
+        probabilities = {}
+        first = None
+        for path, ids in encoded.items():
+            # Raw model logits: no grammar mask, temperature or renormalization.
+            logits = self.backend.continuation_logits(cache, self.question_ids, ids)
+            values = logits.log_softmax(-1).gather(-1, ids.unsqueeze(-1))[0, :, 0].double()
+            probabilities[path] = float(values.sum())
+            if path == canonical_path:
+                first = math.exp(float(values[0]))
+        canonical_log = probabilities[canonical_path]
+        if self.probability_mode == "accepted_forms":
+            # Prefix-free paths are disjoint events. Accumulate in log space.
+            terms = [probabilities[path] for path in self.paths]
+            peak = max(terms)
+            log_probability = peak + math.log(sum(math.exp(value - peak) for value in terms))
+            if log_probability > 1e-5:
+                raise RuntimeError("答案形式合并概率超过 1，检查 token 路径或模型 logits")
+            log_probability = min(0.0, log_probability)
+        else:
+            log_probability = canonical_log
+        details = [{"text": text, "token_ids": ids[0].tolist(),
+                    "probability": math.exp(probabilities[tuple(ids[0].tolist())]),
+                    "log_probability": probabilities[tuple(ids[0].tolist())],
+                    "included_in_union": tuple(ids[0].tolist()) in self.paths}
+                   for text, ids in self.forms]
+        return {"first_token_probability": first,
                 "answer_probability": math.exp(log_probability), "answer_log_probability": log_probability,
+                "canonical_answer_probability": math.exp(canonical_log), "canonical_answer_log_probability": canonical_log,
+                "answer_form_probabilities": details, "answer_union_path_count": len(self.paths),
                 "answer_tokens": self.answer_ids.shape[1], "probability_path": "prefix_plus_observed_public",
-                "probability_definition": "canonical_answer_sequence_product_excluding_boundary_and_stop"}
+                "probability_definition": ACCEPTED_DEFINITION if self.probability_mode == "accepted_forms" else CANONICAL_DEFINITION}
 
 
 class SupportScore:
@@ -63,7 +99,7 @@ class SupportScore:
         self.initial, self.observations, self.last_ema_step, self.ema = (state[k] for k in ("initial", "observations", "last_ema_step", "ema"))
 
 
-def answer_match(text, answer, aliases):
+def answer_match(text, answer, aliases, answer_format="free_text"):
     accepted = {x.strip().casefold() for x in [answer, *aliases]}
     full = text.strip().casefold() in accepted
     # Deterministic extraction: first nonempty line, common label, first numeric value.
@@ -75,11 +111,11 @@ def answer_match(text, answer, aliases):
     else:
         extracted = line.strip().rstrip("。.!！")
     return {"full_match": full, "answer_match": extracted.casefold() in accepted, "extracted_answer": extracted,
-            "format_compliant": full}
+            "format_compliant": format_compliant(text, answer_format), **target_mention(text, answer, aliases)}
 
 
 @torch.no_grad()
-def test_prefix(backend, observed, public_ids, question_ids, prefix, answer, aliases, max_tokens, stop_strings=()):
+def test_prefix(backend, observed, public_ids, question_ids, prefix, answer, aliases, max_tokens, stop_strings=(), answer_format="free_text"):
     private, _ = backend.student(prefix.to(device=backend.device), public_ids)
     generated = backend.rollout(join_cache(private, observed), question_ids, max_tokens, stop_strings=stop_strings)
     values = generated[0].tolist()
@@ -90,7 +126,7 @@ def test_prefix(backend, observed, public_ids, question_ids, prefix, answer, ali
     answer_ids = backend.encode(answer)[0].tolist()
     return {"output": text, "generated_token_ids": values,
             "first_token_match": bool(values and values[0] == answer_ids[0]),
-            **answer_match(text, answer, aliases)}
+            **answer_match(text, answer, aliases, answer_format)}
 
 
 def summary(rows, planned_samples=None):

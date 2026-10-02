@@ -8,7 +8,10 @@
   ],
   "include_tasks": [
     "sgd_test_002",
-    "sgd_test_003"
+    "sgd_test_003",
+    "sgd_test_021",
+    "sgd_test_033",
+    "sgd_test_040"
   ],
   "exclude_tasks": [],
   "limit": 5,
@@ -16,7 +19,6 @@
     "baseline",
     "question_weighted_kv",
     "question_attention_reconstruction",
-    "question_output_consistency",
     "oracle_private_prefix_distillation"
   ],
   "method_options": {},
@@ -24,7 +26,7 @@
   "background": true,
   "continue_on_error": true,
   "auto_test": true,
-  "output_instruction": "只输出问题要求的答案，不要解释、开场白、推理过程、标签或额外文字。",
+  "output_instruction": "Output only the requested answer in English. No labels, numbering, explanation, or extra text.",
   "question_format": "raw",
   "enable_thinking": false,
   "seed": 42,
@@ -54,9 +56,14 @@
   "score_tail_fraction": 0.25,
   "ema_alpha": 0.5,
   "ema_span_steps": 400,
-  "score_probability": "sequence",
+  "score_probability": "accepted_forms",
   "answer_boundary": "Answer: ",
   "stop_strings": [
     "\n"
+  ],
+  "experiment_version": 2,
+  "answer_leading_spaces": [
+    0,
+    1
   ]
 }

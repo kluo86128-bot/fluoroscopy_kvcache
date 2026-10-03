@@ -31,6 +31,9 @@ class Tokenizer:
     def encode(self, text, add_special_tokens=False):
         return [1 + ord(character) % 30 for character in text]
 
+    def __call__(self, text, add_special_tokens=False, return_offsets_mapping=False):
+        return {"input_ids": self.encode(text), "offset_mapping": [(i, i + 1) for i in range(len(text))]}
+
     def decode(self, values, skip_special_tokens=False):
         return "".join(str(value) for value in values if value != 0)
 
@@ -53,6 +56,8 @@ def config(**overrides):
                  eval_every=1, log_every=1, plot_every=4, resume_every=1, reference_refresh_steps=2,
                  rollout_tokens=2, max_new_tokens=2, score_window_steps=2, ema_span_steps=2,
                  background=False, continue_on_error=False, score_probability="sequence")
+    # Existing generic fixtures have no structured fields; use the explicit ablation.
+    value["semantic_query_mode"] = "uniform"
     value.update(overrides)
     return validate(value)
 
@@ -82,6 +87,17 @@ class ConfigurationTests(unittest.TestCase):
                         {"method_options": {"baseline": {"seed": 3}}}, {"temperature": float("nan")}):
             with self.subTest(invalid=invalid), self.assertRaises(ValueError):
                 config(**invalid)
+
+    def test_auxiliary_only_base_rejects_baseline_and_requires_total_topk(self):
+        invalid = (
+            {"base_loss": "none", "methods": ["baseline"], "checkpoint_metric": "total"},
+            {"base_loss": "none", "methods": ["question_weighted_kv"], "checkpoint_metric": "base"},
+        )
+        for values in invalid:
+            with self.subTest(values=values), self.assertRaises(ValueError):
+                config(**values)
+        config(base_loss="none", checkpoint_metric="total",
+               methods=["question_weighted_kv", "question_attention_reconstruction", "oracle_private_prefix_distillation"])
 
     def test_method_overrides_validated(self):
         config(method_options={"oracle_private_prefix_distillation": {"lambda_kl": 0.2}})
@@ -116,6 +132,26 @@ class CacheAndObjectiveTests(Base):
             objective = Objective(self.backend, self.observed, self.public_ids, self.question_ids, "baseline", config(base_loss=mode))
             loss, parts, _ = objective.compute(self.initial)
             torch.testing.assert_close(loss, parts["mean_loss" if mode == "mean" else "token_loss"])
+
+    def test_auxiliary_only_modes_exclude_base_loss_from_total(self):
+        cases = (("question_weighted_kv", "weighted_kv_loss"),
+                 ("question_attention_reconstruction", None))
+        for method, expected_component in cases:
+            with self.subTest(method=method):
+                cfg = config(methods=[method], base_loss="none", checkpoint_metric="total")
+                objective = Objective(self.backend, self.observed, self.public_ids, self.question_ids, method, cfg)
+                prefix = self.initial.clone().requires_grad_()
+                objective.refresh(prefix, 0)
+                loss, parts, _ = objective.compute(prefix)
+                self.assertEqual(float(parts["base_loss"]), 0)
+                if expected_component:
+                    torch.testing.assert_close(loss, parts[expected_component])
+                else:
+                    expected = parts["attention_output_loss"] + parts["lse_loss"] + parts["attention_distribution_loss"]
+                    torch.testing.assert_close(loss, expected)
+                loss.backward()
+                self.assertTrue(torch.isfinite(prefix.grad).all())
+                self.assertGreater(float(prefix.grad.norm()), 0)
 
     def test_true_prefix_reproduces_public_cache(self):
         prefix = self.backend.embedding(self.private_ids).detach()
@@ -194,6 +230,7 @@ class CacheAndObjectiveTests(Base):
         _, parts, _ = objective.compute(prefix)
         self.assertLess(float(parts["attention_output_loss"]), 1e-12)
         self.assertLess(float(parts["lse_loss"]), 1e-12)
+        self.assertLess(float(parts["attention_distribution_loss"]), 1e-12)
 
     def test_oracle_reference_uses_true_prefix_and_fixed_distribution(self):
         objective = Objective(self.backend, self.observed, self.public_ids, self.question_ids,
@@ -332,6 +369,8 @@ class TrainingTests(Base):
             right = torch.load(Path(resumed) / "latest.pt", weights_only=True)
             torch.testing.assert_close(left["prefix"], right["prefix"], rtol=0, atol=0)
             self.assertEqual(left["history"], right["history"])
+            self.assertEqual(left["objective"]["attention_loss_version"], 2)
+            self.assertTrue(all("attention_distribution_loss" in row for row in left["history"]))
 
     def test_all_active_methods_end_to_end_same_initial_and_heldout(self):
         with tempfile.TemporaryDirectory() as directory, contextlib.redirect_stdout(io.StringIO()):

@@ -9,6 +9,16 @@
     "oracle_private_prefix_distillation"
   ],
   "base_loss": "token",
+  "lambda_attention": 1.0,
+  "attention_loss_version": 2,
+  "weighted_kv_version": 2,
+  "semantic_query_mode": "structured",
+  "semantic_query_weights": {
+    "object_state": 0.25,
+    "target_field": 0.30,
+    "required_value": 0.20,
+    "question": 0.25
+  },
   "save_topk": 50,
   "checkpoint_metric": "base",
   "answer_boundary": "Answer: ",

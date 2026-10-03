@@ -9,9 +9,10 @@ import sys
 import traceback
 import uuid
 
-from .config import DEFAULTS, METHODS, load_config, validate
+from .config import DEFAULTS, METHODS, load_config, validate, saved_config, require_current_attention_loss, require_current_weighted_kv, method_config
 from .data import catalog, materialize
 from .io import RunBusy, read_json, run_lock, write_json, write_error_status
+from .question_semantics import semantic_spans
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -29,7 +30,7 @@ def parser():
     result.set_defaults(background=None)
     for flag in ("model-path", "device", "cuda-devices", "output-dir"):
         result.add_argument("--" + flag)
-    result.add_argument("--base-loss", choices=("mean", "token"))
+    result.add_argument("--base-loss", choices=("mean", "token", "none"))
     result.add_argument("--checkpoint-metric", choices=("base", "total"))
     result.add_argument("--methods", nargs="+", choices=METHODS)
     result.add_argument("--datasets", nargs="+")
@@ -102,10 +103,13 @@ def main(argv=None):
         root = args.worker.resolve()
         job = read_json(root / "worker.json")
         raw = read_json(root / "resolved_config.json")
-        config = validate({**DEFAULTS, **raw, "experiment_version": raw.get("experiment_version", 1)},
+        config = validate(saved_config(raw),
                           allow_retired=bool(job["test_only"] or job.get("source")))
         if not job["test_only"] and not job.get("source") and config["experiment_version"] != DEFAULTS["experiment_version"]:
             raise ValueError("旧运行不能使用新版问题/概率口径续训；请新建实验或用 diagnose 重评")
+        if not job["test_only"] and not job.get("source"):
+            require_current_attention_loss(config)
+            require_current_weighted_kv(config)
         return execute(config, root, job["resume"], job["test_only"], worker=True, source=job.get("source"))
     test_only = args.command == "test"
     source = None
@@ -117,7 +121,7 @@ def main(argv=None):
         supplied = {key: getattr(args, key) for key in DEFAULTS if hasattr(args, key) and getattr(args, key) is not None}
         if set(supplied) - allowed:
             raise ValueError("重评只允许覆盖模型路径、GPU、输出长度与前后台模式")
-        config = {**DEFAULTS, **read_json(source / "resolved_config.json")}
+        config = saved_config(read_json(source / "resolved_config.json"))
         config.update(answer_boundary=DEFAULTS["answer_boundary"], stop_strings=DEFAULTS["stop_strings"],
                       score_probability=DEFAULTS["score_probability"],
                       answer_leading_spaces=DEFAULTS["answer_leading_spaces"], experiment_version=DEFAULTS["experiment_version"],
@@ -134,7 +138,7 @@ def main(argv=None):
             raise ValueError("旧运行不能使用新版问题/概率口径续训；请新建实验或用 diagnose 重评")
         if "answer_boundary" not in config:
             raise ValueError("旧运行使用不同回答边界，不能直接混用新训练/测试；请用 diagnose --run-dir 重评，或新建实验")
-        config = validate({**DEFAULTS, **config, "experiment_version": config.get("experiment_version", 1)},
+        config = validate(saved_config(config),
                           allow_retired=test_only and not args.resume)
         supplied = [key for key in DEFAULTS if hasattr(args, key) and getattr(args, key) is not None and key != "background"]
         if supplied or args.config:
@@ -149,9 +153,14 @@ def main(argv=None):
         root = args.run_dir.resolve() if args.run_dir else Path(config["output_dir"]) / (datetime.now().strftime("%Y%m%d_%H%M%S") + "_" + uuid.uuid4().hex[:6])
     if args.background is not None:
         config["background"] = args.background
+    if args.command == "train":
+        require_current_attention_loss(config)
+        require_current_weighted_kv(config)
     selected = catalog(config)
     for row in selected:
-        materialize(row, config["output_instruction"])
+        sample = materialize(row, config["output_instruction"])
+        if args.command in ("train", "inspect") and "question_weighted_kv" in config["methods"] and method_config(config, "question_weighted_kv")["semantic_query_mode"] == "structured":
+            semantic_spans(sample.question)
     if args.command == "inspect":
         print(json.dumps({"samples": [r["task_id"] for r in selected], "sample_count": len(selected), "config": config}, ensure_ascii=False, indent=2))
         return 0

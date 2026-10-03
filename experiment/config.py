@@ -3,6 +3,7 @@ import math
 from pathlib import Path
 
 from .io import read_json
+from .question_semantics import SEMANTIC_GROUPS, SEMANTIC_WEIGHTS
 
 METHODS = ("baseline", "question_weighted_kv", "question_attention_reconstruction",
            "oracle_private_prefix_distillation")
@@ -22,13 +23,16 @@ DEFAULTS = {
     "log_every": 25, "eval_every": 25, "plot_every": 200, "checkpoint_every": 1,
     "resume_every": 25, "save_topk": 20, "checkpoint_metric": "base",
     "reference_refresh_steps": 200, "lambda_weighted": 1.0, "weight_floor": 0.1,
-    "lambda_output": 1.0, "lambda_lse": 1.0, "lambda_kl": 1.0,
+    "weighted_kv_version": 2, "semantic_query_mode": "structured",
+    "semantic_query_weights": SEMANTIC_WEIGHTS.copy(),
+    "lambda_output": 1.0, "lambda_lse": 1.0, "lambda_attention": 1.0,
+    "attention_loss_version": 2, "lambda_kl": 1.0,
     "temperature": 1.0, "rollout_tokens": 8, "max_new_tokens": 16,
     "score_window_steps": 400, "score_tail_fraction": 0.25, "ema_alpha": 0.5,
     "ema_span_steps": 400, "score_probability": "accepted_forms", "answer_leading_spaces": [0, 1],
 }
-METHOD_KEYS = {"lambda_weighted", "weight_floor", "lambda_output", "lambda_lse", "lambda_kl",
-               "temperature", "rollout_tokens", "reference_refresh_steps"}
+METHOD_KEYS = {"lambda_weighted", "weight_floor", "lambda_output", "lambda_lse", "lambda_attention", "lambda_kl",
+               "temperature", "rollout_tokens", "reference_refresh_steps", "semantic_query_mode", "semantic_query_weights"}
 
 
 def validate(config, *, allow_retired=False):
@@ -37,6 +41,15 @@ def validate(config, *, allow_retired=False):
         raise ValueError(f"未知配置项: {sorted(unknown)}")
     if type(config["experiment_version"]) is not int or config["experiment_version"] not in (1, 2):
         raise ValueError("experiment_version 必须为 1 或 2")
+    if type(config["attention_loss_version"]) is not int or config["attention_loss_version"] not in (1, 2):
+        raise ValueError("attention_loss_version 必须为 1 或 2")
+    if type(config["weighted_kv_version"]) is not int or config["weighted_kv_version"] not in (1, 2):
+        raise ValueError("weighted_kv_version 必须为 1 或 2")
+    shares = config["semantic_query_weights"]
+    if not isinstance(shares, dict) or set(shares) != set(SEMANTIC_GROUPS):
+        raise ValueError("semantic_query_weights 必须包含 object_state/target_field/required_value/question 四组")
+    if any(isinstance(v, bool) or not isinstance(v, (int, float)) or not math.isfinite(v) or v < 0 for v in shares.values()) or not math.isclose(sum(shares.values()), 1.0, rel_tol=0, abs_tol=1e-8):
+        raise ValueError("semantic_query_weights 必须为有限非负数，且总和为 1")
     spaces = config["answer_leading_spaces"]
     if not isinstance(spaces, list) or not spaces or any(type(n) is not int or n not in (0, 1) for n in spaces) or len(set(spaces)) != len(spaces):
         raise ValueError("answer_leading_spaces 必须为 0/1 的非空、不重复列表")
@@ -50,14 +63,15 @@ def validate(config, *, allow_retired=False):
     for key in ("lr", "init_std", "grad_clip", "temperature"):
         if isinstance(config[key], bool) or not isinstance(config[key], (int, float)) or not math.isfinite(config[key]) or config[key] <= 0:
             raise ValueError(f"{key} 必须为有限正数")
-    for key in ("lambda_weighted", "lambda_output", "lambda_lse", "lambda_kl"):
+    for key in ("lambda_weighted", "lambda_output", "lambda_lse", "lambda_attention", "lambda_kl"):
         if isinstance(config[key], bool) or not isinstance(config[key], (int, float)) or not math.isfinite(config[key]) or config[key] < 0:
             raise ValueError(f"{key} 必须为有限非负数")
     for key in ("weight_floor", "score_tail_fraction", "ema_alpha"):
         if not isinstance(config[key], (int, float)) or isinstance(config[key], bool) or not math.isfinite(config[key]) or not 0 < config[key] <= 1:
             raise ValueError(f"{key} 必须在 (0,1] 内")
-    for key, allowed in {"base_loss": ("mean", "token"), "checkpoint_metric": ("base", "total"),
+    for key, allowed in {"base_loss": ("mean", "token", "none"), "checkpoint_metric": ("base", "total"),
                          "dtype": ("float32", "float16", "bfloat16"), "attention_backend": ("eager", "sdpa"),
+                         "semantic_query_mode": ("structured", "uniform"),
                          "question_format": ("raw", "chat"), "score_probability": ("sequence", "accepted_forms")}.items():
         if config[key] not in allowed:
             raise ValueError(f"{key} 只能选择 {allowed}")
@@ -67,6 +81,12 @@ def validate(config, *, allow_retired=False):
         raise ValueError("question_output_consistency 已退出实验组；仅允许历史结果测试与诊断，不允许新训练或续训")
     if not isinstance(methods, list) or not methods or any(m not in allowed_methods for m in methods) or len(set(methods)) != len(methods):
         raise ValueError(f"methods 必须为非空、不重复的方法列表: {allowed_methods}")
+    if config["base_loss"] == "none":
+        auxiliary_only = {"question_weighted_kv", "question_attention_reconstruction", "oracle_private_prefix_distillation"}
+        if any(method not in auxiliary_only for method in methods):
+            raise ValueError("base_loss=none 仅允许 question_weighted_kv、question_attention_reconstruction 和 oracle_private_prefix_distillation；Baseline 必须使用 mean 或 token 基础损失")
+        if config["checkpoint_metric"] != "total":
+            raise ValueError("base_loss=none 时必须按 total 保存 TopK 前缀")
     for key in ("datasets", "include_tasks", "exclude_tasks"):
         if not isinstance(config[key], list) or any(not isinstance(x, str) for x in config[key]):
             raise ValueError(f"{key} 必须是字符串列表")
@@ -116,3 +136,23 @@ def load_config(path, overrides=None):
 
 def method_config(config, method):
     return {**config, **config["method_options"].get(method, {})}
+
+
+def saved_config(raw):
+    """Missing loss version marks historical O/LSE-only runs, never version 2."""
+    return {**deepcopy(DEFAULTS), **raw,
+            "experiment_version": raw.get("experiment_version", 1),
+            "attention_loss_version": raw.get("attention_loss_version", 1),
+            "lambda_attention": raw.get("lambda_attention", 0.0),
+            "weighted_kv_version": raw.get("weighted_kv_version", 1),
+            "semantic_query_mode": raw.get("semantic_query_mode", "uniform")}
+
+
+def require_current_attention_loss(config):
+    if "question_attention_reconstruction" in config["methods"] and config.get("attention_loss_version", 1) != DEFAULTS["attention_loss_version"]:
+        raise ValueError("attention_restruct 损失已升级为逐位置注意力 KL + output + logsumexp；旧 attention 运行不能续训，请新建实验（历史 test/diagnose 仍可用）")
+
+
+def require_current_weighted_kv(config):
+    if "question_weighted_kv" in config["methods"] and config.get("weighted_kv_version", 1) != DEFAULTS["weighted_kv_version"]:
+        raise ValueError("weight_kv 已升级为四组语义查询加权；旧 weight_kv 运行不能续训，请新建实验（历史 test/diagnose 仍可用）")

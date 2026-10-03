@@ -1,7 +1,7 @@
 {
   "model_path": "/home/kevin/models/Qwen3-4B",
   "device": "cuda:0",
-  "cuda_devices": "0",
+  "cuda_devices": "3",
   "dtype": "bfloat16",
   "datasets": [
     "../test_samples/tasks.jsonl"
@@ -16,10 +16,7 @@
   "exclude_tasks": [],
   "limit": 5,
   "methods": [
-    "baseline",
-    "question_weighted_kv",
-    "question_attention_reconstruction",
-    "oracle_private_prefix_distillation"
+    "question_attention_reconstruction"
   ],
   "method_options": {},
   "output_dir": "/data/kevin/fluoroscopy/results",
@@ -32,7 +29,7 @@
   "seed": 42,
   "rounds": 20,
   "steps_per_round": 200,
-  "base_loss": "mean",
+  "base_loss": "none",
   "lr": 0.01,
   "init_std": 0.02,
   "grad_clip": 1.0,

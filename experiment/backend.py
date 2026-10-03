@@ -45,10 +45,14 @@ def kv_losses(predicted, observed):
     return {"mean_loss": torch.stack(mean).mean(), "token_loss": torch.stack(token).mean()}
 
 
-def attention_summary(query, cache):
+def attention_summary(query, cache, *, return_log_attention=False):
+    """Read public KV; optionally retain each head/query's position distribution."""
     key, value = (repeat_kv(x.float(), query.shape[1]) for x in cache)
     scores = query.float() @ key.transpose(-1, -2) / math.sqrt(query.shape[-1])
-    return scores.softmax(dim=-1) @ value, scores.logsumexp(dim=-1)
+    summary = (scores.softmax(dim=-1) @ value, scores.logsumexp(dim=-1))
+    if return_log_attention:
+        return (*summary, scores.log_softmax(dim=-1))
+    return summary
 
 
 class Backend:
@@ -67,6 +71,9 @@ class Backend:
         return torch.tensor([values], device=self.device, dtype=torch.long)
 
     def encode_question(self, text, config):
+        return self.encode(self.question_prompt(text, config))
+
+    def question_prompt(self, text, config):
         if config["question_format"] == "chat":
             boundary = config["answer_boundary"]
             if text.endswith(boundary):
@@ -75,7 +82,17 @@ class Backend:
                 [{"role": "user", "content": text}], tokenize=False, add_generation_prompt=True,
                 enable_thinking=config["enable_thinking"])
             text += boundary
-        return self.encode(text)
+        return text
+
+    def semantic_query_groups(self, text, config, question_ids):
+        from .question_semantics import token_groups
+        prompt = self.question_prompt(text, config)
+        if not callable(self.tokenizer):
+            raise ValueError("结构化语义查询需要支持 offset_mapping 的 tokenizer")
+        encoded = self.tokenizer(prompt, add_special_tokens=False, return_offsets_mapping=True)
+        if encoded["input_ids"] != question_ids[0].tolist():
+            raise ValueError("语义位置映射的 token 与实际 question 输入不一致")
+        return token_groups(prompt, encoded["offset_mapping"])
 
     def cache(self, layers):
         if self.cache_factory is None:

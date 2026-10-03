@@ -1,1 +1,8 @@
-In which city is the restaurant in the final confirmed reservation located? Return only the English city name, spelled exactly as in the conversation.
+Output format: Return only the complete English city name.
+
+Target object: The restaurant associated with the reservation.
+Target state: The final confirmed reservation after any changes.
+Target field: The city where that restaurant is located.
+Required value: The complete city name stated in the conversation, including all words and preserving the original spelling.
+
+Question: In which city is the restaurant associated with the final confirmed reservation located?

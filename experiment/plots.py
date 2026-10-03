@@ -34,7 +34,8 @@ def render(root, series):
     if not series:
         return
     fig, axes = plt.subplots(2, 1, figsize=(11, 8), sharex=True)
-    loss_fields = ("base_loss", "weighted_kv_loss", "attention_output_loss", "lse_loss", "kl_loss", "total_loss")
+    loss_fields = ("base_loss", "weighted_kv_loss", "attention_output_loss", "lse_loss",
+                   "attention_distribution_loss", "kl_loss", "total_loss")
     probability_values = []
     for index, (name, rows) in enumerate(series.items()):
         color = COLORS.get(name, f"C{index % 10}")

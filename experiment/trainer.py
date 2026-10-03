@@ -8,7 +8,7 @@ import time
 import torch
 
 from .checkpoints import TopK
-from .config import METHODS
+from .config import METHODS, require_current_attention_loss, require_current_weighted_kv
 from .io import save_torch, write_csv, write_json, write_error_status
 from .metrics import SupportScore
 from .objectives import Objective
@@ -19,24 +19,34 @@ def duration(seconds):
     return f"{int(seconds) // 3600:02d}:{int(seconds) // 60 % 60:02d}:{int(seconds) % 60:02d}"
 
 
-def fingerprint(config, method, context_signature):
-    relevant = {k: v for k, v in config.items() if k not in ("background", "config_path", "output_dir", "continue_on_error", "auto_test")}
+def fingerprint(config, method, context_signature, question_groups=None):
+    ignored = {"background", "config_path", "output_dir", "continue_on_error", "auto_test"}
+    if method != "question_attention_reconstruction":
+        # Attention's revision does not change the other methods' objectives.
+        ignored.update(("attention_loss_version", "lambda_attention"))
+    if method != "question_weighted_kv":
+        ignored.update(("weighted_kv_version", "semantic_query_mode", "semantic_query_weights"))
+    relevant = {k: v for k, v in config.items() if k not in ignored}
+    if method == "question_weighted_kv" and question_groups is not None:
+        relevant["semantic_query_positions"] = question_groups
     return hashlib.sha256(json.dumps([relevant, method, context_signature], sort_keys=True).encode()).hexdigest()
 
 
 def train(backend, observed, public_ids, question_ids, initial, method, config, root, monitor,
-          *, oracle_cache=None, resume=False, label="", context_signature="", on_progress=None):
+          *, oracle_cache=None, resume=False, label="", context_signature="", on_progress=None, question_groups=None):
     if method not in METHODS:
         raise ValueError(f"方法 {method} 不属于当前实验组，禁止新训练或续训")
+    require_current_attention_loss({**config, "methods": [method]})
+    require_current_weighted_kv({**config, "methods": [method]})
     root = Path(root)
     root.mkdir(parents=True, exist_ok=True)
     latest = root / "latest.pt"
     prefix = torch.nn.Parameter(initial.to(device=backend.device, dtype=torch.float32).clone())
     optimizer = torch.optim.Adam([prefix], lr=config["lr"])
-    objective = Objective(backend, observed, public_ids, question_ids, method, config, oracle_cache)
+    objective = Objective(backend, observed, public_ids, question_ids, method, config, oracle_cache, question_groups=question_groups)
     pool = TopK(root / "prefixes", config["save_topk"], config["checkpoint_metric"])
     total_steps = config["rounds"] * config["steps_per_round"]
-    signature = fingerprint(config, method, context_signature)
+    signature = fingerprint(config, method, context_signature, question_groups)
     rows, start_step, elapsed_before = [], 0, 0.0
     probability_key = "answer_probability"
     score = None
@@ -58,7 +68,12 @@ def train(backend, observed, public_ids, question_ids, initial, method, config, 
         print(f"{label} 恢复 step={start_step}/{total_steps}", flush=True)
     elif (root / "history.jsonl").exists():
         raise ValueError("输出目录已有训练记录；请使用 --resume")
-    write_json(root / "config.json", {"method": method, "uses_private_teacher": oracle_cache is not None, "config": config})
+    recorded_config = {"method": method, "uses_private_teacher": oracle_cache is not None, "config": config}
+    if objective.query_weights is not None:
+        recorded_config.update(semantic_query_positions=question_groups, query_token_coefficients=objective.query_weights)
+        counts = {group: len(indices) for group, indices in question_groups.items()}
+        print(f"{label} 语义查询 token 数={counts} 贡献比例={config['semantic_query_weights']}", flush=True)
+    write_json(root / "config.json", recorded_config)
     history_path = root / "history.jsonl"
     history_path.write_text("".join(json.dumps(r, ensure_ascii=False, allow_nan=False) + "\n" for r in rows), encoding="utf-8")
     started = time.monotonic()

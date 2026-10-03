@@ -1,1 +1,8 @@
-How many people were included in the final confirmed restaurant reservation? Return only the number in digits.
+Output format: Return only the number in digits.
+
+Target object: The restaurant reservation.
+Target state: The final confirmed reservation after any changes.
+Target field: The number of people included in that reservation.
+Required value: The final confirmed party size after any changes, including all diners in that reservation.
+
+Question: How many people are included in the final confirmed restaurant reservation?

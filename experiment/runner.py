@@ -8,12 +8,13 @@ import traceback
 import torch
 
 from .backend import load_backend
-from .config import method_config
+from .config import method_config, require_current_attention_loss, require_current_weighted_kv
 from .data import catalog, materialize, question_text
 from .io import read_json, save_torch, write_csv, write_json, is_storage_error
 from .metrics import AnswerMonitor, summary, test_prefix
 from .plots import render_comparison
 from .trainer import train
+from .question_semantics import semantic_spans
 
 
 def prepare(backend, sample, config):
@@ -83,10 +84,17 @@ def summarize_root(root, config, planned, announce=True):
 
 
 def run(config, root, *, resume=False, test_only=False, backend=None):
+    if not test_only:
+        require_current_attention_loss(config)
+        require_current_weighted_kv(config)
     root = Path(root)
     selected = catalog(config)
     # Validate data before loading a multi-GB model. No labels are passed to objectives.
     samples = [materialize(row, config["output_instruction"]) for row in selected]
+    weighted_config = method_config(config, "question_weighted_kv")
+    if not test_only and "question_weighted_kv" in config["methods"] and weighted_config["semantic_query_mode"] == "structured":
+        for sample in samples:
+            semantic_spans(sample.question)
     if resume or test_only:
         original = read_json(root / "selected_tasks.json")
         if original != [s.task_id for s in samples]:
@@ -97,6 +105,10 @@ def run(config, root, *, resume=False, test_only=False, backend=None):
           f"seed={config['seed']} 原损失={config['base_loss']} rounds={config['rounds']} "
           f"steps_per_round={config['steps_per_round']} TopK={config['save_topk']} "
           f"保存指标={config['checkpoint_metric']} CUDA_VISIBLE_DEVICES={os.environ.get('CUDA_VISIBLE_DEVICES', '未限制')} 输出={root}", flush=True)
+    group_role = {"token": "token 主实验", "mean": "mean 对照", "none": "辅助损失单独组"}[config["base_loss"]]
+    print(f"实验组定位={group_role} "
+          f"attention_loss_version={config.get('attention_loss_version', 1)} "
+          f"weighted_kv_version={config.get('weighted_kv_version', 1)}", flush=True)
     print("完整配置:\n" + json.dumps(config, ensure_ascii=False, indent=2), flush=True)
     backend = backend or load_backend(config)
     failures, completed, skipped = [], [], []
@@ -151,6 +163,10 @@ def run(config, root, *, resume=False, test_only=False, backend=None):
                 label = f"[样本 {sample_index}/{len(samples)} {sample.task_id} | 方法 {method_index}/{len(config['methods'])} {method}]"
                 try:
                     if not test_only:
+                        question_groups = None
+                        if method == "question_weighted_kv" and specific["semantic_query_mode"] == "structured":
+                            text = question_text(sample.question, sample.output_instruction, specific["answer_boundary"])
+                            question_groups = backend.semantic_query_groups(text, specific, question_ids)
                         monitor = AnswerMonitor(backend, observed, question_ids, sample.answer, sample.aliases,
                                                 probability_mode=config["score_probability"], leading_spaces=config["answer_leading_spaces"])
                         def update_comparison(rows, name=method):
@@ -159,7 +175,7 @@ def run(config, root, *, resume=False, test_only=False, backend=None):
                         series[method] = train(backend, observed, public_ids, question_ids, initial, method, specific,
                                                directory, monitor, oracle_cache=oracle if method == "oracle_private_prefix_distillation" else None,
                                                resume=resume, label=label, context_signature=signature,
-                                               on_progress=update_comparison)
+                                               on_progress=update_comparison, question_groups=question_groups)
                         render_comparison(sample_root / "comparison", series)
                     elif not (directory / "prefixes" / "manifest.json").exists():
                         print(f"{label} 没有已导出前缀，跳过测试", flush=True)

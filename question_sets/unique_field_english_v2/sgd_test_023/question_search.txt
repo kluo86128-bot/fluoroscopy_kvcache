@@ -1,0 +1,1 @@
+What is the dining date of the final confirmed restaurant reservation? Return only the full English month name, one space, and the day number with its ordinal suffix. Do not include a year.

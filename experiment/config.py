@@ -3,7 +3,7 @@ import math
 from pathlib import Path
 
 from .io import read_json
-from .question_semantics import SEMANTIC_GROUPS, SEMANTIC_WEIGHTS
+from .question_semantics import RELATION_GROUPS, SEMANTIC_GROUPS, SEMANTIC_WEIGHTS
 
 METHODS = ("baseline", "question_weighted_kv", "question_attention_reconstruction",
            "oracle_private_prefix_distillation")
@@ -16,6 +16,7 @@ DEFAULTS = {
     "datasets": ["../test_samples/tasks.jsonl"], "include_tasks": [], "exclude_tasks": [], "limit": None,
     "methods": ["baseline"], "method_options": {}, "output_dir": "../results",
     "background": True, "continue_on_error": True, "auto_test": True,
+    "test_question_mode": "both",
     "output_instruction": DIRECT_OUTPUT, "question_format": "raw", "enable_thinking": False,
     "answer_boundary": "Answer: ", "stop_strings": ["\n"],
     "seed": 42, "rounds": 20, "steps_per_round": 200, "base_loss": "token",
@@ -46,8 +47,8 @@ def validate(config, *, allow_retired=False):
     if type(config["weighted_kv_version"]) is not int or config["weighted_kv_version"] not in (1, 2):
         raise ValueError("weighted_kv_version 必须为 1 或 2")
     shares = config["semantic_query_weights"]
-    if not isinstance(shares, dict) or set(shares) != set(SEMANTIC_GROUPS):
-        raise ValueError("semantic_query_weights 必须包含 object_state/target_field/required_value/question 四组")
+    if not isinstance(shares, dict) or set(shares) not in (set(SEMANTIC_GROUPS), set(RELATION_GROUPS)):
+        raise ValueError("semantic_query_weights 必须包含旧版四组或 target_relation/required_value/question 三组")
     if any(isinstance(v, bool) or not isinstance(v, (int, float)) or not math.isfinite(v) or v < 0 for v in shares.values()) or not math.isclose(sum(shares.values()), 1.0, rel_tol=0, abs_tol=1e-8):
         raise ValueError("semantic_query_weights 必须为有限非负数，且总和为 1")
     spaces = config["answer_leading_spaces"]
@@ -75,6 +76,8 @@ def validate(config, *, allow_retired=False):
                          "question_format": ("raw", "chat"), "score_probability": ("sequence", "accepted_forms")}.items():
         if config[key] not in allowed:
             raise ValueError(f"{key} 只能选择 {allowed}")
+    if config["test_question_mode"] not in ("both", "held_out"):
+        raise ValueError("test_question_mode 只能选择 both 或 held_out")
     methods = config["methods"]
     allowed_methods = METHODS + RETIRED_METHODS if allow_retired else METHODS
     if isinstance(methods, list) and not allow_retired and any(m in RETIRED_METHODS for m in methods):

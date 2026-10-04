@@ -28,9 +28,12 @@ def prepare(backend, sample, config):
 
 
 def test_method(backend, sample, config, directory, observed, public_ids, question_ids, *, output_directory=None, prefix_items=None):
+    held_only = config.get("test_question_mode", "both") == "held_out"
+    if held_only and not sample.held_out_question:
+        raise ValueError(f"{sample.task_id}: held_out 测试需要独立的 question_test 问题")
     directory = Path(directory)
     manifest = read_json(directory / "prefixes" / "manifest.json")
-    questions = [("training_question", question_ids, sample.answer, sample.aliases)]
+    questions = [] if held_only else [("training_question", question_ids, sample.answer, sample.aliases)]
     if sample.held_out_question:
         held_ids = backend.encode_question(question_text(sample.held_out_question, sample.output_instruction, config["answer_boundary"]), config)
         questions.append(("held_out_question", held_ids, sample.held_out_answer, sample.held_out_aliases))
@@ -91,6 +94,10 @@ def run(config, root, *, resume=False, test_only=False, backend=None):
     selected = catalog(config)
     # Validate data before loading a multi-GB model. No labels are passed to objectives.
     samples = [materialize(row, config["output_instruction"]) for row in selected]
+    if config["auto_test"] and config.get("test_question_mode", "both") == "held_out":
+        for sample in samples:
+            if not sample.held_out_question:
+                raise ValueError(f"{sample.task_id}: held_out 测试需要独立的 question_test 问题")
     weighted_config = method_config(config, "question_weighted_kv")
     if not test_only and "question_weighted_kv" in config["methods"] and weighted_config["semantic_query_mode"] == "structured":
         for sample in samples:

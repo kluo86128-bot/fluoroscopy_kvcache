@@ -1,8 +1,3 @@
 Output format: Return only the number in digits.
 
-Target object: The restaurant reservation.
-Target state: The final confirmed reservation after any changes.
-Target field: The number of people included in that reservation.
-Required value: The final confirmed party size after any changes, including all diners in that reservation.
-
 Question: What is the party size of the final confirmed restaurant booking?

@@ -1,0 +1,1 @@
+How many people were included in the final confirmed restaurant reservation? Return only the number in digits.

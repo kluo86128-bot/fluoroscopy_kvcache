@@ -159,6 +159,8 @@ def main(argv=None):
     selected = catalog(config)
     for row in selected:
         sample = materialize(row, config["output_instruction"])
+        if config["auto_test"] and config["test_question_mode"] == "held_out" and not sample.held_out_question:
+            raise ValueError(f"{sample.task_id}: held_out 测试需要独立的 question_test 问题")
         if args.command in ("train", "inspect") and "question_weighted_kv" in config["methods"] and method_config(config, "question_weighted_kv")["semantic_query_mode"] == "structured":
             semantic_spans(sample.question)
     if args.command == "inspect":

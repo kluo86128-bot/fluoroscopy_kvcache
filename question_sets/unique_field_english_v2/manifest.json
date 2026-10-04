@@ -1,0 +1,491 @@
+{
+  "question_version": "unique_field_english_v2",
+  "source_git_commit": "f1734700a87fceaace1b4d32a4d305fa2367d84f",
+  "current_question_git_commit": "67ff7e5ebf828e1e0ad1f0c0c6f91e38ab466f0d",
+  "current_question_version": "structured_field_semantic_v3",
+  "scope": "questions_only_no_private_public_or_answer_copies",
+  "sample_count": 40,
+  "question_count": 80,
+  "samples": {
+    "sgd_test_001": {
+      "training_question": {
+        "file": "sgd_test_001/question_search.txt",
+        "sha256": "87f3e155a6f7b697913b665be89ea56f17f0c7de8c56bd74aea4c2f352e4bf61",
+        "expected_current_sha256": "6cca5f23bc590788dc588d615ffa961deb3de7416c17c5c0b6a60acec60df0eb"
+      },
+      "held_out_question": {
+        "file": "sgd_test_001/question_test.txt",
+        "sha256": "bbf0460705109b452ff30249e198e43e6a922d678208202ab0d05ec349722cd0",
+        "expected_current_sha256": "45f4732d68c702e5c3f30b8d90e36fdc52149cdc7b9a09174d6ab027d5a231f6"
+      }
+    },
+    "sgd_test_002": {
+      "training_question": {
+        "file": "sgd_test_002/question_search.txt",
+        "sha256": "87f3e155a6f7b697913b665be89ea56f17f0c7de8c56bd74aea4c2f352e4bf61",
+        "expected_current_sha256": "6cca5f23bc590788dc588d615ffa961deb3de7416c17c5c0b6a60acec60df0eb"
+      },
+      "held_out_question": {
+        "file": "sgd_test_002/question_test.txt",
+        "sha256": "bbf0460705109b452ff30249e198e43e6a922d678208202ab0d05ec349722cd0",
+        "expected_current_sha256": "45f4732d68c702e5c3f30b8d90e36fdc52149cdc7b9a09174d6ab027d5a231f6"
+      }
+    },
+    "sgd_test_003": {
+      "training_question": {
+        "file": "sgd_test_003/question_search.txt",
+        "sha256": "87f3e155a6f7b697913b665be89ea56f17f0c7de8c56bd74aea4c2f352e4bf61",
+        "expected_current_sha256": "6cca5f23bc590788dc588d615ffa961deb3de7416c17c5c0b6a60acec60df0eb"
+      },
+      "held_out_question": {
+        "file": "sgd_test_003/question_test.txt",
+        "sha256": "bbf0460705109b452ff30249e198e43e6a922d678208202ab0d05ec349722cd0",
+        "expected_current_sha256": "45f4732d68c702e5c3f30b8d90e36fdc52149cdc7b9a09174d6ab027d5a231f6"
+      }
+    },
+    "sgd_test_004": {
+      "training_question": {
+        "file": "sgd_test_004/question_search.txt",
+        "sha256": "87f3e155a6f7b697913b665be89ea56f17f0c7de8c56bd74aea4c2f352e4bf61",
+        "expected_current_sha256": "6cca5f23bc590788dc588d615ffa961deb3de7416c17c5c0b6a60acec60df0eb"
+      },
+      "held_out_question": {
+        "file": "sgd_test_004/question_test.txt",
+        "sha256": "bbf0460705109b452ff30249e198e43e6a922d678208202ab0d05ec349722cd0",
+        "expected_current_sha256": "45f4732d68c702e5c3f30b8d90e36fdc52149cdc7b9a09174d6ab027d5a231f6"
+      }
+    },
+    "sgd_test_005": {
+      "training_question": {
+        "file": "sgd_test_005/question_search.txt",
+        "sha256": "87f3e155a6f7b697913b665be89ea56f17f0c7de8c56bd74aea4c2f352e4bf61",
+        "expected_current_sha256": "6cca5f23bc590788dc588d615ffa961deb3de7416c17c5c0b6a60acec60df0eb"
+      },
+      "held_out_question": {
+        "file": "sgd_test_005/question_test.txt",
+        "sha256": "bbf0460705109b452ff30249e198e43e6a922d678208202ab0d05ec349722cd0",
+        "expected_current_sha256": "45f4732d68c702e5c3f30b8d90e36fdc52149cdc7b9a09174d6ab027d5a231f6"
+      }
+    },
+    "sgd_test_006": {
+      "training_question": {
+        "file": "sgd_test_006/question_search.txt",
+        "sha256": "87f3e155a6f7b697913b665be89ea56f17f0c7de8c56bd74aea4c2f352e4bf61",
+        "expected_current_sha256": "6cca5f23bc590788dc588d615ffa961deb3de7416c17c5c0b6a60acec60df0eb"
+      },
+      "held_out_question": {
+        "file": "sgd_test_006/question_test.txt",
+        "sha256": "bbf0460705109b452ff30249e198e43e6a922d678208202ab0d05ec349722cd0",
+        "expected_current_sha256": "45f4732d68c702e5c3f30b8d90e36fdc52149cdc7b9a09174d6ab027d5a231f6"
+      }
+    },
+    "sgd_test_007": {
+      "training_question": {
+        "file": "sgd_test_007/question_search.txt",
+        "sha256": "87f3e155a6f7b697913b665be89ea56f17f0c7de8c56bd74aea4c2f352e4bf61",
+        "expected_current_sha256": "6cca5f23bc590788dc588d615ffa961deb3de7416c17c5c0b6a60acec60df0eb"
+      },
+      "held_out_question": {
+        "file": "sgd_test_007/question_test.txt",
+        "sha256": "bbf0460705109b452ff30249e198e43e6a922d678208202ab0d05ec349722cd0",
+        "expected_current_sha256": "45f4732d68c702e5c3f30b8d90e36fdc52149cdc7b9a09174d6ab027d5a231f6"
+      }
+    },
+    "sgd_test_008": {
+      "training_question": {
+        "file": "sgd_test_008/question_search.txt",
+        "sha256": "87f3e155a6f7b697913b665be89ea56f17f0c7de8c56bd74aea4c2f352e4bf61",
+        "expected_current_sha256": "6cca5f23bc590788dc588d615ffa961deb3de7416c17c5c0b6a60acec60df0eb"
+      },
+      "held_out_question": {
+        "file": "sgd_test_008/question_test.txt",
+        "sha256": "bbf0460705109b452ff30249e198e43e6a922d678208202ab0d05ec349722cd0",
+        "expected_current_sha256": "45f4732d68c702e5c3f30b8d90e36fdc52149cdc7b9a09174d6ab027d5a231f6"
+      }
+    },
+    "sgd_test_009": {
+      "training_question": {
+        "file": "sgd_test_009/question_search.txt",
+        "sha256": "87f3e155a6f7b697913b665be89ea56f17f0c7de8c56bd74aea4c2f352e4bf61",
+        "expected_current_sha256": "6cca5f23bc590788dc588d615ffa961deb3de7416c17c5c0b6a60acec60df0eb"
+      },
+      "held_out_question": {
+        "file": "sgd_test_009/question_test.txt",
+        "sha256": "bbf0460705109b452ff30249e198e43e6a922d678208202ab0d05ec349722cd0",
+        "expected_current_sha256": "45f4732d68c702e5c3f30b8d90e36fdc52149cdc7b9a09174d6ab027d5a231f6"
+      }
+    },
+    "sgd_test_010": {
+      "training_question": {
+        "file": "sgd_test_010/question_search.txt",
+        "sha256": "87f3e155a6f7b697913b665be89ea56f17f0c7de8c56bd74aea4c2f352e4bf61",
+        "expected_current_sha256": "6cca5f23bc590788dc588d615ffa961deb3de7416c17c5c0b6a60acec60df0eb"
+      },
+      "held_out_question": {
+        "file": "sgd_test_010/question_test.txt",
+        "sha256": "bbf0460705109b452ff30249e198e43e6a922d678208202ab0d05ec349722cd0",
+        "expected_current_sha256": "45f4732d68c702e5c3f30b8d90e36fdc52149cdc7b9a09174d6ab027d5a231f6"
+      }
+    },
+    "sgd_test_011": {
+      "training_question": {
+        "file": "sgd_test_011/question_search.txt",
+        "sha256": "87f3e155a6f7b697913b665be89ea56f17f0c7de8c56bd74aea4c2f352e4bf61",
+        "expected_current_sha256": "6cca5f23bc590788dc588d615ffa961deb3de7416c17c5c0b6a60acec60df0eb"
+      },
+      "held_out_question": {
+        "file": "sgd_test_011/question_test.txt",
+        "sha256": "bbf0460705109b452ff30249e198e43e6a922d678208202ab0d05ec349722cd0",
+        "expected_current_sha256": "45f4732d68c702e5c3f30b8d90e36fdc52149cdc7b9a09174d6ab027d5a231f6"
+      }
+    },
+    "sgd_test_012": {
+      "training_question": {
+        "file": "sgd_test_012/question_search.txt",
+        "sha256": "87f3e155a6f7b697913b665be89ea56f17f0c7de8c56bd74aea4c2f352e4bf61",
+        "expected_current_sha256": "6cca5f23bc590788dc588d615ffa961deb3de7416c17c5c0b6a60acec60df0eb"
+      },
+      "held_out_question": {
+        "file": "sgd_test_012/question_test.txt",
+        "sha256": "bbf0460705109b452ff30249e198e43e6a922d678208202ab0d05ec349722cd0",
+        "expected_current_sha256": "45f4732d68c702e5c3f30b8d90e36fdc52149cdc7b9a09174d6ab027d5a231f6"
+      }
+    },
+    "sgd_test_013": {
+      "training_question": {
+        "file": "sgd_test_013/question_search.txt",
+        "sha256": "87f3e155a6f7b697913b665be89ea56f17f0c7de8c56bd74aea4c2f352e4bf61",
+        "expected_current_sha256": "6cca5f23bc590788dc588d615ffa961deb3de7416c17c5c0b6a60acec60df0eb"
+      },
+      "held_out_question": {
+        "file": "sgd_test_013/question_test.txt",
+        "sha256": "bbf0460705109b452ff30249e198e43e6a922d678208202ab0d05ec349722cd0",
+        "expected_current_sha256": "45f4732d68c702e5c3f30b8d90e36fdc52149cdc7b9a09174d6ab027d5a231f6"
+      }
+    },
+    "sgd_test_014": {
+      "training_question": {
+        "file": "sgd_test_014/question_search.txt",
+        "sha256": "87f3e155a6f7b697913b665be89ea56f17f0c7de8c56bd74aea4c2f352e4bf61",
+        "expected_current_sha256": "6cca5f23bc590788dc588d615ffa961deb3de7416c17c5c0b6a60acec60df0eb"
+      },
+      "held_out_question": {
+        "file": "sgd_test_014/question_test.txt",
+        "sha256": "bbf0460705109b452ff30249e198e43e6a922d678208202ab0d05ec349722cd0",
+        "expected_current_sha256": "45f4732d68c702e5c3f30b8d90e36fdc52149cdc7b9a09174d6ab027d5a231f6"
+      }
+    },
+    "sgd_test_015": {
+      "training_question": {
+        "file": "sgd_test_015/question_search.txt",
+        "sha256": "87f3e155a6f7b697913b665be89ea56f17f0c7de8c56bd74aea4c2f352e4bf61",
+        "expected_current_sha256": "6cca5f23bc590788dc588d615ffa961deb3de7416c17c5c0b6a60acec60df0eb"
+      },
+      "held_out_question": {
+        "file": "sgd_test_015/question_test.txt",
+        "sha256": "bbf0460705109b452ff30249e198e43e6a922d678208202ab0d05ec349722cd0",
+        "expected_current_sha256": "45f4732d68c702e5c3f30b8d90e36fdc52149cdc7b9a09174d6ab027d5a231f6"
+      }
+    },
+    "sgd_test_016": {
+      "training_question": {
+        "file": "sgd_test_016/question_search.txt",
+        "sha256": "87f3e155a6f7b697913b665be89ea56f17f0c7de8c56bd74aea4c2f352e4bf61",
+        "expected_current_sha256": "6cca5f23bc590788dc588d615ffa961deb3de7416c17c5c0b6a60acec60df0eb"
+      },
+      "held_out_question": {
+        "file": "sgd_test_016/question_test.txt",
+        "sha256": "bbf0460705109b452ff30249e198e43e6a922d678208202ab0d05ec349722cd0",
+        "expected_current_sha256": "45f4732d68c702e5c3f30b8d90e36fdc52149cdc7b9a09174d6ab027d5a231f6"
+      }
+    },
+    "sgd_test_017": {
+      "training_question": {
+        "file": "sgd_test_017/question_search.txt",
+        "sha256": "87f3e155a6f7b697913b665be89ea56f17f0c7de8c56bd74aea4c2f352e4bf61",
+        "expected_current_sha256": "6cca5f23bc590788dc588d615ffa961deb3de7416c17c5c0b6a60acec60df0eb"
+      },
+      "held_out_question": {
+        "file": "sgd_test_017/question_test.txt",
+        "sha256": "bbf0460705109b452ff30249e198e43e6a922d678208202ab0d05ec349722cd0",
+        "expected_current_sha256": "45f4732d68c702e5c3f30b8d90e36fdc52149cdc7b9a09174d6ab027d5a231f6"
+      }
+    },
+    "sgd_test_018": {
+      "training_question": {
+        "file": "sgd_test_018/question_search.txt",
+        "sha256": "87f3e155a6f7b697913b665be89ea56f17f0c7de8c56bd74aea4c2f352e4bf61",
+        "expected_current_sha256": "6cca5f23bc590788dc588d615ffa961deb3de7416c17c5c0b6a60acec60df0eb"
+      },
+      "held_out_question": {
+        "file": "sgd_test_018/question_test.txt",
+        "sha256": "bbf0460705109b452ff30249e198e43e6a922d678208202ab0d05ec349722cd0",
+        "expected_current_sha256": "45f4732d68c702e5c3f30b8d90e36fdc52149cdc7b9a09174d6ab027d5a231f6"
+      }
+    },
+    "sgd_test_019": {
+      "training_question": {
+        "file": "sgd_test_019/question_search.txt",
+        "sha256": "87f3e155a6f7b697913b665be89ea56f17f0c7de8c56bd74aea4c2f352e4bf61",
+        "expected_current_sha256": "6cca5f23bc590788dc588d615ffa961deb3de7416c17c5c0b6a60acec60df0eb"
+      },
+      "held_out_question": {
+        "file": "sgd_test_019/question_test.txt",
+        "sha256": "bbf0460705109b452ff30249e198e43e6a922d678208202ab0d05ec349722cd0",
+        "expected_current_sha256": "45f4732d68c702e5c3f30b8d90e36fdc52149cdc7b9a09174d6ab027d5a231f6"
+      }
+    },
+    "sgd_test_020": {
+      "training_question": {
+        "file": "sgd_test_020/question_search.txt",
+        "sha256": "87f3e155a6f7b697913b665be89ea56f17f0c7de8c56bd74aea4c2f352e4bf61",
+        "expected_current_sha256": "6cca5f23bc590788dc588d615ffa961deb3de7416c17c5c0b6a60acec60df0eb"
+      },
+      "held_out_question": {
+        "file": "sgd_test_020/question_test.txt",
+        "sha256": "bbf0460705109b452ff30249e198e43e6a922d678208202ab0d05ec349722cd0",
+        "expected_current_sha256": "45f4732d68c702e5c3f30b8d90e36fdc52149cdc7b9a09174d6ab027d5a231f6"
+      }
+    },
+    "sgd_test_021": {
+      "training_question": {
+        "file": "sgd_test_021/question_search.txt",
+        "sha256": "0e41fc389a8c62cb9d5b631914c2b730a5b306822fc484a3d4f236e5b5a586a5",
+        "expected_current_sha256": "810f1633a4deaf68e41a17663bc579cbac40bd9c3c7a726e05fe9b051d4b5237"
+      },
+      "held_out_question": {
+        "file": "sgd_test_021/question_test.txt",
+        "sha256": "4261a26250a65d55ab24e26fad7195a054e0ec4b2c62f0c733019230364376d2",
+        "expected_current_sha256": "8f36656b8a218479428fa9574614ae338e01c1b4ca7bbebf678a7bb67cba2503"
+      }
+    },
+    "sgd_test_022": {
+      "training_question": {
+        "file": "sgd_test_022/question_search.txt",
+        "sha256": "0e41fc389a8c62cb9d5b631914c2b730a5b306822fc484a3d4f236e5b5a586a5",
+        "expected_current_sha256": "810f1633a4deaf68e41a17663bc579cbac40bd9c3c7a726e05fe9b051d4b5237"
+      },
+      "held_out_question": {
+        "file": "sgd_test_022/question_test.txt",
+        "sha256": "4261a26250a65d55ab24e26fad7195a054e0ec4b2c62f0c733019230364376d2",
+        "expected_current_sha256": "8f36656b8a218479428fa9574614ae338e01c1b4ca7bbebf678a7bb67cba2503"
+      }
+    },
+    "sgd_test_023": {
+      "training_question": {
+        "file": "sgd_test_023/question_search.txt",
+        "sha256": "0e41fc389a8c62cb9d5b631914c2b730a5b306822fc484a3d4f236e5b5a586a5",
+        "expected_current_sha256": "810f1633a4deaf68e41a17663bc579cbac40bd9c3c7a726e05fe9b051d4b5237"
+      },
+      "held_out_question": {
+        "file": "sgd_test_023/question_test.txt",
+        "sha256": "4261a26250a65d55ab24e26fad7195a054e0ec4b2c62f0c733019230364376d2",
+        "expected_current_sha256": "8f36656b8a218479428fa9574614ae338e01c1b4ca7bbebf678a7bb67cba2503"
+      }
+    },
+    "sgd_test_024": {
+      "training_question": {
+        "file": "sgd_test_024/question_search.txt",
+        "sha256": "0e41fc389a8c62cb9d5b631914c2b730a5b306822fc484a3d4f236e5b5a586a5",
+        "expected_current_sha256": "810f1633a4deaf68e41a17663bc579cbac40bd9c3c7a726e05fe9b051d4b5237"
+      },
+      "held_out_question": {
+        "file": "sgd_test_024/question_test.txt",
+        "sha256": "4261a26250a65d55ab24e26fad7195a054e0ec4b2c62f0c733019230364376d2",
+        "expected_current_sha256": "8f36656b8a218479428fa9574614ae338e01c1b4ca7bbebf678a7bb67cba2503"
+      }
+    },
+    "sgd_test_025": {
+      "training_question": {
+        "file": "sgd_test_025/question_search.txt",
+        "sha256": "0e41fc389a8c62cb9d5b631914c2b730a5b306822fc484a3d4f236e5b5a586a5",
+        "expected_current_sha256": "810f1633a4deaf68e41a17663bc579cbac40bd9c3c7a726e05fe9b051d4b5237"
+      },
+      "held_out_question": {
+        "file": "sgd_test_025/question_test.txt",
+        "sha256": "4261a26250a65d55ab24e26fad7195a054e0ec4b2c62f0c733019230364376d2",
+        "expected_current_sha256": "8f36656b8a218479428fa9574614ae338e01c1b4ca7bbebf678a7bb67cba2503"
+      }
+    },
+    "sgd_test_026": {
+      "training_question": {
+        "file": "sgd_test_026/question_search.txt",
+        "sha256": "0e41fc389a8c62cb9d5b631914c2b730a5b306822fc484a3d4f236e5b5a586a5",
+        "expected_current_sha256": "810f1633a4deaf68e41a17663bc579cbac40bd9c3c7a726e05fe9b051d4b5237"
+      },
+      "held_out_question": {
+        "file": "sgd_test_026/question_test.txt",
+        "sha256": "4261a26250a65d55ab24e26fad7195a054e0ec4b2c62f0c733019230364376d2",
+        "expected_current_sha256": "8f36656b8a218479428fa9574614ae338e01c1b4ca7bbebf678a7bb67cba2503"
+      }
+    },
+    "sgd_test_027": {
+      "training_question": {
+        "file": "sgd_test_027/question_search.txt",
+        "sha256": "0e41fc389a8c62cb9d5b631914c2b730a5b306822fc484a3d4f236e5b5a586a5",
+        "expected_current_sha256": "810f1633a4deaf68e41a17663bc579cbac40bd9c3c7a726e05fe9b051d4b5237"
+      },
+      "held_out_question": {
+        "file": "sgd_test_027/question_test.txt",
+        "sha256": "4261a26250a65d55ab24e26fad7195a054e0ec4b2c62f0c733019230364376d2",
+        "expected_current_sha256": "8f36656b8a218479428fa9574614ae338e01c1b4ca7bbebf678a7bb67cba2503"
+      }
+    },
+    "sgd_test_028": {
+      "training_question": {
+        "file": "sgd_test_028/question_search.txt",
+        "sha256": "0e41fc389a8c62cb9d5b631914c2b730a5b306822fc484a3d4f236e5b5a586a5",
+        "expected_current_sha256": "810f1633a4deaf68e41a17663bc579cbac40bd9c3c7a726e05fe9b051d4b5237"
+      },
+      "held_out_question": {
+        "file": "sgd_test_028/question_test.txt",
+        "sha256": "4261a26250a65d55ab24e26fad7195a054e0ec4b2c62f0c733019230364376d2",
+        "expected_current_sha256": "8f36656b8a218479428fa9574614ae338e01c1b4ca7bbebf678a7bb67cba2503"
+      }
+    },
+    "sgd_test_029": {
+      "training_question": {
+        "file": "sgd_test_029/question_search.txt",
+        "sha256": "0e41fc389a8c62cb9d5b631914c2b730a5b306822fc484a3d4f236e5b5a586a5",
+        "expected_current_sha256": "810f1633a4deaf68e41a17663bc579cbac40bd9c3c7a726e05fe9b051d4b5237"
+      },
+      "held_out_question": {
+        "file": "sgd_test_029/question_test.txt",
+        "sha256": "4261a26250a65d55ab24e26fad7195a054e0ec4b2c62f0c733019230364376d2",
+        "expected_current_sha256": "8f36656b8a218479428fa9574614ae338e01c1b4ca7bbebf678a7bb67cba2503"
+      }
+    },
+    "sgd_test_030": {
+      "training_question": {
+        "file": "sgd_test_030/question_search.txt",
+        "sha256": "0e41fc389a8c62cb9d5b631914c2b730a5b306822fc484a3d4f236e5b5a586a5",
+        "expected_current_sha256": "810f1633a4deaf68e41a17663bc579cbac40bd9c3c7a726e05fe9b051d4b5237"
+      },
+      "held_out_question": {
+        "file": "sgd_test_030/question_test.txt",
+        "sha256": "4261a26250a65d55ab24e26fad7195a054e0ec4b2c62f0c733019230364376d2",
+        "expected_current_sha256": "8f36656b8a218479428fa9574614ae338e01c1b4ca7bbebf678a7bb67cba2503"
+      }
+    },
+    "sgd_test_031": {
+      "training_question": {
+        "file": "sgd_test_031/question_search.txt",
+        "sha256": "3d6b681da97046362ce735b89a3544424fcef00adec1b31e50c8f287fecde5fc",
+        "expected_current_sha256": "f1d1056015584402dc674787c191123d1b7a67b7774bfd6aedb3869e8d743961"
+      },
+      "held_out_question": {
+        "file": "sgd_test_031/question_test.txt",
+        "sha256": "5567281ccf8b2ccdac5dce589a96d92f28c929c7ba8e8cfcb149847bcab2a620",
+        "expected_current_sha256": "7c71f2a2de6684fcdeff914a443ee99c087c6517ad29db2bb63c849bff4e6ab4"
+      }
+    },
+    "sgd_test_032": {
+      "training_question": {
+        "file": "sgd_test_032/question_search.txt",
+        "sha256": "3d6b681da97046362ce735b89a3544424fcef00adec1b31e50c8f287fecde5fc",
+        "expected_current_sha256": "f1d1056015584402dc674787c191123d1b7a67b7774bfd6aedb3869e8d743961"
+      },
+      "held_out_question": {
+        "file": "sgd_test_032/question_test.txt",
+        "sha256": "5567281ccf8b2ccdac5dce589a96d92f28c929c7ba8e8cfcb149847bcab2a620",
+        "expected_current_sha256": "7c71f2a2de6684fcdeff914a443ee99c087c6517ad29db2bb63c849bff4e6ab4"
+      }
+    },
+    "sgd_test_033": {
+      "training_question": {
+        "file": "sgd_test_033/question_search.txt",
+        "sha256": "3d6b681da97046362ce735b89a3544424fcef00adec1b31e50c8f287fecde5fc",
+        "expected_current_sha256": "f1d1056015584402dc674787c191123d1b7a67b7774bfd6aedb3869e8d743961"
+      },
+      "held_out_question": {
+        "file": "sgd_test_033/question_test.txt",
+        "sha256": "5567281ccf8b2ccdac5dce589a96d92f28c929c7ba8e8cfcb149847bcab2a620",
+        "expected_current_sha256": "7c71f2a2de6684fcdeff914a443ee99c087c6517ad29db2bb63c849bff4e6ab4"
+      }
+    },
+    "sgd_test_034": {
+      "training_question": {
+        "file": "sgd_test_034/question_search.txt",
+        "sha256": "3d6b681da97046362ce735b89a3544424fcef00adec1b31e50c8f287fecde5fc",
+        "expected_current_sha256": "f1d1056015584402dc674787c191123d1b7a67b7774bfd6aedb3869e8d743961"
+      },
+      "held_out_question": {
+        "file": "sgd_test_034/question_test.txt",
+        "sha256": "5567281ccf8b2ccdac5dce589a96d92f28c929c7ba8e8cfcb149847bcab2a620",
+        "expected_current_sha256": "7c71f2a2de6684fcdeff914a443ee99c087c6517ad29db2bb63c849bff4e6ab4"
+      }
+    },
+    "sgd_test_035": {
+      "training_question": {
+        "file": "sgd_test_035/question_search.txt",
+        "sha256": "3d6b681da97046362ce735b89a3544424fcef00adec1b31e50c8f287fecde5fc",
+        "expected_current_sha256": "f1d1056015584402dc674787c191123d1b7a67b7774bfd6aedb3869e8d743961"
+      },
+      "held_out_question": {
+        "file": "sgd_test_035/question_test.txt",
+        "sha256": "5567281ccf8b2ccdac5dce589a96d92f28c929c7ba8e8cfcb149847bcab2a620",
+        "expected_current_sha256": "7c71f2a2de6684fcdeff914a443ee99c087c6517ad29db2bb63c849bff4e6ab4"
+      }
+    },
+    "sgd_test_036": {
+      "training_question": {
+        "file": "sgd_test_036/question_search.txt",
+        "sha256": "3d6b681da97046362ce735b89a3544424fcef00adec1b31e50c8f287fecde5fc",
+        "expected_current_sha256": "f1d1056015584402dc674787c191123d1b7a67b7774bfd6aedb3869e8d743961"
+      },
+      "held_out_question": {
+        "file": "sgd_test_036/question_test.txt",
+        "sha256": "5567281ccf8b2ccdac5dce589a96d92f28c929c7ba8e8cfcb149847bcab2a620",
+        "expected_current_sha256": "7c71f2a2de6684fcdeff914a443ee99c087c6517ad29db2bb63c849bff4e6ab4"
+      }
+    },
+    "sgd_test_037": {
+      "training_question": {
+        "file": "sgd_test_037/question_search.txt",
+        "sha256": "3d6b681da97046362ce735b89a3544424fcef00adec1b31e50c8f287fecde5fc",
+        "expected_current_sha256": "f1d1056015584402dc674787c191123d1b7a67b7774bfd6aedb3869e8d743961"
+      },
+      "held_out_question": {
+        "file": "sgd_test_037/question_test.txt",
+        "sha256": "5567281ccf8b2ccdac5dce589a96d92f28c929c7ba8e8cfcb149847bcab2a620",
+        "expected_current_sha256": "7c71f2a2de6684fcdeff914a443ee99c087c6517ad29db2bb63c849bff4e6ab4"
+      }
+    },
+    "sgd_test_038": {
+      "training_question": {
+        "file": "sgd_test_038/question_search.txt",
+        "sha256": "3d6b681da97046362ce735b89a3544424fcef00adec1b31e50c8f287fecde5fc",
+        "expected_current_sha256": "f1d1056015584402dc674787c191123d1b7a67b7774bfd6aedb3869e8d743961"
+      },
+      "held_out_question": {
+        "file": "sgd_test_038/question_test.txt",
+        "sha256": "5567281ccf8b2ccdac5dce589a96d92f28c929c7ba8e8cfcb149847bcab2a620",
+        "expected_current_sha256": "7c71f2a2de6684fcdeff914a443ee99c087c6517ad29db2bb63c849bff4e6ab4"
+      }
+    },
+    "sgd_test_039": {
+      "training_question": {
+        "file": "sgd_test_039/question_search.txt",
+        "sha256": "3d6b681da97046362ce735b89a3544424fcef00adec1b31e50c8f287fecde5fc",
+        "expected_current_sha256": "f1d1056015584402dc674787c191123d1b7a67b7774bfd6aedb3869e8d743961"
+      },
+      "held_out_question": {
+        "file": "sgd_test_039/question_test.txt",
+        "sha256": "5567281ccf8b2ccdac5dce589a96d92f28c929c7ba8e8cfcb149847bcab2a620",
+        "expected_current_sha256": "7c71f2a2de6684fcdeff914a443ee99c087c6517ad29db2bb63c849bff4e6ab4"
+      }
+    },
+    "sgd_test_040": {
+      "training_question": {
+        "file": "sgd_test_040/question_search.txt",
+        "sha256": "3d6b681da97046362ce735b89a3544424fcef00adec1b31e50c8f287fecde5fc",
+        "expected_current_sha256": "f1d1056015584402dc674787c191123d1b7a67b7774bfd6aedb3869e8d743961"
+      },
+      "held_out_question": {
+        "file": "sgd_test_040/question_test.txt",
+        "sha256": "5567281ccf8b2ccdac5dce589a96d92f28c929c7ba8e8cfcb149847bcab2a620",
+        "expected_current_sha256": "7c71f2a2de6684fcdeff914a443ee99c087c6517ad29db2bb63c849bff4e6ab4"
+      }
+    }
+  }
+}

@@ -1,8 +1,3 @@
 Output format: Return only the full English month name, one space, and the day number with its ordinal suffix. Do not include a year.
 
-Target object: The restaurant reservation.
-Target state: The final confirmed reservation after any changes.
-Target field: The dining date.
-Required value: Both the month and the day of the same reservation, using the final dining date after any changes.
-
 Question: What month and day were confirmed for dining in the final restaurant booking?

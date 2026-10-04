@@ -17,7 +17,7 @@ from experiment.data import question_text
 from experiment.io import read_json, write_json
 from experiment.metrics import AnswerMonitor
 from experiment.objectives import Objective
-from experiment.question_semantics import SEMANTIC_WEIGHTS, query_coefficients, semantic_spans
+from experiment.question_semantics import RELATION_WEIGHTS, SEMANTIC_WEIGHTS, effective_shares, query_coefficients, semantic_spans
 from experiment.runner import run
 from experiment.trainer import fingerprint, train
 from prepare_questions import QUESTIONS
@@ -33,13 +33,25 @@ class MappingTests(unittest.TestCase):
         self.assertAlmostEqual(sum(coefficients), 1)
         self.assertEqual([coefficients[i] for i in (0, 3, 5, 9, 12, 13)], [0] * 6)
 
+    def test_unified_relation_merges_target_budget_and_accepts_explicit_three_groups(self):
+        groups = {"target_relation": [1, 2, 3], "required_value": [6, 7], "question": [10]}
+        merged = query_coefficients(12, groups, SEMANTIC_WEIGHTS)
+        self.assertEqual(merged, query_coefficients(12, groups, RELATION_WEIGHTS))
+        for group, positions in groups.items():
+            self.assertAlmostEqual(sum(merged[i] for i in positions), RELATION_WEIGHTS[group])
+        self.assertAlmostEqual(sum(merged), 1)
+        config(semantic_query_weights=RELATION_WEIGHTS.copy())
+
     def test_real_qwen_tokenizer_aligns_raw_and_chat_without_label_or_format_queries(self):
         path = Path(__file__).resolve().parents[2] / "develop_experiment/tokenizer/Qwen3-4B"
         tokenizer = AutoTokenizer.from_pretrained(path, local_files_only=True)
         encoding_backend = backend()
         encoding_backend.tokenizer = tokenizer
         for slot, (training, held, _) in QUESTIONS.items():
-            for question in (training, held):
+            # Held-out questions deliberately omit the training-only relation.
+            with self.assertRaises(ValueError):
+                semantic_spans(held)
+            for question in (training,):
                 for mode in ("raw", "chat"):
                     with self.subTest(slot=slot, mode=mode, held=question == held):
                         cfg = config(question_format=mode, semantic_query_mode="structured")
@@ -51,12 +63,13 @@ class MappingTests(unittest.TestCase):
                         encoded = tokenizer(prompt, add_special_tokens=False, return_offsets_mapping=True)
                         selected = {i for positions in groups.values() for i in positions}
                         self.assertTrue(all(coefficients[i] == 0 for i in range(len(coefficients)) if i not in selected))
-                        format_end = prompt.index("Target object:")
+                        format_end = prompt.index("Target relation:")
                         self.assertTrue(all(coefficients[i] == 0 for i, (_, end) in enumerate(encoded["offset_mapping"]) if end <= format_end))
                         self.assertEqual(coefficients[-1], 0)  # Prefilled answer whitespace.
                         spans = semantic_spans(prompt)
+                        shares = effective_shares(groups, SEMANTIC_WEIGHTS)
                         for group, indices in groups.items():
-                            self.assertAlmostEqual(sum(coefficients[i] for i in indices), SEMANTIC_WEIGHTS[group])
+                            self.assertAlmostEqual(sum(coefficients[i] for i in indices), shares[group])
                             for i in indices:
                                 a, b = encoded["offset_mapping"][i]
                                 self.assertTrue(any(any(c.isalnum() for c in prompt[max(a, x):min(b, y)])
@@ -67,8 +80,12 @@ class MappingTests(unittest.TestCase):
     def test_malformed_structure_and_positions_fail_instead_of_uniform_fallback(self):
         with self.assertRaisesRegex(ValueError, "Target object"):
             semantic_spans("Which city?")
-        with self.assertRaisesRegex(ValueError, "Target field"):
+        with self.assertRaisesRegex(ValueError, "Target relation"):
+            semantic_spans(QUESTIONS["city"][0] + "\nTarget relation: Another relation.")
+        with self.assertRaisesRegex(ValueError, "混用"):
             semantic_spans(QUESTIONS["city"][0] + "\nTarget field: Another field.")
+        legacy = "Target object: Restaurant.\nTarget state: Confirmed.\nTarget field: City.\nRequired value: Complete name.\nQuestion: Which city?"
+        self.assertEqual(set(semantic_spans(legacy)), set(SEMANTIC_WEIGHTS))
         groups = {"object_state": [0], "target_field": [1], "required_value": [2], "question": [3]}
         for invalid in ([], [1], [9], [True]):
             with self.subTest(invalid=invalid), self.assertRaises(ValueError):
@@ -87,7 +104,8 @@ class MappingTests(unittest.TestCase):
             cfg = load_config(path)
             self.assertEqual(cfg["weighted_kv_version"], 2)
             self.assertEqual(cfg["semantic_query_mode"], "structured")
-            self.assertEqual(cfg["semantic_query_weights"], SEMANTIC_WEIGHTS)
+            expected = RELATION_WEIGHTS if path.stem in ("gpu0", "gpu2", "gpu3") else SEMANTIC_WEIGHTS
+            self.assertEqual(cfg["semantic_query_weights"], expected)
 
 
 class AggregationTests(unittest.TestCase):
@@ -177,6 +195,7 @@ class SemanticIntegrationTests(Base):
                 torch.testing.assert_close(a, b, rtol=0, atol=0)
             recorded = read_json(Path(full) / "config.json")
             self.assertEqual(recorded["semantic_query_positions"], groups)
+            self.assertEqual(recorded["effective_semantic_query_weights"], RELATION_WEIGHTS)
             self.assertAlmostEqual(sum(recorded["query_token_coefficients"]), 1)
 
     def test_runner_routes_structured_query_positions_to_weighted_method(self):
@@ -188,7 +207,7 @@ class SemanticIntegrationTests(Base):
                          datasets=[str(root / "data.json")], rounds=1, steps_per_round=1)
             self.assertEqual(run(cfg, root / "run", backend=self.backend), 0)
             recorded = read_json(root / "run/samples/case/question_weighted_kv/config.json")
-            self.assertEqual(set(recorded["semantic_query_positions"]), set(SEMANTIC_WEIGHTS))
+            self.assertEqual(set(recorded["semantic_query_positions"]), set(RELATION_WEIGHTS))
             baseline = read_json(root / "run/samples/case/baseline/config.json")
             self.assertNotIn("semantic_query_positions", baseline)
 

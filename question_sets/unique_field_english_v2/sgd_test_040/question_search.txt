@@ -1,0 +1,1 @@
+In which city is the restaurant in the final confirmed reservation located? Return only the English city name, spelled exactly as in the conversation.

@@ -22,7 +22,7 @@
     "oracle_private_prefix_distillation"
   ],
   "method_options": {},
-  "output_dir": "/data/kevin/fluoroscopy/results",
+  "output_dir": "/data/kevin/fluoroscopy/results/relation_modeling_token",
   "background": true,
   "continue_on_error": true,
   "auto_test": true,
@@ -32,7 +32,7 @@
   "seed": 42,
   "rounds": 20,
   "steps_per_round": 200,
-  "base_loss": "mean",
+  "base_loss": "token",
   "lr": 0.01,
   "init_std": 0.02,
   "grad_clip": 1.0,
@@ -49,9 +49,8 @@
   "weighted_kv_version": 2,
   "semantic_query_mode": "structured",
   "semantic_query_weights": {
-    "object_state": 0.25,
-    "target_field": 0.30,
-    "required_value": 0.20,
+    "target_relation": 0.55,
+    "required_value": 0.2,
     "question": 0.25
   },
   "lambda_output": 1.0,
@@ -75,5 +74,6 @@
   "answer_leading_spaces": [
     0,
     1
-  ]
+  ],
+  "test_question_mode": "held_out"
 }

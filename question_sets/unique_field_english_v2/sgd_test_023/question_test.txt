@@ -1,0 +1,1 @@
+On which date will the meal in the final confirmed restaurant booking take place? Return only the full English month name, one space, and the day number with its ordinal suffix. Do not include a year.

@@ -1,8 +1,7 @@
 Output format: Return only the full English month name, one space, and the day number with its ordinal suffix. Do not include a year.
 
-Target object: The restaurant reservation.
-Target state: The final confirmed reservation after any changes.
-Target field: The dining date.
-Required value: Both the month and the day of the same reservation, using the final dining date after any changes.
+Tracking rule: Track the dining event associated with the reservation across revisions. Apply explicit dining-date corrections; retain the existing date when only other fields change. Interpret corrections field by field. Resolve relative dates using calendar references supplied in the conversation. Treat equivalent date expressions as the same date, and distinguish the dining date from dates of other events.
+Target relation: For the final confirmed restaurant reservation, retrieve the calendar date on which the diners are scheduled to eat.
+Required value: Extract both the month and the day of the same dining date.
 
 Question: What are the month and day of the dining date for the final confirmed restaurant reservation?

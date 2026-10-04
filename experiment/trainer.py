@@ -13,6 +13,7 @@ from .io import save_torch, write_csv, write_json, write_error_status
 from .metrics import SupportScore
 from .objectives import Objective
 from .plots import render
+from .question_semantics import effective_shares
 
 
 def duration(seconds):
@@ -70,9 +71,11 @@ def train(backend, observed, public_ids, question_ids, initial, method, config, 
         raise ValueError("输出目录已有训练记录；请使用 --resume")
     recorded_config = {"method": method, "uses_private_teacher": oracle_cache is not None, "config": config}
     if objective.query_weights is not None:
-        recorded_config.update(semantic_query_positions=question_groups, query_token_coefficients=objective.query_weights)
+        shares = effective_shares(question_groups, config["semantic_query_weights"])
+        recorded_config.update(semantic_query_positions=question_groups, query_token_coefficients=objective.query_weights,
+                               effective_semantic_query_weights=shares)
         counts = {group: len(indices) for group, indices in question_groups.items()}
-        print(f"{label} 语义查询 token 数={counts} 贡献比例={config['semantic_query_weights']}", flush=True)
+        print(f"{label} 语义查询 token 数={counts} 贡献比例={shares}", flush=True)
     write_json(root / "config.json", recorded_config)
     history_path = root / "history.jsonl"
     history_path.write_text("".join(json.dumps(r, ensure_ascii=False, allow_nan=False) + "\n" for r in rows), encoding="utf-8")

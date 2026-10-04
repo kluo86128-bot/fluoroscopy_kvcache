@@ -8,13 +8,15 @@
 - 保留评估问题和标注正确答案仅用于独立评估与诊断；不得参与前三组优化、候选筛选、保存决策或停止。正确答案曲线是观察项，不是训练目标。
 - 原始损失仅支持 mean/token 二选一。当前四种方法可配置启用，共享同一初始化的独立副本。
 - 自 2026-10-03 起，token 基础损失组为主实验，mean 组保留作为对照；默认配置使用 token，mean GPU 配置不移除。
-- 当前配置安排：gpu0 为 mean 组、gpu1 为 token 组、gpu2 为 none 组。none 组可在同一运行目录中独立运行 Weighted KV、Attention 与 Oracle：它们分别以 Weighted KV 损失、Attention 三项重建损失、或 Oracle KL 损失作为全部优化目标，且不允许 Baseline。attention_restruct.json 和 weight_kv.json 保留为可选的单方法无基础损失配置。Baseline 的已有运行保留为共同参考。
+- 当前关系建模实验配置：gpu0 为 token 组（物理 GPU 0），gpu2 为 mean 组（物理 GPU 2），gpu3 为 none 组（物理 GPU 3）；三组各自仅暴露一张 GPU，进程内 device 均为 cuda:0。gpu1 为原有配置，不属于本轮三个启动入口。none 组可在同一运行目录中独立运行 Weighted KV、Attention 与 Oracle：它们分别以 Weighted KV 损失、Attention 三项重建损失、或 Oracle KL 损失作为全部优化目标，且不允许 Baseline。attention_restruct.json 和 weight_kv.json 保留为可选的单方法无基础损失配置。Baseline 的已有运行保留为共同参考。
 - attention_reconstruction 的 attention_loss_version=2：在原 attention output MSE 与 logsumexp MSE 上增加 KL(参考注意力 || 重建注意力)，lambda_attention 独立配置。两侧使用同一组冻结查询，仅在公共 KV 位置内归一化；逐层、逐头、逐 question token 先对位置求和 KL，再平均，不先平均注意力分布。参考端仅使用推断前缀查询和观测公共 KV，不引入正确答案或真实私有 KV。新增原始损失记录为 attention_distribution_loss；版本 1/缺失版本的旧 attention 运行仅可 test/diagnose，不可续训。问题与概率口径仍为 experiment_version=2。
 - weight_kv 的 weighted_kv_version=2：question 采用 Output format / Target object / Target state / Target field / Required value / Question 结构，question_version=structured_field_semantic_v3。默认 semantic_query_mode=structured；object_state/target_field/required_value/question 四组贡献为 0.25/0.30/0.20/0.25，各组语义内容的 token 查询组内平均，格式指令、标签、独立标点和回答边界不直接参与汇总。位置按完整 raw/chat 提示的 tokenizer offset_mapping 映射并校验实际 token 一致；缺少字段或映射失败报错，不静默退回全 token 平均。仍使用原公共位置归一化、weight_floor=0.1 和逐位置 K/V MSE；semantic_query_mode=uniform 仅为显式消融。旧版本不能续训；新状态保存语义查询系数，配置记录查询位置与组比例。所有比例只依据问题结构，不依据答案或真实私有内容。
 - 每个样本、每种方法保存损失最低的 TopK 历史前缀，默认 20；默认按选定原损失排序，允许选择总损失。保存池不参与后续训练。
 - 单组保留损失与答案概率对比、支持评分、EMA 三类图；每个样本额外生成概率、支持评分、EMA 三张策略叠加对比图，颜色固定。概率纵轴使用线性坐标与普通百分数，不使用科学计数法。
 - 用户通过 GitHub 管理样本版本；问题调整直接在 test_samples 原有 question_search.txt/question_test.txt 中进行，不另建派生问题集。prepare_questions.py 按字段元数据批量更新为单一字段、明确预订人数/餐厅所在城市/用餐日期、统一英文指令、无具体答案值示例的问题；不读取或改写私有文本、公共文本和评估答案。
+- 自 2026-10-04 起，城市、人数、日期三类问题经分别讨论并获用户批准后，均改为 target_relation_semantic_v4。人数绑定预约的全部用餐者；日期绑定实际用餐事件，按对话日期锚点解析相对日期并识别等价表达。prepare_questions.py 默认仅修改 city，其他字段通过 --slots 显式选择。Tracking rule 提供对象追踪、字段独立更新与未修改字段继承规则；后置 Target relation 合并目标对象/状态/字段，Required value 仅定义值完整性，Question 保留训练/评估两种问法。weight_kv 将原 object_state 与 target_field 的份额相加为统一 target_relation 份额，默认为 0.55/0.20/0.25；三组分别组内平均，旧四组问题仍按原规则解析。Tracking rule 不直接参与查询汇总，但作为前文参与模型计算。当前损失函数、完整注意力计算、公共位置归一化与 floor 保持原实现。
 - 回答边界包含固定尾部空格并属于输入；raw/chat 的监测与生成共用同一边界。新版主概率是固定标准答案、接受别名及零/一个额外前导空格的有限 token 前缀事件并集，去重并剔除被短路径覆盖的长路径，不含边界或结束符。该指标不是任意解释中的语义恢复概率。原始 logits 不经过格式过滤、温度调整或重新归一化；标准答案概率与各形式概率单独保留，首 token 仅作辅助。支持评分和 EMA 使用同一主概率。输出长度上限不依赖正确答案，默认换行停止。
+- 经用户确认，question_test.txt 仅保留 Output format 与 Question，删除 Tracking rule、Target relation、Required value；question_search.txt 继续保留完整训练结构。本轮 gpu0/gpu2/gpu3 配置使用 test_question_mode=held_out，正式测试只记录简化问法 held_out_question，不再混入 training_question；both 模式保留供旧配置和诊断使用。训练期间概率曲线仍对应训练问题，不与简化问法的结果混同。
 - 事实匹配、输出格式与目标字符串出现分开记录；字符串出现仅标记待语义复核，不将否定句或数字编号自动视为信息恢复。通用格式检查不读取答案值；当前生成沿用提示约束，不宣称硬格式保证。
 - experiment_version=2；旧运行可测试或另目录 diagnose 重评，不可直接用新版问题和概率口径续训。新旧概率定义不得混画成一条训练轨迹。
 - TopK 前缀独立保存，续跑文件仅记录引用；保护上次成功续跑状态引用的文件，成功替换后再清理。磁盘错误停止该进程，临时文件清理失败不得掩盖原异常。

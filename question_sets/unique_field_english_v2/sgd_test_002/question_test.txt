@@ -1,0 +1,1 @@
+What was the party size of the final confirmed restaurant booking? Return only the number in digits.

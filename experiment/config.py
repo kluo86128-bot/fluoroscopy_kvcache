@@ -11,6 +11,7 @@ RETIRED_METHODS = ("question_output_consistency",)
 DIRECT_OUTPUT = "Output only the requested answer in English. No labels, numbering, explanation, or extra text."
 DEFAULTS = {
     "experiment_version": 2,
+    "loss_profile": "current",
     "model_path": "/home/kevin/models/Qwen3-4B", "device": "cuda:0", "cuda_devices": None,
     "dtype": "bfloat16", "attention_backend": "sdpa", "local_files_only": True,
     "datasets": ["../test_samples/tasks.jsonl"], "include_tasks": [], "exclude_tasks": [], "limit": None,
@@ -23,7 +24,7 @@ DEFAULTS = {
     "lr": 0.01, "init_std": 0.02, "grad_clip": 1.0,
     "log_every": 25, "eval_every": 25, "plot_every": 200, "checkpoint_every": 1,
     "resume_every": 25, "save_topk": 20, "checkpoint_metric": "base",
-    "reference_refresh_steps": 200, "lambda_weighted": 1.0, "weight_floor": 0.1,
+    "reference_refresh_steps": 200, "lambda_base": 1.0, "lambda_weighted": 1.0, "weight_floor": 0.1,
     "weighted_kv_version": 2, "semantic_query_mode": "structured",
     "semantic_query_weights": SEMANTIC_WEIGHTS.copy(),
     "lambda_output": 1.0, "lambda_lse": 1.0, "lambda_attention": 1.0,
@@ -32,7 +33,7 @@ DEFAULTS = {
     "score_window_steps": 400, "score_tail_fraction": 0.25, "ema_alpha": 0.5,
     "ema_span_steps": 400, "score_probability": "accepted_forms", "answer_leading_spaces": [0, 1],
 }
-METHOD_KEYS = {"lambda_weighted", "weight_floor", "lambda_output", "lambda_lse", "lambda_attention", "lambda_kl",
+METHOD_KEYS = {"lambda_base", "lambda_weighted", "weight_floor", "lambda_output", "lambda_lse", "lambda_attention", "lambda_kl",
                "temperature", "rollout_tokens", "reference_refresh_steps", "semantic_query_mode", "semantic_query_weights"}
 
 
@@ -46,6 +47,12 @@ def validate(config, *, allow_retired=False):
         raise ValueError("attention_loss_version 必须为 1 或 2")
     if type(config["weighted_kv_version"]) is not int or config["weighted_kv_version"] not in (1, 2):
         raise ValueError("weighted_kv_version 必须为 1 或 2")
+    if config["loss_profile"] not in ("current", "semantic_enhanced_v1"):
+        raise ValueError("loss_profile 只能选择 current 或 semantic_enhanced_v1")
+    if config["loss_profile"] == "semantic_enhanced_v1" and (
+            config["weighted_kv_version"] != 1 or config["attention_loss_version"] != 1
+            or config["semantic_query_mode"] != "uniform" or config["lambda_attention"] != 0):
+        raise ValueError("semantic_enhanced_v1 必须使用两个版本 1 损失、uniform 查询和 lambda_attention=0")
     shares = config["semantic_query_weights"]
     if not isinstance(shares, dict) or set(shares) not in (set(SEMANTIC_GROUPS), set(RELATION_GROUPS)):
         raise ValueError("semantic_query_weights 必须包含旧版四组或 target_relation/required_value/question 三组")
@@ -64,7 +71,7 @@ def validate(config, *, allow_retired=False):
     for key in ("lr", "init_std", "grad_clip", "temperature"):
         if isinstance(config[key], bool) or not isinstance(config[key], (int, float)) or not math.isfinite(config[key]) or config[key] <= 0:
             raise ValueError(f"{key} 必须为有限正数")
-    for key in ("lambda_weighted", "lambda_output", "lambda_lse", "lambda_attention", "lambda_kl"):
+    for key in ("lambda_base", "lambda_weighted", "lambda_output", "lambda_lse", "lambda_attention", "lambda_kl"):
         if isinstance(config[key], bool) or not isinstance(config[key], (int, float)) or not math.isfinite(config[key]) or config[key] < 0:
             raise ValueError(f"{key} 必须为有限非负数")
     for key in ("weight_floor", "score_tail_fraction", "ema_alpha"):
@@ -115,7 +122,7 @@ def validate(config, *, allow_retired=False):
         raise ValueError("method_options 的键必须为方法名")
     for method, override in options.items():
         if not isinstance(override, dict) or set(override) - METHOD_KEYS:
-            raise ValueError(f"{method}: method_options 只允许辅助损失和参考参数")
+            raise ValueError(f"{method}: method_options 只允许损失系数和参考参数")
         trial = {**config, **override, "method_options": {}}
         validate(trial, allow_retired=allow_retired)
     return config
@@ -152,10 +159,12 @@ def saved_config(raw):
 
 
 def require_current_attention_loss(config):
-    if "question_attention_reconstruction" in config["methods"] and config.get("attention_loss_version", 1) != DEFAULTS["attention_loss_version"]:
+    expected = 1 if config.get("loss_profile") == "semantic_enhanced_v1" else 2
+    if "question_attention_reconstruction" in config["methods"] and config.get("attention_loss_version", 1) != expected:
         raise ValueError("attention_restruct 损失已升级为逐位置注意力 KL + output + logsumexp；旧 attention 运行不能续训，请新建实验（历史 test/diagnose 仍可用）")
 
 
 def require_current_weighted_kv(config):
-    if "question_weighted_kv" in config["methods"] and config.get("weighted_kv_version", 1) != DEFAULTS["weighted_kv_version"]:
+    expected = 1 if config.get("loss_profile") == "semantic_enhanced_v1" else 2
+    if "question_weighted_kv" in config["methods"] and config.get("weighted_kv_version", 1) != expected:
         raise ValueError("weight_kv 已升级为四组语义查询加权；旧 weight_kv 运行不能续训，请新建实验（历史 test/diagnose 仍可用）")

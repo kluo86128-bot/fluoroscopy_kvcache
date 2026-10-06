@@ -1,4 +1,4 @@
-"""Relation training must evaluate only the independent simplified question."""
+"""Launch configurations evaluate only their designated held-out question."""
 import contextlib
 import io
 import json
@@ -6,9 +6,9 @@ from pathlib import Path
 import tempfile
 from unittest.mock import patch
 
-from experiment.config import METHODS, load_config, saved_config
+from experiment.config import METHODS, load_config, saved_config, method_config
 from experiment.io import read_json, write_json
-from experiment.question_semantics import RELATION_WEIGHTS
+from experiment.question_semantics import RELATION_WEIGHTS, SEMANTIC_WEIGHTS
 from experiment.runner import run
 from prepare_questions import QUESTIONS
 from test_experiment import Base, config
@@ -59,11 +59,22 @@ class LaunchTests(Base):
     def test_launch_configs_use_distinct_requested_gpus_and_results(self):
         root = Path(__file__).resolve().parents[1]
         outputs = set()
-        for filename, mode, gpu in (("gpu0.json", "token", "0"), ("gpu2.json", "mean", "2"), ("gpu3.json", "none", "3")):
+        for filename, task, gpu in (("gpu0.json", "021", "0"), ("gpu2.json", "033", "2"), ("gpu3.json", "040", "3")):
             cfg = load_config(root / "configs" / filename)
-            self.assertEqual((cfg["base_loss"], cfg["cuda_devices"], cfg["device"]), (mode, gpu, "cuda:0"))
-            self.assertEqual(cfg["semantic_query_weights"], RELATION_WEIGHTS)
+            self.assertEqual((cfg["base_loss"], cfg["cuda_devices"], cfg["device"]), ("token", gpu, "cuda:0"))
+            manual = task == "040"
+            self.assertEqual(cfg["semantic_query_weights"], SEMANTIC_WEIGHTS if manual else RELATION_WEIGHTS)
+            self.assertEqual(cfg["loss_profile"], "current" if manual else "semantic_enhanced_v1")
+            self.assertEqual((cfg["weighted_kv_version"], cfg["attention_loss_version"]), (2 if manual else 1, 1))
+            self.assertEqual(cfg["semantic_query_mode"], "structured" if manual else "uniform")
+            self.assertEqual(cfg["lambda_attention"], 0)
             self.assertEqual(cfg["test_question_mode"], "held_out")
+            self.assertEqual(cfg["include_tasks"], ["sgd_test_" + task])
+            self.assertEqual(cfg["limit"], 1)
+            self.assertEqual(cfg["methods"], ["baseline", "question_weighted_kv"])
+            self.assertEqual(method_config(cfg, "baseline")["lambda_base"], 1)
+            self.assertEqual(method_config(cfg, "question_weighted_kv")["lambda_base"], 0.1 if task == "040" else 1)
+            self.assertIn("question_rollback_" + task + "_token", cfg["output_dir"])
             outputs.add(cfg["output_dir"])
         self.assertEqual(len(outputs), 3)
         self.assertEqual(saved_config({})["test_question_mode"], "both")

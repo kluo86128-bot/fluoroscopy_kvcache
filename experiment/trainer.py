@@ -21,7 +21,13 @@ def duration(seconds):
 
 
 def fingerprint(config, method, context_signature, question_groups=None):
-    ignored = {"background", "config_path", "output_dir", "continue_on_error", "auto_test"}
+    # The profile is descriptive; the actual loss versions and options below
+    # already guard objective compatibility, including v1 ablation resumes.
+    ignored = {"background", "config_path", "output_dir", "continue_on_error", "auto_test", "loss_profile"}
+    # A missing coefficient in historical runs means 1.0. Keep their existing
+    # fingerprints compatible, while any changed coefficient blocks resume.
+    if config.get("lambda_base", 1.0) == 1.0:
+        ignored.add("lambda_base")
     if method != "question_attention_reconstruction":
         # Attention's revision does not change the other methods' objectives.
         ignored.update(("attention_loss_version", "lambda_attention"))

@@ -91,7 +91,7 @@ class MappingTests(unittest.TestCase):
             with self.subTest(invalid=invalid), self.assertRaises(ValueError):
                 query_coefficients(4, {**groups, "question": invalid}, SEMANTIC_WEIGHTS)
 
-    def test_config_validates_shares_and_all_shipped_configs_enable_semantics(self):
+    def test_config_validates_shares_and_shipped_loss_profiles(self):
         for invalid in ({}, {**SEMANTIC_WEIGHTS, "question": 0.5}, {**SEMANTIC_WEIGHTS, "question": float("nan")},
                         {**SEMANTIC_WEIGHTS, "question": -1}, {**SEMANTIC_WEIGHTS, "question": True}):
             with self.subTest(invalid=invalid), self.assertRaises(ValueError):
@@ -102,9 +102,11 @@ class MappingTests(unittest.TestCase):
         config(method_options={"question_weighted_kv": {"semantic_query_weights": SEMANTIC_WEIGHTS.copy()}})
         for path in (Path(__file__).resolve().parents[1] / "configs").glob("*.json"):
             cfg = load_config(path)
-            self.assertEqual(cfg["weighted_kv_version"], 2)
-            self.assertEqual(cfg["semantic_query_mode"], "structured")
-            expected = RELATION_WEIGHTS if path.stem in ("gpu0", "gpu2", "gpu3") else SEMANTIC_WEIGHTS
+            ablation = path.stem in ("gpu0", "gpu2")
+            self.assertEqual(cfg["loss_profile"], "semantic_enhanced_v1" if ablation else "current")
+            self.assertEqual(cfg["weighted_kv_version"], 1 if ablation else 2)
+            self.assertEqual(cfg["semantic_query_mode"], "uniform" if ablation else "structured")
+            expected = RELATION_WEIGHTS if ablation else SEMANTIC_WEIGHTS
             self.assertEqual(cfg["semantic_query_weights"], expected)
 
 
@@ -143,6 +145,39 @@ class AggregationTests(unittest.TestCase):
 
 
 class SemanticIntegrationTests(Base):
+    def test_040_shipped_config_uses_four_manual_groups_in_actual_training(self):
+        project = Path(__file__).resolve().parents[1]
+        shipped = load_config(project / "configs/gpu3.json")
+        training = (project / "test_samples/sgd_test_040/question_search.txt").read_text(encoding="utf-8")
+        held = (project / "test_samples/sgd_test_040/question_test.txt").read_text(encoding="utf-8")
+        with tempfile.TemporaryDirectory() as directory, contextlib.redirect_stdout(io.StringIO()):
+            root = Path(directory)
+            data = root / "data.json"
+            write_json(data, [{"task_id": "sgd_test_040", "private_prefix": "private", "public_text": "public",
+                               "question": training, "held_out_question": held, "answer": "City",
+                               "answer_format": "english_city"}])
+            keys = ("methods", "base_loss", "lambda_base", "lambda_weighted", "method_options", "loss_profile",
+                    "weighted_kv_version", "semantic_query_mode", "semantic_query_weights",
+                    "attention_loss_version", "lambda_attention")
+            cfg = config(**{key: shipped[key] for key in keys}, datasets=[str(data)],
+                         rounds=1, steps_per_round=2, save_topk=1,
+                         checkpoint_metric="total", test_question_mode="held_out")
+            with patch("experiment.trainer.render"), patch("experiment.runner.render_comparison"):
+                self.assertEqual(run(cfg, root / "run", backend=self.backend), 0)
+            folder = root / "run/samples/sgd_test_040"
+            weighted = read_json(folder / "question_weighted_kv/config.json")
+            self.assertEqual(weighted["effective_semantic_query_weights"], SEMANTIC_WEIGHTS)
+            self.assertEqual(weighted["config"]["lambda_base"], 0.1)
+            for group, positions in weighted["semantic_query_positions"].items():
+                self.assertAlmostEqual(sum(weighted["query_token_coefficients"][i] for i in positions), SEMANTIC_WEIGHTS[group])
+            baseline = read_json(folder / "baseline/config.json")
+            self.assertEqual(baseline["config"]["lambda_base"], 1)
+            self.assertNotIn("semantic_query_positions", baseline)
+            rows = [json.loads(line) for line in
+                    (folder / "question_weighted_kv/history.jsonl").read_text(encoding="utf-8").splitlines()]
+            self.assertAlmostEqual(rows[-1]["total_loss"],
+                                   0.1 * rows[-1]["token_loss"] + rows[-1]["weighted_kv_loss"], places=7)
+
     def inputs(self, cfg):
         text = question_text(QUESTIONS["party_size"][0], cfg["output_instruction"], cfg["answer_boundary"])
         ids = self.backend.encode_question(text, cfg)

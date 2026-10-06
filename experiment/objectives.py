@@ -77,7 +77,8 @@ class Objective:
         private, public = self.backend.student(prefix, self.public_ids)
         components = kv_losses(public, self.observed)
         selected_base = components["mean_loss" if self.config["base_loss"] == "mean" else "token_loss"]
-        base = selected_base if self.config["base_loss"] != "none" else selected_base.new_zeros(())
+        base = (self.config.get("lambda_base", 1.0) * selected_base
+                if self.config["base_loss"] != "none" else selected_base.new_zeros(()))
         weighted_aux = base.new_zeros(())
         if self.method == "question_weighted_kv":
             errors = []

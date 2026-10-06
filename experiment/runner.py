@@ -113,7 +113,7 @@ def run(config, root, *, resume=False, test_only=False, backend=None):
           f"steps_per_round={config['steps_per_round']} TopK={config['save_topk']} "
           f"保存指标={config['checkpoint_metric']} CUDA_VISIBLE_DEVICES={os.environ.get('CUDA_VISIBLE_DEVICES', '未限制')} 输出={root}", flush=True)
     group_role = {"token": "token 主实验", "mean": "mean 对照", "none": "辅助损失单独组"}[config["base_loss"]]
-    print(f"实验组定位={group_role} "
+    print(f"实验组定位={group_role} loss_profile={config.get('loss_profile', 'current')} "
           f"attention_loss_version={config.get('attention_loss_version', 1)} "
           f"weighted_kv_version={config.get('weighted_kv_version', 1)}", flush=True)
     print("完整配置:\n" + json.dumps(config, ensure_ascii=False, indent=2), flush=True)

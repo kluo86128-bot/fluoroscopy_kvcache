@@ -1,3 +1,1 @@
-Output format: Return only the complete English city name.
-
-Question: What is the location city of the restaurant in the final confirmed booking?
+What is the location city of the restaurant in the final confirmed booking? Return only the English city name, spelled exactly as in the conversation.

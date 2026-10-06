@@ -93,13 +93,17 @@ class DistributionTests(unittest.TestCase):
     def test_shipped_configs_keep_token_main_and_mean_controls(self):
         root = Path(__file__).resolve().parents[1] / "configs"
         expected = {"default": "token", "all_methods": "token", "gpu0": "token",
-                    "gpu3": "token", "gpu1": "mean", "gpu2": "mean"}
+                    "gpu3": "token", "gpu1": "token", "gpu2": "token"}
         for name, mode in expected.items():
             with self.subTest(config=name):
                 cfg = load_config(root / (name + ".json"))
                 self.assertEqual(cfg["base_loss"], mode)
-                self.assertEqual(cfg["attention_loss_version"], 2)
-                self.assertGreater(cfg["lambda_attention"], 0)
+                ablation = name in ("gpu0", "gpu2", "gpu3")
+                self.assertEqual(cfg["attention_loss_version"], 1 if ablation else 2)
+                if ablation:
+                    self.assertEqual(cfg["lambda_attention"], 0)
+                else:
+                    self.assertGreater(cfg["lambda_attention"], 0)
 
     def test_auxiliary_only_configs_have_no_base_term_and_one_method(self):
         root = Path(__file__).resolve().parents[1] / "configs"

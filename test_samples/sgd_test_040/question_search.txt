@@ -1,7 +1,8 @@
 Output format: Return only the complete English city name.
 
-Tracking rule: Track the restaurant's identity across revisions. Retain its city when only other fields change; apply explicit city corrections. If the restaurant changes, use the replacement's city. Interpret corrections field by field.
-Target relation: For the restaurant in the final confirmed reservation, retrieve the city explicitly assigned to that restaurant.
-Required value: Copy the complete city name as stated in the conversation, preserving all words and the original spelling.
+Target object: The restaurant associated with the reservation.
+Target state: The final confirmed reservation after any changes.
+Target field: The city where that restaurant is located.
+Required value: The complete city name stated in the conversation, including all words and preserving the original spelling.
 
 Question: In which city is the restaurant associated with the final confirmed reservation located?

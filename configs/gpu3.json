@@ -12,15 +12,14 @@
   "exclude_tasks": [],
   "limit": 1,
   "methods": [
-    "baseline",
     "question_weighted_kv"
   ],
   "method_options": {
     "question_weighted_kv": {
-      "lambda_base": 0.1
+      "lambda_base": 1.0
     }
   },
-  "output_dir": "/data/kevin/fluoroscopy/results/question_rollback_040_token_base01_manual_weights",
+  "output_dir": "/data/kevin/fluoroscopy/results/040_big_train_question_token",
   "background": true,
   "continue_on_error": true,
   "auto_test": true,
@@ -47,7 +46,7 @@
   "weight_floor": 0.1,
   "loss_profile": "current",
   "weighted_kv_version": 2,
-  "semantic_query_mode": "structured",
+  "semantic_query_mode": "uniform",
   "semantic_query_weights": {
     "object_state": 0.25,
     "target_field": 0.3,

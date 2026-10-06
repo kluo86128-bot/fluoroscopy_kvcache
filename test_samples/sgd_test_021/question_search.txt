@@ -1,1 +1,1 @@
-What is the dining date of the final confirmed restaurant reservation? Return only the full English month name, one space, and the day number with its ordinal suffix. Do not include a year.
+Question: For the final confirmed restaurant reservation, what are the dining month and day, the restaurant's name, and the city where the restaurant is located?

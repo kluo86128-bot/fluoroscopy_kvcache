@@ -7,16 +7,15 @@
     "../test_samples/tasks.jsonl"
   ],
   "include_tasks": [
-    "sgd_test_033"
+    "sgd_test_040"
   ],
   "exclude_tasks": [],
   "limit": 1,
   "methods": [
-    "baseline",
     "question_weighted_kv"
   ],
   "method_options": {},
-  "output_dir": "/data/kevin/fluoroscopy/results/question_rollback_033_token",
+  "output_dir": "/data/kevin/fluoroscopy/results/040_big_train_question_none",
   "background": true,
   "continue_on_error": true,
   "auto_test": true,
@@ -26,7 +25,7 @@
   "seed": 42,
   "rounds": 20,
   "steps_per_round": 200,
-  "base_loss": "token",
+  "base_loss": "none",
   "lambda_base": 1.0,
   "lr": 0.01,
   "init_std": 0.02,
@@ -41,11 +40,12 @@
   "reference_refresh_steps": 200,
   "lambda_weighted": 1.0,
   "weight_floor": 0.1,
-  "loss_profile": "semantic_enhanced_v1",
-  "weighted_kv_version": 1,
+  "loss_profile": "current",
+  "weighted_kv_version": 2,
   "semantic_query_mode": "uniform",
   "semantic_query_weights": {
-    "target_relation": 0.55,
+    "object_state": 0.25,
+    "target_field": 0.3,
     "required_value": 0.2,
     "question": 0.25
   },

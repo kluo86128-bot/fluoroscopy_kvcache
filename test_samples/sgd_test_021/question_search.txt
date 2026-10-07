@@ -1,1 +1,1 @@
-Question: For the final confirmed restaurant reservation, what are the dining month and day, the restaurant's name, and the city where the restaurant is located?
+Question: For the final confirmed restaurant reservation, what is the exact day of the month on which the meal will take place, and which month does that day belong to? Extract both from the same dining-date statement. Return only the full English month name followed by the day number with its ordinal suffix. Do not include a year.

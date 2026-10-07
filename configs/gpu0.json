@@ -16,7 +16,7 @@
     "question_weighted_kv"
   ],
   "method_options": {},
-  "output_dir": "/data/kevin/fluoroscopy/results/021_question_big_search_token",
+  "output_dir": "/data/kevin/fluoroscopy/results/021_question_background_token",
   "background": true,
   "continue_on_error": true,
   "auto_test": true,
@@ -71,5 +71,7 @@
     0,
     1
   ],
-  "test_question_mode": "held_out"
+  "test_question_mode": "held_out",
+  "weighted_kv_context_version": 2,
+  "weighted_kv_normalization_version": 2
 }

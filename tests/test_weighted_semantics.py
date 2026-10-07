@@ -115,21 +115,18 @@ class AggregationTests(unittest.TestCase):
         groups = {"object_state": [0], "target_field": [1], "required_value": [2], "question": [3]}
         cfg = config(semantic_query_mode="structured")
         observed = ((torch.tensor([[[[-1.], [1.]]]]), torch.ones(1, 1, 2, 1)),)
-        private = ((torch.zeros(1, 1, 1, 1), torch.zeros(1, 1, 1, 1)),)
-        keys = torch.cat((private[0][0], observed[0][0], torch.zeros(1, 1, 6, 1)), dim=2)
+        keys = torch.cat((observed[0][0], torch.zeros(1, 1, 6, 1)), dim=2)
         queries = torch.tensor([[[[-1.], [2.], [1.], [-0.5], [0.1], [0.2]],
                                  [[1.], [3.], [0.5], [-1.], [0.3], [0.4]]]])
 
         def weights(q, version=2, mode="structured"):
             class ProbeBackend:
-                def student(self, prefix, public_ids):
-                    return private, observed
-                def probe(self, cache, question_ids):
+                def probe_public(self, cache, question_ids, *, prefix_length):
                     return (q,), ((keys, torch.zeros_like(keys)),)
             objective = Objective(ProbeBackend(), observed, torch.ones(1, 2, dtype=torch.long),
                                   torch.ones(1, 6, dtype=torch.long), "question_weighted_kv",
                                   {**cfg, "weighted_kv_version": version, "semantic_query_mode": mode}, question_groups=groups)
-            objective.refresh(torch.zeros(1), 0)
+            objective.refresh(torch.zeros(1, 1, 1), 0)
             return objective.reference["weights"][0]
 
         original = weights(queries)

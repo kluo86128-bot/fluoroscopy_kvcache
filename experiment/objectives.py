@@ -5,6 +5,7 @@ import torch
 import torch.nn.functional as F
 
 from .backend import attention_summary, join_cache, kv_losses, repeat_kv
+from .config import ATTENTION_METHODS, WEIGHTED_METHODS, JOINT_METHOD
 from .question_semantics import query_coefficients
 
 
@@ -21,7 +22,7 @@ class Objective:
         self.reference_step = None
         self.question_groups = question_groups
         self.query_weights = None
-        if method == "question_weighted_kv" and config.get("weighted_kv_version", 1) == 2 and config["semantic_query_mode"] == "structured":
+        if method in WEIGHTED_METHODS and config.get("weighted_kv_version", 1) == 2 and config["semantic_query_mode"] == "structured":
             self.query_weights = query_coefficients(question_ids.shape[1], question_groups, config["semantic_query_weights"])
 
     @torch.no_grad()
@@ -33,21 +34,41 @@ class Objective:
                 return False
             if step - self.reference_step < self.config["reference_refresh_steps"]:
                 return False
-        private, _ = self.backend.student(prefix, self.public_ids)
-        reference_cache = join_cache(private if self.oracle_cache is None else self.oracle_cache, self.observed)
-        if self.method in ("question_weighted_kv", "question_attention_reconstruction"):
-            queries, complete = self.backend.probe(reference_cache, self.question_ids)
-            if self.method == "question_weighted_kv":
+        if self.method in (*WEIGHTED_METHODS, *ATTENTION_METHODS):
+            reference = {}
+            public_only = self.config.get("weighted_kv_context_version", 2) == 2
+            legacy_queries = legacy_complete = None
+            if self.method in ATTENTION_METHODS or (self.method in WEIGHTED_METHODS and not public_only):
+                private, _ = self.backend.student(prefix, self.public_ids)
+                reference_cache = join_cache(private, self.observed)
+                legacy_queries, legacy_complete = self.backend.probe(reference_cache, self.question_ids)
+            if self.method in WEIGHTED_METHODS:
+                if public_only:
+                    queries, complete = self.backend.probe_public(self.observed, self.question_ids,
+                                                                  prefix_length=prefix.shape[1])
+                    n = 0
+                else:
+                    queries, complete = legacy_queries, legacy_complete
+                    n = private[0][0].shape[2]
                 weights = []
-                n = private[0][0].shape[2]
                 length = self.observed[0][0].shape[2]
                 for query, (key, _) in zip(queries, complete):
                     heads, kv_heads = query.shape[1], key.shape[1]
-                    scores = query.float() @ repeat_kv(key.float(), heads).transpose(-1, -2) / math.sqrt(query.shape[-1])
-                    positions = torch.arange(key.shape[2], device=query.device)
-                    allowed = positions[None, :] <= (n + length + torch.arange(query.shape[2], device=query.device))[:, None]
-                    scores = scores.masked_fill(~allowed[None, None], -torch.inf)
-                    public_attention = scores.softmax(dim=-1)[..., n:n + length]
+                    if self.config.get("weighted_kv_normalization_version", 2) == 2:
+                        # Condition each Query on public keys BEFORE averaging.
+                        # Question keys inform Query construction, but do not
+                        # compete for this weighting distribution's mass.
+                        public_key = key[:, :, n:n + length]
+                        scores = query.float() @ repeat_kv(public_key.float(), heads).transpose(-1, -2) / math.sqrt(query.shape[-1])
+                        public_attention = scores.softmax(dim=-1)
+                    else:
+                        # Historical full-context softmax, kept for diagnosis.
+                        scores = query.float() @ repeat_kv(key.float(), heads).transpose(-1, -2) / math.sqrt(query.shape[-1])
+                        positions = torch.arange(key.shape[2], device=query.device)
+                        query_positions = (n + length + torch.arange(query.shape[2], device=query.device))[:, None]
+                        allowed = positions[None, :] < query_positions if public_only else positions[None, :] <= query_positions
+                        scores = scores.masked_fill(~allowed[None, None], -torch.inf)
+                        public_attention = scores.softmax(dim=-1)[..., n:n + length]
                     if self.query_weights is None:
                         importance = public_attention.mean(dim=2)
                     else:
@@ -59,14 +80,17 @@ class Objective:
                     normalized = torch.where(total > 0, normalized, torch.ones_like(normalized))
                     floor = self.config["weight_floor"]
                     weights.append((floor + (1 - floor) * normalized).detach())
-                self.reference = {"weights": tuple(weights)}
+                reference["weights"] = tuple(weights)
                 if self.query_weights is not None:
-                    self.reference["query_token_weights"] = tuple(self.query_weights)
-            else:
+                    reference["query_token_weights"] = tuple(self.query_weights)
+            if self.method in ATTENTION_METHODS:
                 targets = tuple(attention_summary(q, layer, return_log_attention=self.config.get("attention_loss_version", 1) == 2)
-                                for q, layer in zip(queries, self.observed))
-                self.reference = {"queries": queries, "targets": targets}
+                                for q, layer in zip(legacy_queries, self.observed))
+                reference.update(queries=legacy_queries, targets=targets)
+            self.reference = reference
         else:
+            private, _ = self.backend.student(prefix, self.public_ids)
+            reference_cache = join_cache(private if self.oracle_cache is None else self.oracle_cache, self.observed)
             continuation = self.backend.rollout(reference_cache, self.question_ids, self.config["rollout_tokens"])
             logits = self.backend.continuation_logits(reference_cache, self.question_ids, continuation)
             self.reference = {"continuation": continuation.detach(), "log_probs": (logits / self.config["temperature"]).log_softmax(-1).detach()}
@@ -80,7 +104,7 @@ class Objective:
         base = (self.config.get("lambda_base", 1.0) * selected_base
                 if self.config["base_loss"] != "none" else selected_base.new_zeros(()))
         weighted_aux = base.new_zeros(())
-        if self.method == "question_weighted_kv":
+        if self.method in WEIGHTED_METHODS:
             errors = []
             for predicted, observed, weight in zip(public, self.observed, self.reference["weights"]):
                 for x, y in zip(predicted, observed):
@@ -88,7 +112,7 @@ class Objective:
                     errors.append(((per_token * weight).sum(-1) / weight.sum(-1)).mean())
             components["weighted_kv_loss"] = torch.stack(errors).mean()
             weighted_aux = self.config["lambda_weighted"] * components["weighted_kv_loss"]
-        elif self.method == "question_attention_reconstruction":
+        if self.method in ATTENTION_METHODS:
             outputs, lses, distributions = [], [], []
             match_attention = self.config.get("attention_loss_version", 1) == 2
             for query, layer, target in zip(self.reference["queries"], public, self.reference["targets"]):
@@ -103,10 +127,14 @@ class Objective:
                     distributions.append(F.kl_div(current[2], target[2], reduction="none", log_target=True)
                                          .sum(dim=-1).mean().clamp_min(0))
             components["attention_output_loss"], components["lse_loss"] = torch.stack(outputs).mean(), torch.stack(lses).mean()
-            weighted_aux = self.config["lambda_output"] * components["attention_output_loss"] + self.config["lambda_lse"] * components["lse_loss"]
+            attention_aux = self.config["lambda_output"] * components["attention_output_loss"] + self.config["lambda_lse"] * components["lse_loss"]
             if match_attention:
                 components["attention_distribution_loss"] = torch.stack(distributions).mean()
-                weighted_aux = weighted_aux + self.config["lambda_attention"] * components["attention_distribution_loss"]
+                attention_aux = attention_aux + self.config["lambda_attention"] * components["attention_distribution_loss"]
+            if self.method == JOINT_METHOD:
+                components["weighted_kv_component_loss"] = weighted_aux
+                components["attention_reconstruction_loss"] = attention_aux
+            weighted_aux = weighted_aux + attention_aux
         elif self.method in ("question_output_consistency", "oracle_private_prefix_distillation"):
             logits = self.backend.continuation_logits(join_cache(private, public), self.question_ids, self.reference["continuation"])
             student = (logits / self.config["temperature"]).log_softmax(-1)
@@ -118,18 +146,24 @@ class Objective:
 
     def state_dict(self):
         state = {"reference": self.reference, "reference_step": self.reference_step}
-        if self.method == "question_attention_reconstruction":
+        if self.method in ATTENTION_METHODS:
             state["attention_loss_version"] = self.config.get("attention_loss_version", 1)
-        if self.method == "question_weighted_kv":
+        if self.method in WEIGHTED_METHODS:
             state["weighted_kv_version"] = self.config.get("weighted_kv_version", 1)
+            state["weighted_kv_context_version"] = self.config.get("weighted_kv_context_version", 2)
+            state["weighted_kv_normalization_version"] = self.config.get("weighted_kv_normalization_version", 2)
         return state
 
     def load_state_dict(self, state):
-        if self.method == "question_attention_reconstruction" and state.get("attention_loss_version", 1) != self.config.get("attention_loss_version", 1):
+        if self.method in ATTENTION_METHODS and state.get("attention_loss_version", 1) != self.config.get("attention_loss_version", 1):
             raise ValueError("attention 参考状态的损失版本不一致，不能跨版本续训")
-        if self.method == "question_weighted_kv" and state.get("weighted_kv_version", 1) != self.config.get("weighted_kv_version", 1):
+        if self.method in WEIGHTED_METHODS and state.get("weighted_kv_version", 1) != self.config.get("weighted_kv_version", 1):
             raise ValueError("weight_kv 参考状态的版本不一致，不能跨版本续训")
-        if self.method == "question_weighted_kv" and self.query_weights is not None and state["reference"] is not None and tuple(state["reference"].get("query_token_weights", ())) != tuple(self.query_weights):
+        if self.method in WEIGHTED_METHODS and state.get("weighted_kv_context_version", 1) != self.config.get("weighted_kv_context_version", 2):
+            raise ValueError("weight_kv 参考状态的查询上下文版本不一致，不能跨版本续训")
+        if self.method in WEIGHTED_METHODS and state.get("weighted_kv_normalization_version", 1) != self.config.get("weighted_kv_normalization_version", 2):
+            raise ValueError("weight_kv 参考状态的归一化版本不一致，不能跨版本续训")
+        if self.method in WEIGHTED_METHODS and self.query_weights is not None and state["reference"] is not None and tuple(state["reference"].get("query_token_weights", ())) != tuple(self.query_weights):
             raise ValueError("weight_kv 参考状态的语义查询位置或贡献比例不一致")
         def transfer(value):
             if isinstance(value, torch.Tensor):

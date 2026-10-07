@@ -7,19 +7,20 @@
     "../test_samples/tasks.jsonl"
   ],
   "include_tasks": [
-    "sgd_test_040"
+    "sgd_test_017",
+    "sgd_test_018",
+    "sgd_test_015",
+    "sgd_test_003",
+    "sgd_test_004",
+    "sgd_test_006"
   ],
   "exclude_tasks": [],
-  "limit": 1,
+  "limit": 6,
   "methods": [
     "question_weighted_kv"
   ],
-  "method_options": {
-    "question_weighted_kv": {
-      "lambda_base": 1.0
-    }
-  },
-  "output_dir": "/data/kevin/fluoroscopy/results/040_big_train_question_token",
+  "method_options": {},
+  "output_dir": "/data/kevin/fluoroscopy/results/003_004_006_015_017_018_weighted_kv_token_public_softmax_v2",
   "background": true,
   "continue_on_error": true,
   "auto_test": true,
@@ -44,12 +45,11 @@
   "reference_refresh_steps": 200,
   "lambda_weighted": 1.0,
   "weight_floor": 0.1,
-  "loss_profile": "current",
-  "weighted_kv_version": 2,
+  "loss_profile": "semantic_enhanced_v1",
+  "weighted_kv_version": 1,
   "semantic_query_mode": "uniform",
   "semantic_query_weights": {
-    "object_state": 0.25,
-    "target_field": 0.3,
+    "target_relation": 0.55,
     "required_value": 0.2,
     "question": 0.25
   },
@@ -75,5 +75,7 @@
     0,
     1
   ],
-  "test_question_mode": "held_out"
+  "test_question_mode": "held_out",
+  "weighted_kv_context_version": 2,
+  "weighted_kv_normalization_version": 2
 }

@@ -1,6 +1,7 @@
 """CPU integration tests use a tiny, real Qwen3 with random frozen weights."""
 from copy import deepcopy
 import contextlib
+import csv
 import io
 import json
 import math
@@ -373,7 +374,7 @@ class TrainingTests(Base):
             self.assertTrue(all("attention_distribution_loss" in row for row in left["history"]))
 
     def test_all_active_methods_end_to_end_same_initial_and_heldout(self):
-        with tempfile.TemporaryDirectory() as directory, contextlib.redirect_stdout(io.StringIO()):
+        with tempfile.TemporaryDirectory() as directory, contextlib.redirect_stdout(io.StringIO()) as output_log:
             root = Path(directory)
             dataset = root / "tasks.json"
             write_json(dataset, [{"task_id": "case", "private_prefix": "private", "public_text": "public",
@@ -384,6 +385,25 @@ class TrainingTests(Base):
             self.assertEqual(run(cfg, output, backend=self.backend), 0)
             summary_data = read_json(output / "test_summary.json")
             self.assertEqual(set(summary_data), set(METHODS))
+            with (output / "test_method_success.csv").open(encoding="utf-8-sig", newline="") as source:
+                method_counts = list(csv.DictReader(source))
+            with (output / "test_sample_prefix_rates.csv").open(encoding="utf-8-sig", newline="") as source:
+                prefix_rates = list(csv.DictReader(source))
+            self.assertEqual(len(method_counts), len(METHODS) * 2)
+            self.assertEqual(len(prefix_rates), len(METHODS) * 2)
+            for row in method_counts:
+                expected = summary_data[row["method"]][row["question_kind"]]["answer_match"]
+                self.assertEqual(int(row["successful_samples"]), expected["covered_samples"])
+                self.assertEqual(int(row["tested_samples"]), 1)
+                self.assertEqual(int(row["planned_samples"]), 1)
+            for row in prefix_rates:
+                expected = summary_data[row["method"]][row["question_kind"]]["answer_match"]
+                self.assertEqual(row["task_id"], "case")
+                self.assertEqual(int(row["tested_prefixes"]), 2)
+                self.assertEqual(float(row["prefix_success_rate"]), expected["prefix_rate"])
+            for kind in ("training_question", "held_out_question"):
+                self.assertEqual(output_log.getvalue().count(f"[统计表1/{kind}]"), 1)
+                self.assertEqual(output_log.getvalue().count(f"[统计表2/{kind}]"), 1)
             initial_probabilities = []
             for method in METHODS:
                 self.assertEqual(summary_data[method]["training_question"]["prefix_tests"], 2)

@@ -71,5 +71,7 @@
     0,
     1
   ],
-  "test_question_mode": "held_out"
+  "test_question_mode": "held_out",
+  "weighted_kv_context_version": 2,
+  "weighted_kv_normalization_version": 2
 }

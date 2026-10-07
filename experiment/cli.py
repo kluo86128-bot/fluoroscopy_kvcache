@@ -9,7 +9,7 @@ import sys
 import traceback
 import uuid
 
-from .config import DEFAULTS, METHODS, load_config, validate, saved_config, require_current_attention_loss, require_current_weighted_kv, method_config
+from .config import DEFAULTS, METHODS, WEIGHTED_METHODS, load_config, validate, saved_config, require_current_attention_loss, require_current_weighted_kv, method_config
 from .data import catalog, materialize
 from .io import RunBusy, read_json, run_lock, write_json, write_error_status
 from .question_semantics import semantic_spans
@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def parser():
-    result = argparse.ArgumentParser(description="单软前缀连续训练：四种方法、三类图、损失 TopK 导出")
+    result = argparse.ArgumentParser(description="单软前缀连续训练：独立方法与联合组、三类图、损失 TopK 导出")
     result.add_argument("command", nargs="?", choices=("train", "test", "inspect", "diagnose"), default="train")
     result.add_argument("--config", type=Path, default=None)
     result.add_argument("--run-dir", type=Path, help="指定新运行目录；test 使用已有运行目录")
@@ -161,8 +161,10 @@ def main(argv=None):
         sample = materialize(row, config["output_instruction"])
         if config["auto_test"] and config["test_question_mode"] == "held_out" and not sample.held_out_question:
             raise ValueError(f"{sample.task_id}: held_out 测试需要独立的 question_test 问题")
-        if args.command in ("train", "inspect") and "question_weighted_kv" in config["methods"] and method_config(config, "question_weighted_kv")["semantic_query_mode"] == "structured":
-            semantic_spans(sample.question)
+        if args.command in ("train", "inspect"):
+            for method in config["methods"]:
+                if method in WEIGHTED_METHODS and method_config(config, method)["semantic_query_mode"] == "structured":
+                    semantic_spans(sample.question)
     if args.command == "inspect":
         print(json.dumps({"samples": [r["task_id"] for r in selected], "sample_count": len(selected), "config": config}, ensure_ascii=False, indent=2))
         return 0

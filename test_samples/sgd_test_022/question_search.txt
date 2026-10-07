@@ -1,7 +1,1 @@
-Output format: Return only the full English month name, one space, and the day number with its ordinal suffix. Do not include a year.
-
-Tracking rule: Track the dining event associated with the reservation across revisions. Apply explicit dining-date corrections; retain the existing date when only other fields change. Interpret corrections field by field. Resolve relative dates using calendar references supplied in the conversation. Treat equivalent date expressions as the same date, and distinguish the dining date from dates of other events.
-Target relation: For the final confirmed restaurant reservation, retrieve the calendar date on which the diners are scheduled to eat.
-Required value: Extract both the month and the day of the same dining date.
-
-Question: What are the month and day of the dining date for the final confirmed restaurant reservation?
+Question: The conversation concerns arranging a meal at a restaurant. Track the same reservation through any changes and use its final confirmed details. The dining date is when the meal will take place, not when the booking was made. If a later turn changes only the restaurant, city, time, or party size, retain the previously specified dining date unless that date is explicitly changed. Keep the date, restaurant name, and restaurant location city associated with the same reservation. What are the dining month and day, the restaurant's name, and the city where that restaurant is located? Give the dining month and day first, followed by the restaurant name and city.

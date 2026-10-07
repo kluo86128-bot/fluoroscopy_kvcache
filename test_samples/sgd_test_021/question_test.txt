@@ -1,3 +1,3 @@
-Output format: Return only the full English month name, one space, and the day number with its ordinal suffix. No year, labels, explanation, or extra text.
+Output format: Return only the full English month name, one space, and the day number with its ordinal suffix. No year, labels, numbering, explanation, or extra text.
 
-Question: On which date will the meal in the final confirmed restaurant reservation take place?
+Question: For the final confirmed restaurant reservation, what is the exact day of the month on which the meal will take place, and which month does that day belong to? Extract both from the same dining-date statement. Return only the full English month name followed by the day number with its ordinal suffix. Do not include a year.

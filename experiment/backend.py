@@ -106,17 +106,20 @@ class Backend:
             result.update(key.clone(), value.clone(), index)
         return result
 
-    def forward(self, *, ids=None, embeddings=None, cache=None):
+    def forward(self, *, ids=None, embeddings=None, cache=None, position_offset=0, attention_mask=None):
         if (ids is None) == (embeddings is None):
             raise ValueError("ids/embeddings 必须且只能指定一个")
         count = ids.shape[1] if ids is not None else embeddings.shape[1]
         batch = ids.shape[0] if ids is not None else embeddings.shape[0]
         start = 0 if cache is None else cache[0][0].shape[2]
-        positions = torch.arange(start, start + count, device=self.device)
+        cache_positions = torch.arange(start, start + count, device=self.device)
+        positions = cache_positions + position_offset
+        if attention_mask is None:
+            attention_mask = torch.ones((batch, start + count), device=self.device, dtype=torch.long)
         arguments = {"input_ids": ids} if ids is not None else {"inputs_embeds": embeddings}
         result = self.model(**arguments, past_key_values=None if cache is None else self.cache(cache),
-                            attention_mask=torch.ones((batch, start + count), device=self.device, dtype=torch.long),
-                            position_ids=positions[None].expand(batch, -1), cache_position=positions,
+                            attention_mask=attention_mask,
+                            position_ids=positions[None].expand(batch, -1), cache_position=cache_positions,
                             use_cache=True, return_dict=True)
         return result.logits, pairs(result.past_key_values)
 
@@ -172,6 +175,29 @@ class Backend:
             _, complete = self.forward(ids=question_ids, cache=reference_cache)
         if len(captured) != len(complete):
             raise ValueError("查询探针层数不完整")
+        return tuple(captured[i] for i in range(len(complete))), complete
+
+    @torch.no_grad()
+    def probe_public(self, public_cache, question_ids, *, prefix_length):
+        """Queries see public KV and strictly previous question tokens only.
+
+        Cache slots start at zero, while RoPE positions retain the original
+        private-prefix offset already encoded in the observed public keys.
+        """
+        if not public_cache or public_cache[0][0].shape[2] < 1:
+            raise ValueError("公共查询探针需要非空观测公共KV")
+        if not isinstance(prefix_length, int) or isinstance(prefix_length, bool) or prefix_length < 0:
+            raise ValueError("prefix_length 必须为非负整数")
+        length, count = public_cache[0][0].shape[2], question_ids.shape[1]
+        positions = torch.arange(length + count, device=self.device)
+        allowed = positions[None, :] < (length + torch.arange(count, device=self.device))[:, None]
+        mask = torch.zeros((question_ids.shape[0], 1, count, length + count), device=self.device, dtype=self.dtype)
+        mask.masked_fill_(~allowed[None, None], torch.finfo(self.dtype).min)
+        with self.queries() as captured:
+            _, complete = self.forward(ids=question_ids, cache=public_cache,
+                                       position_offset=prefix_length, attention_mask=mask)
+        if len(captured) != len(complete):
+            raise ValueError("公共查询探针层数不完整")
         return tuple(captured[i] for i in range(len(complete))), complete
 
     @torch.no_grad()

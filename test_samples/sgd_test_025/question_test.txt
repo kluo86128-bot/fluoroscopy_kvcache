@@ -1,3 +1,3 @@
-Output format: Return only the full English month name, one space, and the day number with its ordinal suffix. Do not include a year.
+Output format: Return only the full English month name, one space, and the day number with its ordinal suffix. No year, labels, numbering, explanation, or extra text.
 
-Question: What month and day were confirmed for dining in the final restaurant booking?
+Question: The conversation concerns arranging a meal at a restaurant. Track the same reservation through any changes and use its final confirmed details. The dining date is when the meal will take place, not when the booking was made. If a later turn changes only the restaurant, city, time, or party size, retain the previously specified dining date unless that date is explicitly changed. Keep the date, restaurant name, and restaurant location city associated with the same reservation. What are the month and day of the dining date for the final confirmed restaurant reservation?

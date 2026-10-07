@@ -15,8 +15,8 @@
   "semantic_query_mode": "structured",
   "semantic_query_weights": {
     "object_state": 0.25,
-    "target_field": 0.30,
-    "required_value": 0.20,
+    "target_field": 0.3,
+    "required_value": 0.2,
     "question": 0.25
   },
   "save_topk": 50,
@@ -33,5 +33,7 @@
     0,
     1
   ],
-  "output_instruction": "Output only the requested answer in English. No labels, numbering, explanation, or extra text."
+  "output_instruction": "Output only the requested answer in English. No labels, numbering, explanation, or extra text.",
+  "weighted_kv_context_version": 2,
+  "weighted_kv_normalization_version": 2
 }

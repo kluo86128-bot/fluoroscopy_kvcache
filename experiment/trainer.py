@@ -8,7 +8,7 @@ import time
 import torch
 
 from .checkpoints import TopK
-from .config import METHODS, require_current_attention_loss, require_current_weighted_kv
+from .config import METHODS, ATTENTION_METHODS, WEIGHTED_METHODS, require_current_attention_loss, require_current_weighted_kv
 from .io import save_torch, write_csv, write_json, write_error_status
 from .metrics import SupportScore
 from .objectives import Objective
@@ -28,13 +28,19 @@ def fingerprint(config, method, context_signature, question_groups=None):
     # fingerprints compatible, while any changed coefficient blocks resume.
     if config.get("lambda_base", 1.0) == 1.0:
         ignored.add("lambda_base")
-    if method != "question_attention_reconstruction":
+    if method not in ATTENTION_METHODS:
         # Attention's revision does not change the other methods' objectives.
         ignored.update(("attention_loss_version", "lambda_attention"))
-    if method != "question_weighted_kv":
-        ignored.update(("weighted_kv_version", "semantic_query_mode", "semantic_query_weights"))
+    if method not in WEIGHTED_METHODS:
+        ignored.update(("weighted_kv_version", "weighted_kv_context_version", "weighted_kv_normalization_version",
+                        "semantic_query_mode", "semantic_query_weights"))
+    elif config.get("weighted_kv_context_version", 1) == 1:
+        # Preserve fingerprints of historical prefix-dependent references.
+        ignored.add("weighted_kv_context_version")
+    if method in WEIGHTED_METHODS and config.get("weighted_kv_normalization_version", 1) == 1:
+        ignored.add("weighted_kv_normalization_version")
     relevant = {k: v for k, v in config.items() if k not in ignored}
-    if method == "question_weighted_kv" and question_groups is not None:
+    if method in WEIGHTED_METHODS and question_groups is not None:
         relevant["semantic_query_positions"] = question_groups
     return hashlib.sha256(json.dumps([relevant, method, context_signature], sort_keys=True).encode()).hexdigest()
 
@@ -76,6 +82,11 @@ def train(backend, observed, public_ids, question_ids, initial, method, config, 
     elif (root / "history.jsonl").exists():
         raise ValueError("输出目录已有训练记录；请使用 --resume")
     recorded_config = {"method": method, "uses_private_teacher": oracle_cache is not None, "config": config}
+    if method in WEIGHTED_METHODS:
+        recorded_config["weighted_reference_context"] = ("public_and_strictly_previous_question"
+                                                        if config.get("weighted_kv_context_version", 2) == 2 else "legacy_prefix_context")
+        recorded_config["weighted_attention_normalization"] = ("per_query_public_keys_only"
+                                                              if config.get("weighted_kv_normalization_version", 2) == 2 else "legacy_full_context")
     if objective.query_weights is not None:
         shares = effective_shares(question_groups, config["semantic_query_weights"])
         recorded_config.update(semantic_query_positions=question_groups, query_token_coefficients=objective.query_weights,

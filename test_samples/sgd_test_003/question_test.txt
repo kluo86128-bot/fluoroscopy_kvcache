@@ -1,3 +1,7 @@
 Output format: Return only the number in digits.
 
-Question: What is the party size of the final confirmed restaurant booking?
+Tracking rule: Track the dining party associated with the reservation across revisions. Apply explicit party-size corrections; retain the existing party size when only other fields change. Interpret corrections field by field. Include all diners, rather than counting only the person making the booking.
+Target relation: For the final confirmed restaurant reservation, retrieve the total number of diners included in that booking.
+Required value: Extract the complete numerical count stated for this field.
+
+Question: How many people are included in the final confirmed restaurant reservation?

@@ -9,7 +9,8 @@ from matplotlib.ticker import FuncFormatter
 
 LABELS = {"baseline": "Baseline", "question_weighted_kv": "Weighted KV",
           "question_attention_reconstruction": "Attention", "question_output_consistency": "Consistency",
-          "oracle_private_prefix_distillation": "Oracle"}
+          "oracle_private_prefix_distillation": "Oracle",
+          "question_joint_reconstruction": "Weighted KV + Attention"}
 COLORS = {name: f"C{index}" for index, name in enumerate(LABELS)}
 
 

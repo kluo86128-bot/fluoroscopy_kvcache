@@ -100,5 +100,5 @@ def run_diagnostics(config, root, source, *, backend=None):
     write_json(root / "result.json", result)
     write_json(root / "status.json", result)
     if config["auto_test"]:
-        summarize_root(root, config, len(samples))
+        summarize_root(root, config, len(samples), task_ids=[sample.task_id for sample in samples])
     return 1 if failures else 0

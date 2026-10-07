@@ -5,8 +5,11 @@ from pathlib import Path
 from .io import read_json
 from .question_semantics import RELATION_GROUPS, SEMANTIC_GROUPS, SEMANTIC_WEIGHTS
 
+JOINT_METHOD = "question_joint_reconstruction"
+WEIGHTED_METHODS = ("question_weighted_kv", JOINT_METHOD)
+ATTENTION_METHODS = ("question_attention_reconstruction", JOINT_METHOD)
 METHODS = ("baseline", "question_weighted_kv", "question_attention_reconstruction",
-           "oracle_private_prefix_distillation")
+           "oracle_private_prefix_distillation", JOINT_METHOD)
 RETIRED_METHODS = ("question_output_consistency",)
 DIRECT_OUTPUT = "Output only the requested answer in English. No labels, numbering, explanation, or extra text."
 DEFAULTS = {
@@ -25,7 +28,8 @@ DEFAULTS = {
     "log_every": 25, "eval_every": 25, "plot_every": 200, "checkpoint_every": 1,
     "resume_every": 25, "save_topk": 20, "checkpoint_metric": "base",
     "reference_refresh_steps": 200, "lambda_base": 1.0, "lambda_weighted": 1.0, "weight_floor": 0.1,
-    "weighted_kv_version": 2, "semantic_query_mode": "structured",
+    "weighted_kv_version": 2, "weighted_kv_context_version": 2, "weighted_kv_normalization_version": 2,
+    "semantic_query_mode": "structured",
     "semantic_query_weights": SEMANTIC_WEIGHTS.copy(),
     "lambda_output": 1.0, "lambda_lse": 1.0, "lambda_attention": 1.0,
     "attention_loss_version": 2, "lambda_kl": 1.0,
@@ -47,6 +51,10 @@ def validate(config, *, allow_retired=False):
         raise ValueError("attention_loss_version 必须为 1 或 2")
     if type(config["weighted_kv_version"]) is not int or config["weighted_kv_version"] not in (1, 2):
         raise ValueError("weighted_kv_version 必须为 1 或 2")
+    if type(config["weighted_kv_context_version"]) is not int or config["weighted_kv_context_version"] not in (1, 2):
+        raise ValueError("weighted_kv_context_version 必须为 1 或 2")
+    if type(config["weighted_kv_normalization_version"]) is not int or config["weighted_kv_normalization_version"] not in (1, 2):
+        raise ValueError("weighted_kv_normalization_version 必须为 1 或 2")
     if config["loss_profile"] not in ("current", "semantic_enhanced_v1"):
         raise ValueError("loss_profile 只能选择 current 或 semantic_enhanced_v1")
     if config["loss_profile"] == "semantic_enhanced_v1" and (
@@ -92,9 +100,9 @@ def validate(config, *, allow_retired=False):
     if not isinstance(methods, list) or not methods or any(m not in allowed_methods for m in methods) or len(set(methods)) != len(methods):
         raise ValueError(f"methods 必须为非空、不重复的方法列表: {allowed_methods}")
     if config["base_loss"] == "none":
-        auxiliary_only = {"question_weighted_kv", "question_attention_reconstruction", "oracle_private_prefix_distillation"}
+        auxiliary_only = {*WEIGHTED_METHODS, *ATTENTION_METHODS, "oracle_private_prefix_distillation"}
         if any(method not in auxiliary_only for method in methods):
-            raise ValueError("base_loss=none 仅允许 question_weighted_kv、question_attention_reconstruction 和 oracle_private_prefix_distillation；Baseline 必须使用 mean 或 token 基础损失")
+            raise ValueError("base_loss=none 仅允许 Weighted KV、Attention、联合组和 Oracle；Baseline 必须使用 mean 或 token 基础损失")
         if config["checkpoint_metric"] != "total":
             raise ValueError("base_loss=none 时必须按 total 保存 TopK 前缀")
     for key in ("datasets", "include_tasks", "exclude_tasks"):
@@ -155,16 +163,22 @@ def saved_config(raw):
             "attention_loss_version": raw.get("attention_loss_version", 1),
             "lambda_attention": raw.get("lambda_attention", 0.0),
             "weighted_kv_version": raw.get("weighted_kv_version", 1),
+            "weighted_kv_context_version": raw.get("weighted_kv_context_version", 1),
+            "weighted_kv_normalization_version": raw.get("weighted_kv_normalization_version", 1),
             "semantic_query_mode": raw.get("semantic_query_mode", "uniform")}
 
 
 def require_current_attention_loss(config):
     expected = 1 if config.get("loss_profile") == "semantic_enhanced_v1" else 2
-    if "question_attention_reconstruction" in config["methods"] and config.get("attention_loss_version", 1) != expected:
+    if set(ATTENTION_METHODS).intersection(config["methods"]) and config.get("attention_loss_version", 1) != expected:
         raise ValueError("attention_restruct 损失已升级为逐位置注意力 KL + output + logsumexp；旧 attention 运行不能续训，请新建实验（历史 test/diagnose 仍可用）")
 
 
 def require_current_weighted_kv(config):
     expected = 1 if config.get("loss_profile") == "semantic_enhanced_v1" else 2
-    if "question_weighted_kv" in config["methods"] and config.get("weighted_kv_version", 1) != expected:
+    if set(WEIGHTED_METHODS).intersection(config["methods"]) and config.get("weighted_kv_version", 1) != expected:
         raise ValueError("weight_kv 已升级为四组语义查询加权；旧 weight_kv 运行不能续训，请新建实验（历史 test/diagnose 仍可用）")
+    if set(WEIGHTED_METHODS).intersection(config["methods"]) and config.get("weighted_kv_context_version", 1) != 2:
+        raise ValueError("weight_kv 查询上下文已改为公共KV和更早的问题token；旧参考方式仅可test/diagnose，不可续训，请新建运行")
+    if set(WEIGHTED_METHODS).intersection(config["methods"]) and config.get("weighted_kv_normalization_version", 1) != 2:
+        raise ValueError("weight_kv 权重已改为每个Query仅在公共Key内softmax；旧归一化方式仅可test/diagnose，不可续训，请新建运行")

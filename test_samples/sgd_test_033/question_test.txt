@@ -1,1 +1,3 @@
-What is the location city of the restaurant in the final confirmed booking? Return only the English city name, spelled exactly as in the conversation.
+Output format: Return only the complete English city name. No labels, numbering, explanation, or extra text.
+
+Question: The conversation concerns arranging a meal at a restaurant. Track the restaurant associated with the same reservation through any changes and use its final confirmed details. The requested city is where that restaurant is located. If only the dining date, time, or party size changes, retain the existing restaurant and its city. Apply explicit city corrections; if the restaurant changes, use the city associated with the replacement restaurant. Keep the city, restaurant name, and dining date associated with the same reservation. In which city is the restaurant associated with the final confirmed reservation located?

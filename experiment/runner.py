@@ -8,13 +8,14 @@ import traceback
 import torch
 
 from .backend import load_backend
-from .config import method_config, require_current_attention_loss, require_current_weighted_kv
+from .config import WEIGHTED_METHODS, method_config, require_current_attention_loss, require_current_weighted_kv
 from .data import catalog, materialize, question_text
 from .io import read_json, save_torch, write_csv, write_json, is_storage_error
 from .metrics import AnswerMonitor, summary, test_prefix
 from .plots import render_comparison
 from .trainer import train
 from .question_semantics import semantic_spans
+from .test_tables import write_test_tables
 
 
 def prepare(backend, sample, config):
@@ -59,7 +60,7 @@ def test_method(backend, sample, config, directory, observed, public_ids, questi
     return rows
 
 
-def summarize_root(root, config, planned, announce=True):
+def summarize_root(root, config, planned, announce=True, *, task_ids=None):
     root = Path(root)
     all_rows = []
     for path in root.glob("samples/*/*/test_results.json"):
@@ -74,6 +75,9 @@ def summarize_root(root, config, planned, announce=True):
                 summaries[method][kind] = summary(rows, planned)
     write_json(root / "test_summary.json", summaries)
     write_csv(root / "test_results.csv", [{k: v for k, v in r.items() if k != "generated_token_ids"} for r in all_rows])
+    if task_ids is None:
+        selection = root / "selected_tasks.json"
+        task_ids = read_json(selection) if selection.exists() else sorted({r["task_id"] for r in all_rows})
     for method, questions in summaries.items():
         for kind, values in questions.items():
             rates = values["answer_match"]
@@ -83,6 +87,7 @@ def summarize_root(root, config, planned, announce=True):
                 print(f"[汇总 {method}/{kind}] 完成样本={values['completed_samples']}/{planned} 前缀测试={values['prefix_tests']} "
                       f"Top1={rate(rates['top1_rate'])} 前缀正确率={rate(rates['prefix_rate'])} "
                       f"TopK覆盖={rate(rates['topk_coverage'])}", flush=True)
+    write_test_tables(root, config, planned, all_rows, task_ids, announce=announce)
     return summaries
 
 
@@ -98,10 +103,10 @@ def run(config, root, *, resume=False, test_only=False, backend=None):
         for sample in samples:
             if not sample.held_out_question:
                 raise ValueError(f"{sample.task_id}: held_out 测试需要独立的 question_test 问题")
-    weighted_config = method_config(config, "question_weighted_kv")
-    if not test_only and "question_weighted_kv" in config["methods"] and weighted_config["semantic_query_mode"] == "structured":
-        for sample in samples:
-            semantic_spans(sample.question)
+    for method in config["methods"]:
+        if not test_only and method in WEIGHTED_METHODS and method_config(config, method)["semantic_query_mode"] == "structured":
+            for sample in samples:
+                semantic_spans(sample.question)
     if resume or test_only:
         original = read_json(root / "selected_tasks.json")
         if original != [s.task_id for s in samples]:
@@ -115,7 +120,9 @@ def run(config, root, *, resume=False, test_only=False, backend=None):
     group_role = {"token": "token 主实验", "mean": "mean 对照", "none": "辅助损失单独组"}[config["base_loss"]]
     print(f"实验组定位={group_role} loss_profile={config.get('loss_profile', 'current')} "
           f"attention_loss_version={config.get('attention_loss_version', 1)} "
-          f"weighted_kv_version={config.get('weighted_kv_version', 1)}", flush=True)
+          f"weighted_kv_version={config.get('weighted_kv_version', 1)} "
+          f"weighted_kv_context_version={config.get('weighted_kv_context_version', 2)} "
+          f"weighted_kv_normalization_version={config.get('weighted_kv_normalization_version', 2)}", flush=True)
     print("完整配置:\n" + json.dumps(config, ensure_ascii=False, indent=2), flush=True)
     backend = backend or load_backend(config)
     failures, completed, skipped = [], [], []
@@ -171,7 +178,7 @@ def run(config, root, *, resume=False, test_only=False, backend=None):
                 try:
                     if not test_only:
                         question_groups = None
-                        if method == "question_weighted_kv" and specific["semantic_query_mode"] == "structured":
+                        if method in WEIGHTED_METHODS and specific["semantic_query_mode"] == "structured":
                             text = question_text(sample.question, sample.output_instruction, specific["answer_boundary"])
                             question_groups = backend.semantic_query_groups(text, specific, question_ids)
                         monitor = AnswerMonitor(backend, observed, question_ids, sample.answer, sample.aliases,
@@ -191,7 +198,8 @@ def run(config, root, *, resume=False, test_only=False, backend=None):
                         test_method(backend, sample, specific, directory, observed, public_ids, question_ids)
                     completed.append({"task_id": sample.task_id, "method": method})
                     write_json(root / "status.json", {"status": "running", "completed": completed, "failures": failures})
-                    summarize_root(root, config, len(samples), announce=False)
+                    summarize_root(root, config, len(samples), announce=False,
+                                   task_ids=[sample.task_id for sample in samples])
                 except Exception as error:
                     failures.append({"task_id": sample.task_id, "method": method, "error": f"{type(error).__name__}: {error}"})
                     traceback.print_exc()
@@ -210,5 +218,5 @@ def run(config, root, *, resume=False, test_only=False, backend=None):
               "planned_method_runs": len(samples) * len(config["methods"]), "completed": completed, "failures": failures, "skipped": skipped}
     write_json(root / "result.json", result)
     write_json(root / "status.json", result)
-    summarize_root(root, config, len(samples))
+    summarize_root(root, config, len(samples), task_ids=[sample.task_id for sample in samples])
     return 1 if failures else 0
